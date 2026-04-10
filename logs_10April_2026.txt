@@ -1,0 +1,1217 @@
+sarang@sarang:~/telecom-control-panel-api$ mkdir free5gc
+sarang@sarang:~/telecom-control-panel-api$ ls
+free5gc  maingetpods.py  README.md
+sarang@sarang:~/telecom-control-panel-api$ cd free5gc/
+sarang@sarang:~/telecom-control-panel-api/free5gc$
+sarang@sarang:~/telecom-control-panel-api/free5gc$ sudo apt -y install git gcc g++ cmake autoconf libtool pkg-config libmnl-dev libyaml-dev
+[sudo] password for sarang:
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+autoconf is already the newest version (2.71-2).
+g++ is already the newest version (4:11.2.0-1ubuntu1).
+gcc is already the newest version (4:11.2.0-1ubuntu1).
+libmnl-dev is already the newest version (1.0.4-3build2).
+libtool is already the newest version (2.4.6-15build2).
+libyaml-dev is already the newest version (0.2.2-1build2).
+pkg-config is already the newest version (0.29.2-1ubuntu3).
+cmake is already the newest version (3.22.1-1ubuntu1.22.04.2).
+git is already the newest version (1:2.34.1-1ubuntu1.17).
+git set to manually installed.
+0 upgraded, 0 newly installed, 0 to remove and 221 not upgraded.
+sarang@sarang:~/telecom-control-panel-api/free5gc$ helm status
+Error: "helm status" requires 1 argument
+
+Usage:  helm status RELEASE_NAME [flags]
+sarang@sarang:~/telecom-control-panel-api/free5gc$ helm --version
+Error: unknown flag: --version
+sarang@sarang:~/telecom-control-panel-api/free5gc$ helm --help
+The Kubernetes package manager
+
+Common actions for Helm:
+
+- helm search:    search for charts
+- helm pull:      download a chart to your local directory to view
+- helm install:   upload the chart to Kubernetes
+- helm list:      list releases of charts
+
+Environment variables:
+
+| Name                               | Description                                                                                                |
+|------------------------------------|------------------------------------------------------------------------------------------------------------|
+| $HELM_CACHE_HOME                   | set an alternative location for storing cached files.                                                      |
+| $HELM_CONFIG_HOME                  | set an alternative location for storing Helm configuration.                                                |
+| $HELM_DATA_HOME                    | set an alternative location for storing Helm data.                                                         |
+| $HELM_DEBUG                        | indicate whether or not Helm is running in Debug mode                                                      |
+| $HELM_DRIVER                       | set the backend storage driver. Values are: configmap, secret, memory, sql.                                |
+| $HELM_DRIVER_SQL_CONNECTION_STRING | set the connection string the SQL storage driver should use.                                               |
+| $HELM_MAX_HISTORY                  | set the maximum number of helm release history.                                                            |
+| $HELM_NAMESPACE                    | set the namespace used for the helm operations.                                                            |
+| $HELM_NO_PLUGINS                   | disable plugins. Set HELM_NO_PLUGINS=1 to disable plugins.                                                 |
+| $HELM_PLUGINS                      | set the path to the plugins directory                                                                      |
+| $HELM_REGISTRY_CONFIG              | set the path to the registry config file.                                                                  |
+| $HELM_REPOSITORY_CACHE             | set the path to the repository cache directory                                                             |
+| $HELM_REPOSITORY_CONFIG            | set the path to the repositories file.                                                                     |
+| $KUBECONFIG                        | set an alternative Kubernetes configuration file (default "~/.kube/config")                                |
+| $HELM_KUBEAPISERVER                | set the Kubernetes API Server Endpoint for authentication                                                  |
+| $HELM_KUBECAFILE                   | set the Kubernetes certificate authority file.                                                             |
+| $HELM_KUBEASGROUPS                 | set the Groups to use for impersonation using a comma-separated list.                                      |
+| $HELM_KUBEASUSER                   | set the Username to impersonate for the operation.                                                         |
+| $HELM_KUBECONTEXT                  | set the name of the kubeconfig context.                                                                    |
+| $HELM_KUBETOKEN                    | set the Bearer KubeToken used for authentication.                                                          |
+| $HELM_KUBEINSECURE_SKIP_TLS_VERIFY | indicate if the Kubernetes API server's certificate validation should be skipped (insecure)                |
+| $HELM_KUBETLS_SERVER_NAME          | set the server name used to validate the Kubernetes API server certificate                                 |
+| $HELM_BURST_LIMIT                  | set the default burst limit in the case the server contains many CRDs (default 100, -1 to disable)         |
+| $HELM_QPS                          | set the Queries Per Second in cases where a high number of calls exceed the option for higher burst values |
+
+Helm stores cache, configuration, and data based on the following configuration order:
+
+- If a HELM_*_HOME environment variable is set, it will be used
+- Otherwise, on systems supporting the XDG base directory specification, the XDG variables will be used
+- When no other location is set a default location will be used based on the operating system
+
+By default, the default directories depend on the Operating System. The defaults are listed below:
+
+| Operating System | Cache Path                | Configuration Path             | Data Path               |
+|------------------|---------------------------|--------------------------------|-------------------------|
+| Linux            | $HOME/.cache/helm         | $HOME/.config/helm             | $HOME/.local/share/helm |
+| macOS            | $HOME/Library/Caches/helm | $HOME/Library/Preferences/helm | $HOME/Library/helm      |
+| Windows          | %TEMP%\helm               | %APPDATA%\helm                 | %APPDATA%\helm          |
+
+Usage:
+  helm [command]
+
+Available Commands:
+  completion  generate autocompletion scripts for the specified shell
+  create      create a new chart with the given name
+  dependency  manage a chart's dependencies
+  env         helm client environment information
+  get         download extended information of a named release
+  help        Help about any command
+  history     fetch release history
+  install     install a chart
+  lint        examine a chart for possible issues
+  list        list releases
+  package     package a chart directory into a chart archive
+  plugin      install, list, or uninstall Helm plugins
+  pull        download a chart from a repository and (optionally) unpack it in local directory
+  push        push a chart to remote
+  registry    login to or logout from a registry
+  repo        add, list, remove, update, and index chart repositories
+  rollback    roll back a release to a previous revision
+  search      search for a keyword in charts
+  show        show information of a chart
+  status      display the status of the named release
+  template    locally render templates
+  test        run tests for a release
+  uninstall   uninstall a release
+  upgrade     upgrade a release
+  verify      verify that a chart at the given path has been signed and is valid
+  version     print the client version information
+
+Flags:
+      --burst-limit int                 client-side default throttling limit (default 100)
+      --debug                           enable verbose output
+  -h, --help                            help for helm
+      --kube-apiserver string           the address and the port for the Kubernetes API server
+      --kube-as-group stringArray       group to impersonate for the operation, this flag can be repeated to specify multiple groups.
+      --kube-as-user string             username to impersonate for the operation
+      --kube-ca-file string             the certificate authority file for the Kubernetes API server connection
+      --kube-context string             name of the kubeconfig context to use
+      --kube-insecure-skip-tls-verify   if true, the Kubernetes API server's certificate will not be checked for validity. This will make your HTTPS connections insecure
+      --kube-tls-server-name string     server name to use for Kubernetes API server certificate validation. If it is not provided, the hostname used to contact the server is used
+      --kube-token string               bearer token used for authentication
+      --kubeconfig string               path to the kubeconfig file
+  -n, --namespace string                namespace scope for this request
+      --qps float32                     queries per second used when communicating with the Kubernetes API, not including bursting
+      --registry-config string          path to the registry config file (default "/home/sarang/.config/helm/registry/config.json")
+      --repository-cache string         path to the directory containing cached repository indexes (default "/home/sarang/.cache/helm/repository")
+      --repository-config string        path to the file containing repository names and URLs (default "/home/sarang/.config/helm/repositories.yaml")
+
+Use "helm [command] --help" for more information about a command.
+sarang@sarang:~/telecom-control-panel-api/free5gc$ helm status
+Error: "helm status" requires 1 argument
+
+Usage:  helm status RELEASE_NAME [flags]
+sarang@sarang:~/telecom-control-panel-api/free5gc$ helm status --help
+
+This command shows the status of a named release.
+The status consists of:
+- last deployment time
+- k8s namespace in which the release lives
+- state of the release (can be: unknown, deployed, uninstalled, superseded, failed, uninstalling, pending-install, pending-upgrade or pending-rollback)
+- revision of the release
+- description of the release (can be completion message or error message, need to enable --show-desc)
+- list of resources that this release consists of (need to enable --show-resources)
+- details on last test suite run, if applicable
+- additional notes provided by the chart
+
+Usage:
+  helm status RELEASE_NAME [flags]
+
+Flags:
+  -h, --help             help for status
+  -o, --output format    prints the output in the specified format. Allowed values: table, json, yaml (default table)
+      --revision int     if set, display the status of the named release with revision
+      --show-desc        if set, display the description message of the named release
+      --show-resources   if set, display the resources of the named release
+
+Global Flags:
+      --burst-limit int                 client-side default throttling limit (default 100)
+      --debug                           enable verbose output
+      --kube-apiserver string           the address and the port for the Kubernetes API server
+      --kube-as-group stringArray       group to impersonate for the operation, this flag can be repeated to specify multiple groups.
+      --kube-as-user string             username to impersonate for the operation
+      --kube-ca-file string             the certificate authority file for the Kubernetes API server connection
+      --kube-context string             name of the kubeconfig context to use
+      --kube-insecure-skip-tls-verify   if true, the Kubernetes API server's certificate will not be checked for validity. This will make your HTTPS connections insecure
+      --kube-tls-server-name string     server name to use for Kubernetes API server certificate validation. If it is not provided, the hostname used to contact the server is used
+      --kube-token string               bearer token used for authentication
+      --kubeconfig string               path to the kubeconfig file
+  -n, --namespace string                namespace scope for this request
+      --qps float32                     queries per second used when communicating with the Kubernetes API, not including bursting
+      --registry-config string          path to the registry config file (default "/home/sarang/.config/helm/registry/config.json")
+      --repository-cache string         path to the directory containing cached repository indexes (default "/home/sarang/.cache/helm/repository")
+      --repository-config string        path to the file containing repository names and URLs (default "/home/sarang/.config/helm/repositories.yaml")
+sarang@sarang:~/telecom-control-panel-api/free5gc$ helm list
+NAME    NAMESPACE       REVISION        UPDATED STATUS  CHART   APP VERSION
+sarang@sarang:~/telecom-control-panel-api/free5gc$ helm version
+version.BuildInfo{Version:"v3.19.2", GitCommit:"8766e718a0119851f10ddbe4577593a45fadf544", GitTreeState:"clean", GoVersion:"go1.24.9"}
+sarang@sarang:~/telecom-control-panel-api/free5gc$ helm version --short
+v3.19.2+g8766e71
+sarang@sarang:~/telecom-control-panel-api/free5gc$ helm repo list
+Error: no repositories to show
+sarang@sarang:~/telecom-control-panel-api/free5gc$ microk8s disable ha-cluster --force
+Infer repository core for addon ha-cluster
+Reverting to a non-HA setup
+Enabling flanneld and etcd
+        HA disabled
+sarang@sarang:~/telecom-control-panel-api/free5gc$ microk8s enable dns ingress dashboard storage community helm3
+Infer repository core for addon dns
+Infer repository core for addon ingress
+Infer repository core for addon dashboard
+Infer repository core for addon storage
+Infer repository core for addon community
+Infer repository core for addon helm3
+WARNING: Do not enable or disable multiple addons in one command.
+         This form of chained operations on addons will be DEPRECATED in the future.
+         Please, enable one addon at a time: 'microk8s enable <addon>'
+Enabling DNS
+Using host configuration from /run/systemd/resolve/resolv.conf
+Applying manifest
+serviceaccount/coredns created
+configmap/coredns created
+deployment.apps/coredns created
+service/kube-dns created
+clusterrole.rbac.authorization.k8s.io/coredns created
+clusterrolebinding.rbac.authorization.k8s.io/coredns created
+CoreDNS service deployed with IP address 10.152.183.10
+DNS is enabled
+Enabling Ingress
+ingressclass.networking.k8s.io/public created
+ingressclass.networking.k8s.io/nginx created
+namespace/ingress created
+serviceaccount/nginx-ingress-microk8s-serviceaccount created
+clusterrole.rbac.authorization.k8s.io/nginx-ingress-microk8s-clusterrole created
+role.rbac.authorization.k8s.io/nginx-ingress-microk8s-role created
+clusterrolebinding.rbac.authorization.k8s.io/nginx-ingress-microk8s created
+rolebinding.rbac.authorization.k8s.io/nginx-ingress-microk8s created
+configmap/nginx-load-balancer-microk8s-conf created
+configmap/nginx-ingress-tcp-microk8s-conf created
+configmap/nginx-ingress-udp-microk8s-conf created
+daemonset.apps/nginx-ingress-microk8s-controller created
+Ingress is enabled
+Enabling metrics-server
+Infer repository core for addon metrics-server
+Enabling Metrics-Server
+serviceaccount/metrics-server created
+clusterrole.rbac.authorization.k8s.io/system:aggregated-metrics-reader created
+clusterrole.rbac.authorization.k8s.io/system:metrics-server created
+rolebinding.rbac.authorization.k8s.io/metrics-server-auth-reader created
+clusterrolebinding.rbac.authorization.k8s.io/metrics-server:system:auth-delegator created
+clusterrolebinding.rbac.authorization.k8s.io/system:metrics-server created
+service/metrics-server created
+deployment.apps/metrics-server created
+apiservice.apiregistration.k8s.io/v1beta1.metrics.k8s.io created
+clusterrolebinding.rbac.authorization.k8s.io/microk8s-admin created
+Metrics-Server is enabled
+Infer repository core for addon helm3
+Addon core/helm3 is already enabled
+Enabling Kubernetes dashboard
+Release "kubernetes-dashboard" does not exist. Installing it now.
+NAME: kubernetes-dashboard
+LAST DEPLOYED: Fri Apr 10 16:52:01 2026
+NAMESPACE: kubernetes-dashboard
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+*************************************************************************************************
+*** PLEASE BE PATIENT: Kubernetes Dashboard may need a few minutes to get up and become ready ***
+*************************************************************************************************
+
+Congratulations! You have just installed Kubernetes Dashboard in your cluster.
+
+To access Dashboard run:
+  kubectl -n kubernetes-dashboard port-forward svc/kubernetes-dashboard-kong-proxy 8443:443
+
+NOTE: In case port-forward command does not work, make sure that kong service name is correct.
+      Check the services in Kubernetes Dashboard namespace using:
+        kubectl -n kubernetes-dashboard get svc
+
+Dashboard will be available at:
+  https://localhost:8443
+Applying manifest
+secret/microk8s-dashboard-token created
+
+If RBAC is not enabled access the dashboard using the token retrieved with:
+
+microk8s kubectl describe secret -n kube-system microk8s-dashboard-token
+
+Use this token in the https login UI of the kubernetes-dashboard service.
+
+In an RBAC enabled setup (microk8s enable RBAC) you need to create a user with restricted
+permissions as shown in:
+https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md
+
+DEPRECATION WARNING: 'storage' is deprecated and will soon be removed. Please use 'hostpath-storage' instead.
+
+Infer repository core for addon hostpath-storage
+Enabling default storage class.
+WARNING: Hostpath storage is not suitable for production environments.
+         A hostpath volume can grow beyond the size limit set in the volume claim manifest.
+
+deployment.apps/hostpath-provisioner created
+storageclass.storage.k8s.io/microk8s-hostpath created
+serviceaccount/microk8s-hostpath created
+clusterrole.rbac.authorization.k8s.io/microk8s-hostpath created
+clusterrolebinding.rbac.authorization.k8s.io/microk8s-hostpath created
+Storage will be available soon.
+Cloning into '/var/snap/microk8s/common/addons/community'...
+done.
+Community repository is now enabled
+Addon core/helm3 is already enabled
+sarang@sarang:~/telecom-control-panel-api/free5gc$ microk8s enable multus
+Infer repository community for addon multus
+Enabling Multus
+Waiting for microk8s to be ready.
+Applying manifest for multus daemonset.
+customresourcedefinition.apiextensions.k8s.io/network-attachment-definitions.k8s.cni.cncf.io created
+clusterrole.rbac.authorization.k8s.io/multus created
+clusterrolebinding.rbac.authorization.k8s.io/multus created
+serviceaccount/multus created
+daemonset.apps/kube-multus-ds created
+Waiting for multus daemonset to start..............................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+Multus is enabled
+Multus is enabled with version:
+multus-cni version:v3.9, commit:ca8c9c579100648b88774cb9f79223eb213373a2, date:2022-06-23T14:08:12+00:00
+
+Currently installed CNI and IPAM plugins include:
+bandwidth bridge calico calico-ipam cni dhcp firewall flannel flanneld host-device host-local ipvlan loopback macvlan multus portmap ptp sbr static tuning vlan vrf
+
+New CNI plugins can be installed in /var/snap/microk8s/current/opt/cni/bin/
+
+For information on configuration please refer to the multus documentation.
+  First you need to create network definitions:
+    https://github.com/k8snetworkplumbingwg/multus-cni/blob/v3.9/docs/how-to-use.md#create-network-attachment-definition
+  Then you need to tell your pods to use those networks via annotations
+    https://github.com/k8snetworkplumbingwg/multus-cni/blob/v3.9/docs/how-to-use.md#run-pod-with-network-annotation
+
+sarang@sarang:~/telecom-control-panel-api/free5gc$ kubectl create namespace free5gc
+namespace/free5gc created
+sarang@sarang:~/telecom-control-panel-api/free5gc$ helm3 repo add towards5gs 'https://raw.githubusercontent.com/haidinhtuan/free5gc-kubernetes/main/repo/'
+helm3: command not found
+sarang@sarang:~/telecom-control-panel-api/free5gc$ helm repo add towards5gs 'https://raw.githubusercontent.com/haidinhtuan/free5gc-kubernetes/main/repo/'
+"towards5gs" has been added to your repositories
+sarang@sarang:~/telecom-control-panel-api/free5gc$ helm repo update
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "towards5gs" chart repository
+Update Complete. ⎈Happy Helming!⎈
+sarang@sarang:~/telecom-control-panel-api/free5gc$ ip address
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:3d:79:51 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.31.96/24 brd 192.168.31.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 20041sec preferred_lft 20041sec
+    inet6 2409:40c2:124c:bdb7:7452:81e5:458a:8ecc/64 scope global temporary dynamic
+       valid_lft 12096sec preferred_lft 12096sec
+    inet6 2409:40c2:124c:bdb7:b70b:e694:63e9:5867/64 scope global dynamic mngtmpaddr noprefixroute
+       valid_lft 12096sec preferred_lft 12096sec
+    inet6 fe80::f748:c67a:a2cb:7de7/64 scope link noprefixroute
+       valid_lft forever preferred_lft forever
+3: br-478662c97dc8: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether ce:ec:2c:15:5d:4d brd ff:ff:ff:ff:ff:ff
+    inet 10.20.0.1/20 brd 10.20.15.255 scope global br-478662c97dc8
+       valid_lft forever preferred_lft forever
+4: br-4d66168412e5: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether 26:08:b2:75:a0:f3 brd ff:ff:ff:ff:ff:ff
+    inet 10.30.0.1/20 brd 10.30.15.255 scope global br-4d66168412e5
+       valid_lft forever preferred_lft forever
+5: br-913faad3efac: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether 1a:1f:ca:e5:a4:e3 brd ff:ff:ff:ff:ff:ff
+    inet 172.20.0.1/16 brd 172.20.255.255 scope global br-913faad3efac
+       valid_lft forever preferred_lft forever
+6: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether b6:81:a9:8d:d3:4f brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+       valid_lft forever preferred_lft forever
+7: br-a8622b885cb7: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether 36:65:ed:61:e1:93 brd ff:ff:ff:ff:ff:ff
+    inet 172.19.0.1/16 brd 172.19.255.255 scope global br-a8622b885cb7
+       valid_lft forever preferred_lft forever
+8: br-fb42e8b83e33: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether 9e:8e:0c:61:9b:a8 brd ff:ff:ff:ff:ff:ff
+    inet 172.18.0.1/16 brd 172.18.255.255 scope global br-fb42e8b83e33
+       valid_lft forever preferred_lft forever
+9: br-1dc7c33c8ad0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether de:4b:1f:ad:fd:f3 brd ff:ff:ff:ff:ff:ff
+    inet 172.21.0.1/16 brd 172.21.255.255 scope global br-1dc7c33c8ad0
+       valid_lft forever preferred_lft forever
+16: vxlan.calico: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/ether 66:6c:3f:5c:87:db brd ff:ff:ff:ff:ff:ff
+    inet 10.1.214.65/32 scope global vxlan.calico
+       valid_lft forever preferred_lft forever
+    inet6 fe80::646c:3fff:fe5c:87db/64 scope link
+       valid_lft forever preferred_lft forever
+56: calia8cad014430@if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UP group default qlen 1000
+    link/ether ee:ee:ee:ee:ee:ee brd ff:ff:ff:ff:ff:ff link-netns cni-79dba814-4c06-6e2a-68f7-327780a8f96c
+    inet6 fe80::ecee:eeff:feee:eeee/64 scope link
+       valid_lft forever preferred_lft forever
+57: cali3a4183b02fe@if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UP group default qlen 1000
+    link/ether ee:ee:ee:ee:ee:ee brd ff:ff:ff:ff:ff:ff link-netns cni-5a6963ed-186e-6554-aaa4-b5467028c78e
+    inet6 fe80::ecee:eeff:feee:eeee/64 scope link
+       valid_lft forever preferred_lft forever
+59: calibee9dc471b6@if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UP group default qlen 1000
+    link/ether ee:ee:ee:ee:ee:ee brd ff:ff:ff:ff:ff:ff link-netns cni-2a568bf9-0937-37ac-8a42-c05cbdf44906
+    inet6 fe80::ecee:eeff:feee:eeee/64 scope link
+       valid_lft forever preferred_lft forever
+65: caliec41803eb1c@if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UP group default qlen 1000
+    link/ether ee:ee:ee:ee:ee:ee brd ff:ff:ff:ff:ff:ff link-netns cni-2cfbfcd9-b138-b3e6-4aa4-50ada0b6becb
+    inet6 fe80::ecee:eeff:feee:eeee/64 scope link
+       valid_lft forever preferred_lft forever
+66: flannel.1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN group default
+    link/ether 76:4f:97:ae:77:55 brd ff:ff:ff:ff:ff:ff
+    inet 10.1.100.0/32 scope global flannel.1
+       valid_lft forever preferred_lft forever
+    inet6 fe80::744f:97ff:feae:7755/64 scope link
+       valid_lft forever preferred_lft forever
+67: cni0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UP group default qlen 1000
+    link/ether 3e:de:08:c9:be:57 brd ff:ff:ff:ff:ff:ff
+    inet 10.1.100.1/24 brd 10.1.100.255 scope global cni0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::3cde:8ff:fec9:be57/64 scope link
+       valid_lft forever preferred_lft forever
+68: vethf27be03e@if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default qlen 1000
+    link/ether 9a:60:69:81:ea:de brd ff:ff:ff:ff:ff:ff link-netns cni-a86bbcb6-5e51-27df-8946-ed69cc3acfc7
+    inet6 fe80::9860:69ff:fe81:eade/64 scope link
+       valid_lft forever preferred_lft forever
+69: vethd05b459a@if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default qlen 1000
+    link/ether 5e:0f:73:21:23:3b brd ff:ff:ff:ff:ff:ff link-netns cni-0e46cacd-8741-f3e8-57df-8c5f50d4ba7b
+    inet6 fe80::5c0f:73ff:fe21:233b/64 scope link
+       valid_lft forever preferred_lft forever
+70: veth46d11675@if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default qlen 1000
+    link/ether 96:8c:25:50:b6:0f brd ff:ff:ff:ff:ff:ff link-netns cni-043f4bd1-88c0-116d-73a2-1f3181f9093a
+    inet6 fe80::948c:25ff:fe50:b60f/64 scope link
+       valid_lft forever preferred_lft forever
+71: veth79905d36@if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default qlen 1000
+    link/ether a6:26:a5:25:7a:c6 brd ff:ff:ff:ff:ff:ff link-netns cni-0c6a91fd-ea8f-a323-e35a-b623efebb03d
+    inet6 fe80::a426:a5ff:fe25:7ac6/64 scope link
+       valid_lft forever preferred_lft forever
+72: veth7beb8797@if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default qlen 1000
+    link/ether 2a:d1:8e:1f:26:ec brd ff:ff:ff:ff:ff:ff link-netns cni-87a9a3f5-3736-8bf7-33df-f6bb32406ab7
+    inet6 fe80::28d1:8eff:fe1f:26ec/64 scope link
+       valid_lft forever preferred_lft forever
+73: veth9beb72cd@if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default qlen 1000
+    link/ether b6:0e:5d:bc:58:e3 brd ff:ff:ff:ff:ff:ff link-netns cni-c9adaa03-3062-f84a-d57e-8a961e886ff8
+    inet6 fe80::b40e:5dff:febc:58e3/64 scope link
+       valid_lft forever preferred_lft forever
+74: veth31b73136@if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default qlen 1000
+    link/ether 9e:a7:6a:1d:51:0d brd ff:ff:ff:ff:ff:ff link-netns cni-f5dbbf58-45f5-a664-7dd4-ef6dd68fa38e
+    inet6 fe80::9ca7:6aff:fe1d:510d/64 scope link
+       valid_lft forever preferred_lft forever
+75: veth87b08c79@if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default qlen 1000
+    link/ether be:9e:8f:b4:3c:64 brd ff:ff:ff:ff:ff:ff link-netns cni-e08917aa-a1c4-d429-148d-f9dcb2337b01
+    inet6 fe80::bc9e:8fff:feb4:3c64/64 scope link
+       valid_lft forever preferred_lft forever
+76: vethf6f596e8@if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default qlen 1000
+    link/ether 62:a0:d5:44:e8:54 brd ff:ff:ff:ff:ff:ff link-netns cni-088209e7-10b6-ac38-1c6c-10ab47a989cb
+    inet6 fe80::60a0:d5ff:fe44:e854/64 scope link
+       valid_lft forever preferred_lft forever
+sarang@sarang:~/telecom-control-panel-api/free5gc$ sudo ip link set ens18 promisc on
+[sudo] password for sarang:
+Cannot find device "ens18"
+sarang@sarang:~/telecom-control-panel-api/free5gc$ sudo ip link set enp0s3 promisc on
+sarang@sarang:~/telecom-control-panel-api/free5gc$
+sarang@sarang:~/telecom-control-panel-api/free5gc$
+sarang@sarang:~/telecom-control-panel-api/free5gc$
+sarang@sarang:~/telecom-control-panel-api/free5gc$ helm -n free5gc install free5gc-core towards5gs/free5gc --set global.n2network.masterIf=enp0s3,global.n3network.masterIf=enp0s3,global.n4network.masterIf=enp0s3,global.n6network.masterIf=enp0s3,global.n9network.masterIf=enp0s3,global.n6network.subnetIP=192.168.31.0,global.n6network.gatewayIP=192.168.31.1,global.n6network.cidr=24,free5gc-upf.upf.n6if.ipAddress=192.168.31.14,global.n2network.type=macvlan,global.n3network.type=macvlan,global.n4network.type=macvlan,global.n6network.type=macvlan,global.n9network.type=macvlan
+NAME: free5gc-core
+LAST DEPLOYED: Fri Apr 10 17:26:39 2026
+NAMESPACE: free5gc
+STATUS: deployed
+REVISION: 1
+NOTES:
+#
+# Software Name : free5gc-kubernetes
+# SPDX-FileCopyrightText: Copyright (c) 2021 Orange
+# SPDX-License-Identifier: Apache-2.0
+#
+# This software is distributed under the Apache License 2.0,
+# the text of which is available at https://github.com/haidinhtuan/free5gc-kubernetes/blob/main/LICENSE
+# or see the "LICENSE" file for more details.
+#
+# Author Hai Dinh-Tuan
+# Software description: Helm charts to deploy free5GC core components and UE + RAN on top of Kubernetes
+#
+#
+# Visit the project at https://github.com/haidinhtuan/free5gc-kubernetes
+#
+
+1. Get the list of created Pods by running:
+  kubectl get pods --namespace free5gc -l "project="
+
+Release notes (What's changed in this version):
+- add the release notes
+- enhance the handling of network parameters
+- remove parameters from values.yaml (service, configmap and volume names)
+sarang@sarang:~/telecom-control-panel-api/free5gc$ kubectl get po -A
+NAMESPACE              NAME                                                     READY   STATUS              RESTARTS   AGE
+free5gc                free5gc-core-free5gc-amf-amf-68cfdfb488-7qsmw            0/4     Init:0/1            0          37s
+free5gc                free5gc-core-free5gc-ausf-ausf-7f8ff479dd-tpt9l          0/4     Init:0/1            0          36s
+free5gc                free5gc-core-free5gc-dbpython-dbpython-75fbc97dd-ndpc4   0/1     Init:0/1            0          37s
+free5gc                free5gc-core-free5gc-nrf-nrf-79d78559bd-x7pnb            0/4     Init:0/1            0          37s
+free5gc                free5gc-core-free5gc-nssf-nssf-57df6974c-l8pvs           0/4     Init:0/1            0          37s
+free5gc                free5gc-core-free5gc-pcf-pcf-5d57989fff-6lsql            0/4     Init:0/1            0          37s
+free5gc                free5gc-core-free5gc-smf-smf-59cf6856d6-l9dv4            0/4     Init:0/1            0          37s
+free5gc                free5gc-core-free5gc-udm-udm-84b8694b85-xb65j            0/4     Init:0/1            0          37s
+free5gc                free5gc-core-free5gc-udr-udr-58b9b8985-2v5ff             0/4     Init:0/1            0          37s
+free5gc                free5gc-core-free5gc-upf-upf-b6f7bb474-76tbd             0/1     ContainerCreating   0          37s
+free5gc                free5gc-core-free5gc-webui-webui-7c588f58d4-jrz8m        0/1     Init:0/1            0          37s
+free5gc                mongodb-0                                                0/1     Pending             0          37s
+ingress                nginx-ingress-microk8s-controller-qxhwj                  1/1     Running             0          35m
+kube-system            coredns-ccd8f67bc-8thv9                                  1/1     Running             0          35m
+kube-system            hostpath-provisioner-c778b7559-rhjvd                     1/1     Running             0          34m
+kube-system            hostpath-provisioner-sarang-rzp49                        0/1     ContainerCreating   0          36s
+kube-system            kube-multus-ds-x8svn                                     1/1     Running             0          34m
+kube-system            metrics-server-64fc948c75-vgp58                          1/1     Running             0          35m
+kubernetes-dashboard   kubernetes-dashboard-api-774c6b895b-b6492                1/1     Running             0          35m
+kubernetes-dashboard   kubernetes-dashboard-auth-cddb64969-6tq7p                1/1     Running             0          35m
+kubernetes-dashboard   kubernetes-dashboard-kong-648658d45f-9vttp               1/1     Running             0          35m
+kubernetes-dashboard   kubernetes-dashboard-metrics-scraper-84655b9bd8-gxh9w    1/1     Running             0          35m
+kubernetes-dashboard   kubernetes-dashboard-web-658946f7f9-69hw2                1/1     Running             0          35m
+sarang@sarang:~/telecom-control-panel-api/free5gc$ kubectl get po -A -w
+NAMESPACE              NAME                                                     READY   STATUS              RESTARTS   AGE
+free5gc                free5gc-core-free5gc-amf-amf-68cfdfb488-7qsmw            0/4     Init:0/1            0          53s
+free5gc                free5gc-core-free5gc-ausf-ausf-7f8ff479dd-tpt9l          0/4     Init:0/1            0          52s
+free5gc                free5gc-core-free5gc-dbpython-dbpython-75fbc97dd-ndpc4   0/1     Init:0/1            0          53s
+free5gc                free5gc-core-free5gc-nrf-nrf-79d78559bd-x7pnb            0/4     Init:0/1            0          53s
+free5gc                free5gc-core-free5gc-nssf-nssf-57df6974c-l8pvs           0/4     Init:0/1            0          53s
+free5gc                free5gc-core-free5gc-pcf-pcf-5d57989fff-6lsql            0/4     Init:0/1            0          53s
+free5gc                free5gc-core-free5gc-smf-smf-59cf6856d6-l9dv4            0/4     Init:0/1            0          53s
+free5gc                free5gc-core-free5gc-udm-udm-84b8694b85-xb65j            0/4     Init:0/1            0          53s
+free5gc                free5gc-core-free5gc-udr-udr-58b9b8985-2v5ff             0/4     Init:0/1            0          53s
+free5gc                free5gc-core-free5gc-upf-upf-b6f7bb474-76tbd             0/1     ContainerCreating   0          53s
+free5gc                free5gc-core-free5gc-webui-webui-7c588f58d4-jrz8m        0/1     Init:0/1            0          53s
+free5gc                mongodb-0                                                0/1     Pending             0          53s
+ingress                nginx-ingress-microk8s-controller-qxhwj                  1/1     Running             0          36m
+kube-system            coredns-ccd8f67bc-8thv9                                  1/1     Running             0          36m
+kube-system            hostpath-provisioner-c778b7559-rhjvd                     1/1     Running             0          35m
+kube-system            hostpath-provisioner-sarang-rzp49                        1/1     Running             0          52s
+kube-system            kube-multus-ds-x8svn                                     1/1     Running             0          34m
+kube-system            metrics-server-64fc948c75-vgp58                          1/1     Running             0          35m
+kubernetes-dashboard   kubernetes-dashboard-api-774c6b895b-b6492                1/1     Running             0          35m
+kubernetes-dashboard   kubernetes-dashboard-auth-cddb64969-6tq7p                1/1     Running             0          35m
+kubernetes-dashboard   kubernetes-dashboard-kong-648658d45f-9vttp               1/1     Running             0          35m
+kubernetes-dashboard   kubernetes-dashboard-metrics-scraper-84655b9bd8-gxh9w    1/1     Running             0          35m
+kubernetes-dashboard   kubernetes-dashboard-web-658946f7f9-69hw2                1/1     Running             0          35m
+kube-system            hostpath-provisioner-sarang-rzp49                        0/1     Completed           0          52s
+free5gc                free5gc-core-free5gc-smf-smf-59cf6856d6-l9dv4            0/4     Init:0/1            0          54s
+free5gc                free5gc-core-free5gc-ausf-ausf-7f8ff479dd-tpt9l          0/4     Init:0/1            0          54s
+free5gc                free5gc-core-free5gc-udr-udr-58b9b8985-2v5ff             0/4     Init:0/1            0          58s
+free5gc                free5gc-core-free5gc-nssf-nssf-57df6974c-l8pvs           0/4     Init:0/1            0          58s
+free5gc                free5gc-core-free5gc-amf-amf-68cfdfb488-7qsmw            0/4     Init:0/1            0          59s
+kube-system            hostpath-provisioner-sarang-rzp49                        0/1     Completed           0          61s
+kube-system            hostpath-provisioner-sarang-rzp49                        0/1     Completed           0          63s
+kube-system            hostpath-provisioner-sarang-rzp49                        0/1     Completed           0          63s
+free5gc                mongodb-0                                                0/1     Pending             0          65s
+free5gc                mongodb-0                                                0/1     ContainerCreating   0          66s
+free5gc                mongodb-0                                                0/1     ContainerCreating   0          67s
+free5gc                mongodb-0                                                0/1     ContainerCreating   0          77s
+free5gc                mongodb-0                                                0/1     ErrImagePull        0          80s
+free5gc                free5gc-core-free5gc-upf-upf-b6f7bb474-76tbd             1/1     Running             0          85s
+free5gc                free5gc-core-free5gc-upf-upf-b6f7bb474-76tbd             0/1     Completed           0          87s
+free5gc                free5gc-core-free5gc-upf-upf-b6f7bb474-76tbd             1/1     Running             1 (7s ago)   92s
+free5gc                free5gc-core-free5gc-upf-upf-b6f7bb474-76tbd             0/1     Error               1 (8s ago)   93s
+free5gc                mongodb-0                                                0/1     ImagePullBackOff    0            95s
+free5gc                free5gc-core-free5gc-upf-upf-b6f7bb474-76tbd             0/1     CrashLoopBackOff    1 (16s ago)   107s
+free5gc                free5gc-core-free5gc-upf-upf-b6f7bb474-76tbd             1/1     Running             2 (19s ago)   110s
+free5gc                free5gc-core-free5gc-upf-upf-b6f7bb474-76tbd             0/1     Completed           2 (20s ago)   111s
+free5gc                mongodb-0                                                0/1     ErrImagePull        0             116s
+free5gc                free5gc-core-free5gc-upf-upf-b6f7bb474-76tbd             0/1     CrashLoopBackOff    2 (13s ago)   2m3s
+free5gc                mongodb-0                                                0/1     ImagePullBackOff    0             2m6s
+free5gc                free5gc-core-free5gc-upf-upf-b6f7bb474-76tbd             0/1     Completed           3 (30s ago)   2m20s
+free5gc                mongodb-0                                                0/1     ErrImagePull        0             2m22s
+free5gc                free5gc-core-free5gc-upf-upf-b6f7bb474-76tbd             0/1     CrashLoopBackOff    3 (11s ago)   2m31s
+free5gc                mongodb-0                                                0/1     ImagePullBackOff    0             2m34s
+^Csarang@sarang:~/telecom-control-panel-api/free5gc$ kubectl get po -A
+NAMESPACE              NAME                                                     READY   STATUS             RESTARTS      AGE
+free5gc                free5gc-core-free5gc-amf-amf-68cfdfb488-7qsmw            0/4     Init:0/1           0             3m3s
+free5gc                free5gc-core-free5gc-ausf-ausf-7f8ff479dd-tpt9l          0/4     Init:0/1           0             3m2s
+free5gc                free5gc-core-free5gc-dbpython-dbpython-75fbc97dd-ndpc4   0/1     Init:0/1           0             3m3s
+free5gc                free5gc-core-free5gc-nrf-nrf-79d78559bd-x7pnb            0/4     Init:0/1           0             3m3s
+free5gc                free5gc-core-free5gc-nssf-nssf-57df6974c-l8pvs           0/4     Init:0/1           0             3m3s
+free5gc                free5gc-core-free5gc-pcf-pcf-5d57989fff-6lsql            0/4     Init:0/1           0             3m3s
+free5gc                free5gc-core-free5gc-smf-smf-59cf6856d6-l9dv4            0/4     Init:0/1           0             3m3s
+free5gc                free5gc-core-free5gc-udm-udm-84b8694b85-xb65j            0/4     Init:0/1           0             3m3s
+free5gc                free5gc-core-free5gc-udr-udr-58b9b8985-2v5ff             0/4     Init:0/1           0             3m3s
+free5gc                free5gc-core-free5gc-upf-upf-b6f7bb474-76tbd             0/1     CrashLoopBackOff   3 (43s ago)   3m3s
+free5gc                free5gc-core-free5gc-webui-webui-7c588f58d4-jrz8m        0/1     Init:0/1           0             3m3s
+free5gc                mongodb-0                                                0/1     ImagePullBackOff   0             3m3s
+ingress                nginx-ingress-microk8s-controller-qxhwj                  1/1     Running            0             38m
+kube-system            coredns-ccd8f67bc-8thv9                                  1/1     Running            0             38m
+kube-system            hostpath-provisioner-c778b7559-rhjvd                     1/1     Running            0             37m
+kube-system            kube-multus-ds-x8svn                                     1/1     Running            0             36m
+kube-system            metrics-server-64fc948c75-vgp58                          1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-api-774c6b895b-b6492                1/1     Running            0             37m
+kubernetes-dashboard   kubernetes-dashboard-auth-cddb64969-6tq7p                1/1     Running            0             37m
+kubernetes-dashboard   kubernetes-dashboard-kong-648658d45f-9vttp               1/1     Running            0             37m
+kubernetes-dashboard   kubernetes-dashboard-metrics-scraper-84655b9bd8-gxh9w    1/1     Running            0             37m
+kubernetes-dashboard   kubernetes-dashboard-web-658946f7f9-69hw2                1/1     Running            0             37m
+sarang@sarang:~/telecom-control-panel-api/free5gc$ kubectl get po -A
+NAMESPACE              NAME                                                     READY   STATUS             RESTARTS      AGE
+free5gc                free5gc-core-free5gc-amf-amf-68cfdfb488-7qsmw            0/4     Init:0/1           0             3m13s
+free5gc                free5gc-core-free5gc-ausf-ausf-7f8ff479dd-tpt9l          0/4     Init:0/1           0             3m12s
+free5gc                free5gc-core-free5gc-dbpython-dbpython-75fbc97dd-ndpc4   0/1     Init:0/1           0             3m13s
+free5gc                free5gc-core-free5gc-nrf-nrf-79d78559bd-x7pnb            0/4     Init:0/1           0             3m13s
+free5gc                free5gc-core-free5gc-nssf-nssf-57df6974c-l8pvs           0/4     Init:0/1           0             3m13s
+free5gc                free5gc-core-free5gc-pcf-pcf-5d57989fff-6lsql            0/4     Init:0/1           0             3m13s
+free5gc                free5gc-core-free5gc-smf-smf-59cf6856d6-l9dv4            0/4     Init:0/1           0             3m13s
+free5gc                free5gc-core-free5gc-udm-udm-84b8694b85-xb65j            0/4     Init:0/1           0             3m13s
+free5gc                free5gc-core-free5gc-udr-udr-58b9b8985-2v5ff             0/4     Init:0/1           0             3m13s
+free5gc                free5gc-core-free5gc-upf-upf-b6f7bb474-76tbd             0/1     CrashLoopBackOff   3 (53s ago)   3m13s
+free5gc                free5gc-core-free5gc-webui-webui-7c588f58d4-jrz8m        0/1     Init:0/1           0             3m13s
+free5gc                mongodb-0                                                0/1     ImagePullBackOff   0             3m13s
+ingress                nginx-ingress-microk8s-controller-qxhwj                  1/1     Running            0             38m
+kube-system            coredns-ccd8f67bc-8thv9                                  1/1     Running            0             38m
+kube-system            hostpath-provisioner-c778b7559-rhjvd                     1/1     Running            0             37m
+kube-system            kube-multus-ds-x8svn                                     1/1     Running            0             36m
+kube-system            metrics-server-64fc948c75-vgp58                          1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-api-774c6b895b-b6492                1/1     Running            0             37m
+kubernetes-dashboard   kubernetes-dashboard-auth-cddb64969-6tq7p                1/1     Running            0             37m
+kubernetes-dashboard   kubernetes-dashboard-kong-648658d45f-9vttp               1/1     Running            0             37m
+kubernetes-dashboard   kubernetes-dashboard-metrics-scraper-84655b9bd8-gxh9w    1/1     Running            0             37m
+kubernetes-dashboard   kubernetes-dashboard-web-658946f7f9-69hw2                1/1     Running            0             37m
+sarang@sarang:~/telecom-control-panel-api/free5gc$ kubectl get po -A
+NAMESPACE              NAME                                                     READY   STATUS             RESTARTS      AGE
+free5gc                free5gc-core-free5gc-amf-amf-68cfdfb488-7qsmw            0/4     Init:0/1           0             3m15s
+free5gc                free5gc-core-free5gc-ausf-ausf-7f8ff479dd-tpt9l          0/4     Init:0/1           0             3m14s
+free5gc                free5gc-core-free5gc-dbpython-dbpython-75fbc97dd-ndpc4   0/1     Init:0/1           0             3m15s
+free5gc                free5gc-core-free5gc-nrf-nrf-79d78559bd-x7pnb            0/4     Init:0/1           0             3m15s
+free5gc                free5gc-core-free5gc-nssf-nssf-57df6974c-l8pvs           0/4     Init:0/1           0             3m15s
+free5gc                free5gc-core-free5gc-pcf-pcf-5d57989fff-6lsql            0/4     Init:0/1           0             3m15s
+free5gc                free5gc-core-free5gc-smf-smf-59cf6856d6-l9dv4            0/4     Init:0/1           0             3m15s
+free5gc                free5gc-core-free5gc-udm-udm-84b8694b85-xb65j            0/4     Init:0/1           0             3m15s
+free5gc                free5gc-core-free5gc-udr-udr-58b9b8985-2v5ff             0/4     Init:0/1           0             3m15s
+free5gc                free5gc-core-free5gc-upf-upf-b6f7bb474-76tbd             0/1     CrashLoopBackOff   3 (55s ago)   3m15s
+free5gc                free5gc-core-free5gc-webui-webui-7c588f58d4-jrz8m        0/1     Init:0/1           0             3m15s
+free5gc                mongodb-0                                                0/1     ImagePullBackOff   0             3m15s
+ingress                nginx-ingress-microk8s-controller-qxhwj                  1/1     Running            0             38m
+kube-system            coredns-ccd8f67bc-8thv9                                  1/1     Running            0             38m
+kube-system            hostpath-provisioner-c778b7559-rhjvd                     1/1     Running            0             37m
+kube-system            kube-multus-ds-x8svn                                     1/1     Running            0             36m
+kube-system            metrics-server-64fc948c75-vgp58                          1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-api-774c6b895b-b6492                1/1     Running            0             37m
+kubernetes-dashboard   kubernetes-dashboard-auth-cddb64969-6tq7p                1/1     Running            0             37m
+kubernetes-dashboard   kubernetes-dashboard-kong-648658d45f-9vttp               1/1     Running            0             37m
+kubernetes-dashboard   kubernetes-dashboard-metrics-scraper-84655b9bd8-gxh9w    1/1     Running            0             37m
+kubernetes-dashboard   kubernetes-dashboard-web-658946f7f9-69hw2                1/1     Running            0             37m
+sarang@sarang:~/telecom-control-panel-api/free5gc$ kubectl get po -A
+NAMESPACE              NAME                                                     READY   STATUS             RESTARTS      AGE
+free5gc                free5gc-core-free5gc-amf-amf-68cfdfb488-7qsmw            0/4     Init:0/1           0             3m19s
+free5gc                free5gc-core-free5gc-ausf-ausf-7f8ff479dd-tpt9l          0/4     Init:0/1           0             3m18s
+free5gc                free5gc-core-free5gc-dbpython-dbpython-75fbc97dd-ndpc4   0/1     Init:0/1           0             3m19s
+free5gc                free5gc-core-free5gc-nrf-nrf-79d78559bd-x7pnb            0/4     Init:0/1           0             3m19s
+free5gc                free5gc-core-free5gc-nssf-nssf-57df6974c-l8pvs           0/4     Init:0/1           0             3m19s
+free5gc                free5gc-core-free5gc-pcf-pcf-5d57989fff-6lsql            0/4     Init:0/1           0             3m19s
+free5gc                free5gc-core-free5gc-smf-smf-59cf6856d6-l9dv4            0/4     Init:0/1           0             3m19s
+free5gc                free5gc-core-free5gc-udm-udm-84b8694b85-xb65j            0/4     Init:0/1           0             3m19s
+free5gc                free5gc-core-free5gc-udr-udr-58b9b8985-2v5ff             0/4     Init:0/1           0             3m19s
+free5gc                free5gc-core-free5gc-upf-upf-b6f7bb474-76tbd             0/1     CrashLoopBackOff   3 (59s ago)   3m19s
+free5gc                free5gc-core-free5gc-webui-webui-7c588f58d4-jrz8m        0/1     Init:0/1           0             3m19s
+free5gc                mongodb-0                                                0/1     ErrImagePull       0             3m19s
+ingress                nginx-ingress-microk8s-controller-qxhwj                  1/1     Running            0             38m
+kube-system            coredns-ccd8f67bc-8thv9                                  1/1     Running            0             38m
+kube-system            hostpath-provisioner-c778b7559-rhjvd                     1/1     Running            0             37m
+kube-system            kube-multus-ds-x8svn                                     1/1     Running            0             36m
+kube-system            metrics-server-64fc948c75-vgp58                          1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-api-774c6b895b-b6492                1/1     Running            0             37m
+kubernetes-dashboard   kubernetes-dashboard-auth-cddb64969-6tq7p                1/1     Running            0             37m
+kubernetes-dashboard   kubernetes-dashboard-kong-648658d45f-9vttp               1/1     Running            0             37m
+kubernetes-dashboard   kubernetes-dashboard-metrics-scraper-84655b9bd8-gxh9w    1/1     Running            0             37m
+kubernetes-dashboard   kubernetes-dashboard-web-658946f7f9-69hw2                1/1     Running            0             37m
+sarang@sarang:~/telecom-control-panel-api/free5gc$ kubectl get po -A
+NAMESPACE              NAME                                                     READY   STATUS         RESTARTS      AGE
+free5gc                free5gc-core-free5gc-amf-amf-68cfdfb488-7qsmw            0/4     Init:0/1       0             3m28s
+free5gc                free5gc-core-free5gc-ausf-ausf-7f8ff479dd-tpt9l          0/4     Init:0/1       0             3m27s
+free5gc                free5gc-core-free5gc-dbpython-dbpython-75fbc97dd-ndpc4   0/1     Init:0/1       0             3m28s
+free5gc                free5gc-core-free5gc-nrf-nrf-79d78559bd-x7pnb            0/4     Init:0/1       0             3m28s
+free5gc                free5gc-core-free5gc-nssf-nssf-57df6974c-l8pvs           0/4     Init:0/1       0             3m28s
+free5gc                free5gc-core-free5gc-pcf-pcf-5d57989fff-6lsql            0/4     Init:0/1       0             3m28s
+free5gc                free5gc-core-free5gc-smf-smf-59cf6856d6-l9dv4            0/4     Init:0/1       0             3m28s
+free5gc                free5gc-core-free5gc-udm-udm-84b8694b85-xb65j            0/4     Init:0/1       0             3m28s
+free5gc                free5gc-core-free5gc-udr-udr-58b9b8985-2v5ff             0/4     Init:0/1       0             3m28s
+free5gc                free5gc-core-free5gc-upf-upf-b6f7bb474-76tbd             0/1     Completed      4 (68s ago)   3m28s
+free5gc                free5gc-core-free5gc-webui-webui-7c588f58d4-jrz8m        0/1     Init:0/1       0             3m28s
+free5gc                mongodb-0                                                0/1     ErrImagePull   0             3m28s
+ingress                nginx-ingress-microk8s-controller-qxhwj                  1/1     Running        0             38m
+kube-system            coredns-ccd8f67bc-8thv9                                  1/1     Running        0             38m
+kube-system            hostpath-provisioner-c778b7559-rhjvd                     1/1     Running        0             37m
+kube-system            kube-multus-ds-x8svn                                     1/1     Running        0             36m
+kube-system            metrics-server-64fc948c75-vgp58                          1/1     Running        0             38m
+kubernetes-dashboard   kubernetes-dashboard-api-774c6b895b-b6492                1/1     Running        0             38m
+kubernetes-dashboard   kubernetes-dashboard-auth-cddb64969-6tq7p                1/1     Running        0             38m
+kubernetes-dashboard   kubernetes-dashboard-kong-648658d45f-9vttp               1/1     Running        0             38m
+kubernetes-dashboard   kubernetes-dashboard-metrics-scraper-84655b9bd8-gxh9w    1/1     Running        0             38m
+kubernetes-dashboard   kubernetes-dashboard-web-658946f7f9-69hw2                1/1     Running        0             38m
+sarang@sarang:~/telecom-control-panel-api/free5gc$ kubectl get po -A
+NAMESPACE              NAME                                                     READY   STATUS             RESTARTS      AGE
+free5gc                free5gc-core-free5gc-amf-amf-68cfdfb488-7qsmw            0/4     Init:0/1           0             3m37s
+free5gc                free5gc-core-free5gc-ausf-ausf-7f8ff479dd-tpt9l          0/4     Init:0/1           0             3m36s
+free5gc                free5gc-core-free5gc-dbpython-dbpython-75fbc97dd-ndpc4   0/1     Init:0/1           0             3m37s
+free5gc                free5gc-core-free5gc-nrf-nrf-79d78559bd-x7pnb            0/4     Init:0/1           0             3m37s
+free5gc                free5gc-core-free5gc-nssf-nssf-57df6974c-l8pvs           0/4     Init:0/1           0             3m37s
+free5gc                free5gc-core-free5gc-pcf-pcf-5d57989fff-6lsql            0/4     Init:0/1           0             3m37s
+free5gc                free5gc-core-free5gc-smf-smf-59cf6856d6-l9dv4            0/4     Init:0/1           0             3m37s
+free5gc                free5gc-core-free5gc-udm-udm-84b8694b85-xb65j            0/4     Init:0/1           0             3m37s
+free5gc                free5gc-core-free5gc-udr-udr-58b9b8985-2v5ff             0/4     Init:0/1           0             3m37s
+free5gc                free5gc-core-free5gc-upf-upf-b6f7bb474-76tbd             0/1     CrashLoopBackOff   4 (18s ago)   3m37s
+free5gc                free5gc-core-free5gc-webui-webui-7c588f58d4-jrz8m        0/1     Init:0/1           0             3m37s
+free5gc                mongodb-0                                                0/1     ImagePullBackOff   0             3m37s
+ingress                nginx-ingress-microk8s-controller-qxhwj                  1/1     Running            0             38m
+kube-system            coredns-ccd8f67bc-8thv9                                  1/1     Running            0             38m
+kube-system            hostpath-provisioner-c778b7559-rhjvd                     1/1     Running            0             37m
+kube-system            kube-multus-ds-x8svn                                     1/1     Running            0             37m
+kube-system            metrics-server-64fc948c75-vgp58                          1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-api-774c6b895b-b6492                1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-auth-cddb64969-6tq7p                1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-kong-648658d45f-9vttp               1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-metrics-scraper-84655b9bd8-gxh9w    1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-web-658946f7f9-69hw2                1/1     Running            0             38m
+sarang@sarang:~/telecom-control-panel-api/free5gc$ kubectl get po -A
+NAMESPACE              NAME                                                     READY   STATUS             RESTARTS      AGE
+free5gc                free5gc-core-free5gc-amf-amf-68cfdfb488-7qsmw            0/4     Init:0/1           0             3m40s
+free5gc                free5gc-core-free5gc-ausf-ausf-7f8ff479dd-tpt9l          0/4     Init:0/1           0             3m39s
+free5gc                free5gc-core-free5gc-dbpython-dbpython-75fbc97dd-ndpc4   0/1     Init:0/1           0             3m40s
+free5gc                free5gc-core-free5gc-nrf-nrf-79d78559bd-x7pnb            0/4     Init:0/1           0             3m40s
+free5gc                free5gc-core-free5gc-nssf-nssf-57df6974c-l8pvs           0/4     Init:0/1           0             3m40s
+free5gc                free5gc-core-free5gc-pcf-pcf-5d57989fff-6lsql            0/4     Init:0/1           0             3m40s
+free5gc                free5gc-core-free5gc-smf-smf-59cf6856d6-l9dv4            0/4     Init:0/1           0             3m40s
+free5gc                free5gc-core-free5gc-udm-udm-84b8694b85-xb65j            0/4     Init:0/1           0             3m40s
+free5gc                free5gc-core-free5gc-udr-udr-58b9b8985-2v5ff             0/4     Init:0/1           0             3m40s
+free5gc                free5gc-core-free5gc-upf-upf-b6f7bb474-76tbd             0/1     CrashLoopBackOff   4 (21s ago)   3m40s
+free5gc                free5gc-core-free5gc-webui-webui-7c588f58d4-jrz8m        0/1     Init:0/1           0             3m40s
+free5gc                mongodb-0                                                0/1     ImagePullBackOff   0             3m40s
+ingress                nginx-ingress-microk8s-controller-qxhwj                  1/1     Running            0             38m
+kube-system            coredns-ccd8f67bc-8thv9                                  1/1     Running            0             39m
+kube-system            hostpath-provisioner-c778b7559-rhjvd                     1/1     Running            0             37m
+kube-system            kube-multus-ds-x8svn                                     1/1     Running            0             37m
+kube-system            metrics-server-64fc948c75-vgp58                          1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-api-774c6b895b-b6492                1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-auth-cddb64969-6tq7p                1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-kong-648658d45f-9vttp               1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-metrics-scraper-84655b9bd8-gxh9w    1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-web-658946f7f9-69hw2                1/1     Running            0             38m
+sarang@sarang:~/telecom-control-panel-api/free5gc$ kubectl get po -A
+NAMESPACE              NAME                                                     READY   STATUS             RESTARTS      AGE
+free5gc                free5gc-core-free5gc-amf-amf-68cfdfb488-7qsmw            0/4     Init:0/1           0             3m43s
+free5gc                free5gc-core-free5gc-ausf-ausf-7f8ff479dd-tpt9l          0/4     Init:0/1           0             3m42s
+free5gc                free5gc-core-free5gc-dbpython-dbpython-75fbc97dd-ndpc4   0/1     Init:0/1           0             3m43s
+free5gc                free5gc-core-free5gc-nrf-nrf-79d78559bd-x7pnb            0/4     Init:0/1           0             3m43s
+free5gc                free5gc-core-free5gc-nssf-nssf-57df6974c-l8pvs           0/4     Init:0/1           0             3m43s
+free5gc                free5gc-core-free5gc-pcf-pcf-5d57989fff-6lsql            0/4     Init:0/1           0             3m43s
+free5gc                free5gc-core-free5gc-smf-smf-59cf6856d6-l9dv4            0/4     Init:0/1           0             3m43s
+free5gc                free5gc-core-free5gc-udm-udm-84b8694b85-xb65j            0/4     Init:0/1           0             3m43s
+free5gc                free5gc-core-free5gc-udr-udr-58b9b8985-2v5ff             0/4     Init:0/1           0             3m43s
+free5gc                free5gc-core-free5gc-upf-upf-b6f7bb474-76tbd             0/1     CrashLoopBackOff   4 (24s ago)   3m43s
+free5gc                free5gc-core-free5gc-webui-webui-7c588f58d4-jrz8m        0/1     Init:0/1           0             3m43s
+free5gc                mongodb-0                                                0/1     ImagePullBackOff   0             3m43s
+ingress                nginx-ingress-microk8s-controller-qxhwj                  1/1     Running            0             38m
+kube-system            coredns-ccd8f67bc-8thv9                                  1/1     Running            0             39m
+kube-system            hostpath-provisioner-c778b7559-rhjvd                     1/1     Running            0             37m
+kube-system            kube-multus-ds-x8svn                                     1/1     Running            0             37m
+kube-system            metrics-server-64fc948c75-vgp58                          1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-api-774c6b895b-b6492                1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-auth-cddb64969-6tq7p                1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-kong-648658d45f-9vttp               1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-metrics-scraper-84655b9bd8-gxh9w    1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-web-658946f7f9-69hw2                1/1     Running            0             38m
+sarang@sarang:~/telecom-control-panel-api/free5gc$ kubectl get po -A
+NAMESPACE              NAME                                                     READY   STATUS             RESTARTS      AGE
+free5gc                free5gc-core-free5gc-amf-amf-68cfdfb488-7qsmw            0/4     Init:0/1           0             3m46s
+free5gc                free5gc-core-free5gc-ausf-ausf-7f8ff479dd-tpt9l          0/4     Init:0/1           0             3m45s
+free5gc                free5gc-core-free5gc-dbpython-dbpython-75fbc97dd-ndpc4   0/1     Init:0/1           0             3m46s
+free5gc                free5gc-core-free5gc-nrf-nrf-79d78559bd-x7pnb            0/4     Init:0/1           0             3m46s
+free5gc                free5gc-core-free5gc-nssf-nssf-57df6974c-l8pvs           0/4     Init:0/1           0             3m46s
+free5gc                free5gc-core-free5gc-pcf-pcf-5d57989fff-6lsql            0/4     Init:0/1           0             3m46s
+free5gc                free5gc-core-free5gc-smf-smf-59cf6856d6-l9dv4            0/4     Init:0/1           0             3m46s
+free5gc                free5gc-core-free5gc-udm-udm-84b8694b85-xb65j            0/4     Init:0/1           0             3m46s
+free5gc                free5gc-core-free5gc-udr-udr-58b9b8985-2v5ff             0/4     Init:0/1           0             3m46s
+free5gc                free5gc-core-free5gc-upf-upf-b6f7bb474-76tbd             0/1     CrashLoopBackOff   4 (27s ago)   3m46s
+free5gc                free5gc-core-free5gc-webui-webui-7c588f58d4-jrz8m        0/1     Init:0/1           0             3m46s
+free5gc                mongodb-0                                                0/1     ImagePullBackOff   0             3m46s
+ingress                nginx-ingress-microk8s-controller-qxhwj                  1/1     Running            0             38m
+kube-system            coredns-ccd8f67bc-8thv9                                  1/1     Running            0             39m
+kube-system            hostpath-provisioner-c778b7559-rhjvd                     1/1     Running            0             38m
+kube-system            kube-multus-ds-x8svn                                     1/1     Running            0             37m
+kube-system            metrics-server-64fc948c75-vgp58                          1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-api-774c6b895b-b6492                1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-auth-cddb64969-6tq7p                1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-kong-648658d45f-9vttp               1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-metrics-scraper-84655b9bd8-gxh9w    1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-web-658946f7f9-69hw2                1/1     Running            0             38m
+sarang@sarang:~/telecom-control-panel-api/free5gc$ kubectl get po -A
+NAMESPACE              NAME                                                     READY   STATUS             RESTARTS      AGE
+free5gc                free5gc-core-free5gc-amf-amf-68cfdfb488-7qsmw            0/4     Init:0/1           0             3m48s
+free5gc                free5gc-core-free5gc-ausf-ausf-7f8ff479dd-tpt9l          0/4     Init:0/1           0             3m47s
+free5gc                free5gc-core-free5gc-dbpython-dbpython-75fbc97dd-ndpc4   0/1     Init:0/1           0             3m48s
+free5gc                free5gc-core-free5gc-nrf-nrf-79d78559bd-x7pnb            0/4     Init:0/1           0             3m48s
+free5gc                free5gc-core-free5gc-nssf-nssf-57df6974c-l8pvs           0/4     Init:0/1           0             3m48s
+free5gc                free5gc-core-free5gc-pcf-pcf-5d57989fff-6lsql            0/4     Init:0/1           0             3m48s
+free5gc                free5gc-core-free5gc-smf-smf-59cf6856d6-l9dv4            0/4     Init:0/1           0             3m48s
+free5gc                free5gc-core-free5gc-udm-udm-84b8694b85-xb65j            0/4     Init:0/1           0             3m48s
+free5gc                free5gc-core-free5gc-udr-udr-58b9b8985-2v5ff             0/4     Init:0/1           0             3m48s
+free5gc                free5gc-core-free5gc-upf-upf-b6f7bb474-76tbd             0/1     CrashLoopBackOff   4 (29s ago)   3m48s
+free5gc                free5gc-core-free5gc-webui-webui-7c588f58d4-jrz8m        0/1     Init:0/1           0             3m48s
+free5gc                mongodb-0                                                0/1     ImagePullBackOff   0             3m48s
+ingress                nginx-ingress-microk8s-controller-qxhwj                  1/1     Running            0             38m
+kube-system            coredns-ccd8f67bc-8thv9                                  1/1     Running            0             39m
+kube-system            hostpath-provisioner-c778b7559-rhjvd                     1/1     Running            0             38m
+kube-system            kube-multus-ds-x8svn                                     1/1     Running            0             37m
+kube-system            metrics-server-64fc948c75-vgp58                          1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-api-774c6b895b-b6492                1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-auth-cddb64969-6tq7p                1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-kong-648658d45f-9vttp               1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-metrics-scraper-84655b9bd8-gxh9w    1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-web-658946f7f9-69hw2                1/1     Running            0             38m
+sarang@sarang:~/telecom-control-panel-api/free5gc$ kubectl get po -A
+NAMESPACE              NAME                                                     READY   STATUS             RESTARTS      AGE
+free5gc                free5gc-core-free5gc-amf-amf-68cfdfb488-7qsmw            0/4     Init:0/1           0             3m55s
+free5gc                free5gc-core-free5gc-ausf-ausf-7f8ff479dd-tpt9l          0/4     Init:0/1           0             3m54s
+free5gc                free5gc-core-free5gc-dbpython-dbpython-75fbc97dd-ndpc4   0/1     Init:0/1           0             3m55s
+free5gc                free5gc-core-free5gc-nrf-nrf-79d78559bd-x7pnb            0/4     Init:0/1           0             3m55s
+free5gc                free5gc-core-free5gc-nssf-nssf-57df6974c-l8pvs           0/4     Init:0/1           0             3m55s
+free5gc                free5gc-core-free5gc-pcf-pcf-5d57989fff-6lsql            0/4     Init:0/1           0             3m55s
+free5gc                free5gc-core-free5gc-smf-smf-59cf6856d6-l9dv4            0/4     Init:0/1           0             3m55s
+free5gc                free5gc-core-free5gc-udm-udm-84b8694b85-xb65j            0/4     Init:0/1           0             3m55s
+free5gc                free5gc-core-free5gc-udr-udr-58b9b8985-2v5ff             0/4     Init:0/1           0             3m55s
+free5gc                free5gc-core-free5gc-upf-upf-b6f7bb474-76tbd             0/1     CrashLoopBackOff   4 (36s ago)   3m55s
+free5gc                free5gc-core-free5gc-webui-webui-7c588f58d4-jrz8m        0/1     Init:0/1           0             3m55s
+free5gc                mongodb-0                                                0/1     ImagePullBackOff   0             3m55s
+ingress                nginx-ingress-microk8s-controller-qxhwj                  1/1     Running            0             39m
+kube-system            coredns-ccd8f67bc-8thv9                                  1/1     Running            0             39m
+kube-system            hostpath-provisioner-c778b7559-rhjvd                     1/1     Running            0             38m
+kube-system            kube-multus-ds-x8svn                                     1/1     Running            0             37m
+kube-system            metrics-server-64fc948c75-vgp58                          1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-api-774c6b895b-b6492                1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-auth-cddb64969-6tq7p                1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-kong-648658d45f-9vttp               1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-metrics-scraper-84655b9bd8-gxh9w    1/1     Running            0             38m
+kubernetes-dashboard   kubernetes-dashboard-web-658946f7f9-69hw2                1/1     Running            0             38m
+sarang@sarang:~/telecom-control-panel-api/free5gc$ kubectl get po -A
+NAMESPACE              NAME                                                     READY   STATUS             RESTARTS      AGE
+free5gc                free5gc-core-free5gc-amf-amf-68cfdfb488-7qsmw            0/4     Init:0/1           0             4m34s
+free5gc                free5gc-core-free5gc-ausf-ausf-7f8ff479dd-tpt9l          0/4     Init:0/1           0             4m33s
+free5gc                free5gc-core-free5gc-dbpython-dbpython-75fbc97dd-ndpc4   0/1     Init:0/1           0             4m34s
+free5gc                free5gc-core-free5gc-nrf-nrf-79d78559bd-x7pnb            0/4     Init:0/1           0             4m34s
+free5gc                free5gc-core-free5gc-nssf-nssf-57df6974c-l8pvs           0/4     Init:0/1           0             4m34s
+free5gc                free5gc-core-free5gc-pcf-pcf-5d57989fff-6lsql            0/4     Init:0/1           0             4m34s
+free5gc                free5gc-core-free5gc-smf-smf-59cf6856d6-l9dv4            0/4     Init:0/1           0             4m34s
+free5gc                free5gc-core-free5gc-udm-udm-84b8694b85-xb65j            0/4     Init:0/1           0             4m34s
+free5gc                free5gc-core-free5gc-udr-udr-58b9b8985-2v5ff             0/4     Init:0/1           0             4m34s
+free5gc                free5gc-core-free5gc-upf-upf-b6f7bb474-76tbd             0/1     CrashLoopBackOff   4 (75s ago)   4m34s
+free5gc                free5gc-core-free5gc-webui-webui-7c588f58d4-jrz8m        0/1     Init:0/1           0             4m34s
+free5gc                mongodb-0                                                0/1     ImagePullBackOff   0             4m34s
+ingress                nginx-ingress-microk8s-controller-qxhwj                  1/1     Running            0             39m
+kube-system            coredns-ccd8f67bc-8thv9                                  1/1     Running            0             39m
+kube-system            hostpath-provisioner-c778b7559-rhjvd                     1/1     Running            0             38m
+kube-system            kube-multus-ds-x8svn                                     1/1     Running            0             38m
+kube-system            metrics-server-64fc948c75-vgp58                          1/1     Running            0             39m
+kubernetes-dashboard   kubernetes-dashboard-api-774c6b895b-b6492                1/1     Running            0             39m
+kubernetes-dashboard   kubernetes-dashboard-auth-cddb64969-6tq7p                1/1     Running            0             39m
+kubernetes-dashboard   kubernetes-dashboard-kong-648658d45f-9vttp               1/1     Running            0             39m
+kubernetes-dashboard   kubernetes-dashboard-metrics-scraper-84655b9bd8-gxh9w    1/1     Running            0             39m
+kubernetes-dashboard   kubernetes-dashboard-web-658946f7f9-69hw2                1/1     Running            0             39m
+sarang@sarang:~/telecom-control-panel-api/free5gc$ kubectl get po -A
+NAMESPACE              NAME                                                     READY   STATUS             RESTARTS      AGE
+free5gc                free5gc-core-free5gc-amf-amf-68cfdfb488-7qsmw            0/4     Init:0/1           0             5m32s
+free5gc                free5gc-core-free5gc-ausf-ausf-7f8ff479dd-tpt9l          0/4     Init:0/1           0             5m31s
+free5gc                free5gc-core-free5gc-dbpython-dbpython-75fbc97dd-ndpc4   0/1     Init:0/1           0             5m32s
+free5gc                free5gc-core-free5gc-nrf-nrf-79d78559bd-x7pnb            0/4     Init:0/1           0             5m32s
+free5gc                free5gc-core-free5gc-nssf-nssf-57df6974c-l8pvs           0/4     Init:0/1           0             5m32s
+free5gc                free5gc-core-free5gc-pcf-pcf-5d57989fff-6lsql            0/4     Init:0/1           0             5m32s
+free5gc                free5gc-core-free5gc-smf-smf-59cf6856d6-l9dv4            0/4     Init:0/1           0             5m32s
+free5gc                free5gc-core-free5gc-udm-udm-84b8694b85-xb65j            0/4     Init:0/1           0             5m32s
+free5gc                free5gc-core-free5gc-udr-udr-58b9b8985-2v5ff             0/4     Init:0/1           0             5m32s
+free5gc                free5gc-core-free5gc-upf-upf-b6f7bb474-76tbd             0/1     CrashLoopBackOff   5 (45s ago)   5m32s
+free5gc                free5gc-core-free5gc-webui-webui-7c588f58d4-jrz8m        0/1     Init:0/1           0             5m32s
+free5gc                mongodb-0                                                0/1     ImagePullBackOff   0             5m32s
+ingress                nginx-ingress-microk8s-controller-qxhwj                  1/1     Running            0             40m
+kube-system            coredns-ccd8f67bc-8thv9                                  1/1     Running            0             40m
+kube-system            hostpath-provisioner-c778b7559-rhjvd                     1/1     Running            0             39m
+kube-system            kube-multus-ds-x8svn                                     1/1     Running            0             38m
+kube-system            metrics-server-64fc948c75-vgp58                          1/1     Running            0             40m
+kubernetes-dashboard   kubernetes-dashboard-api-774c6b895b-b6492                1/1     Running            0             40m
+kubernetes-dashboard   kubernetes-dashboard-auth-cddb64969-6tq7p                1/1     Running            0             40m
+kubernetes-dashboard   kubernetes-dashboard-kong-648658d45f-9vttp               1/1     Running            0             40m
+kubernetes-dashboard   kubernetes-dashboard-metrics-scraper-84655b9bd8-gxh9w    1/1     Running            0             40m
+kubernetes-dashboard   kubernetes-dashboard-web-658946f7f9-69hw2                1/1     Running            0             40m
+sarang@sarang:~/telecom-control-panel-api/free5gc$ git clone -b v0.8.10 https://github.com/free5gc/gtp5g.git
+Cloning into 'gtp5g'...
+remote: Enumerating objects: 1351, done.
+remote: Counting objects: 100% (556/556), done.
+remote: Compressing objects: 100% (239/239), done.
+remote: Total 1351 (delta 470), reused 317 (delta 317), pack-reused 795 (from 4)
+Receiving objects: 100% (1351/1351), 438.03 KiB | 89.00 KiB/s, done.
+Resolving deltas: 100% (888/888), done.
+Note: switching to '3ee1a5262c5b4dc2ba118b7cb1ed0ba842d3b07b'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+sarang@sarang:~/telecom-control-panel-api/free5gc$ sudo apt -y update
+Hit:1 http://in.archive.ubuntu.com/ubuntu jammy InRelease
+Hit:2 http://security.ubuntu.com/ubuntu jammy-security InRelease
+Hit:3 http://in.archive.ubuntu.com/ubuntu jammy-updates InRelease
+Hit:4 http://in.archive.ubuntu.com/ubuntu jammy-backports InRelease
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+221 packages can be upgraded. Run 'apt list --upgradable' to see them.
+sarang@sarang:~/telecom-control-panel-api/free5gc$ sudo apt -y install gcc g++ cmake autoconf libtool pkg-config libmnl-dev libyaml-dev
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+autoconf is already the newest version (2.71-2).
+g++ is already the newest version (4:11.2.0-1ubuntu1).
+gcc is already the newest version (4:11.2.0-1ubuntu1).
+libmnl-dev is already the newest version (1.0.4-3build2).
+libtool is already the newest version (2.4.6-15build2).
+libyaml-dev is already the newest version (0.2.2-1build2).
+pkg-config is already the newest version (0.29.2-1ubuntu3).
+cmake is already the newest version (3.22.1-1ubuntu1.22.04.2).
+0 upgraded, 0 newly installed, 0 to remove and 221 not upgraded.
+sarang@sarang:~/telecom-control-panel-api/free5gc$ ls
+gtp5g
+sarang@sarang:~/telecom-control-panel-api/free5gc$ cd gtp5g
+sarang@sarang:~/telecom-control-panel-api/free5gc/gtp5g$ make clean && make
+make -C /lib/modules/6.8.0-106-generic/build M=/home/sarang/telecom-control-panel-api/free5gc/gtp5g clean
+make[1]: Entering directory '/usr/src/linux-headers-6.8.0-106-generic'
+make[1]: Leaving directory '/usr/src/linux-headers-6.8.0-106-generic'
+make -C /lib/modules/6.8.0-106-generic/build M=/home/sarang/telecom-control-panel-api/free5gc/gtp5g modules
+make[1]: Entering directory '/usr/src/linux-headers-6.8.0-106-generic'
+warning: the compiler differs from the one used to build the kernel
+  The kernel was built by: x86_64-linux-gnu-gcc-12 (Ubuntu 12.3.0-1ubuntu1~22.04.3) 12.3.0
+  You are using:           gcc-12 (Ubuntu 12.3.0-1ubuntu1~22.04.3) 12.3.0
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/gtp5g.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/log.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/util.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/gtpu/dev.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/gtpu/encap.o
+/home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/gtpu/encap.c:530:6: warning: no previous prototype for ‘increment_and_check_counter’ [-Wmissing-prototypes]
+  530 | bool increment_and_check_counter(struct VolumeMeasurement *volmeasure, struct Volume *volume, u64 vol, bool uplink, bool mnop){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/gtpu/encap.c:571:5: warning: no previous prototype for ‘update_urr_counter_and_send_report’ [-Wmissing-prototypes]
+  571 | int update_urr_counter_and_send_report(struct pdr *pdr, struct far *far, u64 vol, u64 vol_mbqe, bool uplink) {
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/gtpu/hash.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/gtpu/link.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/gtpu/net.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/gtpu/pktinfo.o
+/home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/gtpu/pktinfo.c:16:5: warning: no previous prototype for ‘network_and_transport_header_len’ [-Wmissing-prototypes]
+   16 | u64 network_and_transport_header_len(struct sk_buff *skb) {
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/gtpu/pktinfo.c:129:16: warning: no previous prototype for ‘ip4_find_route_simple’ [-Wmissing-prototypes]
+  129 | struct rtable *ip4_find_route_simple(struct sk_buff *skb,
+      |                ^~~~~~~~~~~~~~~~~~~~~
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/gtpu/trTCM.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/genl/genl.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/genl/genl_version.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/genl/genl_pdr.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/genl/genl_far.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/genl/genl_qer.o
+/home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/genl/genl_qer.c:297:5: warning: no previous prototype for ‘concat_bit_rate’ [-Wmissing-prototypes]
+  297 | u64 concat_bit_rate(u32 highbit, u8 lowbit) {
+      |     ^~~~~~~~~~~~~~~
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/genl/genl_urr.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/genl/genl_report.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/genl/genl_bar.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/pfcp/api_version.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/pfcp/pdr.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/pfcp/far.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/pfcp/qer.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/pfcp/urr.o
+/home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/pfcp/urr.c:12:6: warning: no previous prototype for ‘seid_urr_id_to_hex_str’ [-Wmissing-prototypes]
+   12 | void seid_urr_id_to_hex_str(u64 seid_int, u32 urr_id, char *buff)
+      |      ^~~~~~~~~~~~~~~~~~~~~~
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/pfcp/bar.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/pfcp/seid.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/proc.o
+  LD [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/gtp5g.o
+  MODPOST /home/sarang/telecom-control-panel-api/free5gc/gtp5g/Module.symvers
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/gtp5g.mod.o
+  LD [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/gtp5g.ko
+  BTF [M] /home/sarang/telecom-control-panel-api/free5gc/gtp5g/gtp5g.ko
+Skipping BTF generation for /home/sarang/telecom-control-panel-api/free5gc/gtp5g/gtp5g.ko due to unavailability of vmlinux
+make[1]: Leaving directory '/usr/src/linux-headers-6.8.0-106-generic'
+sarang@sarang:~/telecom-control-panel-api/free5gc/gtp5g$ sudo make install
+cp gtp5g.ko /lib/modules/6.8.0-106-generic/kernel/drivers/net
+modprobe udp_tunnel
+/sbin/depmod -a
+modprobe gtp5g
+echo "gtp5g" > /etc/modules-load.d/gtp5g.conf
+sarang@sarang:~/telecom-control-panel-api/free5gc/gtp5g$ cd ../
+sarang@sarang:~/telecom-control-panel-api/free5gc$ git clone https://gitea.osmocom.org/cellular-infrastructure/libgtpnl
+Cloning into 'libgtpnl'...
+remote: Enumerating objects: 727, done.
+remote: Counting objects: 100% (105/105), done.
+remote: Compressing objects: 100% (60/60), done.
+remote: Total 727 (delta 67), reused 45 (delta 45), pack-reused 622 (from 1)
+Receiving objects: 100% (727/727), 158.91 KiB | 31.00 KiB/s, done.
+Resolving deltas: 100% (418/418), done.
+sarang@sarang:~/telecom-control-panel-api/free5gc$ ls
+gtp5g  libgtpnl
+sarang@sarang:~/telecom-control-panel-api/free5gc$ cd libgtpnl/
+sarang@sarang:~/telecom-control-panel-api/free5gc/libgtpnl$ autoreconf -iv
+./configure --prefix=`pwd`
+make
+autoreconf: export WARNINGS=
+autoreconf: Entering directory '.'
+autoreconf: configure.ac: not using Gettext
+autoreconf: running: aclocal -I m4
+autoreconf: configure.ac: tracing
+autoreconf: configure.ac: creating directory build-aux
+autoreconf: running: libtoolize --copy
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, 'build-aux'.
+libtoolize: copying file 'build-aux/ltmain.sh'
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'm4'.
+libtoolize: copying file 'm4/libtool.m4'
+libtoolize: copying file 'm4/ltoptions.m4'
+libtoolize: copying file 'm4/ltsugar.m4'
+libtoolize: copying file 'm4/ltversion.m4'
+libtoolize: copying file 'm4/lt~obsolete.m4'
+autoreconf: configure.ac: not using Intltool
+autoreconf: configure.ac: not using Gtkdoc
+autoreconf: running: aclocal -I m4
+autoreconf: running: /usr/bin/autoconf
+autoreconf: running: /usr/bin/autoheader
+autoreconf: running: automake --add-missing --copy --no-force
+configure.ac:33: installing 'build-aux/compile'
+configure.ac:7: installing 'build-aux/config.guess'
+configure.ac:7: installing 'build-aux/config.sub'
+configure.ac:10: installing 'build-aux/install-sh'
+configure.ac:10: installing 'build-aux/missing'
+src/Makefile.am: installing 'build-aux/depcomp'
+autoreconf: Leaving directory '.'
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking how to create a pax tar archive... gnutar
+checking whether make supports nested variables... (cached) yes
+checking for pkg-config... /usr/bin/pkg-config
+checking pkg-config is at least version 0.9.0... yes
+checking for libmnl >= 1.0.0... yes
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables...
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to enable C11 features... none needed
+checking whether gcc understands -c and -o together... yes
+checking whether make supports the include directive... yes (GNU style)
+checking dependency style of gcc... gcc3
+checking how to print strings... printf
+checking for a sed that does not truncate output... /usr/bin/sed
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for fgrep... /usr/bin/grep -F
+checking for ld used by gcc... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+checking the name lister (/usr/bin/nm -B) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 1572864
+checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for /usr/bin/ld option to reload object files... -r
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for ar... ar
+checking for archiver @FILE support... @
+checking for strip... strip
+checking for ranlib... ranlib
+checking command to parse /usr/bin/nm -B output from gcc object... ok
+checking for sysroot... no
+checking for a working dd... /usr/bin/dd
+checking how to truncate binary pipes... /usr/bin/dd bs=4096 count=1
+checking for mt... mt
+checking if mt is a manifest tool... no
+checking for stdio.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... yes
+checking for sys/types.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if gcc supports -fno-rtti -fno-exceptions... no
+checking for gcc option to produce PIC... -fPIC -DPIC
+checking if gcc PIC flag -fPIC -DPIC works... yes
+checking if gcc static flag -static works... yes
+checking if gcc supports -c -o file.o... yes
+checking if gcc supports -c -o file.o... (cached) yes
+checking whether the gcc linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... no
+checking whether compiler accepts -fvisibility=hidden... yes
+checking whether to enable QEMU tests... no
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating include/Makefile
+config.status: creating include/libgtpnl/Makefile
+config.status: creating include/linux/Makefile
+config.status: creating libgtpnl.pc
+config.status: creating src/Makefile
+config.status: creating tests/Makefile
+config.status: creating tools/Makefile
+config.status: creating config.h
+config.status: executing depfiles commands
+config.status: executing libtool commands
+make  all-recursive
+make[1]: Entering directory '/home/sarang/telecom-control-panel-api/free5gc/libgtpnl'
+Making all in include
+make[2]: Entering directory '/home/sarang/telecom-control-panel-api/free5gc/libgtpnl/include'
+Making all in libgtpnl
+make[3]: Entering directory '/home/sarang/telecom-control-panel-api/free5gc/libgtpnl/include/libgtpnl'
+  GEN      version.h
+  GEN      version.h
+make[3]: Leaving directory '/home/sarang/telecom-control-panel-api/free5gc/libgtpnl/include/libgtpnl'
+Making all in linux
+make[3]: Entering directory '/home/sarang/telecom-control-panel-api/free5gc/libgtpnl/include/linux'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/sarang/telecom-control-panel-api/free5gc/libgtpnl/include/linux'
+make[3]: Entering directory '/home/sarang/telecom-control-panel-api/free5gc/libgtpnl/include'
+make[3]: Nothing to be done for 'all-am'.
+make[3]: Leaving directory '/home/sarang/telecom-control-panel-api/free5gc/libgtpnl/include'
+make[2]: Leaving directory '/home/sarang/telecom-control-panel-api/free5gc/libgtpnl/include'
+Making all in src
+make[2]: Entering directory '/home/sarang/telecom-control-panel-api/free5gc/libgtpnl/src'
+  CC       genl.lo
+  CC       gtp-genl.lo
+  CC       gtp-rtnl.lo
+  CC       gtp.lo
+  CCLD     libgtpnl.la
+make[2]: Leaving directory '/home/sarang/telecom-control-panel-api/free5gc/libgtpnl/src'
+Making all in tests
+make[2]: Entering directory '/home/sarang/telecom-control-panel-api/free5gc/libgtpnl/tests'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/sarang/telecom-control-panel-api/free5gc/libgtpnl/tests'
+Making all in tools
+make[2]: Entering directory '/home/sarang/telecom-control-panel-api/free5gc/libgtpnl/tools'
+  CC       gtp-link.o
+  CCLD     gtp-link
+  CC       gtp-tunnel.o
+  CCLD     gtp-tunnel
+make[2]: Leaving directory '/home/sarang/telecom-control-panel-api/free5gc/libgtpnl/tools'
+make[2]: Entering directory '/home/sarang/telecom-control-panel-api/free5gc/libgtpnl'
+make[2]: Leaving directory '/home/sarang/telecom-control-panel-api/free5gc/libgtpnl'
+make[1]: Leaving directory '/home/sarang/telecom-control-panel-api/free5gc/libgtpnl'
+sarang@sarang:~/telecom-control-panel-api/free5gc/libgtpnl$ cd ../../
+sarang@sarang:~/telecom-control-panel-api$ ls
+free5gc  maingetpods.py  README.md
+sarang@sarang:~/telecom-control-panel-api$ vi getamfpod.py
+sarang@sarang:~/telecom-control-panel-api$ uvicorn getamfpod:app --reload --port 8000
+INFO:     Will watch for changes in these directories: ['/home/sarang/telecom-control-panel-api']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [3313457] using StatReload
+Process SpawnProcess-1:
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/sarang/.local/lib/python3.10/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+  File "/home/sarang/.local/lib/python3.10/site-packages/uvicorn/server.py", line 75, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/home/sarang/.local/lib/python3.10/site-packages/uvicorn/_compat.py", line 60, in asyncio_run
+    return loop.run_until_complete(main)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/sarang/.local/lib/python3.10/site-packages/uvicorn/server.py", line 79, in serve
+    await self._serve(sockets)
+  File "/home/sarang/.local/lib/python3.10/site-packages/uvicorn/server.py", line 86, in _serve
+    config.load()
+  File "/home/sarang/.local/lib/python3.10/site-packages/uvicorn/config.py", line 441, in load
+    self.loaded_app = import_from_string(self.app)
+  File "/home/sarang/.local/lib/python3.10/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/sarang/telecom-control-panel-api/getamfpod.py", line 1, in <module>
+    @app.get("/amf")
+NameError: name 'app' is not defined
+^CINFO:     Stopping reloader process [3313457]
+sarang@sarang:~/telecom-control-panel-api$ vi getamfpod.py
+sarang@sarang:~/telecom-control-panel-api$ uvicorn getamfpod:app --reload --port 8000
+INFO:     Will watch for changes in these directories: ['/home/sarang/telecom-control-panel-api']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [3316672] using StatReload
+INFO:     Started server process [3316684]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:59260 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59264 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45222 - "GET /amf HTTP/1.1" 200 OK
