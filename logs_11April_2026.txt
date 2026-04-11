@@ -1,0 +1,1285 @@
+sarang@192.168.124.54's password:
+    ┌──────────────────────────────────────────────────────────────────────┐
+    │                 • MobaXterm Personal Edition v25.3 •                 │
+    │               (SSH client, X server and network tools)               │
+    │                                                                      │
+    │ ⮞ SSH session to sarang@192.168.124.54                               │
+    │   • Direct SSH      :  ✓                                             │
+    │   • SSH compression :  ✓                                             │
+    │   • SSH-browser     :  ✓                                             │
+    │   • X11-forwarding  :  ✓  (remote display is forwarded through SSH)  │
+    │                                                                      │
+    │ ⮞ For more info, ctrl+click on help or visit our website.            │
+    └──────────────────────────────────────────────────────────────────────┘
+
+Welcome to Ubuntu 22.04.2 LTS (GNU/Linux 6.8.0-106-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+ * Introducing Expanded Security Maintenance for Applications.
+   Receive updates to over 25,000 software packages with your
+   Ubuntu Pro subscription. Free for personal use.
+
+     https://ubuntu.com/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+New release '24.04.4 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+Last login: Sat Apr 11 12:08:27 2026 from 192.168.220.201
+sarang@sarang:~$ ls
+app2-ns-limitrange.yml     free5gc-helm  hello.py                         multus.yaml            n6-upf-ipvlan.yaml            python-flask-app
+app2-ns-resourcequota.yml  get-helm-3    helm-install-wget.log            Music                  nginx-html-demo               snap
+compose-app1               get_helm.sh   helm-v3.19.2-linux-amd64.tar.gz  my-k8s-manifest-files  nginx-pod-app2.yml            storage-class.yml
+Desktop                    go            k8s-practice-lab                 mylinuxpractice        Pictures                      telecom-control-panel-api
+docker-sample-images       go-gtp5gnl    kubedata                         mypythonscripts        pod_with_limit_range.yaml     Templates
+Documents                  gtp5g         linux-amd64                      my-redis-app-demo      pod-with-pvc.yml              test.py
+Downloads                  gtp5g-link    minikube-linux-amd64             mysql-adminer-demo     pod_with_resource_limits.yml  Videos
+fastapi-learning           gtp5g-tuncmd  multus-daemonset-thick.yml       n3-upf-ipvlan.yaml     Public
+sarang@sarang:~$ cd telecom-control-panel-api/
+sarang@sarang:~/telecom-control-panel-api$ ls
+'amfpod details successfully fetched via fastapi.jpg'   free5gc   getamfpod.py   logs_10April_2026.txt   maingetpods.py   __pycache__   README.md
+sarang@sarang:~/telecom-control-panel-api$ vi requirements.txt
+sarang@sarang:~/telecom-control-panel-api$ ls
+'amfpod details successfully fetched via fastapi.jpg'   getamfpod.py            maingetpods.py   README.md
+ free5gc                                                logs_10April_2026.txt   __pycache__      requirements.txt
+sarang@sarang:~/telecom-control-panel-api$ cat requirements.txt
+fastapi
+uvicorn
+sarang@sarang:~/telecom-control-panel-api$ ls
+'amfpod details successfully fetched via fastapi.jpg'   getamfpod.py            maingetpods.py   README.md
+ free5gc                                                logs_10April_2026.txt   __pycache__      requirements.txt
+sarang@sarang:~/telecom-control-panel-api$ vi Dockerfile
+sarang@sarang:~/telecom-control-panel-api$ vi .dockerignore
+sarang@sarang:~/telecom-control-panel-api$ ls
+'amfpod details successfully fetched via fastapi.jpg'   free5gc        logs_10April_2026.txt   __pycache__   requirements.txt
+ Dockerfile                                             getamfpod.py   maingetpods.py          README.md
+sarang@sarang:~/telecom-control-panel-api$ ls -a
+ .                                                      Dockerfile      getamfpod.py   logs_10April_2026.txt        __pycache__
+ ..                                                     .dockerignore   .git           .logs_10april_2026.txt.swp   README.md
+'amfpod details successfully fetched via fastapi.jpg'   free5gc         .gitignore     maingetpods.py               requirements.txt
+sarang@sarang:~/telecom-control-panel-api$ docker build -t telecom-control-panel-api .
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon    405kB
+Step 1/9 : FROM python:3.11-alpine
+ ---> 33146c594cc9
+Step 2/9 : LABEL maintainer="Sarang"
+ ---> Running in d2b6a69afba7
+ ---> Removed intermediate container d2b6a69afba7
+ ---> 4e8ec7d700f0
+Step 3/9 : WORKDIR /app
+ ---> Running in 3cf083814009
+ ---> Removed intermediate container 3cf083814009
+ ---> 9f676e7bf66c
+Step 4/9 : COPY requirements.txt /app
+ ---> e9465f9a7e65
+Step 5/9 : RUN pip install -r requirements.txt
+ ---> Running in eb7de73385b3
+Collecting fastapi (from -r requirements.txt (line 1))
+  Downloading fastapi-0.135.3-py3-none-any.whl.metadata (28 kB)
+Collecting uvicorn (from -r requirements.txt (line 2))
+  Downloading uvicorn-0.44.0-py3-none-any.whl.metadata (6.7 kB)
+Collecting starlette>=0.46.0 (from fastapi->-r requirements.txt (line 1))
+  Downloading starlette-1.0.0-py3-none-any.whl.metadata (6.3 kB)
+Collecting pydantic>=2.9.0 (from fastapi->-r requirements.txt (line 1))
+  Downloading pydantic-2.12.5-py3-none-any.whl.metadata (90 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.6/90.6 kB 761.3 kB/s eta 0:00:00
+Collecting typing-extensions>=4.8.0 (from fastapi->-r requirements.txt (line 1))
+  Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting typing-inspection>=0.4.2 (from fastapi->-r requirements.txt (line 1))
+  Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+Collecting annotated-doc>=0.0.2 (from fastapi->-r requirements.txt (line 1))
+  Downloading annotated_doc-0.0.4-py3-none-any.whl.metadata (6.6 kB)
+Collecting click>=7.0 (from uvicorn->-r requirements.txt (line 2))
+  Downloading click-8.3.2-py3-none-any.whl.metadata (2.6 kB)
+Collecting h11>=0.8 (from uvicorn->-r requirements.txt (line 2))
+  Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+ERROR: Exception:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 438, in _error_catcher
+    yield
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 561, in read
+    data = self._fp_read(amt) if not fp_closed else b""
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 527, in _fp_read
+    return self._fp.read(amt) if amt is not None else self._fp.read()
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/cachecontrol/filewrapper.py", line 98, in read
+    data: bytes = self.__fp.read(amt)
+                  ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/http/client.py", line 473, in read
+    s = self.fp.read(amt)
+        ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/socket.py", line 718, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/ssl.py", line 1314, in recv_into
+    return self.read(nbytes, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/ssl.py", line 1166, in read
+    return self._sslobj.read(len, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: The read operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/cli/base_command.py", line 180, in exc_logging_wrapper
+    status = run_func(*args)
+             ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/cli/req_command.py", line 245, in wrapper
+    return func(self, options, args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/commands/install.py", line 377, in run
+    requirement_set = resolver.resolve(
+                      ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/resolver.py", line 95, in resolve
+    result = self._result = resolver.resolve(
+                            ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/resolvelib/resolvers.py", line 546, in resolve
+    state = resolution.resolve(requirements, max_rounds=max_rounds)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/resolvelib/resolvers.py", line 427, in resolve
+    failure_causes = self._attempt_to_pin_criterion(name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/resolvelib/resolvers.py", line 239, in _attempt_to_pin_criterion
+    criteria = self._get_updated_criteria(candidate)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/resolvelib/resolvers.py", line 230, in _get_updated_criteria
+    self._add_to_criteria(criteria, requirement, parent=candidate)
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/resolvelib/resolvers.py", line 173, in _add_to_criteria
+    if not criterion.candidates:
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/resolvelib/structs.py", line 156, in __bool__
+    return bool(self._sequence)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/found_candidates.py", line 155, in __bool__
+    return any(self)
+           ^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/found_candidates.py", line 143, in <genexpr>
+    return (c for c in iterator if id(c) not in self._incompatible_ids)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/found_candidates.py", line 47, in _iter_built
+    candidate = func()
+                ^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/factory.py", line 182, in _make_candidate_from_link
+    base: Optional[BaseCandidate] = self._make_base_candidate_from_link(
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/factory.py", line 228, in _make_base_candidate_from_link
+    self._link_candidate_cache[link] = LinkCandidate(
+                                       ^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/candidates.py", line 290, in __init__
+    super().__init__(
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/candidates.py", line 156, in __init__
+    self.dist = self._prepare()
+                ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/candidates.py", line 222, in _prepare
+    dist = self._prepare_distribution()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/candidates.py", line 301, in _prepare_distribution
+    return preparer.prepare_linked_requirement(self._ireq, parallel_builds=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/operations/prepare.py", line 519, in prepare_linked_requirement
+    metadata_dist = self._fetch_metadata_only(req)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/operations/prepare.py", line 371, in _fetch_metadata_only
+    return self._fetch_metadata_using_link_data_attr(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/operations/prepare.py", line 391, in _fetch_metadata_using_link_data_attr
+    metadata_file = get_http_url(
+                    ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/operations/prepare.py", line 109, in get_http_url
+    from_path, content_type = download(link, temp_dir.path)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/network/download.py", line 147, in __call__
+    for chunk in chunks:
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/network/utils.py", line 63, in response_chunks
+    for chunk in response.raw.stream(
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 622, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 560, in read
+    with self._error_catcher():
+  File "/usr/local/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 443, in _error_catcher
+    raise ReadTimeoutError(self._pool, None, "Read timed out.")
+pip._vendor.urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='files.pythonhosted.org', port=443): Read timed out.
+
+[notice] A new release of pip is available: 24.0 -> 26.0.1
+[notice] To update, run: pip install --upgrade pip
+The command '/bin/sh -c pip install -r requirements.txt' returned a non-zero code: 2
+sarang@sarang:~/telecom-control-panel-api$ docker build -t telecom-control-panel-api .
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon    405kB
+Step 1/9 : FROM python:3.11-alpine
+ ---> 33146c594cc9
+Step 2/9 : LABEL maintainer="Sarang"
+ ---> Using cache
+ ---> 4e8ec7d700f0
+Step 3/9 : WORKDIR /app
+ ---> Using cache
+ ---> 9f676e7bf66c
+Step 4/9 : COPY requirements.txt /app
+ ---> Using cache
+ ---> e9465f9a7e65
+Step 5/9 : RUN pip install -r requirements.txt
+ ---> Running in d366afcf104a
+Collecting fastapi (from -r requirements.txt (line 1))
+  Downloading fastapi-0.135.3-py3-none-any.whl.metadata (28 kB)
+Collecting uvicorn (from -r requirements.txt (line 2))
+  Downloading uvicorn-0.44.0-py3-none-any.whl.metadata (6.7 kB)
+ERROR: Exception:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 438, in _error_catcher
+    yield
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 561, in read
+    data = self._fp_read(amt) if not fp_closed else b""
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 527, in _fp_read
+    return self._fp.read(amt) if amt is not None else self._fp.read()
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/cachecontrol/filewrapper.py", line 98, in read
+    data: bytes = self.__fp.read(amt)
+                  ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/http/client.py", line 473, in read
+    s = self.fp.read(amt)
+        ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/socket.py", line 718, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/ssl.py", line 1314, in recv_into
+    return self.read(nbytes, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/ssl.py", line 1166, in read
+    return self._sslobj.read(len, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: The read operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/cli/base_command.py", line 180, in exc_logging_wrapper
+    status = run_func(*args)
+             ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/cli/req_command.py", line 245, in wrapper
+    return func(self, options, args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/commands/install.py", line 377, in run
+    requirement_set = resolver.resolve(
+                      ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/resolver.py", line 95, in resolve
+    result = self._result = resolver.resolve(
+                            ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/resolvelib/resolvers.py", line 546, in resolve
+    state = resolution.resolve(requirements, max_rounds=max_rounds)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/resolvelib/resolvers.py", line 397, in resolve
+    self._add_to_criteria(self.state.criteria, r, parent=None)
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/resolvelib/resolvers.py", line 173, in _add_to_criteria
+    if not criterion.candidates:
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/resolvelib/structs.py", line 156, in __bool__
+    return bool(self._sequence)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/found_candidates.py", line 155, in __bool__
+    return any(self)
+           ^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/found_candidates.py", line 143, in <genexpr>
+    return (c for c in iterator if id(c) not in self._incompatible_ids)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/found_candidates.py", line 47, in _iter_built
+    candidate = func()
+                ^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/factory.py", line 182, in _make_candidate_from_link
+    base: Optional[BaseCandidate] = self._make_base_candidate_from_link(
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/factory.py", line 228, in _make_base_candidate_from_link
+    self._link_candidate_cache[link] = LinkCandidate(
+                                       ^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/candidates.py", line 290, in __init__
+    super().__init__(
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/candidates.py", line 156, in __init__
+    self.dist = self._prepare()
+                ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/candidates.py", line 222, in _prepare
+    dist = self._prepare_distribution()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/candidates.py", line 301, in _prepare_distribution
+    return preparer.prepare_linked_requirement(self._ireq, parallel_builds=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/operations/prepare.py", line 519, in prepare_linked_requirement
+    metadata_dist = self._fetch_metadata_only(req)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/operations/prepare.py", line 371, in _fetch_metadata_only
+    return self._fetch_metadata_using_link_data_attr(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/operations/prepare.py", line 391, in _fetch_metadata_using_link_data_attr
+    metadata_file = get_http_url(
+                    ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/operations/prepare.py", line 109, in get_http_url
+    from_path, content_type = download(link, temp_dir.path)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/network/download.py", line 147, in __call__
+    for chunk in chunks:
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/network/utils.py", line 63, in response_chunks
+    for chunk in response.raw.stream(
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 622, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 560, in read
+    with self._error_catcher():
+  File "/usr/local/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 443, in _error_catcher
+    raise ReadTimeoutError(self._pool, None, "Read timed out.")
+pip._vendor.urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='files.pythonhosted.org', port=443): Read timed out.
+
+[notice] A new release of pip is available: 24.0 -> 26.0.1
+[notice] To update, run: pip install --upgrade pip
+The command '/bin/sh -c pip install -r requirements.txt' returned a non-zero code: 2
+sarang@sarang:~/telecom-control-panel-api$ ls
+'amfpod details successfully fetched via fastapi.jpg'   free5gc        logs_10April_2026.txt   __pycache__   requirements.txt
+ Dockerfile                                             getamfpod.py   maingetpods.py          README.md
+sarang@sarang:~/telecom-control-panel-api$ vi Dockerfile
+sarang@sarang:~/telecom-control-panel-api$ docker build -t telecom-control-panel-api .
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon    405kB
+Step 1/9 : FROM python:3.11-slim
+3.11-slim: Pulling from library/python
+5435b2dcdf5c: Pulling fs layer
+37ffa6577b04: Pulling fs layer
+d98f36ba2159: Pulling fs layer
+0816ee351b60: Pulling fs layer
+0816ee351b60: Waiting
+37ffa6577b04: Download complete
+0816ee351b60: Verifying Checksum
+0816ee351b60: Download complete
+d98f36ba2159: Verifying Checksum
+d98f36ba2159: Download complete
+5435b2dcdf5c: Verifying Checksum
+5435b2dcdf5c: Download complete
+5435b2dcdf5c: Pull complete
+37ffa6577b04: Pull complete
+d98f36ba2159: Pull complete
+0816ee351b60: Pull complete
+Digest: sha256:233de06753d30d120b1a3ce359d8d3be8bda78524cd8f520c99883bfe33964cf
+Status: Downloaded newer image for python:3.11-slim
+ ---> d1a45c0fb43d
+Step 2/9 : LABEL maintainer="Sarang"
+ ---> Running in e0dec1d884e9
+ ---> Removed intermediate container e0dec1d884e9
+ ---> 717f8f657529
+Step 3/9 : WORKDIR /app
+ ---> Running in 02f98f5ae257
+ ---> Removed intermediate container 02f98f5ae257
+ ---> 763d2b75aa70
+Step 4/9 : COPY requirements.txt /app
+ ---> cbda502ce13a
+Step 5/9 : RUN pip install -r requirements.txt
+ ---> Running in 77b3339d4956
+Collecting fastapi (from -r requirements.txt (line 1))
+  Downloading fastapi-0.135.3-py3-none-any.whl.metadata (28 kB)
+Collecting uvicorn (from -r requirements.txt (line 2))
+  Downloading uvicorn-0.44.0-py3-none-any.whl.metadata (6.7 kB)
+Collecting starlette>=0.46.0 (from fastapi->-r requirements.txt (line 1))
+  Downloading starlette-1.0.0-py3-none-any.whl.metadata (6.3 kB)
+Collecting pydantic>=2.9.0 (from fastapi->-r requirements.txt (line 1))
+  Downloading pydantic-2.12.5-py3-none-any.whl.metadata (90 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.6/90.6 kB 749.7 kB/s eta 0:00:00
+Collecting typing-extensions>=4.8.0 (from fastapi->-r requirements.txt (line 1))
+  Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting typing-inspection>=0.4.2 (from fastapi->-r requirements.txt (line 1))
+  Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+Collecting annotated-doc>=0.0.2 (from fastapi->-r requirements.txt (line 1))
+  Downloading annotated_doc-0.0.4-py3-none-any.whl.metadata (6.6 kB)
+Collecting click>=7.0 (from uvicorn->-r requirements.txt (line 2))
+  Downloading click-8.3.2-py3-none-any.whl.metadata (2.6 kB)
+Collecting h11>=0.8 (from uvicorn->-r requirements.txt (line 2))
+  Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting annotated-types>=0.6.0 (from pydantic>=2.9.0->fastapi->-r requirements.txt (line 1))
+  Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.41.5 (from pydantic>=2.9.0->fastapi->-r requirements.txt (line 1))
+  Downloading pydantic_core-2.41.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
+Collecting anyio<5,>=3.6.2 (from starlette>=0.46.0->fastapi->-r requirements.txt (line 1))
+  Downloading anyio-4.13.0-py3-none-any.whl.metadata (4.5 kB)
+Collecting idna>=2.8 (from anyio<5,>=3.6.2->starlette>=0.46.0->fastapi->-r requirements.txt (line 1))
+  Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Downloading fastapi-0.135.3-py3-none-any.whl (117 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 117.7/117.7 kB 2.0 MB/s eta 0:00:00
+Downloading uvicorn-0.44.0-py3-none-any.whl (69 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 69.4/69.4 kB 32.1 kB/s eta 0:00:00
+Downloading annotated_doc-0.0.4-py3-none-any.whl (5.3 kB)
+Downloading click-8.3.2-py3-none-any.whl (108 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 108.4/108.4 kB 237.4 kB/s eta 0:00:00
+Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading pydantic-2.12.5-py3-none-any.whl (463 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 463.6/463.6 kB 227.1 kB/s eta 0:00:00
+Downloading pydantic_core-2.41.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+   ━━━━━━━━━━━━                             0.6/2.1 MB 191.9 kB/s eta 0:00:08
+ERROR: Exception:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 438, in _error_catcher
+    yield
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 561, in read
+    data = self._fp_read(amt) if not fp_closed else b""
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 527, in _fp_read
+    return self._fp.read(amt) if amt is not None else self._fp.read()
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/cachecontrol/filewrapper.py", line 98, in read
+    data: bytes = self.__fp.read(amt)
+                  ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/http/client.py", line 478, in read
+    s = self.fp.read(amt)
+        ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/socket.py", line 718, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/ssl.py", line 1314, in recv_into
+    return self.read(nbytes, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/ssl.py", line 1166, in read
+    return self._sslobj.read(len, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: The read operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/cli/base_command.py", line 180, in exc_logging_wrapper
+    status = run_func(*args)
+             ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/cli/req_command.py", line 245, in wrapper
+    return func(self, options, args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/commands/install.py", line 377, in run
+    requirement_set = resolver.resolve(
+                      ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/resolver.py", line 179, in resolve
+    self.factory.preparer.prepare_linked_requirements_more(reqs)
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/operations/prepare.py", line 552, in prepare_linked_requirements_more
+    self._complete_partial_requirements(
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/operations/prepare.py", line 467, in _complete_partial_requirements
+    for link, (filepath, _) in batch_download:
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/network/download.py", line 183, in __call__
+    for chunk in chunks:
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/cli/progress_bars.py", line 53, in _rich_progress_bar
+    for chunk in iterable:
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/network/utils.py", line 63, in response_chunks
+    for chunk in response.raw.stream(
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 622, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 560, in read
+    with self._error_catcher():
+  File "/usr/local/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 443, in _error_catcher
+    raise ReadTimeoutError(self._pool, None, "Read timed out.")
+pip._vendor.urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='files.pythonhosted.org', port=443): Read timed out.
+
+[notice] A new release of pip is available: 24.0 -> 26.0.1
+[notice] To update, run: pip install --upgrade pip
+The command '/bin/sh -c pip install -r requirements.txt' returned a non-zero code: 2
+
+sarang@sarang:~/telecom-control-panel-api$ vi Dockerfile
+sarang@sarang:~/telecom-control-panel-api$ docker build -t telecom-control-panel-api .
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  405.5kB
+Step 1/9 : FROM python:3.11-slim
+ ---> d1a45c0fb43d
+Step 2/9 : LABEL maintainer="Sarang"
+ ---> Using cache
+ ---> 717f8f657529
+Step 3/9 : WORKDIR /app
+ ---> Using cache
+ ---> 763d2b75aa70
+Step 4/9 : COPY requirements.txt /app
+ ---> Using cache
+ ---> cbda502ce13a
+Step 5/9 : RUN pip install --upgrade pip &&     pip install --no-cache-dir     --default-timeout=100     --retries 10     -r requirements.txt
+ ---> Running in 37a9fd4b7f32
+Requirement already satisfied: pip in /usr/local/lib/python3.11/site-packages (24.0)
+Collecting pip
+  Downloading pip-26.0.1-py3-none-any.whl.metadata (4.7 kB)
+Downloading pip-26.0.1-py3-none-any.whl (1.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━                 1.1/1.8 MB 81.3 kB/s eta 0:00:09
+ERROR: Exception:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 438, in _error_catcher
+    yield
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 561, in read
+    data = self._fp_read(amt) if not fp_closed else b""
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 527, in _fp_read
+    return self._fp.read(amt) if amt is not None else self._fp.read()
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/cachecontrol/filewrapper.py", line 98, in read
+    data: bytes = self.__fp.read(amt)
+                  ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/http/client.py", line 478, in read
+    s = self.fp.read(amt)
+        ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/socket.py", line 718, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/ssl.py", line 1314, in recv_into
+    return self.read(nbytes, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/ssl.py", line 1166, in read
+    return self._sslobj.read(len, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: The read operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/cli/base_command.py", line 180, in exc_logging_wrapper
+    status = run_func(*args)
+             ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/cli/req_command.py", line 245, in wrapper
+    return func(self, options, args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/commands/install.py", line 377, in run
+    requirement_set = resolver.resolve(
+                      ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/resolution/resolvelib/resolver.py", line 179, in resolve
+    self.factory.preparer.prepare_linked_requirements_more(reqs)
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/operations/prepare.py", line 552, in prepare_linked_requirements_more
+    self._complete_partial_requirements(
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/operations/prepare.py", line 467, in _complete_partial_requirements
+    for link, (filepath, _) in batch_download:
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/network/download.py", line 183, in __call__
+    for chunk in chunks:
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/cli/progress_bars.py", line 53, in _rich_progress_bar
+    for chunk in iterable:
+  File "/usr/local/lib/python3.11/site-packages/pip/_internal/network/utils.py", line 63, in response_chunks
+    for chunk in response.raw.stream(
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 622, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 560, in read
+    with self._error_catcher():
+  File "/usr/local/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/usr/local/lib/python3.11/site-packages/pip/_vendor/urllib3/response.py", line 443, in _error_catcher
+    raise ReadTimeoutError(self._pool, None, "Read timed out.")
+pip._vendor.urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='files.pythonhosted.org', port=443): Read timed out.
+
+[notice] A new release of pip is available: 24.0 -> 26.0.1
+[notice] To update, run: pip install --upgrade pip
+The command '/bin/sh -c pip install --upgrade pip &&     pip install --no-cache-dir     --default-timeout=100     --retries 10     -r requirements.txt' returned a non-zero code: 2
+sarang@sarang:~/telecom-control-panel-api$
+
+
+sarang@sarang:~/telecom-control-panel-api$
+Network error: Software caused connection abort
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Session stopped
+    - Press <Return> to exit tab
+    - Press R to restart session
+    - Press S to save terminal output to file
+
+Network error: Connection timed out
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Session stopped
+    - Press <Return> to exit tab
+    - Press R to restart session
+    - Press S to save terminal output to file
+
+Network error: Connection timed out
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Session stopped
+    - Press <Return> to exit tab
+    - Press R to restart session
+    - Press S to save terminal output to file
+    ┌──────────────────────────────────────────────────────────────────────┐
+    │                 • MobaXterm Personal Edition v25.3 •                 │
+    │               (SSH client, X server and network tools)               │
+    │                                                                      │
+    │ ⮞ SSH session to sarang@192.168.124.54                               │
+    │   • Direct SSH      :  ✓                                             │
+    │   • SSH compression :  ✓                                             │
+    │   • SSH-browser     :  ✓                                             │
+    │   • X11-forwarding  :  ✓  (remote display is forwarded through SSH)  │
+    │                                                                      │
+    │ ⮞ For more info, ctrl+click on help or visit our website.            │
+    └──────────────────────────────────────────────────────────────────────┘
+
+Welcome to Ubuntu 22.04.2 LTS (GNU/Linux 6.8.0-106-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+ * Introducing Expanded Security Maintenance for Applications.
+   Receive updates to over 25,000 software packages with your
+   Ubuntu Pro subscription. Free for personal use.
+
+     https://ubuntu.com/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+New release '24.04.4 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+Last login: Sat Apr 11 14:21:47 2026 from 192.168.124.201
+sarang@sarang:~$ pip freeze | grep -E "fastapi|uvicorn"
+fastapi==0.135.3
+uvicorn==0.44.0
+sarang@sarang:~$ ls
+app2-ns-limitrange.yml     free5gc-helm  hello.py                         multus.yaml            n6-upf-ipvlan.yaml            python-flask-app
+app2-ns-resourcequota.yml  get-helm-3    helm-install-wget.log            Music                  nginx-html-demo               snap
+compose-app1               get_helm.sh   helm-v3.19.2-linux-amd64.tar.gz  my-k8s-manifest-files  nginx-pod-app2.yml            storage-class.yml
+Desktop                    go            k8s-practice-lab                 mylinuxpractice        Pictures                      telecom-control-panel-api
+docker-sample-images       go-gtp5gnl    kubedata                         mypythonscripts        pod_with_limit_range.yaml     Templates
+Documents                  gtp5g         linux-amd64                      my-redis-app-demo      pod-with-pvc.yml              test.py
+Downloads                  gtp5g-link    minikube-linux-amd64             mysql-adminer-demo     pod_with_resource_limits.yml  Videos
+fastapi-learning           gtp5g-tuncmd  multus-daemonset-thick.yml       n3-upf-ipvlan.yaml     Public
+sarang@sarang:~$ cd telecom-control-panel-api/
+sarang@sarang:~/telecom-control-panel-api$ ls
+'amfpod details successfully fetched via fastapi.jpg'   free5gc        logs_10April_2026.txt   __pycache__   requirements.txt
+ Dockerfile                                             getamfpod.py   maingetpods.py          README.md
+sarang@sarang:~/telecom-control-panel-api$ pip freeze > requirements.txt
+sarang@sarang:~/telecom-control-panel-api$
+sarang@sarang:~/telecom-control-panel-api$ vi requirements.txt
+sarang@sarang:~/telecom-control-panel-api$ ls
+'amfpod details successfully fetched via fastapi.jpg'   free5gc        logs_10April_2026.txt   __pycache__   requirements.txt
+ Dockerfile                                             getamfpod.py   maingetpods.py          README.md
+sarang@sarang:~/telecom-control-panel-api$ vi requirements.txt
+sarang@sarang:~/telecom-control-panel-api$ docker build -t telecom-control-panel-api .
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  405.5kB
+Step 1/9 : FROM python:3.11-slim
+ ---> d1a45c0fb43d
+Step 2/9 : LABEL maintainer="Sarang"
+ ---> Using cache
+ ---> 717f8f657529
+Step 3/9 : WORKDIR /app
+ ---> Using cache
+ ---> 763d2b75aa70
+Step 4/9 : COPY requirements.txt /app
+ ---> 5142a2bd0faf
+Step 5/9 : RUN pip install --upgrade pip &&     pip install --no-cache-dir     --default-timeout=100     --retries 10     -r requirements.txt
+ ---> Running in 822963fb49dc
+Requirement already satisfied: pip in /usr/local/lib/python3.11/site-packages (24.0)
+Collecting pip
+  Downloading pip-26.0.1-py3-none-any.whl.metadata (4.7 kB)
+Downloading pip-26.0.1-py3-none-any.whl (1.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 166.0 kB/s eta 0:00:00
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 24.0
+    Uninstalling pip-24.0:
+      Successfully uninstalled pip-24.0
+Successfully installed pip-26.0.1
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+Collecting fastapi==0.135.3 (from -r requirements.txt (line 1))
+  Downloading fastapi-0.135.3-py3-none-any.whl.metadata (28 kB)
+Collecting uvicorn==0.44.0 (from -r requirements.txt (line 2))
+  Downloading uvicorn-0.44.0-py3-none-any.whl.metadata (6.7 kB)
+Collecting starlette>=0.46.0 (from fastapi==0.135.3->-r requirements.txt (line 1))
+  Downloading starlette-1.0.0-py3-none-any.whl.metadata (6.3 kB)
+Collecting pydantic>=2.9.0 (from fastapi==0.135.3->-r requirements.txt (line 1))
+  Downloading pydantic-2.12.5-py3-none-any.whl.metadata (90 kB)
+Collecting typing-extensions>=4.8.0 (from fastapi==0.135.3->-r requirements.txt (line 1))
+  Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting typing-inspection>=0.4.2 (from fastapi==0.135.3->-r requirements.txt (line 1))
+  Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+Collecting annotated-doc>=0.0.2 (from fastapi==0.135.3->-r requirements.txt (line 1))
+  Downloading annotated_doc-0.0.4-py3-none-any.whl.metadata (6.6 kB)
+Collecting click>=7.0 (from uvicorn==0.44.0->-r requirements.txt (line 2))
+  Downloading click-8.3.2-py3-none-any.whl.metadata (2.6 kB)
+Collecting h11>=0.8 (from uvicorn==0.44.0->-r requirements.txt (line 2))
+  Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting annotated-types>=0.6.0 (from pydantic>=2.9.0->fastapi==0.135.3->-r requirements.txt (line 1))
+  Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.41.5 (from pydantic>=2.9.0->fastapi==0.135.3->-r requirements.txt (line 1))
+  Downloading pydantic_core-2.41.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
+Collecting anyio<5,>=3.6.2 (from starlette>=0.46.0->fastapi==0.135.3->-r requirements.txt (line 1))
+  Downloading anyio-4.13.0-py3-none-any.whl.metadata (4.5 kB)
+Collecting idna>=2.8 (from anyio<5,>=3.6.2->starlette>=0.46.0->fastapi==0.135.3->-r requirements.txt (line 1))
+  Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Downloading fastapi-0.135.3-py3-none-any.whl (117 kB)
+Downloading uvicorn-0.44.0-py3-none-any.whl (69 kB)
+Downloading annotated_doc-0.0.4-py3-none-any.whl (5.3 kB)
+Downloading click-8.3.2-py3-none-any.whl (108 kB)
+Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading pydantic-2.12.5-py3-none-any.whl (463 kB)
+Downloading pydantic_core-2.41.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 359.3 kB/s  0:00:05
+Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+Downloading starlette-1.0.0-py3-none-any.whl (72 kB)
+Downloading anyio-4.13.0-py3-none-any.whl (114 kB)
+Downloading idna-3.11-py3-none-any.whl (71 kB)
+Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+Installing collected packages: typing-extensions, idna, h11, click, annotated-types, annotated-doc, uvicorn, typing-inspection, pydantic-core, anyio, starlette, pydantic, fastapi
+
+Successfully installed annotated-doc-0.0.4 annotated-types-0.7.0 anyio-4.13.0 click-8.3.2 fastapi-0.135.3 h11-0.16.0 idna-3.11 pydantic-2.12.5 pydantic-core-2.41.5 starlette-1.0.0 typing-extensions-4.15.0 typing-inspection-0.4.2 uvicorn-0.44.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+ ---> Removed intermediate container 822963fb49dc
+ ---> e2dc5388dc14
+Step 6/9 : COPY . /app
+ ---> 2dd283c8f0f7
+Step 7/9 : RUN apk add --no-cache curl &&     curl -LO https://dl.k8s.io/release/v1.29.0/bin/linux/amd64/kubectl &&     chmod +x kubectl &&     mv kubectl /usr/local/bin/
+ ---> Running in 77da4346fd60
+/bin/sh: 1: apk: not found
+The command '/bin/sh -c apk add --no-cache curl &&     curl -LO https://dl.k8s.io/release/v1.29.0/bin/linux/amd64/kubectl &&     chmod +x kubectl &&     mv kubectl /usr/local/bin/' returned a non-zero code: 127
+sarang@sarang:~/telecom-control-panel-api$ vi Dockerfile
+sarang@sarang:~/telecom-control-panel-api$ docker build -t telecom-control-panel-api .
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  405.5kB
+Step 1/9 : FROM python:3.11-slim
+ ---> d1a45c0fb43d
+Step 2/9 : LABEL maintainer="Sarang"
+ ---> Using cache
+ ---> 717f8f657529
+Step 3/9 : WORKDIR /app
+ ---> Using cache
+ ---> 763d2b75aa70
+Step 4/9 : COPY requirements.txt /app
+ ---> Using cache
+ ---> 5142a2bd0faf
+Step 5/9 : RUN pip install --upgrade pip &&     pip install --no-cache-dir     --default-timeout=100     --retries 10     -r requirements.txt
+ ---> Using cache
+ ---> e2dc5388dc14
+Step 6/9 : COPY . /app
+ ---> 51a8730ab328
+Step 7/9 : RUN apt-get update && apt-get install -y curl &&     curl -LO https://dl.k8s.io/release/v1.29.0/bin/linux/amd64/kubectl &&     chmod +x kubectl &&     mv kubectl /usr/local/bin/ &&     apt-get clean
+ ---> Running in 59043bc435bb
+Hit:1 http://deb.debian.org/debian trixie InRelease
+Get:2 http://deb.debian.org/debian trixie-updates InRelease [47.3 kB]
+Get:3 http://deb.debian.org/debian-security trixie-security InRelease [43.4 kB]
+Get:4 http://deb.debian.org/debian trixie/main amd64 Packages [9671 kB]
+Get:5 http://deb.debian.org/debian trixie-updates/main amd64 Packages [5412 B]
+Get:6 http://deb.debian.org/debian-security trixie-security/main amd64 Packages [121 kB]
+Fetched 9888 kB in 49s (202 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  bash-completion krb5-locales libbrotli1 libcom-err2 libcurl4t64
+  libgnutls30t64 libgssapi-krb5-2 libidn2-0 libk5crypto3 libkeyutils1
+  libkrb5-3 libkrb5support0 libldap-common libldap2 libnghttp2-14 libnghttp3-9
+  libp11-kit0 libpsl5t64 librtmp1 libsasl2-2 libsasl2-modules
+  libsasl2-modules-db libssh2-1t64 libtasn1-6 libunistring5 publicsuffix
+Suggested packages:
+  gnutls-bin krb5-doc krb5-user libsasl2-modules-gssapi-mit
+  | libsasl2-modules-gssapi-heimdal libsasl2-modules-ldap libsasl2-modules-otp
+  libsasl2-modules-sql
+The following NEW packages will be installed:
+  bash-completion curl krb5-locales libbrotli1 libcom-err2 libcurl4t64
+  libgnutls30t64 libgssapi-krb5-2 libidn2-0 libk5crypto3 libkeyutils1
+  libkrb5-3 libkrb5support0 libldap-common libldap2 libnghttp2-14 libnghttp3-9
+  libp11-kit0 libpsl5t64 librtmp1 libsasl2-2 libsasl2-modules
+  libsasl2-modules-db libssh2-1t64 libtasn1-6 libunistring5 publicsuffix
+0 upgraded, 27 newly installed, 0 to remove and 3 not upgraded.
+Need to get 5703 kB of archives.
+After this operation, 18.3 MB of additional disk space will be used.
+Get:1 http://deb.debian.org/debian trixie/main amd64 bash-completion all 1:2.16.0-7 [319 kB]
+Get:2 http://deb.debian.org/debian trixie/main amd64 krb5-locales all 1.21.3-5 [101 kB]
+Get:3 http://deb.debian.org/debian trixie/main amd64 libbrotli1 amd64 1.1.0-2+b7 [307 kB]
+Get:4 http://deb.debian.org/debian trixie/main amd64 libkrb5support0 amd64 1.21.3-5 [33.0 kB]
+Get:5 http://deb.debian.org/debian trixie/main amd64 libcom-err2 amd64 1.47.2-3+b10 [25.0 kB]
+Get:6 http://deb.debian.org/debian trixie/main amd64 libk5crypto3 amd64 1.21.3-5 [81.5 kB]
+Get:7 http://deb.debian.org/debian trixie/main amd64 libkeyutils1 amd64 1.6.3-6 [9456 B]
+Get:8 http://deb.debian.org/debian trixie/main amd64 libkrb5-3 amd64 1.21.3-5 [326 kB]
+Get:9 http://deb.debian.org/debian trixie/main amd64 libgssapi-krb5-2 amd64 1.21.3-5 [138 kB]
+Get:10 http://deb.debian.org/debian trixie/main amd64 libunistring5 amd64 1.3-2 [477 kB]
+Get:11 http://deb.debian.org/debian trixie/main amd64 libidn2-0 amd64 2.3.8-2 [109 kB]
+Get:12 http://deb.debian.org/debian trixie/main amd64 libsasl2-modules-db amd64 2.1.28+dfsg1-9 [19.8 kB]
+Get:13 http://deb.debian.org/debian trixie/main amd64 libsasl2-2 amd64 2.1.28+dfsg1-9 [57.5 kB]
+Get:14 http://deb.debian.org/debian trixie/main amd64 libldap2 amd64 2.6.10+dfsg-1 [194 kB]
+Get:15 http://deb.debian.org/debian trixie/main amd64 libnghttp2-14 amd64 1.64.0-1.1 [76.0 kB]
+Get:16 http://deb.debian.org/debian trixie/main amd64 libnghttp3-9 amd64 1.8.0-1 [67.7 kB]
+Get:17 http://deb.debian.org/debian trixie/main amd64 libpsl5t64 amd64 0.21.2-1.1+b1 [57.2 kB]
+Get:18 http://deb.debian.org/debian trixie/main amd64 libp11-kit0 amd64 0.25.5-3 [425 kB]
+Get:19 http://deb.debian.org/debian trixie/main amd64 libtasn1-6 amd64 4.20.0-2 [49.9 kB]
+Get:20 http://deb.debian.org/debian trixie/main amd64 libgnutls30t64 amd64 3.8.9-3+deb13u2 [1468 kB]
+Get:21 http://deb.debian.org/debian trixie/main amd64 librtmp1 amd64 2.4+20151223.gitfa8646d.1-2+b5 [58.8 kB]
+Get:22 http://deb.debian.org/debian trixie/main amd64 libssh2-1t64 amd64 1.11.1-1 [245 kB]
+Get:23 http://deb.debian.org/debian trixie/main amd64 libcurl4t64 amd64 8.14.1-2+deb13u2 [391 kB]
+Get:24 http://deb.debian.org/debian trixie/main amd64 curl amd64 8.14.1-2+deb13u2 [270 kB]
+Get:25 http://deb.debian.org/debian trixie/main amd64 libldap-common all 2.6.10+dfsg-1 [35.1 kB]
+Get:26 http://deb.debian.org/debian trixie/main amd64 libsasl2-modules amd64 2.1.28+dfsg1-9 [66.7 kB]
+Get:27 http://deb.debian.org/debian trixie/main amd64 publicsuffix all 20250328.1952-0.1 [296 kB]
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.40.1 /usr/local/share/perl/5.40.1 /usr/lib/x86_64-linux-gnu/perl5/5.40 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.40 /usr/share/perl/5.40 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8, <STDIN> line 27.)
+debconf: falling back to frontend: Teletype
+debconf: unable to initialize frontend: Teletype
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Noninteractive
+Fetched 5703 kB in 49s (117 kB/s)
+Selecting previously unselected package bash-completion.
+(Reading database ... 5645 files and directories currently installed.)
+Preparing to unpack .../00-bash-completion_1%3a2.16.0-7_all.deb ...
+Unpacking bash-completion (1:2.16.0-7) ...
+Selecting previously unselected package krb5-locales.
+Preparing to unpack .../01-krb5-locales_1.21.3-5_all.deb ...
+Unpacking krb5-locales (1.21.3-5) ...
+Selecting previously unselected package libbrotli1:amd64.
+Preparing to unpack .../02-libbrotli1_1.1.0-2+b7_amd64.deb ...
+Unpacking libbrotli1:amd64 (1.1.0-2+b7) ...
+Selecting previously unselected package libkrb5support0:amd64.
+Preparing to unpack .../03-libkrb5support0_1.21.3-5_amd64.deb ...
+Unpacking libkrb5support0:amd64 (1.21.3-5) ...
+Selecting previously unselected package libcom-err2:amd64.
+Preparing to unpack .../04-libcom-err2_1.47.2-3+b10_amd64.deb ...
+Unpacking libcom-err2:amd64 (1.47.2-3+b10) ...
+Selecting previously unselected package libk5crypto3:amd64.
+Preparing to unpack .../05-libk5crypto3_1.21.3-5_amd64.deb ...
+Unpacking libk5crypto3:amd64 (1.21.3-5) ...
+Selecting previously unselected package libkeyutils1:amd64.
+Preparing to unpack .../06-libkeyutils1_1.6.3-6_amd64.deb ...
+Unpacking libkeyutils1:amd64 (1.6.3-6) ...
+Selecting previously unselected package libkrb5-3:amd64.
+Preparing to unpack .../07-libkrb5-3_1.21.3-5_amd64.deb ...
+Unpacking libkrb5-3:amd64 (1.21.3-5) ...
+Selecting previously unselected package libgssapi-krb5-2:amd64.
+Preparing to unpack .../08-libgssapi-krb5-2_1.21.3-5_amd64.deb ...
+Unpacking libgssapi-krb5-2:amd64 (1.21.3-5) ...
+Selecting previously unselected package libunistring5:amd64.
+Preparing to unpack .../09-libunistring5_1.3-2_amd64.deb ...
+Unpacking libunistring5:amd64 (1.3-2) ...
+Selecting previously unselected package libidn2-0:amd64.
+Preparing to unpack .../10-libidn2-0_2.3.8-2_amd64.deb ...
+Unpacking libidn2-0:amd64 (2.3.8-2) ...
+Selecting previously unselected package libsasl2-modules-db:amd64.
+Preparing to unpack .../11-libsasl2-modules-db_2.1.28+dfsg1-9_amd64.deb ...
+Unpacking libsasl2-modules-db:amd64 (2.1.28+dfsg1-9) ...
+Selecting previously unselected package libsasl2-2:amd64.
+Preparing to unpack .../12-libsasl2-2_2.1.28+dfsg1-9_amd64.deb ...
+Unpacking libsasl2-2:amd64 (2.1.28+dfsg1-9) ...
+Selecting previously unselected package libldap2:amd64.
+Preparing to unpack .../13-libldap2_2.6.10+dfsg-1_amd64.deb ...
+Unpacking libldap2:amd64 (2.6.10+dfsg-1) ...
+Selecting previously unselected package libnghttp2-14:amd64.
+Preparing to unpack .../14-libnghttp2-14_1.64.0-1.1_amd64.deb ...
+Unpacking libnghttp2-14:amd64 (1.64.0-1.1) ...
+Selecting previously unselected package libnghttp3-9:amd64.
+Preparing to unpack .../15-libnghttp3-9_1.8.0-1_amd64.deb ...
+Unpacking libnghttp3-9:amd64 (1.8.0-1) ...
+Selecting previously unselected package libpsl5t64:amd64.
+Preparing to unpack .../16-libpsl5t64_0.21.2-1.1+b1_amd64.deb ...
+Unpacking libpsl5t64:amd64 (0.21.2-1.1+b1) ...
+Selecting previously unselected package libp11-kit0:amd64.
+Preparing to unpack .../17-libp11-kit0_0.25.5-3_amd64.deb ...
+Unpacking libp11-kit0:amd64 (0.25.5-3) ...
+Selecting previously unselected package libtasn1-6:amd64.
+Preparing to unpack .../18-libtasn1-6_4.20.0-2_amd64.deb ...
+Unpacking libtasn1-6:amd64 (4.20.0-2) ...
+Selecting previously unselected package libgnutls30t64:amd64.
+Preparing to unpack .../19-libgnutls30t64_3.8.9-3+deb13u2_amd64.deb ...
+Unpacking libgnutls30t64:amd64 (3.8.9-3+deb13u2) ...
+Selecting previously unselected package librtmp1:amd64.
+Preparing to unpack .../20-librtmp1_2.4+20151223.gitfa8646d.1-2+b5_amd64.deb ...
+Unpacking librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2+b5) ...
+Selecting previously unselected package libssh2-1t64:amd64.
+Preparing to unpack .../21-libssh2-1t64_1.11.1-1_amd64.deb ...
+Unpacking libssh2-1t64:amd64 (1.11.1-1) ...
+Selecting previously unselected package libcurl4t64:amd64.
+Preparing to unpack .../22-libcurl4t64_8.14.1-2+deb13u2_amd64.deb ...
+Unpacking libcurl4t64:amd64 (8.14.1-2+deb13u2) ...
+Selecting previously unselected package curl.
+Preparing to unpack .../23-curl_8.14.1-2+deb13u2_amd64.deb ...
+Unpacking curl (8.14.1-2+deb13u2) ...
+Selecting previously unselected package libldap-common.
+Preparing to unpack .../24-libldap-common_2.6.10+dfsg-1_all.deb ...
+Unpacking libldap-common (2.6.10+dfsg-1) ...
+Selecting previously unselected package libsasl2-modules:amd64.
+Preparing to unpack .../25-libsasl2-modules_2.1.28+dfsg1-9_amd64.deb ...
+Unpacking libsasl2-modules:amd64 (2.1.28+dfsg1-9) ...
+Selecting previously unselected package publicsuffix.
+Preparing to unpack .../26-publicsuffix_20250328.1952-0.1_all.deb ...
+Unpacking publicsuffix (20250328.1952-0.1) ...
+Setting up libkeyutils1:amd64 (1.6.3-6) ...
+Setting up libbrotli1:amd64 (1.1.0-2+b7) ...
+Setting up libsasl2-modules:amd64 (2.1.28+dfsg1-9) ...
+Setting up libnghttp2-14:amd64 (1.64.0-1.1) ...
+Setting up krb5-locales (1.21.3-5) ...
+Setting up libcom-err2:amd64 (1.47.2-3+b10) ...
+Setting up libldap-common (2.6.10+dfsg-1) ...
+Setting up libkrb5support0:amd64 (1.21.3-5) ...
+Setting up libsasl2-modules-db:amd64 (2.1.28+dfsg1-9) ...
+Setting up bash-completion (1:2.16.0-7) ...
+Setting up libp11-kit0:amd64 (0.25.5-3) ...
+Setting up libunistring5:amd64 (1.3-2) ...
+Setting up libk5crypto3:amd64 (1.21.3-5) ...
+Setting up libsasl2-2:amd64 (2.1.28+dfsg1-9) ...
+Setting up libnghttp3-9:amd64 (1.8.0-1) ...
+Setting up libtasn1-6:amd64 (4.20.0-2) ...
+Setting up libkrb5-3:amd64 (1.21.3-5) ...
+Setting up libssh2-1t64:amd64 (1.11.1-1) ...
+Setting up publicsuffix (20250328.1952-0.1) ...
+Setting up libldap2:amd64 (2.6.10+dfsg-1) ...
+Setting up libidn2-0:amd64 (2.3.8-2) ...
+Setting up libgssapi-krb5-2:amd64 (1.21.3-5) ...
+Setting up libgnutls30t64:amd64 (3.8.9-3+deb13u2) ...
+Setting up libpsl5t64:amd64 (0.21.2-1.1+b1) ...
+Setting up librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2+b5) ...
+Setting up libcurl4t64:amd64 (8.14.1-2+deb13u2) ...
+Setting up curl (8.14.1-2+deb13u2) ...
+Processing triggers for libc-bin (2.41-12+deb13u2) ...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 47.4M  100 47.4M    0     0   245k      0  0:03:17  0:03:17 --:--:--  352k
+ ---> Removed intermediate container 59043bc435bb
+ ---> d20a4ce6bde1
+Step 8/9 : EXPOSE 8000
+ ---> Running in fee0f051fba0
+ ---> Removed intermediate container fee0f051fba0
+ ---> 0d36d1184f36
+Step 9/9 : CMD ["uvicorn", "getamfpod:app", "--host", "0.0.0.0", "--port", "8000"]
+ ---> Running in 827b256ec1dc
+ ---> Removed intermediate container 827b256ec1dc
+ ---> fca3b67625dc
+Successfully built fca3b67625dc
+Successfully tagged telecom-control-panel-api:latest
+sarang@sarang:~/telecom-control-panel-api$
+
+
+
+sarang@sarang:~/telecom-control-panel-api$ docker image is
+docker: unknown command: docker image is
+
+Usage:  docker image
+
+Run 'docker image --help' for more information
+sarang@sarang:~/telecom-control-panel-api$ docker image ls
+REPOSITORY                       TAG           IMAGE ID       CREATED              SIZE
+telecom-control-panel-api        latest        fca3b67625dc   About a minute ago   244MB
+<none>                           <none>        2dd283c8f0f7   11 minutes ago       158MB
+<none>                           <none>        cbda502ce13a   35 minutes ago       124MB
+<none>                           <none>        e9465f9a7e65   44 minutes ago       54.3MB
+python                           3.11-slim     d1a45c0fb43d   4 days ago           124MB
+nginx                            latest        4af177a024eb   2 months ago         161MB
+mongo                            4.4           0010f63d2695   3 months ago         409MB
+mysql                            latest        43463387c19a   3 months ago         932MB
+adminer                          latest        40b11b4251ca   3 months ago         119MB
+postgres                         alpine        8b9a5682d571   3 months ago         281MB
+mydisksizeapp                    v4            17acdc2ef37b   3 months ago         54.3MB
+mydisksizeapp                    v3            dcfc0f76b921   3 months ago         54.3MB
+mydisksizeapp                    v2            12d5ee2f7951   3 months ago         54.3MB
+mydisksizeapp                    v1            eedc1d45b688   3 months ago         54.3MB
+<none>                           <none>        94d532203167   3 months ago         54.3MB
+flaskapp                         amber-bg      d41cfb3d0cf3   4 months ago         70.6MB
+sarang/flaskapp                  amber-bg      d41cfb3d0cf3   4 months ago         70.6MB
+sarangnew/flaskapp               amber-bg      d41cfb3d0cf3   4 months ago         70.6MB
+ssdumbre/flaskapp                amber-bg      d41cfb3d0cf3   4 months ago         70.6MB
+<none>                           <none>        fd4b58db9111   4 months ago         54.3MB
+dpage/pgadmin4                   latest        3690f88dd4d2   4 months ago         561MB
+python                           3.11-alpine   33146c594cc9   4 months ago         54.3MB
+alpine                           latest        7acffee03fe8   4 months ago         8.44MB
+redis                            alpine        778c3ea605c2   4 months ago         94.7MB
+nginx                            <none>        60adc2e137e7   4 months ago         152MB
+kicbase/stable                   v0.0.48       c6b5532e987b   7 months ago         1.31GB
+hello-world                      latest        1b44b5a3e06a   8 months ago         10.1kB
+busybox                          latest        925ff61909ae   18 months ago        4.42MB
+rediscommander/redis-commander   latest        778af9bd6397   4 years ago          77.8MB
+nfvpe/multus                     latest        323ac100f148   5 years ago          284MB
+rancher/cowsay                   latest        8fe7792ad843   5 years ago          39.9MB
+sarang@sarang:~/telecom-control-panel-api$
+sarang@sarang:~/telecom-control-panel-api$
+sarang@sarang:~/telecom-control-panel-api$ docker run -d -p 8000:8000 \
+-v ~/.kube:/root/.kube \
+telecom-control-panel-api
+1597bcf4a5a33b91fc1b722c5136f02713f0f9b29c99d8e5bc45323e86f9bf33
+sarang@sarang:~/telecom-control-panel-api$
+sarang@sarang:~/telecom-control-panel-api$
+sarang@sarang:~/telecom-control-panel-api$ docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED          STATUS          PORTS                                         NAMES
+1597bcf4a5a3   telecom-control-panel-api   "uvicorn getamfpod:a…"   16 seconds ago   Up 15 seconds   0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp   priceless_brahm             agupta
+sarang@sarang:~/telecom-control-panel-api$ docker container ls
+CONTAINER ID   IMAGE                       COMMAND                  CREATED          STATUS          PORTS                                         NAMES
+1597bcf4a5a3   telecom-control-panel-api   "uvicorn getamfpod:a…"   14 minutes ago   Up 14 minutes   0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp   priceless_brahm             agupta
+sarang@sarang:~/telecom-control-panel-api$ docker container exec -it 1597bcf4a5a3 /bin/sh
+# kubectl get pods
+E0411 10:05:41.032921      22 memcache.go:265] couldn't get current server API group list: Get "https://192.168.31.96:16443/api?timeout=32s": dial tcp 192.168.31.96:16443: i/o timeout
+^C
+# microk8s kubecl^Htl ^H^H^H^C
+# kubectl get pods -A
+E0411 10:06:44.797905      29 memcache.go:265] couldn't get current server API group list: Get "https://192.168.31.96:16443/api?timeout=32s": dial tcp 192.168.31.96:16443: i/o timeout
+E0411 10:07:14.799397      29 memcache.go:265] couldn't get current server API group list: Get "https://192.168.31.96:16443/api?timeout=32s": dial tcp 192.168.31.96:16443: i/o timeout
+E0411 10:07:44.800851      29 memcache.go:265] couldn't get current server API group list: Get "https://192.168.31.96:16443/api?timeout=32s": dial tcp 192.168.31.96:16443: i/o timeout
+^C
+# ls
+ Dockerfile   README.md   __pycache__  'amfpod details successfully fetched via fastapi.jpg'   getamfpod.py   maingetpods.py   requirements.txt
+# uvicro^H^H^H^C
+# uvicorn getamfpod:app --reload --port 8000
+INFO:     Will watch for changes in these directories: ['/app']
+ERROR:    [Errno 98] Address already in use
+# ^[[A^H^C
+# uvicron^H^H^C
+# uvicorn getamfpod:app --reload --port 8001
+INFO:     Will watch for changes in these directories: ['/app']
+INFO:     Uvicorn running on http://127.0.0.1:8001 (Press CTRL+C to quit)
+INFO:     Started reloader process [39] using StatReload
+INFO:     Started server process [41]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+^CINFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [41]
+INFO:     Stopping reloader process [39]
+# exit
+sarang@sarang:~/telecom-control-panel-api$ docker run -d \
+--network host \
+-v ~/.kube:/root/.kube \
+telecom-control-panel-api
+8d9a872ac2e19665814ef43fc2a0fcf6d84e8d12ebc0603bea7b303726d789e9
+sarang@sarang:~/telecom-control-panel-api$ docker container ls
+CONTAINER ID   IMAGE                       COMMAND                  CREATED          STATUS          PORTS                                         NAMES
+1597bcf4a5a3   telecom-control-panel-api   "uvicorn getamfpod:a…"   23 minutes ago   Up 23 minutes   0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp   priceless_brahmagupta
+sarang@sarang:~/telecom-control-panel-api$ docker image ls
+REPOSITORY                       TAG           IMAGE ID       CREATED             SIZE
+telecom-control-panel-api        latest        fca3b67625dc   26 minutes ago      244MB
+<none>                           <none>        2dd283c8f0f7   36 minutes ago      158MB
+<none>                           <none>        cbda502ce13a   About an hour ago   124MB
+<none>                           <none>        e9465f9a7e65   About an hour ago   54.3MB
+python                           3.11-slim     d1a45c0fb43d   4 days ago          124MB
+nginx                            latest        4af177a024eb   2 months ago        161MB
+mongo                            4.4           0010f63d2695   3 months ago        409MB
+mysql                            latest        43463387c19a   3 months ago        932MB
+adminer                          latest        40b11b4251ca   3 months ago        119MB
+postgres                         alpine        8b9a5682d571   3 months ago        281MB
+mydisksizeapp                    v4            17acdc2ef37b   3 months ago        54.3MB
+mydisksizeapp                    v3            dcfc0f76b921   3 months ago        54.3MB
+mydisksizeapp                    v2            12d5ee2f7951   3 months ago        54.3MB
+mydisksizeapp                    v1            eedc1d45b688   3 months ago        54.3MB
+<none>                           <none>        94d532203167   3 months ago        54.3MB
+flaskapp                         amber-bg      d41cfb3d0cf3   4 months ago        70.6MB
+sarang/flaskapp                  amber-bg      d41cfb3d0cf3   4 months ago        70.6MB
+sarangnew/flaskapp               amber-bg      d41cfb3d0cf3   4 months ago        70.6MB
+ssdumbre/flaskapp                amber-bg      d41cfb3d0cf3   4 months ago        70.6MB
+<none>                           <none>        fd4b58db9111   4 months ago        54.3MB
+dpage/pgadmin4                   latest        3690f88dd4d2   4 months ago        561MB
+python                           3.11-alpine   33146c594cc9   4 months ago        54.3MB
+alpine                           latest        7acffee03fe8   4 months ago        8.44MB
+redis                            alpine        778c3ea605c2   4 months ago        94.7MB
+nginx                            <none>        60adc2e137e7   4 months ago        152MB
+kicbase/stable                   v0.0.48       c6b5532e987b   7 months ago        1.31GB
+hello-world                      latest        1b44b5a3e06a   8 months ago        10.1kB
+busybox                          latest        925ff61909ae   18 months ago       4.42MB
+rediscommander/redis-commander   latest        778af9bd6397   4 years ago         77.8MB
+nfvpe/multus                     latest        323ac100f148   5 years ago         284MB
+rancher/cowsay                   latest        8fe7792ad843   5 years ago         39.9MB
+sarang@sarang:~/telecom-control-panel-api$ docker stop 1597bcf4a5a3
+1597bcf4a5a3
+sarang@sarang:~/telecom-control-panel-api$ docker run -d \
+--network host \
+-v ~/.kube:/root/.kube \
+telecom-control-panel-api
+63226b8923823fc835b04171de26af0e8f3db1ac11847f20691daac10d34b1e8
+sarang@sarang:~/telecom-control-panel-api$ docker container ls
+CONTAINER ID   IMAGE                       COMMAND                  CREATED         STATUS         PORTS     NAMES
+63226b892382   telecom-control-panel-api   "uvicorn getamfpod:a…"   5 minutes ago   Up 5 minutes             tender_poitras
+sarang@sarang:~/telecom-control-panel-api$ docker container exec -it 63226b892382 /bin/sh
+# kubectl get pods -A
+E0411 10:23:15.647418      30 memcache.go:265] couldn't get current server API group list: Get "https://192.168.31.96:16443/api?timeout=32s": dial tcp 192.168.31.96:16443: i/o timeout
+E0411 10:23:45.651953      30 memcache.go:265] couldn't get current server API group list: Get "https://192.168.31.96:16443/api?timeout=32s": dial tcp 192.168.31.96:16443: i/o timeout
+E0411 10:24:15.653286      30 memcache.go:265] couldn't get current server API group list: Get "https://192.168.31.96:16443/api?timeout=32s": dial tcp 192.168.31.96:16443: i/o timeout
+E0411 10:24:45.661157      30 memcache.go:265] couldn't get current server API group list: Get "https://192.168.31.96:16443/api?timeout=32s": dial tcp 192.168.31.96:16443: i/o timeout
+E0411 10:25:15.684950      30 memcache.go:265] couldn't get current server API group list: Get "https://192.168.31.96:16443/api?timeout=32s": dial tcp 192.168.31.96:16443: i/o timeout
+Unable to connect to the server: dial tcp 192.168.31.96:16443: i/o timeout
+
+
+    - Press S to save terminal output to file
+    ┌──────────────────────────────────────────────────────────────────────┐
+    │                 • MobaXterm Personal Edition v25.3 •                 │
+    │               (SSH client, X server and network tools)               │
+    │                                                                      │
+    │ ⮞ SSH session to sarang@192.168.124.54                               │
+    │   • Direct SSH      :  ✓                                             │
+    │   • SSH compression :  ✓                                             │
+    │   • SSH-browser     :  ✓                                             │
+    │   • X11-forwarding  :  ✓  (remote display is forwarded through SSH)  │
+    │                                                                      │
+    │ ⮞ For more info, ctrl+click on help or visit our website.            │
+    └──────────────────────────────────────────────────────────────────────┘
+
+Welcome to Ubuntu 22.04.2 LTS (GNU/Linux 6.8.0-106-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+ * Introducing Expanded Security Maintenance for Applications.
+   Receive updates to over 25,000 software packages with your
+   Ubuntu Pro subscription. Free for personal use.
+
+     https://ubuntu.com/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+Last login: Sat Apr 11 15:00:32 2026 from 192.168.124.201
+sarang@sarang:~$ docker container ls
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+sarang@sarang:~$ docker image ls
+REPOSITORY                       TAG           IMAGE ID       CREATED             SIZE
+telecom-control-panel-api        latest        fca3b67625dc   49 minutes ago      244MB
+<none>                           <none>        2dd283c8f0f7   58 minutes ago      158MB
+<none>                           <none>        cbda502ce13a   About an hour ago   124MB
+<none>                           <none>        e9465f9a7e65   2 hours ago         54.3MB
+python                           3.11-slim     d1a45c0fb43d   4 days ago          124MB
+nginx                            latest        4af177a024eb   2 months ago        161MB
+mongo                            4.4           0010f63d2695   3 months ago        409MB
+mysql                            latest        43463387c19a   3 months ago        932MB
+adminer                          latest        40b11b4251ca   3 months ago        119MB
+postgres                         alpine        8b9a5682d571   3 months ago        281MB
+mydisksizeapp                    v4            17acdc2ef37b   3 months ago        54.3MB
+mydisksizeapp                    v3            dcfc0f76b921   3 months ago        54.3MB
+mydisksizeapp                    v2            12d5ee2f7951   3 months ago        54.3MB
+mydisksizeapp                    v1            eedc1d45b688   3 months ago        54.3MB
+<none>                           <none>        94d532203167   3 months ago        54.3MB
+flaskapp                         amber-bg      d41cfb3d0cf3   4 months ago        70.6MB
+sarang/flaskapp                  amber-bg      d41cfb3d0cf3   4 months ago        70.6MB
+sarangnew/flaskapp               amber-bg      d41cfb3d0cf3   4 months ago        70.6MB
+ssdumbre/flaskapp                amber-bg      d41cfb3d0cf3   4 months ago        70.6MB
+<none>                           <none>        fd4b58db9111   4 months ago        54.3MB
+dpage/pgadmin4                   latest        3690f88dd4d2   4 months ago        561MB
+python                           3.11-alpine   33146c594cc9   4 months ago        54.3MB
+alpine                           latest        7acffee03fe8   4 months ago        8.44MB
+redis                            alpine        778c3ea605c2   4 months ago        94.7MB
+nginx                            <none>        60adc2e137e7   4 months ago        152MB
+kicbase/stable                   v0.0.48       c6b5532e987b   7 months ago        1.31GB
+hello-world                      latest        1b44b5a3e06a   8 months ago        10.1kB
+busybox                          latest        925ff61909ae   18 months ago       4.42MB
+rediscommander/redis-commander   latest        778af9bd6397   4 years ago         77.8MB
+nfvpe/multus                     latest        323ac100f148   5 years ago         284MB
+rancher/cowsay                   latest        8fe7792ad843   5 years ago         39.9MB
+sarang@sarang:~$ docker run -d \
+--network host \
+-v /var/snap/microk8s/current/credentials/client.config:/root/.kube/config \
+telecom-control-panel-api
+5ee70b1984242d644559c0c95ff432d94fbc91b49a7fc16c28928f9d68c85482
+sarang@sarang:~$ docker container ls
+CONTAINER ID   IMAGE                       COMMAND                  CREATED          STATUS          PORTS     NAMES
+5ee70b198424   telecom-control-panel-api   "uvicorn getamfpod:a…"   33 seconds ago   Up 27 seconds             priceless_keller
+sarang@sarang:~$ docker container exec -it 5ee70b198424 /bin/sh
+# kubectl get pods -n free5gc
+NAME                                                     READY   STATUS             RESTARTS   AGE
+free5gc-core-free5gc-amf-amf-68cfdfb488-65xv7            0/4     Init:0/1           7          22h
+free5gc-core-free5gc-ausf-ausf-7f8ff479dd-tpt9l          0/4     Init:0/1           7          22h
+free5gc-core-free5gc-dbpython-dbpython-75fbc97dd-ndpc4   0/1     Init:0/1           7          22h
+free5gc-core-free5gc-nrf-nrf-79d78559bd-x7pnb            0/4     Init:0/1           7          22h
+free5gc-core-free5gc-nssf-nssf-57df6974c-l8pvs           0/4     Init:0/1           7          22h
+free5gc-core-free5gc-pcf-pcf-5d57989fff-6lsql            0/4     Init:0/1           7          22h
+free5gc-core-free5gc-smf-smf-59cf6856d6-l9dv4            0/4     Init:0/1           7          22h
+free5gc-core-free5gc-udm-udm-84b8694b85-xb65j            0/4     Init:0/1           7          22h
+free5gc-core-free5gc-udr-udr-58b9b8985-2v5ff             0/4     Init:0/1           7          22h
+free5gc-core-free5gc-upf-upf-b6f7bb474-76tbd             1/1     Running            14         22h
+free5gc-core-free5gc-webui-webui-7c588f58d4-jrz8m        0/1     Init:0/1           7          22h
+mongodb-0                                                0/1     ImagePullBackOff   0          22h
+# exit^H
+/bin/sh: 2: exi: not found
+# ^C
+# exi
+/bin/sh: 3: exi: not found
+# exit
+sarang@sarang:~$ cd telecom-control-panel-api/
+sarang@sarang:~/telecom-control-panel-api$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .dockerignore
+        Dockerfile
+        requirements.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+sarang@sarang:~/telecom-control-panel-api$ git add .
+sarang@sarang:~/telecom-control-panel-api$ git commit -m "Added Dockerized FastAPI Telecom Control API with Kubernetes integration (AMF monitoring via kubectl)"
+[main f7ac979] Added Dockerized FastAPI Telecom Control API with Kubernetes integration (AMF monitoring via kubectl)
+ Committer: sarang <sarang@sarang.myguest.virtualbox.org>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 3 files changed, 28 insertions(+)
+ create mode 100644 .dockerignore
+ create mode 100644 Dockerfile
+ create mode 100644 requirements.txt
+sarang@sarang:~/telecom-control-panel-api$ git pull origin main --rebase
+From https://github.com/ssdumbre/telecom-control-panel-api
+ * branch            main       -> FETCH_HEAD
+Current branch main is up to date.
+sarang@sarang:~/telecom-control-panel-api$ git push origin main
+Username for 'https://github.com': ssdumbre
+Password for 'https://ssdumbre@github.com':
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 6 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (5/5), 905 bytes | 82.00 KiB/s, done.
+Total 5 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/ssdumbre/telecom-control-panel-api.git
+   3e590be..f7ac979  main -> main
+sarang@sarang:~/telecom-control-panel-api$
+
+
