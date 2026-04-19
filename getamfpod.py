@@ -13,7 +13,7 @@ def get_amf():
     )
 
     for line in result.stdout.split("\n"):
-        if "amf" in line:
+        if "free5gc-amf" in line:
             parts = line.split()
             return {
                 "pod": parts[0],
