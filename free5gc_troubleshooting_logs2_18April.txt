@@ -1,0 +1,413 @@
+ast login: Sat Apr 18 14:57:20 2026 from 192.168.39.201
+sarang@sarang:~$ ls
+app2-ns-limitrange.yml     free5gc-helm     hello.py                         Music                  nginx-pod-app2.yml            telecom-control-panel-api
+app2-ns-resourcequota.yml  free5gc-storage  helm-install-wget.log            my-k8s-manifest-files  Pictures                      Templates
+compose-app1               get-helm-3       helm-v3.19.2-linux-amd64.tar.gz  mylinuxpractice        pod_with_limit_range.yaml     test.py
+Desktop                    get_helm.sh      k8s-practice-lab                 mypythonscripts        pod-with-pvc.yml              Videos
+docker-compose.yml         go               kubedata                         my-redis-app-demo      pod_with_resource_limits.yml
+docker-sample-images       go-gtp5gnl       linux-amd64                      mysql-adminer-demo     Public
+Documents                  gtp5g            minikube-linux-amd64             n3-upf-ipvlan.yaml     python-flask-app
+Downloads                  gtp5g-link       multus-daemonset-thick.yml       n6-upf-ipvlan.yaml     snap
+fastapi-learning           gtp5g-tuncmd     multus.yaml                      nginx-html-demo        storage-class.yml
+sarang@sarang:~$ rm -rf gtp5g
+sarang@sarang:~$ rm -rf go-gtp5gnl/
+sarang@sarang:~$ cd telecom-control-panel-api/
+sarang@sarang:~/telecom-control-panel-api$ ls
+'amfpod details successfully fetched via fastapi.jpg'   free5gc        logs_10April_2026.txt   __pycache__   requirements.txt
+ Dockerfile                                             getamfpod.py   maingetpods.py          README.md
+sarang@sarang:~/telecom-control-panel-api$ cd free5gc/
+sarang@sarang:~/telecom-control-panel-api/free5gc$ ls
+free5gc-helm  free5gc-storage  gtp5g
+sarang@sarang:~/telecom-control-panel-api/free5gc$ rm -rf gtp5g/
+sarang@sarang:~/telecom-control-panel-api/free5gc$ ls
+free5gc-helm  free5gc-storage
+sarang@sarang:~/telecom-control-panel-api/free5gc$ cd free5gc-helm/
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm$ ls
+charts  CONTRIBUTING.md  docker  docs  LICENSE  motivations.md  pictures  README.md
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm$ cd charts/
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ s
+s: command not found
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ lss
+Command 'lss' not found, did you mean:
+  command 'les' from deb atm-tools (1:2.5.1-4build2)
+  command 'ass' from deb irpas (0.10-9)
+  command 'lsw' from deb suckless-tools (46-1)
+  command 'lsm' from deb lsm (1.0.4-2)
+  command 'ls' from deb coreutils (8.32-4.1ubuntu1.3)
+  command 'lsns' from deb util-linux (2.37.2-4ubuntu3.5)
+  command 'iss' from deb insilicoseq (1.5.4-2)
+  command 'lsh' from deb lsh-client (2.1-13)
+  command 'lrs' from deb lrslib (0.71a-1)
+  command 'lssu' from deb nilfs-tools (2.2.8-1)
+  command 'ss' from deb iproute2 (5.15.0-1ubuntu2)
+  command 'gss' from deb libgss-dev (1.0.3-7)
+  command 'less' from deb less (590-1ubuntu0.22.04.3)
+  command 'lsc' from deb livescript (1.6.1+dfsg-2)
+  command 'lvs' from deb lvm2 (2.03.11-2.1ubuntu5)
+Try: sudo apt install <deb name>
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ ls
+free5gc  loxilb  packetrusher  ueransim
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ cd free5gc/
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc$ ls
+charts  Chart.yaml  prometheus.yaml  README.md  services-enabled-values.yaml  templates  ulcl-enabled-values.yaml  values-backup.yaml  values.yaml
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc$ git clone -b v0.8.10 https://github.com/free5gc/gtp5g.git
+Cloning into 'gtp5g'...
+remote: Enumerating objects: 1351, done.
+remote: Counting objects: 100% (556/556), done.
+remote: Compressing objects: 100% (239/239), done.
+remote: Total 1351 (delta 470), reused 317 (delta 317), pack-reused 795 (from 4)
+Receiving objects: 100% (1351/1351), 438.03 KiB | 7.00 KiB/s, done.
+Resolving deltas: 100% (888/888), done.
+Note: switching to '3ee1a5262c5b4dc2ba118b7cb1ed0ba842d3b07b'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc$ cd gtp5g/
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g$ ls
+include  LICENSE  Makefile  README.md  src
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g$ sudo apt -y update
+[sudo] password for sarang:
+Hit:1 http://in.archive.ubuntu.com/ubuntu jammy InRelease
+Get:2 http://in.archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+Hit:3 http://security.ubuntu.com/ubuntu jammy-security InRelease
+Hit:4 http://in.archive.ubuntu.com/ubuntu jammy-backports InRelease
+Get:5 http://in.archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [3,402 kB]
+Get:6 http://in.archive.ubuntu.com/ubuntu jammy-updates/universe i386 Packages [801 kB]
+Get:7 http://in.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1,262 kB]
+Fetched 5,593 kB in 1min 38s (57.1 kB/s)
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+237 packages can be upgraded. Run 'apt list --upgradable' to see them.
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g$ sudo apt -y install gcc g++ cmake autoconf libtool pkg-config libmnl-dev libyaml-dev
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+autoconf is already the newest version (2.71-2).
+g++ is already the newest version (4:11.2.0-1ubuntu1).
+gcc is already the newest version (4:11.2.0-1ubuntu1).
+libmnl-dev is already the newest version (1.0.4-3build2).
+libtool is already the newest version (2.4.6-15build2).
+libyaml-dev is already the newest version (0.2.2-1build2).
+pkg-config is already the newest version (0.29.2-1ubuntu3).
+cmake is already the newest version (3.22.1-1ubuntu1.22.04.2).
+0 upgraded, 0 newly installed, 0 to remove and 237 not upgraded.
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g$ make clean && makemake clean && make
+make -C /lib/modules/6.8.0-106-generic/build M=/home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g clean
+make[1]: Entering directory '/usr/src/linux-headers-6.8.0-106-generic'
+^Cmake[1]: *** [Makefile:240: __sub-make] Interrupt
+make: *** [Makefile:86: clean] Interrupt
+
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g$ make clean && make
+make -C /lib/modules/6.8.0-106-generic/build M=/home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g clean
+make[1]: Entering directory '/usr/src/linux-headers-6.8.0-106-generic'
+make[1]: Leaving directory '/usr/src/linux-headers-6.8.0-106-generic'
+make -C /lib/modules/6.8.0-106-generic/build M=/home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g modules
+make[1]: Entering directory '/usr/src/linux-headers-6.8.0-106-generic'
+warning: the compiler differs from the one used to build the kernel
+  The kernel was built by: x86_64-linux-gnu-gcc-12 (Ubuntu 12.3.0-1ubuntu1~22.04.3) 12.3.0
+  You are using:           gcc-12 (Ubuntu 12.3.0-1ubuntu1~22.04.3) 12.3.0
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/gtp5g.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/log.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/util.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/gtpu/dev.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/gtpu/encap.o
+/home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/gtpu/encap.c:530:6: warning: no previous prototype for ‘increment_and_check_counter’ [-Wmissing-prototypes]
+  530 | bool increment_and_check_counter(struct VolumeMeasurement *volmeasure, struct Volume *volume, u64 vol, bool uplink, bool mnop){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/gtpu/encap.c:571:5: warning: no previous prototype for ‘update_urr_counter_and_send_report’ [-Wmissing-prototypes]
+  571 | int update_urr_counter_and_send_report(struct pdr *pdr, struct far *far, u64 vol, u64 vol_mbqe, bool uplink) {
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/gtpu/hash.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/gtpu/link.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/gtpu/net.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/gtpu/pktinfo.o
+/home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/gtpu/pktinfo.c:16:5: warning: no previous prototype for ‘network_and_transport_header_len’ [-Wmissing-prototypes]
+   16 | u64 network_and_transport_header_len(struct sk_buff *skb) {
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/gtpu/pktinfo.c:129:16: warning: no previous prototype for ‘ip4_find_route_simple’ [-Wmissing-prototypes]
+  129 | struct rtable *ip4_find_route_simple(struct sk_buff *skb,
+      |                ^~~~~~~~~~~~~~~~~~~~~
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/gtpu/trTCM.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/genl/genl.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/genl/genl_version.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/genl/genl_pdr.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/genl/genl_far.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/genl/genl_qer.o
+/home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/genl/genl_qer.c:297:5: warning: no previous prototype for ‘concat_bit_rate’ [-Wmissing-prototypes]
+  297 | u64 concat_bit_rate(u32 highbit, u8 lowbit) {
+      |     ^~~~~~~~~~~~~~~
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/genl/genl_urr.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/genl/genl_report.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/genl/genl_bar.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/pfcp/api_version.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/pfcp/pdr.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/pfcp/far.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/pfcp/qer.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/pfcp/urr.o
+/home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/pfcp/urr.c:12:6: warning: no previous prototype for ‘seid_urr_id_to_hex_str’ [-Wmissing-prototypes]
+   12 | void seid_urr_id_to_hex_str(u64 seid_int, u32 urr_id, char *buff)
+      |      ^~~~~~~~~~~~~~~~~~~~~~
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/pfcp/bar.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/pfcp/seid.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/src/proc.o
+  LD [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/gtp5g.o
+  MODPOST /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/Module.symvers
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/gtp5g.mod.o
+  LD [M]  /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/gtp5g.ko
+  BTF [M] /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/gtp5g.ko
+Skipping BTF generation for /home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g/gtp5g.ko due to unavailability of vmlinux
+make[1]: Leaving directory '/usr/src/linux-headers-6.8.0-106-generic'
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g$ sudo make install
+cp gtp5g.ko /lib/modules/6.8.0-106-generic/kernel/drivers/net
+modprobe udp_tunnel
+/sbin/depmod -a
+modprobe gtp5g
+echo "gtp5g" > /etc/modules-load.d/gtp5g.conf
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/gtp5g$ cd ../
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc$ git clone https://github.com/free5gc/libgtp5gnl.git
+Cloning into 'libgtp5gnl'...
+remote: Enumerating objects: 196, done.
+remote: Counting objects: 100% (196/196), done.
+remote: Compressing objects: 100% (106/106), done.
+remote: Total 196 (delta 101), reused 176 (delta 82), pack-reused 0 (from 0)
+Receiving objects: 100% (196/196), 90.00 KiB | 6.00 KiB/s, done.
+Resolving deltas: 100% (101/101), done.
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc$ ls
+charts      gtp5g       prometheus.yaml  services-enabled-values.yaml  ulcl-enabled-values.yaml  values.yaml
+Chart.yaml  libgtp5gnl  README.md        templates                     values-backup.yaml
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc$ cd libgtp5gnl/
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/libgtp5gnl$ autoreconf -iv
+./configure --prefix=`pwd`
+make
+autoreconf: export WARNINGS=
+autoreconf: Entering directory '.'
+autoreconf: configure.ac: not using Gettext
+autoreconf: running: aclocal -I m4
+autoreconf: configure.ac: tracing
+autoreconf: configure.ac: creating directory build-aux
+autoreconf: running: libtoolize --copy
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, 'build-aux'.
+libtoolize: copying file 'build-aux/ltmain.sh'
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'm4'.
+libtoolize: copying file 'm4/libtool.m4'
+libtoolize: copying file 'm4/ltoptions.m4'
+libtoolize: copying file 'm4/ltsugar.m4'
+libtoolize: copying file 'm4/ltversion.m4'
+libtoolize: copying file 'm4/lt~obsolete.m4'
+autoreconf: configure.ac: not using Intltool
+autoreconf: configure.ac: not using Gtkdoc
+autoreconf: running: aclocal -I m4
+autoreconf: running: /usr/bin/autoconf
+autoreconf: running: /usr/bin/autoheader
+autoreconf: running: automake --add-missing --copy --no-force
+configure.ac:26: installing 'build-aux/compile'
+configure.ac:7: installing 'build-aux/config.guess'
+configure.ac:7: installing 'build-aux/config.sub'
+configure.ac:10: installing 'build-aux/install-sh'
+configure.ac:10: installing 'build-aux/missing'
+src/Makefile.am: installing 'build-aux/depcomp'
+autoreconf: Leaving directory '.'
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking how to create a pax tar archive... gnutar
+checking whether make supports nested variables... (cached) yes
+checking for pkg-config... /usr/bin/pkg-config
+checking pkg-config is at least version 0.9.0... yes
+checking for libmnl >= 1.0.0... yes
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables...
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to enable C11 features... none needed
+checking whether gcc understands -c and -o together... yes
+checking whether make supports the include directive... yes (GNU style)
+checking dependency style of gcc... gcc3
+checking how to print strings... printf
+checking for a sed that does not truncate output... /usr/bin/sed
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for fgrep... /usr/bin/grep -F
+checking for ld used by gcc... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+checking the name lister (/usr/bin/nm -B) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 1572864
+checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for /usr/bin/ld option to reload object files... -r
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for ar... ar
+checking for archiver @FILE support... @
+checking for strip... strip
+checking for ranlib... ranlib
+checking command to parse /usr/bin/nm -B output from gcc object... ok
+checking for sysroot... no
+checking for a working dd... /usr/bin/dd
+checking how to truncate binary pipes... /usr/bin/dd bs=4096 count=1
+checking for mt... mt
+checking if mt is a manifest tool... no
+checking for stdio.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... yes
+checking for sys/types.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if gcc supports -fno-rtti -fno-exceptions... no
+checking for gcc option to produce PIC... -fPIC -DPIC
+checking if gcc PIC flag -fPIC -DPIC works... yes
+checking if gcc static flag -static works... yes
+checking if gcc supports -c -o file.o... yes
+checking if gcc supports -c -o file.o... (cached) yes
+checking whether the gcc linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... no
+checking whether compiler accepts -fvisibility=hidden... yes
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating src/Makefile
+config.status: creating include/Makefile
+config.status: creating include/libgtp5gnl/Makefile
+config.status: creating include/linux/Makefile
+config.status: creating tools/Makefile
+config.status: creating libgtp5gnl.pc
+config.status: creating config.h
+config.status: executing depfiles commands
+config.status: executing libtool commands
+make  all-recursive
+make[1]: Entering directory '/home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/libgtp5gnl'
+Making all in src
+make[2]: Entering directory '/home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/libgtp5gnl/src'
+  CC       genl.lo
+  CC       gtp5g-genl-pdr.lo
+  CC       gtp5g-genl-far.lo
+  CC       gtp5g-genl-qer.lo
+  CC       gtp5g-rtnl.lo
+  CC       gtp5g.lo
+  CCLD     libgtp5gnl.la
+make[2]: Leaving directory '/home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/libgtp5gnl/src'
+Making all in include
+make[2]: Entering directory '/home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/libgtp5gnl/include'
+Making all in libgtp5gnl
+make[3]: Entering directory '/home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/libgtp5gnl/include/libgtp5gnl'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/libgtp5gnl/include/libgtp5gnl'
+Making all in linux
+make[3]: Entering directory '/home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/libgtp5gnl/include/linux'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/libgtp5gnl/include/linux'
+make[3]: Entering directory '/home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/libgtp5gnl/include'
+make[3]: Nothing to be done for 'all-am'.
+make[3]: Leaving directory '/home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/libgtp5gnl/include'
+make[2]: Leaving directory '/home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/libgtp5gnl/include'
+Making all in tools
+make[2]: Entering directory '/home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/libgtp5gnl/tools'
+  CC       gtp5g-link.o
+  CCLD     gtp5g-link
+  CC       gtp5g-tunnel.o
+  CCLD     gtp5g-tunnel
+make[2]: Leaving directory '/home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/libgtp5gnl/tools'
+make[2]: Entering directory '/home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/libgtp5gnl'
+make[2]: Leaving directory '/home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/libgtp5gnl'
+make[1]: Leaving directory '/home/sarang/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/libgtp5gnl'
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc/libgtp5gnl$ cd ..
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc$ cd ../
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ kubectl delete pod mongodb-0 -n free5gc
+pod "mongodb-0" deleted
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ lss
+Command 'lss' not found, did you mean:
+  command 'les' from deb atm-tools (1:2.5.1-4build2)
+  command 'ass' from deb irpas (0.10-9)
+  command 'lsns' from deb util-linux (2.37.2-4ubuntu3.5)
+  command 'lsh' from deb lsh-client (2.1-13)
+  command 'lssu' from deb nilfs-tools (2.2.8-1)
+  command 'lsw' from deb suckless-tools (46-1)
+  command 'lrs' from deb lrslib (0.71a-1)
+  command 'ls' from deb coreutils (8.32-4.1ubuntu1.3)
+  command 'lsc' from deb livescript (1.6.1+dfsg-2)
+  command 'lsm' from deb lsm (1.0.4-2)
+  command 'gss' from deb libgss-dev (1.0.3-7)
+  command 'lvs' from deb lvm2 (2.03.11-2.1ubuntu5)
+  command 'iss' from deb insilicoseq (1.5.4-2)
+  command 'less' from deb less (590-1ubuntu0.22.04.3)
+  command 'ss' from deb iproute2 (5.15.0-1ubuntu2)
+Try: sudo apt install <deb name>
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ ls
+free5gc  loxilb  packetrusher  ueransim
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ cd free5gc/
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc$ ls
+charts      gtp5g       prometheus.yaml  services-enabled-values.yaml  ulcl-enabled-values.yaml  values.yaml
+Chart.yaml  libgtp5gnl  README.md        templates                     values-backup.yaml
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc$ cd ~
+sarang@sarang:~$ lsmod | grep gtp5g
+gtp5g                 151552  0
+udp_tunnel             32768  2 gtp5g,vxlan
+sarang@sarang:~$ kubectl logs -n free5gc free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5 --previous
+error: error from server (NotFound): pods "free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5" not found in namespace "free5gc"
+sarang@sarang:~$ microk8s stop
+[sudo] password for sarang:
+Sorry, try again.
+[sudo] password for sarang:
+Stopped.
+^C
+sarang@sarang:~$ sudo microk8s refresh-certs --cert front-proxy-client.crt
+Taking a backup of the current certificates under /var/snap/microk8s/8697/certs-backup/
+Creating new certificates
+Signature ok
+subject=CN = front-proxy-client
+Getting CA Private Key
+Restarting service kubelite.
+sarang@sarang:~$ sudo microk8s refresh-certs -e server.crt
+Taking a backup of the current certificates under /var/snap/microk8s/8697/certs-backup/
+Creating new certificates
+Signature ok
+subject=C = GB, ST = Canonical, L = Canonical, O = Canonical, OU = Canonical, CN = 127.0.0.1
+Getting CA Private Key
+Restarting service kubelite.
+Restarting service cluster-agent.
+sarang@sarang:~$ microk8s start
+sarang@sarang:~$ microk8s config > ~/.kube/config
+sarang@sarang:~$ kubectl get nodes
+NAME     STATUS   ROLES    AGE     VERSION
+sarang   Ready    <none>   7d23h   v1.33.9
+sarang@sarang:~$ kubectl logs -n free5gc free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm
+Error from server: Get "https://192.168.39.54:10250/containerLogs/free5gc/free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm/iupf1": tls: failed to verify certificate: x509: certificate is valid for 192.168.2.54, 10.30.0.1, 172.17.0.1, 172.21.0.1, 172.23.0.1, 172.22.0.1, 172.18.0.1, 10.20.0.1, 172.20.0.1, 172.19.0.1, 2401:4900:ac81:7a71:8aec:ff8f:7926:89f0, 2401:4900:ac81:7a71:fc45:81b3:4e8f:e6e2, not 192.168.39.54

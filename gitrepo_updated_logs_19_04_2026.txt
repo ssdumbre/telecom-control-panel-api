@@ -1,0 +1,86 @@
+sarang@sarang:~/telecom-control-panel-api$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    free5gc/gtp5g
+        deleted:    free5gc/libgtpnl
+        modified:   getamfpod.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        free5gc/free5gc-helm/
+        free5gc/free5gc-storage/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+sarang@sarang:~/telecom-control-panel-api$ git add .
+warning: adding embedded git repository: free5gc/free5gc-helm
+hint: You've added another git repository inside your current repository.
+hint: Clones of the outer repository will not contain the contents of
+hint: the embedded repository and will not know how to obtain it.
+hint: If you meant to add a submodule, use:
+hint:
+hint:   git submodule add <url> free5gc/free5gc-helm
+hint:
+hint: If you added this path by mistake, you can remove it from the
+hint: index with:
+hint:
+hint:   git rm --cached free5gc/free5gc-helm
+hint:
+hint: See "git help submodule" for more information.
+sarang@sarang:~/telecom-control-panel-api$ git commit -m "Added FastAPI AMF endpoint and validated end-to-end 5G setup with free5GC and UERANSIM including UE connectivity and internet access"
+[main 65ce653] Added FastAPI AMF endpoint and validated end-to-end 5G setup with free5GC and UERANSIM including UE connectivity and internet access
+ Committer: sarang <sarang@sarang.myguest.virtualbox.org>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 6 files changed, 48 insertions(+), 3 deletions(-)
+ create mode 160000 free5gc/free5gc-helm
+ create mode 100644 free5gc/free5gc-storage/cert/pv-cert.yaml
+ create mode 100644 free5gc/free5gc-storage/mongo/pv-mongo.yaml
+ delete mode 160000 free5gc/gtp5g
+ delete mode 160000 free5gc/libgtpnl
+sarang@sarang:~/telecom-control-panel-api$ git push origin main
+Username for 'https://github.com': ssdumbre
+Password for 'https://ssdumbre@github.com':
+To https://github.com/ssdumbre/telecom-control-panel-api.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/ssdumbre/telecom-control-panel-api.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+sarang@sarang:~/telecom-control-panel-api$ git pull origin main --rebase
+remote: Enumerating objects: 7, done.
+remote: Counting objects: 100% (7/7), done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 6 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (6/6), 545.76 KiB | 107.00 KiB/s, done.
+From https://github.com/ssdumbre/telecom-control-panel-api
+ * branch            main       -> FETCH_HEAD
+   f7ac979..1adeda6  main       -> origin/main
+Successfully rebased and updated refs/heads/main.
+sarang@sarang:~/telecom-control-panel-api$ git push origin main
+Username for 'https://github.com': ssdumbre
+Password for 'https://ssdumbre@github.com':
+Enumerating objects: 12, done.
+Counting objects: 100% (12/12), done.
+Delta compression using up to 6 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (9/9), 1.05 KiB | 360.00 KiB/s, done.
+Total 9 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (3/3), completed with 2 local objects.
+To https://github.com/ssdumbre/telecom-control-panel-api.git
+   1adeda6..9572552  main -> main

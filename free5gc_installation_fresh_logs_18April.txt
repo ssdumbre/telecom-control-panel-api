@@ -1,0 +1,449 @@
+    ┌──────────────────────────────────────────────────────────────────────┐
+    │                 • MobaXterm Personal Edition v25.3 •                 │
+    │               (SSH client, X server and network tools)               │
+    │                                                                      │
+    │ ⮞ SSH session to sarang@192.168.183.54                               │
+    │   • Direct SSH      :  ✓                                             │
+    │   • SSH compression :  ✓                                             │
+    │   • SSH-browser     :  ✓                                             │
+    │   • X11-forwarding  :  ✓  (remote display is forwarded through SSH)  │
+    │                                                                      │
+    │ ⮞ For more info, ctrl+click on help or visit our website.            │
+    └──────────────────────────────────────────────────────────────────────┘
+
+Welcome to Ubuntu 22.04.2 LTS (GNU/Linux 6.8.0-106-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+ * Introducing Expanded Security Maintenance for Applications.
+   Receive updates to over 25,000 software packages with your
+   Ubuntu Pro subscription. Free for personal use.
+
+     https://ubuntu.com/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+New release '24.04.4 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+Last login: Fri Apr 17 15:14:37 2026 from 192.168.2.201
+sarang@sarang:~$ ls
+app2-ns-limitrange.yml     get-helm-3                       k8s-practice-lab            my-redis-app-demo             Public
+app2-ns-resourcequota.yml  get_helm.sh                      kubedata                    mysql-adminer-demo            python-flask-app
+compose-app1               go                               linux-amd64                 n3-upf-ipvlan.yaml            snap
+Desktop                    go-gtp5gnl                       minikube-linux-amd64        n6-upf-ipvlan.yaml            storage-class.yml
+docker-compose.yml         gtp5g                            multus-daemonset-thick.yml  nginx-html-demo               telecom-control-panel-api
+docker-sample-images       gtp5g-link                       multus.yaml                 nginx-pod-app2.yml            Templates
+Documents                  gtp5g-tuncmd                     Music                       Pictures                      test.py
+Downloads                  hello.py                         my-k8s-manifest-files       pod_with_limit_range.yaml     Videos
+fastapi-learning           helm-install-wget.log            mylinuxpractice             pod-with-pvc.yml
+free5gc-helm               helm-v3.19.2-linux-amd64.tar.gz  mypythonscripts             pod_with_resource_limits.yml
+sarang@sarang:~$ kubectl get pods -n free5gc
+The connection to the server 127.0.0.1:16443 was refused - did you specify the right host or port?
+sarang@sarang:~$ microk8s status
+microk8s is not running. Use microk8s inspect for a deeper inspection.
+sarang@sarang:~$ cd telecom-control-panel-api/
+sarang@sarang:~/telecom-control-panel-api$ ls
+'amfpod details successfully fetched via fastapi.jpg'   free5gc        logs_10April_2026.txt   __pycache__   requirements.txt
+ Dockerfile                                             getamfpod.py   maingetpods.py          README.md
+sarang@sarang:~/telecom-control-panel-api$ cd free5gc/
+sarang@sarang:~/telecom-control-panel-api/free5gc$ ls
+gtp5g  libgtpnl  sample.txt
+sarang@sarang:~/telecom-control-panel-api/free5gc$ cd ../../
+sarang@sarang:~$ cd telecom-control-panel-api/
+sarang@sarang:~/telecom-control-panel-api$ rm -rf free5gc/
+sarang@sarang:~/telecom-control-panel-api$ lls
+^Csarang@sarang:~/telecom-control-panel-api$ ^C
+sarang@sarang:~/telecom-control-panel-api$ ls
+'amfpod details successfully fetched via fastapi.jpg'   getamfpod.py            maingetpods.py   README.md
+ Dockerfile                                             logs_10April_2026.txt   __pycache__      requirements.txt
+sarang@sarang:~/telecom-control-panel-api$ mkdir free5gc
+sarang@sarang:~/telecom-control-panel-api$ cd free5gc/
+sarang@sarang:~/telecom-control-panel-api/free5gc$ ls
+sarang@sarang:~/telecom-control-panel-api/free5gc$ sudo apt -y update
+[sudo] password for sarang:
+Get:1 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
+Hit:2 http://in.archive.ubuntu.com/ubuntu jammy InRelease
+Get:3 http://in.archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+Get:4 http://in.archive.ubuntu.com/ubuntu jammy-backports InRelease [127 kB]
+Get:5 http://security.ubuntu.com/ubuntu jammy-security/main i386 Packages [807 kB]
+Get:6 http://in.archive.ubuntu.com/ubuntu jammy-updates/main i386 Packages [989 kB]
+Get:7 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [3,137 kB]
+Get:8 http://in.archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [3,402 kB]
+Get:9 http://security.ubuntu.com/ubuntu jammy-security/main Translation-en [446 kB]
+Get:10 http://security.ubuntu.com/ubuntu jammy-security/main amd64 DEP-11 Metadata [54.5 kB]
+Get:11 http://in.archive.ubuntu.com/ubuntu jammy-updates/main Translation-en [517 kB]
+Get:12 http://security.ubuntu.com/ubuntu jammy-security/main amd64 c-n-f Metadata [14.1 kB]
+Get:13 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [5,525 kB]
+Get:14 http://in.archive.ubuntu.com/ubuntu jammy-updates/main amd64 DEP-11 Metadata [114 kB]
+Get:15 http://in.archive.ubuntu.com/ubuntu jammy-updates/main amd64 c-n-f Metadata [19.6 kB]
+Get:16 http://in.archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [5,693 kB]
+Get:17 http://security.ubuntu.com/ubuntu jammy-security/restricted Translation-en [1,063 kB]
+Get:18 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 DEP-11 Metadata [208 B]
+Get:19 http://security.ubuntu.com/ubuntu jammy-security/universe i386 Packages [690 kB]
+Get:20 http://in.archive.ubuntu.com/ubuntu jammy-updates/restricted Translation-en [1,093 kB]
+Get:21 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1,025 kB]
+Get:22 http://in.archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 DEP-11 Metadata [212 B]
+Get:23 http://in.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1,262 kB]
+Get:24 http://security.ubuntu.com/ubuntu jammy-security/universe Translation-en [226 kB]
+Get:25 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 DEP-11 Metadata [125 kB]
+Get:26 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 DEP-11 Metadata [208 B]
+Get:27 http://in.archive.ubuntu.com/ubuntu jammy-updates/universe i386 Packages [801 kB]
+Get:28 http://in.archive.ubuntu.com/ubuntu jammy-updates/universe Translation-en [316 kB]
+Get:29 http://in.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 DEP-11 Metadata [360 kB]
+Get:30 http://in.archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 DEP-11 Metadata [940 B]
+Get:31 http://in.archive.ubuntu.com/ubuntu jammy-backports/main amd64 DEP-11 Metadata [7,352 B]
+Get:32 http://in.archive.ubuntu.com/ubuntu jammy-backports/restricted amd64 DEP-11 Metadata [212 B]
+Get:33 http://in.archive.ubuntu.com/ubuntu jammy-backports/universe amd64 DEP-11 Metadata [12.4 kB]
+Get:34 http://in.archive.ubuntu.com/ubuntu jammy-backports/multiverse amd64 DEP-11 Metadata [212 B]
+Fetched 28.1 MB in 4min 5s (115 kB/s)
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+237 packages can be upgraded. Run 'apt list --upgradable' to see them.
+sarang@sarang:~/telecom-control-panel-api/free5gc$ sudo apt -y install git gcc g++ cmake autoconf libtool pkg-config libmnl-dev libyaml-dev
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+autoconf is already the newest version (2.71-2).
+g++ is already the newest version (4:11.2.0-1ubuntu1).
+gcc is already the newest version (4:11.2.0-1ubuntu1).
+libmnl-dev is already the newest version (1.0.4-3build2).
+libtool is already the newest version (2.4.6-15build2).
+libyaml-dev is already the newest version (0.2.2-1build2).
+pkg-config is already the newest version (0.29.2-1ubuntu3).
+cmake is already the newest version (3.22.1-1ubuntu1.22.04.2).
+git is already the newest version (1:2.34.1-1ubuntu1.17).
+0 upgraded, 0 newly installed, 0 to remove and 237 not upgraded.
+sarang@sarang:~/telecom-control-panel-api/free5gc$ git clone -b v0.8.10 https://github.com/free5gc/gtp5g.git
+Cloning into 'gtp5g'...
+remote: Enumerating objects: 1351, done.
+remote: Counting objects: 100% (556/556), done.
+remote: Compressing objects: 100% (239/239), done.
+remote: Total 1351 (delta 470), reused 317 (delta 317), pack-reused 795 (from 4)
+Receiving objects: 100% (1351/1351), 438.03 KiB | 11.00 KiB/s, done.
+Resolving deltas: 100% (888/888), done.
+Note: switching to '3ee1a5262c5b4dc2ba118b7cb1ed0ba842d3b07b'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+sarang@sarang:~/telecom-control-panel-api/free5gc$ cd gtp5g
+sarang@sarang:~/telecom-control-panel-api/free5gc/gtp5g$ s
+s: command not found
+sarang@sarang:~/telecom-control-panel-api/free5gc/gtp5g$ ls
+include  LICENSE  Makefile  README.md  src
+sarang@sarang:~/telecom-control-panel-api/free5gc/gtp5g$ make clean && make
+make -C /lib/modules/6.8.0-106-generic/build M=/home/sarang/telecom-control-panel-api/free5gc/gtp5g clean
+make[1]: Entering directory '/usr/src/linux-headers-6.8.0-106-generic'
+make[1]: Leaving directory '/usr/src/linux-headers-6.8.0-106-generic'
+make -C /lib/modules/6.8.0-106-generic/build M=/home/sarang/telecom-control-panel-api/free5gc/gtp5g modules
+make[1]: Entering directory '/usr/src/linux-headers-6.8.0-106-generic'
+warning: the compiler differs from the one used to build the kernel
+  The kernel was built by: x86_64-linux-gnu-gcc-12 (Ubuntu 12.3.0-1ubuntu1~22.04.3) 12.3.0
+  You are using:           gcc-12 (Ubuntu 12.3.0-1ubuntu1~22.04.3) 12.3.0
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/gtp5g.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/log.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/util.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/gtpu/dev.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/gtpu/encap.o
+/home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/gtpu/encap.c:530:6: warning: no previous prototype for ‘increment_and_check_counter’ [-Wmissing-prototypes]
+  530 | bool increment_and_check_counter(struct VolumeMeasurement *volmeasure, struct Volume *volume, u64 vol, bool uplink, bool mnop){
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/gtpu/encap.c:571:5: warning: no previous prototype for ‘update_urr_counter_and_send_report’ [-Wmissing-prototypes]
+  571 | int update_urr_counter_and_send_report(struct pdr *pdr, struct far *far, u64 vol, u64 vol_mbqe, bool uplink) {
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/gtpu/hash.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/gtpu/link.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/gtpu/net.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/gtpu/pktinfo.o
+/home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/gtpu/pktinfo.c:16:5: warning: no previous prototype for ‘network_and_transport_header_len’ [-Wmissing-prototypes]
+   16 | u64 network_and_transport_header_len(struct sk_buff *skb) {
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/gtpu/pktinfo.c:129:16: warning: no previous prototype for ‘ip4_find_route_simple’ [-Wmissing-prototypes]
+  129 | struct rtable *ip4_find_route_simple(struct sk_buff *skb,
+      |                ^~~~~~~~~~~~~~~~~~~~~
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/gtpu/trTCM.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/genl/genl.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/genl/genl_version.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/genl/genl_pdr.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/genl/genl_far.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/genl/genl_qer.o
+/home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/genl/genl_qer.c:297:5: warning: no previous prototype for ‘concat_bit_rate’ [-Wmissing-prototypes]
+  297 | u64 concat_bit_rate(u32 highbit, u8 lowbit) {
+      |     ^~~~~~~~~~~~~~~
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/genl/genl_urr.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/genl/genl_report.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/genl/genl_bar.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/pfcp/api_version.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/pfcp/pdr.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/pfcp/far.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/pfcp/qer.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/pfcp/urr.o
+/home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/pfcp/urr.c:12:6: warning: no previous prototype for ‘seid_urr_id_to_hex_str’ [-Wmissing-prototypes]
+   12 | void seid_urr_id_to_hex_str(u64 seid_int, u32 urr_id, char *buff)
+      |      ^~~~~~~~~~~~~~~~~~~~~~
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/pfcp/bar.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/pfcp/seid.o
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/src/proc.o
+  LD [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/gtp5g.o
+  MODPOST /home/sarang/telecom-control-panel-api/free5gc/gtp5g/Module.symvers
+  CC [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/gtp5g.mod.o
+  LD [M]  /home/sarang/telecom-control-panel-api/free5gc/gtp5g/gtp5g.ko
+  BTF [M] /home/sarang/telecom-control-panel-api/free5gc/gtp5g/gtp5g.ko
+Skipping BTF generation for /home/sarang/telecom-control-panel-api/free5gc/gtp5g/gtp5g.ko due to unavailability of vmlinux
+make[1]: Leaving directory '/usr/src/linux-headers-6.8.0-106-generic'
+sarang@sarang:~/telecom-control-panel-api/free5gc/gtp5g$ sudo make install
+cp gtp5g.ko /lib/modules/6.8.0-106-generic/kernel/drivers/net
+modprobe udp_tunnel
+/sbin/depmod -a
+modprobe gtp5g
+echo "gtp5g" > /etc/modules-load.d/gtp5g.conf
+sarang@sarang:~/telecom-control-panel-api/free5gc/gtp5g$ lsmod | grep gtp5g
+gtp5g                 151552  0
+udp_tunnel             32768  2 gtp5g,vxlan
+sarang@sarang:~/telecom-control-panel-api/free5gc/gtp5g$ sudo snap install microk8s --classic --channel=1.28/stable
+snap "microk8s" is already installed, see 'snap help refresh'
+sarang@sarang:~/telecom-control-panel-api/free5gc/gtp5g$ sudo snap install kubectl --classic
+kubectl 1.35.4 from Canonical** installed
+sarang@sarang:~/telecom-control-panel-api/free5gc/gtp5g$ sudo snap install helm --classic
+
+
+
+helm 4.1.3 from Snapcrafters* installed
+sarang@sarang:~/telecom-control-panel-api/free5gc/gtp5g$ cd ../
+sarang@sarang:~/telecom-control-panel-api/free5gc$ sudo groupadd microk8s 2>/dev/null || true
+sarang@sarang:~/telecom-control-panel-api/free5gc$ sudo usermod -aG microk8s sarang
+sarang@sarang:~/telecom-control-panel-api/free5gc$ newgrp microk8s
+sarang@sarang:~/telecom-control-panel-api/free5gc$
+sarang@sarang:~/telecom-control-panel-api/free5gc$
+sarang@sarang:~/telecom-control-panel-api/free5gc$ mkdir -p ~/.kube
+sarang@sarang:~/telecom-control-panel-api/free5gc$ chmod 0700 ~/.kube
+sarang@sarang:~/telecom-control-panel-api/free5gc$ microk8s config > ~/.kube/config
+sarang@sarang:~/telecom-control-panel-api/free5gc$
+sarang@sarang:~/telecom-control-panel-api/free5gc$
+sarang@sarang:~/telecom-control-panel-api/free5gc$ microk8s status --wait-ready
+microk8s is running
+high-availability: no
+  datastore endpoints:
+    127.0.0.1:12379
+addons:
+  enabled:
+    dns                  # (core) CoreDNS
+    helm                 # (core) Helm - the package manager for Kubernetes
+    helm3                # (core) Helm 3 - the package manager for Kubernetes
+    metrics-server       # (core) K8s Metrics Server for API access to service metrics
+  disabled:
+    cert-manager         # (core) Cloud native certificate management
+    cis-hardening        # (core) Apply CIS K8s hardening
+    community            # (core) The community addons repository
+    dashboard            # (core) The Kubernetes dashboard
+    gpu                  # (core) Alias to nvidia add-on
+    ha-cluster           # (core) Configure high availability on the current node
+    host-access          # (core) Allow Pods connecting to Host services smoothly
+    hostpath-storage     # (core) Storage class; allocates storage from host directory
+    ingress              # (core) Ingress controller for external access
+    kube-ovn             # (core) An advanced network fabric for Kubernetes
+    mayastor             # (core) OpenEBS MayaStor
+    metallb              # (core) Loadbalancer for your Kubernetes cluster
+    minio                # (core) MinIO object storage
+    nvidia               # (core) NVIDIA hardware (GPU and network) support
+    observability        # (core) A lightweight observability stack for logs, traces and metrics
+    prometheus           # (core) Prometheus operator for monitoring and logging
+    rbac                 # (core) Role-Based Access Control for authorisation
+    registry             # (core) Private image registry exposed on localhost:32000
+    rook-ceph            # (core) Distributed Ceph storage using Rook
+    storage              # (core) Alias to hostpath-storage add-on, deprecated
+sarang@sarang:~/telecom-control-panel-api/free5gc$ microk8s kubectl get nodes
+NAME     STATUS   ROLES    AGE     VERSION
+sarang   Ready    <none>   7d20h   v1.33.9
+sarang@sarang:~/telecom-control-panel-api/free5gc$ kubectl get nodes
+NAME     STATUS   ROLES    AGE     VERSION
+sarang   Ready    <none>   7d20h   v1.33.9
+sarang@sarang:~/telecom-control-panel-api/free5gc$ cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-iptables = 1
+net.bridge.bridge-nf-call-ip6tables = 1
+net.ipv4.ip_forward = 1
+EOF
+
+sudo sysctl --system
+net.bridge.bridge-nf-call-iptables = 1
+net.bridge.bridge-nf-call-ip6tables = 1
+net.ipv4.ip_forward = 1
+* Applying /etc/sysctl.d/10-console-messages.conf ...
+kernel.printk = 4 4 1 7
+* Applying /etc/sysctl.d/10-ipv6-privacy.conf ...
+net.ipv6.conf.all.use_tempaddr = 2
+net.ipv6.conf.default.use_tempaddr = 2
+* Applying /etc/sysctl.d/10-kernel-hardening.conf ...
+kernel.kptr_restrict = 1
+* Applying /etc/sysctl.d/10-magic-sysrq.conf ...
+kernel.sysrq = 176
+* Applying /etc/sysctl.d/10-microk8s.conf ...
+fs.aio-max-nr = 1048576
+fs.inotify.max_user_instances = 1024
+* Applying /etc/sysctl.d/10-network-security.conf ...
+net.ipv4.conf.default.rp_filter = 2
+net.ipv4.conf.all.rp_filter = 2
+* Applying /etc/sysctl.d/10-ptrace.conf ...
+kernel.yama.ptrace_scope = 1
+* Applying /etc/sysctl.d/10-zeropage.conf ...
+vm.mmap_min_addr = 65536
+* Applying /usr/lib/sysctl.d/30-tracker.conf ...
+fs.inotify.max_user_watches = 65536
+* Applying /usr/lib/sysctl.d/50-bubblewrap.conf ...
+kernel.unprivileged_userns_clone = 1
+* Applying /usr/lib/sysctl.d/50-default.conf ...
+kernel.core_uses_pid = 1
+net.ipv4.conf.default.rp_filter = 2
+net.ipv4.conf.default.accept_source_route = 0
+sysctl: setting key "net.ipv4.conf.all.accept_source_route": Invalid argument
+net.ipv4.conf.default.promote_secondaries = 1
+sysctl: setting key "net.ipv4.conf.all.promote_secondaries": Invalid argument
+net.ipv4.ping_group_range = 0 2147483647
+net.core.default_qdisc = fq_codel
+fs.protected_hardlinks = 1
+fs.protected_symlinks = 1
+fs.protected_regular = 1
+fs.protected_fifos = 1
+* Applying /usr/lib/sysctl.d/50-pid-max.conf ...
+kernel.pid_max = 4194304
+* Applying /usr/lib/sysctl.d/99-protect-links.conf ...
+fs.protected_fifos = 1
+fs.protected_hardlinks = 1
+fs.protected_regular = 2
+fs.protected_symlinks = 1
+* Applying /etc/sysctl.d/99-sysctl.conf ...
+fs.inotify.max_user_watches = 1048576
+* Applying /etc/sysctl.d/k8s.conf ...
+net.bridge.bridge-nf-call-iptables = 1
+net.bridge.bridge-nf-call-ip6tables = 1
+net.ipv4.ip_forward = 1
+* Applying /etc/sysctl.conf ...
+fs.inotify.max_user_watches = 1048576
+sarang@sarang:~/telecom-control-panel-api/free5gc$ sudo vi /var/snap/microk8s/current/args/cni-network/cni.yaml
+sarang@sarang:~/telecom-control-panel-api/free5gc$ cd ../../
+sarang@sarang:~$ cd /var/snap/microk8s/current/
+args/              certs-backup/      inspection-report/ opt/               var/
+certs/             credentials/       .kube/             tmp/
+sarang@sarang:~$ cd /var/snap/microk8s/current/args/cni-network/
+sarang@sarang:/var/snap/microk8s/current/args/cni-network$ llss
+Command 'llss' not found, did you mean:
+  command 'less' from deb less (590-1ubuntu0.22.04.3)
+Try: sudo apt install <deb name>
+sarang@sarang:/var/snap/microk8s/current/args/cni-network$ ls
+00-multus.conf  flannel.conflist  multus.d
+sarang@sarang:/var/snap/microk8s/current/args/cni-network$ sysctl net.ipv4.ip_forward
+net.ipv4.ip_forward = 1
+sarang@sarang:/var/snap/microk8s/current/args/cni-network$ sysctl net.bridge.bridge-nf-call-iptables
+net.bridge.bridge-nf-call-iptables = 1
+sarang@sarang:/var/snap/microk8s/current/args/cni-network$ cd ../../../../
+sarang@sarang:/var/snap$ cd ../../
+sarang@sarang:/$ c ~/te
+telecom-control-panel-api/ test.py
+sarang@sarang:/$ c ~/telecom-control-panel-api/
+amfpod details successfully fetched via fastapi.jpg  logs_10April_2026.txt
+Dockerfile                                           .logs_10april_2026.txt.swp
+.dockerignore                                        maingetpods.py
+free5gc/                                             __pycache__/
+getamfpod.py                                         README.md
+.git/                                                requirements.txt
+.gitignore
+sarang@sarang:/$ c ~/telecom-control-panel-api/free5gc/
+c: command not found
+sarang@sarang:/$ cd ~/telecom-control-panel-api/free5gc/
+sarang@sarang:~/telecom-control-panel-api/free5gc$ echo '--allowed-unsafe-sysctls "net.ipv4.ip_forward"' | sudo tee -a /var/snap/microk8s/current/args/kubelet
+--allowed-unsafe-sysctls "net.ipv4.ip_forward"
+sarang@sarang:~/telecom-control-panel-api/free5gc$ microk8s stop && microk8s start
+Stopped.
+Stopped.
+sarang@sarang:~/telecom-control-panel-api/free5gc$ microk8s status
+microk8s is running
+high-availability: no
+  datastore endpoints:
+    127.0.0.1:12379
+addons:
+  enabled:
+    dns                  # (core) CoreDNS
+    helm                 # (core) Helm - the package manager for Kubernetes
+    helm3                # (core) Helm 3 - the package manager for Kubernetes
+    metrics-server       # (core) K8s Metrics Server for API access to service metrics
+  disabled:
+    cert-manager         # (core) Cloud native certificate management
+    cis-hardening        # (core) Apply CIS K8s hardening
+    community            # (core) The community addons repository
+    dashboard            # (core) The Kubernetes dashboard
+    gpu                  # (core) Alias to nvidia add-on
+    ha-cluster           # (core) Configure high availability on the current node
+    host-access          # (core) Allow Pods connecting to Host services smoothly
+    hostpath-storage     # (core) Storage class; allocates storage from host directory
+    ingress              # (core) Ingress controller for external access
+    kube-ovn             # (core) An advanced network fabric for Kubernetes
+    mayastor             # (core) OpenEBS MayaStor
+    metallb              # (core) Loadbalancer for your Kubernetes cluster
+    minio                # (core) MinIO object storage
+    nvidia               # (core) NVIDIA hardware (GPU and network) support
+    observability        # (core) A lightweight observability stack for logs, traces and metrics
+    prometheus           # (core) Prometheus operator for monitoring and logging
+    rbac                 # (core) Role-Based Access Control for authorisation
+    registry             # (core) Private image registry exposed on localhost:32000
+    rook-ceph            # (core) Distributed Ceph storage using Rook
+    storage              # (core) Alias to hostpath-storage add-on, deprecated
+sarang@sarang:~/telecom-control-panel-api/free5gc$ microk8s enable community
+Infer repository core for addon community
+Cloning into '/var/snap/microk8s/common/addons/community'...
+done.
+Community repository is now enabled
+sarang@sarang:~/telecom-control-panel-api/free5gc$ microk8s enable multus
+Infer repository community for addon multus
+Addon community/multus is already enabled
+sarang@sarang:~/telecom-control-panel-api/free5gc$ microk8s enable dns
+Infer repository core for addon dns
+Addon core/dns is already enabled
+sarang@sarang:~/telecom-control-panel-api/free5gc$ microk8s enable hostpath-storage
+
+
+Infer repository core for addon hostpath-storage
+Enabling default storage class.
+WARNING: Hostpath storage is not suitable for production environments.
+         A hostpath volume can grow beyond the size limit set in the volume claim manifest.
+
+
+
+deployment.apps/hostpath-provisioner created
+storageclass.storage.k8s.io/microk8s-hostpath created
+serviceaccount/microk8s-hostpath created
+clusterrole.rbac.authorization.k8s.io/microk8s-hostpath created
+clusterrolebinding.rbac.authorization.k8s.io/microk8s-hostpath created
+Storage will be available soon.
+sarang@sarang:~/telecom-control-panel-api/free5gc$ kubectl get nodes
+NAME     STATUS   ROLES    AGE     VERSION
+sarang   Ready    <none>   7d20h   v1.33.9
+sarang@sarang:~/telecom-control-panel-api/free5gc$ mkdir -p ~/free5gc-storage/mongo
+sarang@sarang:~/telecom-control-panel-api/free5gc$ mkdir -p ~/free5gc-storage/cert
+sarang@sarang:~/telecom-control-panel-api/free5gc$ cd .
+sarang@sarang:~/telecom-control-panel-api/free5gc$ cd ../
+sarang@sarang:~/telecom-control-panel-api$ cd ../
+sarang@sarang:~$ ls

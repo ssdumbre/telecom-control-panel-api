@@ -1,0 +1,2095 @@
+    ┌──────────────────────────────────────────────────────────────────────┐
+    │                 • MobaXterm Personal Edition v25.3 •                 │
+    │               (SSH client, X server and network tools)               │
+    │                                                                      │
+    │ ⮞ SSH session to sarang@192.168.39.54                                │
+    │   • Direct SSH      :  ✓                                             │
+    │   • SSH compression :  ✓                                             │
+    │   • SSH-browser     :  ✓                                             │
+    │   • X11-forwarding  :  ✓  (remote display is forwarded through SSH)  │
+    │                                                                      │
+    │ ⮞ For more info, ctrl+click on help or visit our website.            │
+    └──────────────────────────────────────────────────────────────────────┘
+
+Welcome to Ubuntu 22.04.2 LTS (GNU/Linux 6.8.0-106-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+ * Introducing Expanded Security Maintenance for Applications.
+   Receive updates to over 25,000 software packages with your
+   Ubuntu Pro subscription. Free for personal use.
+
+     https://ubuntu.com/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+New release '24.04.4 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+Last login: Sat Apr 18 15:56:54 2026 from 192.168.39.201
+rrrsarang@sarang:~$ kubectl get pods -n free5gc
+
+
+^C
+sarang@sarang:~$ ^C
+sarang@sarang:~$ kubectl get pods -n free5gc
+The connection to the server 127.0.0.1:16443 was refused - did you specify the right host or port?
+sarang@sarang:~$ microk8s config > ~/.kube/config
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS              RESTARTS       AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1            1              28m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1            1              28m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1            1              28m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1            1              28m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1            1              28m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1            1              28m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1            1              28m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1            1              28m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1            1              28m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1            1              28m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1            1              28m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5           0/1     CrashLoopBackOff    9 (28s ago)    28m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-5zxjv         0/1     Error               11 (40s ago)   28m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-tsmkj           0/1     CrashLoopBackOff    10 (21s ago)   28m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1            1              28m
+mongodb-0                                                 0/1     ContainerCreating   0              22m
+sarang@sarang:~$ kubectl describe po mongodb-0
+Error from server (NotFound): pods "mongodb-0" not found
+sarang@sarang:~$ kubectl describe po free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8 -n free5gc
+Name:             free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8
+Namespace:        free5gc
+Priority:         0
+Service Account:  default
+Node:             sarang/192.168.39.54
+Start Time:       Sat, 18 Apr 2026 15:32:41 +0530
+Labels:           app.kubernetes.io/instance=free5gc-helm
+                  app.kubernetes.io/name=free5gc-webui
+                  nf=webui
+                  pod-template-hash=74bf65ddd
+                  project=free5gc
+Annotations:      checksum/config: 301a1917504b51355194e2f33760900258d4dfa4cd5a98112b0a2e0f0a3b3eea
+                  k8s.v1.cni.cncf.io/network-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.57"
+                        ],
+                        "mac": "02:b8:5a:69:15:41",
+                        "default": true,
+                        "dns": {}
+                    }]
+                  k8s.v1.cni.cncf.io/networks-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.57"
+                        ],
+                        "mac": "02:b8:5a:69:15:41",
+                        "default": true,
+                        "dns": {}
+                    }]
+Status:           Pending
+IP:               10.1.8.57
+IPs:
+  IP:           10.1.8.57
+Controlled By:  ReplicaSet/free5gc-helm-free5gc-webui-webui-74bf65ddd
+Init Containers:
+  wait-mongo:
+    Container ID:  containerd://69241ba8b7b8b78a156a97bbddd7e5f543d0c441d72086b866f9af237de25ca4
+    Image:         busybox:1.32.0
+    Image ID:      docker.io/library/busybox@sha256:bde48e1751173b709090c2539fdf12d6ba64e88ec7a4301591227ce925f3c678
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      sh
+      -c
+      until nc -z $DEPENDENCIES; do echo waiting for the MongoDB; sleep 2; done;
+    State:          Running
+      Started:      Sat, 18 Apr 2026 15:54:01 +0530
+    Ready:          False
+    Restart Count:  1
+    Environment:
+      DEPENDENCIES:  mongodb:27017
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-rvmnc (ro)
+Containers:
+  webui:
+    Container ID:
+    Image:         free5gc/webui:v4.2.1
+    Image ID:
+    Ports:         5000/TCP, 2122/TCP
+    Host Ports:    0/TCP, 0/TCP
+    Command:
+      ./webui
+    Args:
+      -c
+      ./config/webuicfg.yaml
+    State:          Waiting
+      Reason:       PodInitializing
+    Ready:          False
+    Restart Count:  0
+    Requests:
+      cpu:      100m
+      memory:   128Mi
+    Liveness:   http-get http://:5000/ delay=120s timeout=10s period=10s #success=1 #failure=3
+    Readiness:  http-get http://:5000/ delay=0s timeout=1s period=1s #success=1 #failure=40
+    Environment:
+      GIN_MODE:  release
+    Mounts:
+      /free5gc/cert from free5gc-helm-free5gc-webui-cert-pvc (rw)
+      /free5gc/config/ from webui-volume (rw)
+      /free5gc/config/TLS from webui-volume-empty (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-rvmnc (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True
+  Initialized                 False
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  webui-volume:
+    Type:           Projected (a volume that contains injected data from multiple sources)
+    ConfigMapName:  webui-configmap
+    Optional:       false
+  webui-volume-empty:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  free5gc-helm-free5gc-webui-cert-pvc:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  cert-pvc
+    ReadOnly:   false
+  kube-api-access-rvmnc:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:                      <none>
+sarang@sarang:~$ kubectl describe po mongodb-0 -n free5gc
+Name:             mongodb-0
+Namespace:        free5gc
+Priority:         0
+Service Account:  mongodb
+Node:             sarang/192.168.39.54
+Start Time:       Sat, 18 Apr 2026 15:38:05 +0530
+Labels:           app.kubernetes.io/component=mongodb
+                  app.kubernetes.io/instance=free5gc-helm
+                  app.kubernetes.io/managed-by=Helm
+                  app.kubernetes.io/name=mongodb
+                  app.kubernetes.io/version=7.0.9
+                  apps.kubernetes.io/pod-index=0
+                  controller-revision-hash=mongodb-778b765654
+                  helm.sh/chart=mongodb-15.6.0
+                  statefulset.kubernetes.io/pod-name=mongodb-0
+Annotations:      k8s.v1.cni.cncf.io/network-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.65"
+                        ],
+                        "mac": "12:d4:16:fd:fb:68",
+                        "default": true,
+                        "dns": {}
+                    }]
+                  k8s.v1.cni.cncf.io/networks-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.65"
+                        ],
+                        "mac": "12:d4:16:fd:fb:68",
+                        "default": true,
+                        "dns": {}
+                    }]
+Status:           Pending
+IP:               10.1.8.65
+IPs:
+  IP:           10.1.8.65
+Controlled By:  StatefulSet/mongodb
+Containers:
+  mongodb:
+    Container ID:
+    Image:           docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4
+    Image ID:
+    Port:            27017/TCP
+    Host Port:       0/TCP
+    SeccompProfile:  RuntimeDefault
+    State:           Waiting
+      Reason:        ContainerCreating
+    Ready:           False
+    Restart Count:   0
+    Limits:
+      cpu:                750m
+      ephemeral-storage:  1Gi
+      memory:             768Mi
+    Requests:
+      cpu:                500m
+      ephemeral-storage:  50Mi
+      memory:             512Mi
+    Liveness:             exec [/bitnami/scripts/ping-mongodb.sh] delay=30s timeout=10s period=20s #success=1 #failure=6
+    Readiness:            exec [/bitnami/scripts/readiness-probe.sh] delay=5s timeout=5s period=10s #success=1 #failure=6
+    Environment:
+      BITNAMI_DEBUG:                    false
+      ALLOW_EMPTY_PASSWORD:             yes
+      MONGODB_SYSTEM_LOG_VERBOSITY:     0
+      MONGODB_DISABLE_SYSTEM_LOG:       no
+      MONGODB_DISABLE_JAVASCRIPT:       no
+      MONGODB_ENABLE_JOURNAL:           yes
+      MONGODB_PORT_NUMBER:              27017
+      MONGODB_ENABLE_IPV6:              no
+      MONGODB_ENABLE_DIRECTORY_PER_DB:  no
+    Mounts:
+      /.mongodb from empty-dir (rw,path="mongosh-home")
+      /bitnami/mongodb/data/db/ from datadir (rw)
+      /bitnami/scripts from common-scripts (rw)
+      /opt/bitnami/mongodb/conf from empty-dir (rw,path="app-conf-dir")
+      /opt/bitnami/mongodb/logs from empty-dir (rw,path="app-logs-dir")
+      /opt/bitnami/mongodb/tmp from empty-dir (rw,path="app-tmp-dir")
+      /tmp from empty-dir (rw,path="tmp-dir")
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True
+  Initialized                 True
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  datadir:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  datadir-mongodb-0
+    ReadOnly:   false
+  empty-dir:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  common-scripts:
+    Type:        ConfigMap (a volume populated by a ConfigMap)
+    Name:        mongodb-common-scripts
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason   Age    From     Message
+  ----    ------   ----   ----     -------
+  Normal  Pulling  2m39s  kubelet  Pulling image "docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4"
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS              RESTARTS         AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1            1                48m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1            1                48m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1            1                48m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1            1                48m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1            1                48m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1            1                48m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1            1                48m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1            1                48m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1            1                48m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1            1                48m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1            1                48m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5           0/1     CrashLoopBackOff    15 (3m16s ago)   48m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-5zxjv         0/1     CrashLoopBackOff    17 (2m49s ago)   48m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-tsmkj           0/1     CrashLoopBackOff    16 (3m19s ago)   48m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1            1                48m
+mongodb-0                                                 0/1     ContainerCreating   0                42m
+sarang@sarang:~$ kubectl get pods -n free5gc -w
+NAME                                                      READY   STATUS             RESTARTS         AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1           1                48m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1           1                48m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1           1                48m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1           1                48m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1           1                48m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1           1                48m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1           1                48m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1           1                48m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1           1                48m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1           1                48m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1           1                48m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5           0/1     CrashLoopBackOff   15 (4m6s ago)    48m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-5zxjv         0/1     CrashLoopBackOff   17 (3m39s ago)   48m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-tsmkj           0/1     CrashLoopBackOff   16 (4m9s ago)    48m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1           1                48m
+mongodb-0                                                 0/1     Terminating        0                43m
+^Csarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS             RESTARTS         AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5           0/1     CrashLoopBackOff   15 (4m45s ago)   49m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-5zxjv         0/1     CrashLoopBackOff   17 (4m18s ago)   49m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-tsmkj           0/1     CrashLoopBackOff   16 (4m48s ago)   49m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1           1                49m
+mongodb-0                                                 0/1     Terminating        0                44m
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS             RESTARTS         AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5           0/1     CrashLoopBackOff   15 (4m49s ago)   49m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-5zxjv         0/1     CrashLoopBackOff   17 (4m22s ago)   49m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-tsmkj           0/1     CrashLoopBackOff   16 (4m52s ago)   49m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1           1                49m
+mongodb-0                                                 0/1     Terminating        0                44m
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS             RESTARTS         AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5           0/1     CrashLoopBackOff   15 (4m54s ago)   49m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-5zxjv         0/1     CrashLoopBackOff   17 (4m27s ago)   49m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-tsmkj           0/1     CrashLoopBackOff   16 (4m57s ago)   49m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1           1                49m
+mongodb-0                                                 0/1     Terminating        0                44m
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS             RESTARTS         AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1           1                49m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5           0/1     CrashLoopBackOff   15 (5m9s ago)    49m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-5zxjv         0/1     CrashLoopBackOff   17 (4m42s ago)   49m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-tsmkj           0/1     CrashLoopBackOff   16 (5m12s ago)   49m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1           1                49m
+mongodb-0                                                 0/1     Terminating        0                44m
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS             RESTARTS         AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5           0/1     Completed          16 (5m14s ago)   50m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-5zxjv         0/1     CrashLoopBackOff   17 (4m47s ago)   50m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-tsmkj           1/1     Running            17 (5m17s ago)   50m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1           1                50m
+mongodb-0                                                 0/1     Terminating        0                44m
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS             RESTARTS         AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5           0/1     Completed          16 (5m19s ago)   50m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-5zxjv         0/1     CrashLoopBackOff   17 (4m52s ago)   50m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-tsmkj           0/1     Error              17 (5m22s ago)   50m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1           1                50m
+mongodb-0                                                 0/1     Terminating        0                44m
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS             RESTARTS         AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5           0/1     Completed          16 (5m24s ago)   50m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-5zxjv         0/1     CrashLoopBackOff   17 (4m57s ago)   50m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-tsmkj           0/1     Error              17 (5m27s ago)   50m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1           1                50m
+mongodb-0                                                 0/1     Terminating        0                44m
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS             RESTARTS         AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5           0/1     CrashLoopBackOff   16 (16s ago)     50m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-5zxjv         0/1     CrashLoopBackOff   17 (5m1s ago)    50m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-tsmkj           0/1     Error              17 (5m31s ago)   50m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1           1                50m
+mongodb-0                                                 0/1     Terminating        0                44m
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS             RESTARTS         AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5           0/1     CrashLoopBackOff   16 (28s ago)     50m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-5zxjv         0/1     CrashLoopBackOff   17 (5m13s ago)   50m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-tsmkj           0/1     CrashLoopBackOff   17 (26s ago)     50m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1           1                50m
+mongodb-0                                                 0/1     Terminating        0                45m
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS             RESTARTS         AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5           0/1     CrashLoopBackOff   16 (31s ago)     50m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-5zxjv         0/1     CrashLoopBackOff   17 (5m16s ago)   50m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-tsmkj           0/1     CrashLoopBackOff   17 (29s ago)     50m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1           1                50m
+mongodb-0                                                 0/1     Terminating        0                45m
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS             RESTARTS         AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5           0/1     CrashLoopBackOff   16 (35s ago)     50m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-5zxjv         0/1     CrashLoopBackOff   17 (5m20s ago)   50m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-tsmkj           0/1     CrashLoopBackOff   17 (33s ago)     50m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1           1                50m
+mongodb-0                                                 0/1     Terminating        0                45m
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS             RESTARTS         AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5           0/1     CrashLoopBackOff   16 (38s ago)     50m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-5zxjv         0/1     Completed          18 (5m23s ago)   50m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-tsmkj           0/1     CrashLoopBackOff   17 (36s ago)     50m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1           1                50m
+mongodb-0                                                 0/1     Terminating        0                45m
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS             RESTARTS         AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5           0/1     CrashLoopBackOff   16 (41s ago)     50m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-5zxjv         0/1     Completed          18 (5m26s ago)   50m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-tsmkj           0/1     CrashLoopBackOff   17 (39s ago)     50m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1           1                50m
+mongodb-0                                                 0/1     Terminating        0                45m
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS             RESTARTS         AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5           0/1     CrashLoopBackOff   16 (44s ago)     50m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-5zxjv         0/1     Completed          18 (5m29s ago)   50m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-tsmkj           0/1     CrashLoopBackOff   17 (42s ago)     50m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1           1                50m
+mongodb-0                                                 0/1     Terminating        0                45m
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS             RESTARTS         AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5           0/1     CrashLoopBackOff   16 (47s ago)     50m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-5zxjv         0/1     Completed          18 (5m32s ago)   50m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-tsmkj           0/1     CrashLoopBackOff   17 (45s ago)     50m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1           1                50m
+mongodb-0                                                 0/1     Terminating        0                45m
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS             RESTARTS         AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1           1                50m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5           0/1     CrashLoopBackOff   16 (49s ago)     50m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-5zxjv         0/1     Completed          18 (5m34s ago)   50m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-tsmkj           0/1     CrashLoopBackOff   17 (47s ago)     50m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1           1                50m
+mongodb-0                                                 0/1     Terminating        0                45m
+sarang@sarang:~$ kubectl delete po free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5 -n free5gc
+pod "free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5" deleted
+sarang@sarang:~$ kubectl delete po free5gc-helm-free5gc-upf-psaupf2-8df8c594-tsmkj -n free5gc
+pod "free5gc-helm-free5gc-upf-psaupf2-8df8c594-tsmkj" deleted
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS              RESTARTS       AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1            1              52m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1            1              52m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1            1              52m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1            1              52m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1            1              52m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1            1              52m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1            1              52m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1            1              52m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1            1              52m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1            1              52m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1            1              52m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm           1/1     Running             1 (20s ago)    40s
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-5zxjv         0/1     CrashLoopBackOff    18 (91s ago)   52m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz           0/1     ContainerCreating   0              13s
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1            1              52m
+mongodb-0                                                 0/1     Terminating         0              46m
+sarang@sarang:~$ kubectl delete po free5gc-helm-free5gc-upf-psaupf1-77645d8847-5zxjv -n free5gc
+pod "free5gc-helm-free5gc-upf-psaupf1-77645d8847-5zxjv" deleted
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS              RESTARTS      AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1            1             52m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1            1             52m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1            1             52m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1            1             52m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1            1             52m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1            1             52m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1            1             52m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1            1             52m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1            1             52m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1            1             52m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1            1             52m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm           0/1     CrashLoopBackOff    2 (23s ago)   86s
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w         0/1     ContainerCreating   0             10s
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz           0/1     Completed           2 (27s ago)   59s
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1            1             52m
+mongodb-0                                                 0/1     Terminating         0             47m
+sarang@sarang:~$ kubectl describe po mongodb-0 -n free5gc
+Name:                      mongodb-0
+Namespace:                 free5gc
+Priority:                  0
+Service Account:           mongodb
+Node:                      sarang/192.168.39.54
+Start Time:                Sat, 18 Apr 2026 15:38:05 +0530
+Labels:                    app.kubernetes.io/component=mongodb
+                           app.kubernetes.io/instance=free5gc-helm
+                           app.kubernetes.io/managed-by=Helm
+                           app.kubernetes.io/name=mongodb
+                           app.kubernetes.io/version=7.0.9
+                           apps.kubernetes.io/pod-index=0
+                           controller-revision-hash=mongodb-778b765654
+                           helm.sh/chart=mongodb-15.6.0
+                           statefulset.kubernetes.io/pod-name=mongodb-0
+Annotations:               k8s.v1.cni.cncf.io/network-status:
+                             [{
+                                 "name": "microk8s-flannel-network",
+                                 "interface": "eth0",
+                                 "ips": [
+                                     "10.1.8.65"
+                                 ],
+                                 "mac": "12:d4:16:fd:fb:68",
+                                 "default": true,
+                                 "dns": {}
+                             }]
+                           k8s.v1.cni.cncf.io/networks-status:
+                             [{
+                                 "name": "microk8s-flannel-network",
+                                 "interface": "eth0",
+                                 "ips": [
+                                     "10.1.8.65"
+                                 ],
+                                 "mac": "12:d4:16:fd:fb:68",
+                                 "default": true,
+                                 "dns": {}
+                             }]
+Status:                    Terminating (lasts 3m59s)
+Termination Grace Period:  30s
+IP:                        10.1.8.65
+IPs:
+  IP:           10.1.8.65
+Controlled By:  StatefulSet/mongodb
+Containers:
+  mongodb:
+    Container ID:
+    Image:           docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4
+    Image ID:
+    Port:            27017/TCP
+    Host Port:       0/TCP
+    SeccompProfile:  RuntimeDefault
+    State:           Waiting
+      Reason:        ContainerCreating
+    Ready:           False
+    Restart Count:   0
+    Limits:
+      cpu:                750m
+      ephemeral-storage:  1Gi
+      memory:             768Mi
+    Requests:
+      cpu:                500m
+      ephemeral-storage:  50Mi
+      memory:             512Mi
+    Liveness:             exec [/bitnami/scripts/ping-mongodb.sh] delay=30s timeout=10s period=20s #success=1 #failure=6
+    Readiness:            exec [/bitnami/scripts/readiness-probe.sh] delay=5s timeout=5s period=10s #success=1 #failure=6
+    Environment:
+      BITNAMI_DEBUG:                    false
+      ALLOW_EMPTY_PASSWORD:             yes
+      MONGODB_SYSTEM_LOG_VERBOSITY:     0
+      MONGODB_DISABLE_SYSTEM_LOG:       no
+      MONGODB_DISABLE_JAVASCRIPT:       no
+      MONGODB_ENABLE_JOURNAL:           yes
+      MONGODB_PORT_NUMBER:              27017
+      MONGODB_ENABLE_IPV6:              no
+      MONGODB_ENABLE_DIRECTORY_PER_DB:  no
+    Mounts:
+      /.mongodb from empty-dir (rw,path="mongosh-home")
+      /bitnami/mongodb/data/db/ from datadir (rw)
+      /bitnami/scripts from common-scripts (rw)
+      /opt/bitnami/mongodb/conf from empty-dir (rw,path="app-conf-dir")
+      /opt/bitnami/mongodb/logs from empty-dir (rw,path="app-logs-dir")
+      /opt/bitnami/mongodb/tmp from empty-dir (rw,path="app-tmp-dir")
+      /tmp from empty-dir (rw,path="tmp-dir")
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True
+  Initialized                 True
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  datadir:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  datadir-mongodb-0
+    ReadOnly:   false
+  empty-dir:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  common-scripts:
+    Type:        ConfigMap (a volume populated by a ConfigMap)
+    Name:        mongodb-common-scripts
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:          <none>
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS             RESTARTS      AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1           1             53m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1           1             53m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1           1             53m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1           1             53m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1           1             53m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1           1             53m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1           1             53m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1           1             53m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1           1             53m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1           1             53m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1           1             53m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm           0/1     CrashLoopBackOff   3 (27s ago)   2m10s
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w         1/1     Running            2 (31s ago)   54s
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz           0/1     Completed          3 (48s ago)   103s
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1           1             53m
+mongodb-0                                                 0/1     Terminating        0             48m
+sarang@sarang:~$ kubectl describe po free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm -n free5gc
+Name:             free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm
+Namespace:        free5gc
+Priority:         0
+Service Account:  default
+Node:             sarang/192.168.39.54
+Start Time:       Sat, 18 Apr 2026 16:24:12 +0530
+Labels:           app.kubernetes.io/instance=free5gc-helm
+                  app.kubernetes.io/name=free5gc-upf
+                  nf=iupf1
+                  pod-template-hash=865c478cc9
+                  project=free5gc
+Annotations:      checksum/config: 04a47a4f09ab9abae9465da07c77096f1ef70441fe8dd710e5b97ebea9b17b4d
+                  k8s.v1.cni.cncf.io/network-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.74"
+                        ],
+                        "mac": "a6:c0:03:77:0f:33",
+                        "default": true,
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n3network-free5gc-helm-free5gc-upf",
+                        "interface": "n3",
+                        "ips": [
+                            "10.100.50.233"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n9network-free5gc-helm-free5gc-upf",
+                        "interface": "n9",
+                        "ips": [
+                            "10.100.50.225"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n4network-free5gc-helm-free5gc-upf",
+                        "interface": "n4",
+                        "ips": [
+                            "10.100.50.241"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n6network-free5gc-helm-free5gc-upf",
+                        "interface": "n6",
+                        "ips": [
+                            "10.100.100.12"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    }]
+                  k8s.v1.cni.cncf.io/networks:
+                    [ { "name": "n3network-free5gc-helm-free5gc-upf", "interface": "n3", "ips": [ "10.100.50.233/29" ], "gateway": [ "10.100.50.238" ] }, { "n...
+                  k8s.v1.cni.cncf.io/networks-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.74"
+                        ],
+                        "mac": "a6:c0:03:77:0f:33",
+                        "default": true,
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n3network-free5gc-helm-free5gc-upf",
+                        "interface": "n3",
+                        "ips": [
+                            "10.100.50.233"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n9network-free5gc-helm-free5gc-upf",
+                        "interface": "n9",
+                        "ips": [
+                            "10.100.50.225"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n4network-free5gc-helm-free5gc-upf",
+                        "interface": "n4",
+                        "ips": [
+                            "10.100.50.241"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n6network-free5gc-helm-free5gc-upf",
+                        "interface": "n6",
+                        "ips": [
+                            "10.100.100.12"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    }]
+Status:           Running
+IP:               10.1.8.74
+IPs:
+  IP:           10.1.8.74
+Controlled By:  ReplicaSet/free5gc-helm-free5gc-upf-iupf1-865c478cc9
+Containers:
+  iupf1:
+    Container ID:  containerd://402561436c54bd62a5905c5c71ea374b5011d83c34555fde70deccd55bc32825
+    Image:         free5gc/upf:v4.2.1
+    Image ID:      docker.io/free5gc/upf@sha256:197801d6781e0171d3842215db6e41a6ab83fbc92ba32ddb618b2d225a11fe5e
+    Port:          8805/UDP
+    Host Port:     0/UDP
+    Command:
+      /free5gc/config//wrapper.sh
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Sat, 18 Apr 2026 16:26:47 +0530
+      Finished:     Sat, 18 Apr 2026 16:26:48 +0530
+    Last State:     Terminated
+      Reason:       Error
+      Exit Code:    1
+      Started:      Sat, 18 Apr 2026 16:25:54 +0530
+      Finished:     Sat, 18 Apr 2026 16:25:54 +0530
+    Ready:          False
+    Restart Count:  4
+    Requests:
+      cpu:        500m
+      memory:     512Mi
+    Environment:  <none>
+    Mounts:
+      /free5gc/config/ from free5gc-helm-free5gc-upf-iupf1-volume (rw)
+      /free5gc/config/TLS from free5gc-helm-free5gc-upf-iupf1-empty-volume (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-j29pj (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True
+  Initialized                 True
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  free5gc-helm-free5gc-upf-iupf1-volume:
+    Type:           Projected (a volume that contains injected data from multiple sources)
+    ConfigMapName:  free5gc-helm-free5gc-upf-iupf1-configmap
+    Optional:       false
+  free5gc-helm-free5gc-upf-iupf1-empty-volume:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  kube-api-access-j29pj:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason          Age                  From               Message
+  ----     ------          ----                 ----               -------
+  Normal   Scheduled       2m49s                default-scheduler  Successfully assigned free5gc/free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm to sarang
+  Normal   AddedInterface  2m46s                multus             Add eth0 [10.1.8.74/24] from microk8s-flannel-network
+  Normal   AddedInterface  2m46s                multus             Add n3 [10.100.50.233/29] from free5gc/n3network-free5gc-helm-free5gc-upf
+  Normal   AddedInterface  2m46s                multus             Add n9 [10.100.50.225/29] from free5gc/n9network-free5gc-helm-free5gc-upf
+  Normal   AddedInterface  2m45s                multus             Add n4 [10.100.50.241/29] from free5gc/n4network-free5gc-helm-free5gc-upf
+  Normal   AddedInterface  2m45s                multus             Add n6 [10.100.100.12/24] from free5gc/n6network-free5gc-helm-free5gc-upf
+  Normal   Pulled          2m31s                kubelet            Successfully pulled image "free5gc/upf:v4.2.1" in 13.518s (13.518s including waiting). Image size: 74756253 bytes.
+  Normal   Pulled          2m17s                kubelet            Successfully pulled image "free5gc/upf:v4.2.1" in 11.768s (11.768s including waiting). Image size: 74756253 bytes.
+  Normal   Pulled          109s                 kubelet            Successfully pulled image "free5gc/upf:v4.2.1" in 4.743s (4.744s including waiting). Image size: 74756253 bytes.
+  Normal   Pulled          71s                  kubelet            Successfully pulled image "free5gc/upf:v4.2.1" in 7.674s (7.791s including waiting). Image size: 74756253 bytes.
+  Normal   Pulling         21s (x5 over 2m44s)  kubelet            Pulling image "free5gc/upf:v4.2.1"
+  Normal   Pulled          16s                  kubelet            Successfully pulled image "free5gc/upf:v4.2.1" in 5.445s (5.445s including waiting). Image size: 74756253 bytes.
+  Normal   Created         15s (x5 over 2m30s)  kubelet            Created container: iupf1
+  Normal   Started         13s (x5 over 2m30s)  kubelet            Started container iupf1
+  Warning  BackOff         11s (x7 over 2m9s)   kubelet            Back-off restarting failed container iupf1 in pod free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm_free5gc(ebe64479-7d7b-4fb9-b1fb-dcbbad0c3a0a)
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS             RESTARTS      AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1           1             55m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1           1             55m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1           1             55m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1           1             55m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1           1             55m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1           1             55m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1           1             55m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1           1             55m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1           1             55m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1           1             55m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1           1             55m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm           0/1     CrashLoopBackOff   4 (70s ago)   3m47s
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w         0/1     CrashLoopBackOff   4 (19s ago)   2m31s
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz           0/1     CrashLoopBackOff   4 (58s ago)   3m20s
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1           1             55m
+mongodb-0                                                 0/1     Terminating        0             49m
+sarang@sarang:~$ kubectl delete pod mongodb-0 -n free5gc --force --grace-period=0
+Warning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.
+pod "mongodb-0" force deleted
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS              RESTARTS      AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1            1             55m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1            1             55m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1            1             55m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1            1             55m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1            1             55m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1            1             55m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1            1             55m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1            1             55m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1            1             55m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1            1             55m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1            1             55m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm           0/1     CrashLoopBackOff    4 (87s ago)   4m4s
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w         0/1     CrashLoopBackOff    4 (36s ago)   2m48s
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz           0/1     CrashLoopBackOff    4 (75s ago)   3m37s
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1            1             55m
+mongodb-0                                                 0/1     ContainerCreating   0             7s
+sarang@sarang:~$ kubectl describe po mongodb-0 -n free5gc
+Name:             mongodb-0
+Namespace:        free5gc
+Priority:         0
+Service Account:  mongodb
+Node:             sarang/192.168.39.54
+Start Time:       Sat, 18 Apr 2026 16:28:09 +0530
+Labels:           app.kubernetes.io/component=mongodb
+                  app.kubernetes.io/instance=free5gc-helm
+                  app.kubernetes.io/managed-by=Helm
+                  app.kubernetes.io/name=mongodb
+                  app.kubernetes.io/version=7.0.9
+                  apps.kubernetes.io/pod-index=0
+                  controller-revision-hash=mongodb-778b765654
+                  helm.sh/chart=mongodb-15.6.0
+                  statefulset.kubernetes.io/pod-name=mongodb-0
+Annotations:      k8s.v1.cni.cncf.io/network-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.77"
+                        ],
+                        "mac": "da:46:4d:33:fa:8e",
+                        "default": true,
+                        "dns": {}
+                    }]
+                  k8s.v1.cni.cncf.io/networks-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.77"
+                        ],
+                        "mac": "da:46:4d:33:fa:8e",
+                        "default": true,
+                        "dns": {}
+                    }]
+Status:           Pending
+IP:
+IPs:              <none>
+Controlled By:    StatefulSet/mongodb
+Containers:
+  mongodb:
+    Container ID:
+    Image:           docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4
+    Image ID:
+    Port:            27017/TCP
+    Host Port:       0/TCP
+    SeccompProfile:  RuntimeDefault
+    State:           Waiting
+      Reason:        ContainerCreating
+    Ready:           False
+    Restart Count:   0
+    Limits:
+      cpu:                750m
+      ephemeral-storage:  1Gi
+      memory:             768Mi
+    Requests:
+      cpu:                500m
+      ephemeral-storage:  50Mi
+      memory:             512Mi
+    Liveness:             exec [/bitnami/scripts/ping-mongodb.sh] delay=30s timeout=10s period=20s #success=1 #failure=6
+    Readiness:            exec [/bitnami/scripts/readiness-probe.sh] delay=5s timeout=5s period=10s #success=1 #failure=6
+    Environment:
+      BITNAMI_DEBUG:                    false
+      ALLOW_EMPTY_PASSWORD:             yes
+      MONGODB_SYSTEM_LOG_VERBOSITY:     0
+      MONGODB_DISABLE_SYSTEM_LOG:       no
+      MONGODB_DISABLE_JAVASCRIPT:       no
+      MONGODB_ENABLE_JOURNAL:           yes
+      MONGODB_PORT_NUMBER:              27017
+      MONGODB_ENABLE_IPV6:              no
+      MONGODB_ENABLE_DIRECTORY_PER_DB:  no
+    Mounts:
+      /.mongodb from empty-dir (rw,path="mongosh-home")
+      /bitnami/mongodb/data/db/ from datadir (rw)
+      /bitnami/scripts from common-scripts (rw)
+      /opt/bitnami/mongodb/conf from empty-dir (rw,path="app-conf-dir")
+      /opt/bitnami/mongodb/logs from empty-dir (rw,path="app-logs-dir")
+      /opt/bitnami/mongodb/tmp from empty-dir (rw,path="app-tmp-dir")
+      /tmp from empty-dir (rw,path="tmp-dir")
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   False
+  Initialized                 True
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  datadir:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  datadir-mongodb-0
+    ReadOnly:   false
+  empty-dir:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  common-scripts:
+    Type:        ConfigMap (a volume populated by a ConfigMap)
+    Name:        mongodb-common-scripts
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason          Age   From               Message
+  ----    ------          ----  ----               -------
+  Normal  Scheduled       38s   default-scheduler  Successfully assigned free5gc/mongodb-0 to sarang
+  Normal  AddedInterface  37s   multus             Add eth0 [10.1.8.77/24] from microk8s-flannel-network
+  Normal  Pulling         35s   kubelet            Pulling image "docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4"
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS              RESTARTS      AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1            1             56m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1            1             56m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1            1             56m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1            1             56m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1            1             56m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1            1             56m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1            1             56m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1            1             56m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1            1             56m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1            1             56m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1            1             56m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm           0/1     CrashLoopBackOff    5 (37s ago)   5m6s
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w         0/1     CrashLoopBackOff    4 (98s ago)   3m50s
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz           0/1     CrashLoopBackOff    5 (37s ago)   4m39s
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1            1             56m
+mongodb-0                                                 0/1     ContainerCreating   0             69s
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS              RESTARTS       AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm           0/1     CrashLoopBackOff    5 (40s ago)    5m9s
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w         0/1     Completed           5 (101s ago)   3m53s
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz           0/1     CrashLoopBackOff    5 (40s ago)    4m42s
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1            1              56m
+mongodb-0                                                 0/1     ContainerCreating   0              72s
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS              RESTARTS       AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm           0/1     CrashLoopBackOff    5 (42s ago)    5m11s
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w         0/1     Completed           5 (103s ago)   3m55s
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz           0/1     CrashLoopBackOff    5 (42s ago)    4m44s
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1            1              56m
+mongodb-0                                                 0/1     ContainerCreating   0              74s
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS              RESTARTS       AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1            1              56m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm           0/1     CrashLoopBackOff    5 (50s ago)    5m19s
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w         0/1     Completed           5 (111s ago)   4m3s
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz           0/1     CrashLoopBackOff    5 (50s ago)    4m52s
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1            1              56m
+mongodb-0                                                 0/1     ContainerCreating   0              82s
+sarang@sarang:~$ kubectl describe po mongodb-0 -n free5gc
+Name:             mongodb-0
+Namespace:        free5gc
+Priority:         0
+Service Account:  mongodb
+Node:             sarang/192.168.39.54
+Start Time:       Sat, 18 Apr 2026 16:28:09 +0530
+Labels:           app.kubernetes.io/component=mongodb
+                  app.kubernetes.io/instance=free5gc-helm
+                  app.kubernetes.io/managed-by=Helm
+                  app.kubernetes.io/name=mongodb
+                  app.kubernetes.io/version=7.0.9
+                  apps.kubernetes.io/pod-index=0
+                  controller-revision-hash=mongodb-778b765654
+                  helm.sh/chart=mongodb-15.6.0
+                  statefulset.kubernetes.io/pod-name=mongodb-0
+Annotations:      k8s.v1.cni.cncf.io/network-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.77"
+                        ],
+                        "mac": "da:46:4d:33:fa:8e",
+                        "default": true,
+                        "dns": {}
+                    }]
+                  k8s.v1.cni.cncf.io/networks-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.77"
+                        ],
+                        "mac": "da:46:4d:33:fa:8e",
+                        "default": true,
+                        "dns": {}
+                    }]
+Status:           Pending
+IP:
+IPs:              <none>
+Controlled By:    StatefulSet/mongodb
+Containers:
+  mongodb:
+    Container ID:
+    Image:           docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4
+    Image ID:
+    Port:            27017/TCP
+    Host Port:       0/TCP
+    SeccompProfile:  RuntimeDefault
+    State:           Waiting
+      Reason:        ContainerCreating
+    Ready:           False
+    Restart Count:   0
+    Limits:
+      cpu:                750m
+      ephemeral-storage:  1Gi
+      memory:             768Mi
+    Requests:
+      cpu:                500m
+      ephemeral-storage:  50Mi
+      memory:             512Mi
+    Liveness:             exec [/bitnami/scripts/ping-mongodb.sh] delay=30s timeout=10s period=20s #success=1 #failure=6
+    Readiness:            exec [/bitnami/scripts/readiness-probe.sh] delay=5s timeout=5s period=10s #success=1 #failure=6
+    Environment:
+      BITNAMI_DEBUG:                    false
+      ALLOW_EMPTY_PASSWORD:             yes
+      MONGODB_SYSTEM_LOG_VERBOSITY:     0
+      MONGODB_DISABLE_SYSTEM_LOG:       no
+      MONGODB_DISABLE_JAVASCRIPT:       no
+      MONGODB_ENABLE_JOURNAL:           yes
+      MONGODB_PORT_NUMBER:              27017
+      MONGODB_ENABLE_IPV6:              no
+      MONGODB_ENABLE_DIRECTORY_PER_DB:  no
+    Mounts:
+      /.mongodb from empty-dir (rw,path="mongosh-home")
+      /bitnami/mongodb/data/db/ from datadir (rw)
+      /bitnami/scripts from common-scripts (rw)
+      /opt/bitnami/mongodb/conf from empty-dir (rw,path="app-conf-dir")
+      /opt/bitnami/mongodb/logs from empty-dir (rw,path="app-logs-dir")
+      /opt/bitnami/mongodb/tmp from empty-dir (rw,path="app-tmp-dir")
+      /tmp from empty-dir (rw,path="tmp-dir")
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   False
+  Initialized                 True
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  datadir:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  datadir-mongodb-0
+    ReadOnly:   false
+  empty-dir:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  common-scripts:
+    Type:        ConfigMap (a volume populated by a ConfigMap)
+    Name:        mongodb-common-scripts
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason          Age   From               Message
+  ----    ------          ----  ----               -------
+  Normal  Scheduled       85s   default-scheduler  Successfully assigned free5gc/mongodb-0 to sarang
+  Normal  AddedInterface  84s   multus             Add eth0 [10.1.8.77/24] from microk8s-flannel-network
+  Normal  Pulling         82s   kubelet            Pulling image "docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4"
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS              RESTARTS        AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1            1               62m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1            1               62m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1            1               62m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1            1               62m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1            1               62m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1            1               62m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1            1               62m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1            1               62m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1            1               62m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1            1               62m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1            1               62m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm           0/1     CrashLoopBackOff    6 (3m41s ago)   11m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w         0/1     CrashLoopBackOff    6 (2m25s ago)   9m44s
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz           0/1     CrashLoopBackOff    6 (3m22s ago)   10m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1            1               62m
+mongodb-0                                                 0/1     ContainerCreating   0               7m3s
+sarang@sarang:~$ kubectl describe po mongodb-0 -n free5gc
+Name:             mongodb-0
+Namespace:        free5gc
+Priority:         0
+Service Account:  mongodb
+Node:             sarang/192.168.39.54
+Start Time:       Sat, 18 Apr 2026 16:28:09 +0530
+Labels:           app.kubernetes.io/component=mongodb
+                  app.kubernetes.io/instance=free5gc-helm
+                  app.kubernetes.io/managed-by=Helm
+                  app.kubernetes.io/name=mongodb
+                  app.kubernetes.io/version=7.0.9
+                  apps.kubernetes.io/pod-index=0
+                  controller-revision-hash=mongodb-778b765654
+                  helm.sh/chart=mongodb-15.6.0
+                  statefulset.kubernetes.io/pod-name=mongodb-0
+Annotations:      k8s.v1.cni.cncf.io/network-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.77"
+                        ],
+                        "mac": "da:46:4d:33:fa:8e",
+                        "default": true,
+                        "dns": {}
+                    }]
+                  k8s.v1.cni.cncf.io/networks-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.77"
+                        ],
+                        "mac": "da:46:4d:33:fa:8e",
+                        "default": true,
+                        "dns": {}
+                    }]
+Status:           Pending
+IP:
+IPs:              <none>
+Controlled By:    StatefulSet/mongodb
+Containers:
+  mongodb:
+    Container ID:
+    Image:           docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4
+    Image ID:
+    Port:            27017/TCP
+    Host Port:       0/TCP
+    SeccompProfile:  RuntimeDefault
+    State:           Waiting
+      Reason:        ContainerCreating
+    Ready:           False
+    Restart Count:   0
+    Limits:
+      cpu:                750m
+      ephemeral-storage:  1Gi
+      memory:             768Mi
+    Requests:
+      cpu:                500m
+      ephemeral-storage:  50Mi
+      memory:             512Mi
+    Liveness:             exec [/bitnami/scripts/ping-mongodb.sh] delay=30s timeout=10s period=20s #success=1 #failure=6
+    Readiness:            exec [/bitnami/scripts/readiness-probe.sh] delay=5s timeout=5s period=10s #success=1 #failure=6
+    Environment:
+      BITNAMI_DEBUG:                    false
+      ALLOW_EMPTY_PASSWORD:             yes
+      MONGODB_SYSTEM_LOG_VERBOSITY:     0
+      MONGODB_DISABLE_SYSTEM_LOG:       no
+      MONGODB_DISABLE_JAVASCRIPT:       no
+      MONGODB_ENABLE_JOURNAL:           yes
+      MONGODB_PORT_NUMBER:              27017
+      MONGODB_ENABLE_IPV6:              no
+      MONGODB_ENABLE_DIRECTORY_PER_DB:  no
+    Mounts:
+      /.mongodb from empty-dir (rw,path="mongosh-home")
+      /bitnami/mongodb/data/db/ from datadir (rw)
+      /bitnami/scripts from common-scripts (rw)
+      /opt/bitnami/mongodb/conf from empty-dir (rw,path="app-conf-dir")
+      /opt/bitnami/mongodb/logs from empty-dir (rw,path="app-logs-dir")
+      /opt/bitnami/mongodb/tmp from empty-dir (rw,path="app-tmp-dir")
+      /tmp from empty-dir (rw,path="tmp-dir")
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   False
+  Initialized                 True
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  datadir:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  datadir-mongodb-0
+    ReadOnly:   false
+  empty-dir:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  common-scripts:
+    Type:        ConfigMap (a volume populated by a ConfigMap)
+    Name:        mongodb-common-scripts
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:          <none>
+sarang@sarang:~$ kubectl describe po free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm -n free5gc
+Name:             free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm
+Namespace:        free5gc
+Priority:         0
+Service Account:  default
+Node:             sarang/192.168.39.54
+Start Time:       Sat, 18 Apr 2026 16:24:12 +0530
+Labels:           app.kubernetes.io/instance=free5gc-helm
+                  app.kubernetes.io/name=free5gc-upf
+                  nf=iupf1
+                  pod-template-hash=865c478cc9
+                  project=free5gc
+Annotations:      checksum/config: 04a47a4f09ab9abae9465da07c77096f1ef70441fe8dd710e5b97ebea9b17b4d
+                  k8s.v1.cni.cncf.io/network-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.74"
+                        ],
+                        "mac": "a6:c0:03:77:0f:33",
+                        "default": true,
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n3network-free5gc-helm-free5gc-upf",
+                        "interface": "n3",
+                        "ips": [
+                            "10.100.50.233"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n9network-free5gc-helm-free5gc-upf",
+                        "interface": "n9",
+                        "ips": [
+                            "10.100.50.225"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n4network-free5gc-helm-free5gc-upf",
+                        "interface": "n4",
+                        "ips": [
+                            "10.100.50.241"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n6network-free5gc-helm-free5gc-upf",
+                        "interface": "n6",
+                        "ips": [
+                            "10.100.100.12"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    }]
+                  k8s.v1.cni.cncf.io/networks:
+                    [ { "name": "n3network-free5gc-helm-free5gc-upf", "interface": "n3", "ips": [ "10.100.50.233/29" ], "gateway": [ "10.100.50.238" ] }, { "n...
+                  k8s.v1.cni.cncf.io/networks-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.74"
+                        ],
+                        "mac": "a6:c0:03:77:0f:33",
+                        "default": true,
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n3network-free5gc-helm-free5gc-upf",
+                        "interface": "n3",
+                        "ips": [
+                            "10.100.50.233"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n9network-free5gc-helm-free5gc-upf",
+                        "interface": "n9",
+                        "ips": [
+                            "10.100.50.225"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n4network-free5gc-helm-free5gc-upf",
+                        "interface": "n4",
+                        "ips": [
+                            "10.100.50.241"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n6network-free5gc-helm-free5gc-upf",
+                        "interface": "n6",
+                        "ips": [
+                            "10.100.100.12"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    }]
+Status:           Running
+IP:               10.1.8.74
+IPs:
+  IP:           10.1.8.74
+Controlled By:  ReplicaSet/free5gc-helm-free5gc-upf-iupf1-865c478cc9
+Containers:
+  iupf1:
+    Container ID:  containerd://7800cee58360d8ca3671404d61ecd3a6a2d6c777397ea69cd74f87683ddd8d6d
+    Image:         free5gc/upf:v4.2.1
+    Image ID:      docker.io/free5gc/upf@sha256:197801d6781e0171d3842215db6e41a6ab83fbc92ba32ddb618b2d225a11fe5e
+    Port:          8805/UDP
+    Host Port:     0/UDP
+    Command:
+      /free5gc/config//wrapper.sh
+    State:          Waiting
+      Reason:       CrashLoopBackOff
+    Last State:     Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Sat, 18 Apr 2026 16:36:52 +0530
+      Finished:     Sat, 18 Apr 2026 16:36:53 +0530
+    Ready:          False
+    Restart Count:  7
+    Requests:
+      cpu:        500m
+      memory:     512Mi
+    Environment:  <none>
+    Mounts:
+      /free5gc/config/ from free5gc-helm-free5gc-upf-iupf1-volume (rw)
+      /free5gc/config/TLS from free5gc-helm-free5gc-upf-iupf1-empty-volume (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-j29pj (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True
+  Initialized                 True
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  free5gc-helm-free5gc-upf-iupf1-volume:
+    Type:           Projected (a volume that contains injected data from multiple sources)
+    ConfigMapName:  free5gc-helm-free5gc-upf-iupf1-configmap
+    Optional:       false
+  free5gc-helm-free5gc-upf-iupf1-empty-volume:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  kube-api-access-j29pj:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason   Age                   From     Message
+  ----     ------   ----                  ----     -------
+  Warning  BackOff  2m41s (x40 over 12m)  kubelet  Back-off restarting failed container iupf1 in pod free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm_free5gc(ebe64479-7d7b-4fb9-b1fb-dcbbad0c3a0a)
+  Normal   Pulling  64s (x8 over 13m)     kubelet  Pulling image "free5gc/upf:v4.2.1"
+sarang@sarang:~$ kubectl describe po free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w -n free5gc
+Name:             free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w
+Namespace:        free5gc
+Priority:         0
+Service Account:  default
+Node:             sarang/192.168.39.54
+Start Time:       Sat, 18 Apr 2026 16:25:27 +0530
+Labels:           app.kubernetes.io/instance=free5gc-helm
+                  app.kubernetes.io/name=free5gc-upf
+                  nf=psaupf1
+                  pod-template-hash=77645d8847
+                  project=free5gc
+Annotations:      checksum/config: b86149ae8dd0268764a82fea3f148de65c0ad0835c92bd94761d620c924fa282
+                  k8s.v1.cni.cncf.io/network-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.76"
+                        ],
+                        "mac": "26:84:63:b6:60:ea",
+                        "default": true,
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n9network-free5gc-helm-free5gc-upf",
+                        "interface": "n9",
+                        "ips": [
+                            "10.100.50.226"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n6network-free5gc-helm-free5gc-upf",
+                        "interface": "n6",
+                        "ips": [
+                            "10.100.100.13"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n4network-free5gc-helm-free5gc-upf",
+                        "interface": "n4",
+                        "ips": [
+                            "10.100.50.242"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    }]
+                  k8s.v1.cni.cncf.io/networks:
+                    [ { "name": "n9network-free5gc-helm-free5gc-upf", "interface": "n9", "ips": [ "10.100.50.226/29" ], "gateway": [ "10.100.50.230" ] }, { "n...
+                  k8s.v1.cni.cncf.io/networks-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.76"
+                        ],
+                        "mac": "26:84:63:b6:60:ea",
+                        "default": true,
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n9network-free5gc-helm-free5gc-upf",
+                        "interface": "n9",
+                        "ips": [
+                            "10.100.50.226"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n6network-free5gc-helm-free5gc-upf",
+                        "interface": "n6",
+                        "ips": [
+                            "10.100.100.13"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n4network-free5gc-helm-free5gc-upf",
+                        "interface": "n4",
+                        "ips": [
+                            "10.100.50.242"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    }]
+Status:           Running
+IP:               10.1.8.76
+IPs:
+  IP:           10.1.8.76
+Controlled By:  ReplicaSet/free5gc-helm-free5gc-upf-psaupf1-77645d8847
+Containers:
+  psaupf1:
+    Container ID:  containerd://a16f7333c3bbf3b21598bee219059e58fdda8eade1811d6c02e98628e6f9e9ad
+    Image:         free5gc/upf:v4.2.1
+    Image ID:      docker.io/free5gc/upf@sha256:197801d6781e0171d3842215db6e41a6ab83fbc92ba32ddb618b2d225a11fe5e
+    Port:          8805/UDP
+    Host Port:     0/UDP
+    Command:
+      /free5gc/config//wrapper.sh
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Sat, 18 Apr 2026 16:38:16 +0530
+      Finished:     Sat, 18 Apr 2026 16:38:16 +0530
+    Last State:     Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Sat, 18 Apr 2026 16:32:45 +0530
+      Finished:     Sat, 18 Apr 2026 16:32:46 +0530
+    Ready:          False
+    Restart Count:  7
+    Requests:
+      cpu:        500m
+      memory:     512Mi
+    Environment:  <none>
+    Mounts:
+      /free5gc/config/ from free5gc-helm-free5gc-upf-psaupf1-volume (rw)
+      /free5gc/config/TLS from free5gc-helm-free5gc-upf-psaupf1-empty-volume (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-2kxvs (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True
+  Initialized                 True
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  free5gc-helm-free5gc-upf-psaupf1-volume:
+    Type:           Projected (a volume that contains injected data from multiple sources)
+    ConfigMapName:  free5gc-helm-free5gc-upf-psaupf1-configmap
+    Optional:       false
+  free5gc-helm-free5gc-upf-psaupf1-empty-volume:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  kube-api-access-2kxvs:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason   Age                   From     Message
+  ----     ------   ----                  ----     -------
+  Warning  BackOff  2m23s (x41 over 12m)  kubelet  Back-off restarting failed container psaupf1 in pod free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w_free5gc(9d41d1ce-7707-471c-bc1a-83825140ee3c)
+  Normal   Pulling  22s (x8 over 12m)     kubelet  Pulling image "free5gc/upf:v4.2.1"
+sarang@sarang:~$ kubectl describe po free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz -n free5gc
+Name:             free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz
+Namespace:        free5gc
+Priority:         0
+Service Account:  default
+Node:             sarang/192.168.39.54
+Start Time:       Sat, 18 Apr 2026 16:24:38 +0530
+Labels:           app.kubernetes.io/instance=free5gc-helm
+                  app.kubernetes.io/name=free5gc-upf
+                  nf=psaupf2
+                  pod-template-hash=8df8c594
+                  project=free5gc
+Annotations:      checksum/config: a5e147889a1b21db2f05eaaf39a3909697bf4c333af74b9edfa4331ecf321b20
+                  k8s.v1.cni.cncf.io/network-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.75"
+                        ],
+                        "mac": "d2:64:89:16:76:0c",
+                        "default": true,
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n9network-free5gc-helm-free5gc-upf",
+                        "interface": "n9",
+                        "ips": [
+                            "10.100.50.227"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n6network-free5gc-helm-free5gc-upf",
+                        "interface": "n6",
+                        "ips": [
+                            "10.100.100.14"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n4network-free5gc-helm-free5gc-upf",
+                        "interface": "n4",
+                        "ips": [
+                            "10.100.50.243"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    }]
+                  k8s.v1.cni.cncf.io/networks:
+                    [ { "name": "n9network-free5gc-helm-free5gc-upf", "interface": "n9", "ips": [ "10.100.50.227/29" ], "gateway": [ "10.100.50.230" ] }, { "n...
+                  k8s.v1.cni.cncf.io/networks-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.75"
+                        ],
+                        "mac": "d2:64:89:16:76:0c",
+                        "default": true,
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n9network-free5gc-helm-free5gc-upf",
+                        "interface": "n9",
+                        "ips": [
+                            "10.100.50.227"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n6network-free5gc-helm-free5gc-upf",
+                        "interface": "n6",
+                        "ips": [
+                            "10.100.100.14"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n4network-free5gc-helm-free5gc-upf",
+                        "interface": "n4",
+                        "ips": [
+                            "10.100.50.243"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    }]
+Status:           Running
+IP:               10.1.8.75
+IPs:
+  IP:           10.1.8.75
+Controlled By:  ReplicaSet/free5gc-helm-free5gc-upf-psaupf2-8df8c594
+Containers:
+  psaupf2:
+    Container ID:  containerd://a5718875c27763fe7bc4a34eb44d203dad51f41384e1f937055c1f34e334a038
+    Image:         free5gc/upf:v4.2.1
+    Image ID:      docker.io/free5gc/upf@sha256:197801d6781e0171d3842215db6e41a6ab83fbc92ba32ddb618b2d225a11fe5e
+    Port:          8805/UDP
+    Host Port:     0/UDP
+    Command:
+      /free5gc/config//wrapper.sh
+    State:          Waiting
+      Reason:       CrashLoopBackOff
+    Last State:     Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Sat, 18 Apr 2026 16:37:10 +0530
+      Finished:     Sat, 18 Apr 2026 16:37:11 +0530
+    Ready:          False
+    Restart Count:  7
+    Requests:
+      cpu:        500m
+      memory:     512Mi
+    Environment:  <none>
+    Mounts:
+      /free5gc/config/ from free5gc-helm-free5gc-upf-psaupf2-volume (rw)
+      /free5gc/config/TLS from free5gc-helm-free5gc-upf-psaupf2-empty-volume (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-mr7l4 (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True
+  Initialized                 True
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  free5gc-helm-free5gc-upf-psaupf2-volume:
+    Type:           Projected (a volume that contains injected data from multiple sources)
+    ConfigMapName:  free5gc-helm-free5gc-upf-psaupf2-configmap
+    Optional:       false
+  free5gc-helm-free5gc-upf-psaupf2-empty-volume:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  kube-api-access-mr7l4:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason   Age                  From     Message
+  ----     ------   ----                 ----     -------
+  Warning  BackOff  4m6s (x40 over 14m)  kubelet  Back-off restarting failed container psaupf2 in pod free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz_free5gc(51cc37b6-59e6-490d-94e5-fe7e2bcca19a)
+  Normal   Pulling  2m21s (x8 over 14m)  kubelet  Pulling image "free5gc/upf:v4.2.1"
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS              RESTARTS        AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1            1               67m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1            1               67m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1            1               67m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1            1               67m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1            1               67m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1            1               67m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1            1               67m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1            1               67m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1            1               67m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1            1               67m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1            1               67m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm           0/1     CrashLoopBackOff    7 (3m33s ago)   16m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w         0/1     CrashLoopBackOff    7 (2m10s ago)   14m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz           0/1     CrashLoopBackOff    7 (3m15s ago)   15m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1            1               67m
+mongodb-0                                                 0/1     ContainerCreating   0               12m
+sarang@sarang:~$ kubectl logs -n free5gc free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm
+Error from server: Get "https://192.168.39.54:10250/containerLogs/free5gc/free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm/iupf1": tls: failed to verify certificate: x509: certificate is valid for 192.168.2.54, 10.30.0.1, 172.17.0.1, 172.21.0.1, 172.23.0.1, 172.22.0.1, 172.18.0.1, 10.20.0.1, 172.20.0.1, 172.19.0.1, 2401:4900:ac81:7a71:8aec:ff8f:7926:89f0, 2401:4900:ac81:7a71:fc45:81b3:4e8f:e6e2, not 192.168.39.54
+sarang@sarang:~$ kubectl logs -n free5gc free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w
+Error from server: Get "https://192.168.39.54:10250/containerLogs/free5gc/free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w/psaupf1": tls: failed to verify certificate: x509: certificate is valid for 192.168.2.54, 10.30.0.1, 172.17.0.1, 172.21.0.1, 172.23.0.1, 172.22.0.1, 172.18.0.1, 10.20.0.1, 172.20.0.1, 172.19.0.1, 2401:4900:ac81:7a71:8aec:ff8f:7926:89f0, 2401:4900:ac81:7a71:fc45:81b3:4e8f:e6e2, not 192.168.39.54
+sarang@sarang:~$ kubectl describe po mongodb-0 -n free5gc | grep -A5 Events
+Events:          <none>
+sarang@sarang:~$ kubectl get pvc -n free5gc
+NAME                STATUS   VOLUME             CAPACITY   ACCESS MODES   STORAGECLASS        VOLUMEATTRIBUTESCLASS   AGE
+cert-pvc            Bound    free5gc-pv-cert    2Mi        ROX            microk8s-hostpath   <unset>                 69m
+datadir-mongodb-0   Bound    free5gc-pv-mongo   8Gi        RWO            microk8s-hostpath   <unset>                 69m
+sarang@sarang:~$ kubectl get pv
+NAME               CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                       STORAGECLASS        VOLUMEATTRIBUTESCLASS   REASON   AGE
+free5gc-pv-cert    2Mi        ROX            Retain           Bound    free5gc/cert-pvc            microk8s-hostpath   <unset>                          108m
+free5gc-pv-mongo   8Gi        RWO            Retain           Bound    free5gc/datadir-mongodb-0   microk8s-hostpath   <unset>                          108m
+sarang@sarang:~$ kubectl describe node sarang | grep -A10 "Allocated resources"
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  Resource           Requests      Limits
+  --------           --------      ------
+  cpu                3550m (59%)   950m (15%)
+  memory             3904Mi (51%)  1116Mi (14%)
+  ephemeral-storage  50Mi (0%)     1Gi (1%)
+  hugepages-2Mi      0 (0%)        0 (0%)
+Events:              <none>
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS              RESTARTS        AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1            1               71m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1            1               71m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1            1               71m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1            1               71m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1            1               71m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1            1               71m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1            1               71m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1            1               71m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1            1               71m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1            1               71m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1            1               71m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm           0/1     CrashLoopBackOff    8 (2m16s ago)   20m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w         0/1     CrashLoopBackOff    8 (43s ago)     18m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz           0/1     CrashLoopBackOff    8 (116s ago)    19m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1            1               71m
+mongodb-0                                                 0/1     ContainerCreating   0               16m
+sarang@sarang:~$ microk8s status
+microk8s is not running. Use microk8s inspect for a deeper inspection.
+sarang@sarang:~$ microk8s status --wait-ready
+microk8s is running
+high-availability: no
+  datastore endpoints:
+    127.0.0.1:12379
+addons:
+  enabled:
+    multus               # (community) Multus CNI enables attaching multiple network interfaces to pods
+    community            # (core) The community addons repository
+    dns                  # (core) CoreDNS
+    helm                 # (core) Helm - the package manager for Kubernetes
+    helm3                # (core) Helm 3 - the package manager for Kubernetes
+    hostpath-storage     # (core) Storage class; allocates storage from host directory
+    metrics-server       # (core) K8s Metrics Server for API access to service metrics
+    storage              # (core) Alias to hostpath-storage add-on, deprecated
+  disabled:
+    argocd               # (community) Argo CD is a declarative continuous deployment for Kubernetes.
+    cilium               # (community) SDN, fast with full network policy
+    cloudnative-pg       # (community) PostgreSQL operator CloudNativePG
+    dashboard-ingress    # (community) Ingress definition for Kubernetes dashboard
+    easyhaproxy          # (community) EasyHAProxy can configure HAProxy automatically based on ingress labels
+    falco                # (community) Cloud-native runtime threat detection tool for Linux and K8s
+    fluentd              # (community) Elasticsearch-Fluentd-Kibana logging and monitoring
+    gopaddle             # (community) Low-Code Kubernetes IDE with AI Co-pilot
+    inaccel              # (community) Simplifying FPGA management in Kubernetes
+    istio                # (community) Core Istio service mesh services
+    jaeger               # (community) Kubernetes Jaeger operator with its simple config
+    kata                 # (community) Kata Containers is a secure runtime with lightweight VMS
+    keda                 # (community) Kubernetes-based Event Driven Autoscaling
+    knative              # (community) Knative Serverless and Event Driven Applications
+    kubearmor            # (community) Cloud-native runtime security enforcement system for k8s
+    kwasm                # (community) WebAssembly support for WasmEdge (Docker Wasm) and Spin (Azure AKS WASI)
+    linkerd              # (community) Linkerd is a service mesh for Kubernetes and other frameworks
+    microcks             # (community) Open source Kubernetes Native tool for API Mocking and Testing
+    nfs                  # (community) NFS Server Provisioner
+    ngrok                # (community) ngrok Ingress Controller instantly adds connectivity, load balancing, authentication, and observability to your services
+    openebs              # (community) OpenEBS is the open-source storage solution for Kubernetes
+    openfaas             # (community) OpenFaaS serverless framework
+    osm-edge             # (community) osm-edge is a lightweight SMI compatible service mesh for the edge-computing.
+    parking              # (community) Static webserver to park a domain. Works with EasyHAProxy.
+    portainer            # (community) Portainer UI for your Kubernetes cluster
+    shifu                # (community) Kubernetes native IoT software development framework.
+    sosivio              # (community) Kubernetes Predictive Troubleshooting, Observability, and Resource Optimization
+    sriov-device-plugin  # (community) SR-IOV Network Device Plugin.
+    stunner              # (community) A Kubernetes media gateway for WebRTC
+    traefik              # (community) traefik Ingress controller
+    trivy                # (community) Kubernetes-native security scanner
+    cert-manager         # (core) Cloud native certificate management
+    cis-hardening        # (core) Apply CIS K8s hardening
+    dashboard            # (core) The Kubernetes dashboard
+    gpu                  # (core) Alias to nvidia add-on
+    ha-cluster           # (core) Configure high availability on the current node
+    host-access          # (core) Allow Pods connecting to Host services smoothly
+    ingress              # (core) Ingress controller for external access
+    kube-ovn             # (core) An advanced network fabric for Kubernetes
+    mayastor             # (core) OpenEBS MayaStor
+    metallb              # (core) Loadbalancer for your Kubernetes cluster
+    minio                # (core) MinIO object storage
+    nvidia               # (core) NVIDIA hardware (GPU and network) support
+    observability        # (core) A lightweight observability stack for logs, traces and metrics
+    prometheus           # (core) Prometheus operator for monitoring and logging
+    rbac                 # (core) Role-Based Access Control for authorisation
+    registry             # (core) Private image registry exposed on localhost:32000
+    rook-ceph            # (core) Distributed Ceph storage using Rook
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS              RESTARTS   AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:Error          1          74m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:Error          1          74m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:Error          1          74m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:Error          1          74m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:Error          1          74m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:Error          1          74m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:Error          1          74m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:Error          1          74m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:Error          1          74m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:Error          1          74m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:Error          1          74m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm           0/1     Completed           8          23m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w         0/1     Completed           8          22m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz           0/1     Completed           8          22m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:Error          1          74m
+mongodb-0                                                 0/1     ContainerCreating   0          19m
+sarang@sarang:~$ kubectl get pods -n free5gc -w
+NAME                                                      READY   STATUS              RESTARTS   AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:Error          1          75m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:Error          1          75m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1            2          75m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1            2          75m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:Error          1          75m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:Error          1          75m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:Error          1          75m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:Error          1          75m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:Error          1          75m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:Error          1          75m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:Error          1          75m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm           0/1     Completed           8          23m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w         0/1     Completed           8          22m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz           0/1     Completed           8          23m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:Error          1          75m
+mongodb-0                                                 0/1     ContainerCreating   0          19m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1            2          75m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1            2          75m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm           0/1     Completed           8          23m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:Error          1          75m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w         0/1     Completed           8          22m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1            2          75m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz           0/1     Completed           8          23m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w         0/1     Completed           8          22m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz           0/1     Completed           8          23m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1            2          75m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1            2          75m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1            2          75m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1            2          75m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1            2          75m
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1            2          75m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1            2          75m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm           1/1     Running             9 (6m33s ago)   24m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm           0/1     Completed           9 (6m37s ago)   24m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w         1/1     Running             9 (5m7s ago)    23m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz           1/1     Running             9 (6m21s ago)   24m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w         0/1     Error               9 (5m11s ago)   23m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz           0/1     Completed           9 (6m25s ago)   24m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm           0/1     CrashLoopBackOff    9 (19s ago)     24m
+^Csarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS              RESTARTS      AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1            2             76m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1            2             76m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1            2             76m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1            2             76m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1            2             76m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1            2             76m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1            2             76m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1            2             76m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1            2             76m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1            2             76m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1            2             76m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm           0/1     CrashLoopBackOff    9 (29s ago)   24m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w         0/1     CrashLoopBackOff    9 (19s ago)   23m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz           0/1     CrashLoopBackOff    9 (16s ago)   24m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1            2             76m
+mongodb-0                                                 0/1     ContainerCreating   0             20m
+sarang@sarang:~$
+Network error: Software caused connection abort
+
+─────────────────────────────────────────────

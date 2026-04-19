@@ -1,0 +1,1924 @@
+  ┌──────────────────────────────────────────────────────────────────────┐
+    │                 • MobaXterm Personal Edition v25.3 •                 │
+    │               (SSH client, X server and network tools)               │
+    │                                                                      │
+    │ ⮞ SSH session to sarang@192.168.56.101                               │
+    │   • Direct SSH      :  ✓                                             │
+    │   • SSH compression :  ✓                                             │
+    │   • SSH-browser     :  ✓                                             │
+    │   • X11-forwarding  :  ✓  (remote display is forwarded through SSH)  │
+    │                                                                      │
+    │ ⮞ For more info, ctrl+click on help or visit our website.            │
+    └──────────────────────────────────────────────────────────────────────┘
+
+Welcome to Ubuntu 22.04.2 LTS (GNU/Linux 6.8.0-106-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+ * Introducing Expanded Security Maintenance for Applications.
+   Receive updates to over 25,000 software packages with your
+   Ubuntu Pro subscription. Free for personal use.
+
+     https://ubuntu.com/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+New release '24.04.4 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+Last login: Sun Apr 19 10:29:15 2026 from 192.168.56.1
+sarang@sarang:~$ microk8s status --wait-ready
+microk8s is running
+high-availability: no
+  datastore endpoints:
+    127.0.0.1:12379
+addons:
+  enabled:
+    multus               # (community) Multus CNI enables attaching multiple network interfaces to pods
+    community            # (core) The community addons repository
+    dns                  # (core) CoreDNS
+    helm                 # (core) Helm - the package manager for Kubernetes
+    helm3                # (core) Helm 3 - the package manager for Kubernetes
+    hostpath-storage     # (core) Storage class; allocates storage from host directory
+    metrics-server       # (core) K8s Metrics Server for API access to service metrics
+    storage              # (core) Alias to hostpath-storage add-on, deprecated
+  disabled:
+    argocd               # (community) Argo CD is a declarative continuous deployment for Kubernetes.
+    cilium               # (community) SDN, fast with full network policy
+    cloudnative-pg       # (community) PostgreSQL operator CloudNativePG
+    dashboard-ingress    # (community) Ingress definition for Kubernetes dashboard
+    easyhaproxy          # (community) EasyHAProxy can configure HAProxy automatically based on ingress labels
+    falco                # (community) Cloud-native runtime threat detection tool for Linux and K8s
+    fluentd              # (community) Elasticsearch-Fluentd-Kibana logging and monitoring
+    gopaddle             # (community) Low-Code Kubernetes IDE with AI Co-pilot
+    inaccel              # (community) Simplifying FPGA management in Kubernetes
+    istio                # (community) Core Istio service mesh services
+    jaeger               # (community) Kubernetes Jaeger operator with its simple config
+    kata                 # (community) Kata Containers is a secure runtime with lightweight VMS
+    keda                 # (community) Kubernetes-based Event Driven Autoscaling
+    knative              # (community) Knative Serverless and Event Driven Applications
+    kubearmor            # (community) Cloud-native runtime security enforcement system for k8s
+    kwasm                # (community) WebAssembly support for WasmEdge (Docker Wasm) and Spin (Azure AKS WASI)
+    linkerd              # (community) Linkerd is a service mesh for Kubernetes and other frameworks
+    microcks             # (community) Open source Kubernetes Native tool for API Mocking and Testing
+    nfs                  # (community) NFS Server Provisioner
+    ngrok                # (community) ngrok Ingress Controller instantly adds connectivity, load balancing, authentication, and observability to your services
+    openebs              # (community) OpenEBS is the open-source storage solution for Kubernetes
+    openfaas             # (community) OpenFaaS serverless framework
+    osm-edge             # (community) osm-edge is a lightweight SMI compatible service mesh for the edge-computing.
+    parking              # (community) Static webserver to park a domain. Works with EasyHAProxy.
+    portainer            # (community) Portainer UI for your Kubernetes cluster
+    shifu                # (community) Kubernetes native IoT software development framework.
+    sosivio              # (community) Kubernetes Predictive Troubleshooting, Observability, and Resource Optimization
+    sriov-device-plugin  # (community) SR-IOV Network Device Plugin.
+    stunner              # (community) A Kubernetes media gateway for WebRTC
+    traefik              # (community) traefik Ingress controller
+    trivy                # (community) Kubernetes-native security scanner
+    cert-manager         # (core) Cloud native certificate management
+    cis-hardening        # (core) Apply CIS K8s hardening
+    dashboard            # (core) The Kubernetes dashboard
+    gpu                  # (core) Alias to nvidia add-on
+    ha-cluster           # (core) Configure high availability on the current node
+    host-access          # (core) Allow Pods connecting to Host services smoothly
+    ingress              # (core) Ingress controller for external access
+    kube-ovn             # (core) An advanced network fabric for Kubernetes
+    mayastor             # (core) OpenEBS MayaStor
+    metallb              # (core) Loadbalancer for your Kubernetes cluster
+    minio                # (core) MinIO object storage
+    nvidia               # (core) NVIDIA hardware (GPU and network) support
+    observability        # (core) A lightweight observability stack for logs, traces and metrics
+    prometheus           # (core) Prometheus operator for monitoring and logging
+    rbac                 # (core) Role-Based Access Control for authorisation
+    registry             # (core) Private image registry exposed on localhost:32000
+    rook-ceph            # (core) Distributed Ceph storage using Rook
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS             RESTARTS       AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             1/1     Running            2              19h
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           1/1     Running            3              19h
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              1/1     Running            3              19h
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   1/1     Running            3              19h
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             1/1     Running            3              19h
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             1/1     Running            3              19h
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           1/1     Running            3              19h
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             1/1     Running            3              19h
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             1/1     Running            2              19h
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              1/1     Running            3              19h
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              1/1     Running            3              19h
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-j5vlm           0/1     CrashLoopBackOff   12 (60s ago)   10h
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-6wgn6         0/1     CrashLoopBackOff   12 (56s ago)   10h
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-xfgng           0/1     CrashLoopBackOff   12 (63s ago)   10h
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          1/1     Running            3              19h
+mongodb-0                                                 1/1     Running            3              11h
+sarang@sarang:~$ kubectl get pods -n free5gc -w
+NAME                                                      READY   STATUS    RESTARTS   AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             1/1     Running   2          19h
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           1/1     Running   3          19h
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              1/1     Running   3          19h
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   1/1     Running   3          19h
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             1/1     Running   3          19h
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             1/1     Running   3          19h
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           1/1     Running   3          19h
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             1/1     Running   3          19h
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             1/1     Running   2          19h
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              1/1     Running   3          19h
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              1/1     Running   3          19h
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-xm6k8           1/1     Running   0          38s
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-m8v25         1/1     Running   0          38s
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-h9lhd           1/1     Running   0          38s
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          1/1     Running   3          19h
+mongodb-0                                                 1/1     Running   3          11h
+^Csarang@sarang:~$ cd telecom-control-panel-api/
+sarang@sarang:~/telecom-control-panel-api$ ls
+'amfpod details successfully fetched via fastapi.jpg'   free5gc        logs_10April_2026.txt   __pycache__   requirements.txt
+ Dockerfile                                             getamfpod.py   maingetpods.py          README.md
+sarang@sarang:~/telecom-control-panel-api$ cd free5gc/
+sarang@sarang:~/telecom-control-panel-api/free5gc$ ls
+free5gc-helm  free5gc-storage
+sarang@sarang:~/telecom-control-panel-api/free5gc$ cd free5gc-helm/
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm$ ls
+charts  CONTRIBUTING.md  docker  docs  LICENSE  motivations.md  pictures  README.md
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm$ cd charts/
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ ls
+free5gc  loxilb  packetrusher  ueransim
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ helm install -n free5gc ueransim ./ueransim/ \
+    --set global.n2network.masterIf=enp0s3 \
+    --set global.n3network.masterIf=enp0s3
+NAME: ueransim
+LAST DEPLOYED: Sun Apr 19 11:16:45 2026
+NAMESPACE: free5gc
+STATUS: deployed
+REVISION: 1
+NOTES:
+#
+# Software Name : towards5gs-helm
+# SPDX-FileCopyrightText: Copyright (c) 2021 Orange
+# SPDX-License-Identifier: Apache-2.0
+#
+# This software is distributed under the Apache License 2.0,
+# the text of which is available at https://github.com/Orange-OpenSource/towards5gs-helm/blob/main/LICENSE
+# or see the "LICENSE" file for more details.
+#
+# Author: Abderaouf KHICHANE, Ilhem FAJJARI
+# Software description: An open-source project providing Helm charts to deploy 5G components (Core + RAN) on top of Kubernetes
+#
+#
+# Visit the project at https://github.com/Orange-OpenSource/towards5gs-helm
+#
+
+1. Run UE connectivity test by running these commands:
+  helm --namespace free5gc test ueransim
+
+If you want to run connectivity tests manually, follow:
+
+1. Get the UE Pod name by running:
+  export POD_NAME=$(kubectl get pods --namespace free5gc -l "component=ue" -o jsonpath="{.items[0].metadata.name}")
+
+2. Check that uesimtun0 interface has been created by running these commands:
+  kubectl --namespace free5gc logs $POD_NAME
+  kubectl --namespace free5gc exec -it $POD_NAME -- ip address
+
+3. Try to access internet from the UE by running:
+  kubectl --namespace free5gc exec -it $POD_NAME -- ping -I uesimtun0 www.google.com
+  kubectl --namespace free5gc exec -it $POD_NAME -- curl --interface uesimtun0 www.google.com
+  kubectl --namespace free5gc exec -it $POD_NAME -- traceroute -i uesimtun0 www.google.com
+
+Release notes (What's changed in this version):
+- add the release notes
+- add an initContainer to wait for the AMF to be ready
+- enhance the handling of k8s NGAP service and network parameters
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ kubectl get pods -n free5gc | grep ueransim
+ueransim-gnb-78b76d9548-qvd25                             0/1     Init:0/1            0          15s
+ueransim-ue-7646659884-kmzdt                              0/1     ContainerCreating   0          15s
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ kubectl get pods -n free5gc | grep ueransim
+ueransim-gnb-78b76d9548-qvd25                             0/1     PodInitializing     0          21s
+ueransim-ue-7646659884-kmzdt                              0/1     ContainerCreating   0          21s
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ kubectl get pods -n free5gc | grep ueransim
+ueransim-gnb-78b76d9548-qvd25                             0/1     PodInitializing     0          26s
+ueransim-ue-7646659884-kmzdt                              0/1     ContainerCreating   0          26s
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ kubectl get pods -n free5gc | grep ueransim
+ueransim-gnb-78b76d9548-qvd25                             0/1     PodInitializing     0          32s
+ueransim-ue-7646659884-kmzdt                              0/1     ContainerCreating   0          32s
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ kubectl get pods -n free5gc | grep ueransim
+ueransim-gnb-78b76d9548-qvd25                             0/1     PodInitializing     0          53s
+ueransim-ue-7646659884-kmzdt                              0/1     ContainerCreating   0          53s
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ kubectl get pods -n free5gc | grep ueransim
+ueransim-gnb-78b76d9548-qvd25                             0/1     PodInitializing     0          58s
+ueransim-ue-7646659884-kmzdt                              0/1     ContainerCreating   0          58s
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ kubectl get pods -n free5gc | grep ueransim
+ueransim-gnb-78b76d9548-qvd25                             0/1     PodInitializing     0          62s
+ueransim-ue-7646659884-kmzdt                              0/1     ContainerCreating   0          62s
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ kubectl get pods -n free5gc | grep ueransim
+ueransim-gnb-78b76d9548-qvd25                             0/1     PodInitializing     0          65s
+ueransim-ue-7646659884-kmzdt                              0/1     ContainerCreating   0          65s
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ cd ueransim/
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ ls
+Chart.yaml  README.md  templates  values.yaml
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ cat values.yaml
+#
+# Software Name : towards5gs-helm
+# SPDX-FileCopyrightText: Copyright (c) 2021 Orange
+# SPDX-License-Identifier: Apache-2.0
+#
+# This software is distributed under the Apache License 2.0,
+# the text of which is available at todo
+# or see the "LICENSE" file for more details.
+#
+# Author: Abderaouf KHICHANE, Ilhem FAJJARI, Ayoub BOUSSELMI
+# Software description: An open-source project providing Helm charts to deploy 5G components (Core + RAN) on top of Kubernetes
+#
+# Default values for ueransim-chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+global:
+  #Global network parametes
+  n2network:
+    enabled: true
+    name: n2network
+    type: ipvlan
+    masterIf: eth0
+    subnetIP: 10.100.50.248
+    cidr: 29
+    gatewayIP: 10.100.50.254
+    excludeIP: 10.100.50.254
+  n3network:
+    enabled: true
+    name: n3network
+    type: ipvlan
+    masterIf: eth0
+    subnetIP: 10.100.50.232
+    cidr: 29
+    gatewayIP: 10.100.50.238
+    excludeIP: 10.100.50.238
+
+
+projectName: ueransim
+
+initcontainers:
+  sctp_test:
+    image: towards5gs/sctp_test
+    tag: latest
+
+gnb:
+  enabled: true
+  name: gnb
+  replicaCount: 1
+  image:
+    name: free5gc/ueransim
+    tag: v4.0.1
+    pullPolicy: IfNotPresent
+  configmap:
+    name: gnb-configmap
+  volume:
+    name: gnb-volume
+    mount: /ueransim/config
+  service:
+    name: gnb-service
+    type: ClusterIP
+    port: 4997
+    protocol: UDP
+
+  n2if:  # NGAP
+    ipAddress: 10.100.50.250
+  n3if:  # GTP-U
+    ipAddress: 10.100.50.236
+
+  amf:
+    n2if:  # NGAP
+      ipAddress: 10.100.50.249
+      port: 38412
+    service:
+      ngap:
+        enabled: false
+
+  podAnnotations: {}
+    # additional annotations
+  imagePullSecrets: []
+  podSecurityContext: {}
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+
+  configuration: |-
+    mcc: '208' # Mobile Country Code value
+    mnc: '93'  # Mobile Network Code value (2 or 3 digits)
+    nci: '0x000000010'  # NR Cell Identity (36-bit)
+    idLength: 32        # NR gNB ID length in bits [22...32]
+    tac: 1     # Tracking Area Code
+    # List of supported S-NSSAIs by this gNB
+    slices:
+      - sst: 0x1
+        sd: 0x010203
+    # Indicates whether or not SCTP stream number errors should be ignored.
+    ignoreStreamIds: true
+ue:
+  enabled: true
+  name: ue
+  replicaCount: 1
+  image:
+    name: free5gc/ueransim
+    tag: v4.0.1
+    pullPolicy: IfNotPresent
+  configmap:
+    name: ue-configmap
+  volume:
+    name: ue-volume
+    mount: /ueransim/config
+  command: "./nr-ue -c ./config/ue-config.yaml"  # This is the command that will be launched in the UE container
+  # A script that will be run after the UE creation. It may be used to periodically generate traffic
+  script: ""
+  # script: |-
+  #   ping .....
+
+  podAnnotations: {}
+    # additional annotations
+  imagePullSecrets: []
+  podSecurityContext: {}
+  securityContext:
+    capabilities:
+            add: ["NET_ADMIN"]
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+
+  configuration: |-
+    supi: "imsi-208930000000001"  # IMSI number
+    mcc: "208" # Mobile Country Code value
+    mnc: "93" # Mobile Network Code value (2 or 3 digits)
+    key: "8baf473f2f8fd09487cccbd7097c6862" # Operator code (OP or OPC) of the UE
+    op: "8e27b6af0e692e750f32667a3b14605d" # This value specifies the OP type and it can be either 'OP' or 'OPC'
+    opType: "OPC" # This value specifies the OP type and it can be either 'OP' or 'OPC'
+    amf: "8000" # Authentication Management Field (AMF) value
+    imei: "356938035643803" # IMEI number of the device
+    imeiSv: "4370816125816151"
+    # UAC Access Identities Configuration
+    uacAic:
+      mps: false
+      mcs: false
+    # UAC Access Control Class
+    uacAcc:
+      normalClass: 0
+      class11: false
+      class12: false
+      class13: false
+      class14: false
+      class15: false
+    sessions:
+      - type: "IPv4"
+        apn: "internet"
+        slice:
+          sst: 0x01
+          sd: 0x010203
+    # Configured NSSAI for this UE by HPLMN
+    configured-nssai:
+      - sst: 0x01
+        sd: 0x010203
+    # Default Configured NSSAI for this UE
+    default-nssai:
+      - sst: 1
+        sd: 1
+    # Supported encryption and integrity algorithms by this UE
+    integrity:
+      IA1: true
+      IA2: true
+      IA3: true
+    ciphering:
+      EA1: true
+      EA2: true
+      EA3: true
+    # Integrity protection maximum data rate for user plane
+    integrityMaxRate:
+      uplink: "full"
+      downlink: "full"
+
+  test:
+    connectivity:
+      name: ue-connectivity-test
+      image: bitnami/kubectl:1.22.0
+      configmap:
+        name: connectivity-test-configmap
+      volume:
+        name: connectivity-test-volume
+        mount: /scripts
+      ttlseconds: 50
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl get pods -n free5gc | grep ueransim
+ueransim-gnb-78b76d9548-qvd25                             0/1     PodInitializing     0          102s
+ueransim-ue-7646659884-kmzdt                              0/1     ContainerCreating   0          102s
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl describe po ueransim-ue-7646659884-kmzdt -n free5gc
+Name:             ueransim-ue-7646659884-kmzdt
+Namespace:        free5gc
+Priority:         0
+Service Account:  default
+Node:             sarang/192.168.31.96
+Start Time:       Sun, 19 Apr 2026 11:16:47 +0530
+Labels:           app=ueransim
+                  app.kubernetes.io/instance=ueransim
+                  app.kubernetes.io/name=ueransim
+                  component=ue
+                  pod-template-hash=7646659884
+Annotations:      k8s.v1.cni.cncf.io/network-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.100.220"
+                        ],
+                        "mac": "16:83:84:88:72:1e",
+                        "default": true,
+                        "dns": {}
+                    }]
+                  k8s.v1.cni.cncf.io/networks-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.100.220"
+                        ],
+                        "mac": "16:83:84:88:72:1e",
+                        "default": true,
+                        "dns": {}
+                    }]
+Status:           Pending
+IP:
+IPs:              <none>
+Controlled By:    ReplicaSet/ueransim-ue-7646659884
+Containers:
+  ue:
+    Container ID:
+    Image:         free5gc/ueransim:v4.0.1
+    Image ID:
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /ueransim/config/wrapper.sh
+    State:          Waiting
+      Reason:       ContainerCreating
+    Ready:          False
+    Restart Count:  0
+    Requests:
+      cpu:        100m
+      memory:     128Mi
+    Environment:  <none>
+    Mounts:
+      /ueransim/config from ue-volume (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-n8z4w (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   False
+  Initialized                 True
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  ue-volume:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      ue-configmap
+    Optional:  false
+  kube-api-access-n8z4w:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason          Age   From               Message
+  ----    ------          ----  ----               -------
+  Normal  Scheduled       2m3s  default-scheduler  Successfully assigned free5gc/ueransim-ue-7646659884-kmzdt to sarang
+  Normal  AddedInterface  2m1s  multus             Add eth0 [10.1.100.220/24] from microk8s-flannel-network
+  Normal  Pulling         119s  kubelet            Pulling image "free5gc/ueransim:v4.0.1"
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl get pods -n free5gc | grep ueransim
+ueransim-gnb-78b76d9548-qvd25                             0/1     PodInitializing     0          2m25s
+ueransim-ue-7646659884-kmzdt                              0/1     ContainerCreating   0          2m25s
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl get pods -n free5gc | grep ueransim
+ueransim-gnb-78b76d9548-qvd25                             0/1     PodInitializing     0          2m29s
+ueransim-ue-7646659884-kmzdt                              0/1     ContainerCreating   0          2m29s
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl describe po ueransim-ue-7646659884-kmzdt -n free5gc
+Name:             ueransim-ue-7646659884-kmzdt
+Namespace:        free5gc
+Priority:         0
+Service Account:  default
+Node:             sarang/192.168.31.96
+Start Time:       Sun, 19 Apr 2026 11:16:47 +0530
+Labels:           app=ueransim
+                  app.kubernetes.io/instance=ueransim
+                  app.kubernetes.io/name=ueransim
+                  component=ue
+                  pod-template-hash=7646659884
+Annotations:      k8s.v1.cni.cncf.io/network-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.100.220"
+                        ],
+                        "mac": "16:83:84:88:72:1e",
+                        "default": true,
+                        "dns": {}
+                    }]
+                  k8s.v1.cni.cncf.io/networks-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.100.220"
+                        ],
+                        "mac": "16:83:84:88:72:1e",
+                        "default": true,
+                        "dns": {}
+                    }]
+Status:           Running
+IP:               10.1.100.220
+IPs:
+  IP:           10.1.100.220
+Controlled By:  ReplicaSet/ueransim-ue-7646659884
+Containers:
+  ue:
+    Container ID:  containerd://cd03952a9d5c0d4d18f114bea929e582b46473d5c670d915cd84a105c3d553eb
+    Image:         free5gc/ueransim:v4.0.1
+    Image ID:      docker.io/free5gc/ueransim@sha256:4a6745b0c9f0c60173833f8bef89816324e84636e220917bdc682555a299e8ba
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /ueransim/config/wrapper.sh
+    State:          Running
+      Started:      Sun, 19 Apr 2026 11:19:27 +0530
+    Ready:          True
+    Restart Count:  0
+    Requests:
+      cpu:        100m
+      memory:     128Mi
+    Environment:  <none>
+    Mounts:
+      /ueransim/config from ue-volume (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-n8z4w (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True
+  Initialized                 True
+  Ready                       True
+  ContainersReady             True
+  PodScheduled                True
+Volumes:
+  ue-volume:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      ue-configmap
+    Optional:  false
+  kube-api-access-n8z4w:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason          Age    From               Message
+  ----    ------          ----   ----               -------
+  Normal  Scheduled       3m35s  default-scheduler  Successfully assigned free5gc/ueransim-ue-7646659884-kmzdt to sarang
+  Normal  AddedInterface  3m34s  multus             Add eth0 [10.1.100.220/24] from microk8s-flannel-network
+  Normal  Pulling         3m32s  kubelet            Pulling image "free5gc/ueransim:v4.0.1"
+  Normal  Pulled          57s    kubelet            Successfully pulled image "free5gc/ueransim:v4.0.1" in 2m34.458s (2m34.458s including waiting). Image size: 69348273 bytes.
+  Normal  Created         57s    kubelet            Created container: ue
+  Normal  Started         56s    kubelet            Started container ue
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl get pods -n free5gc | grep ueransim
+ueransim-gnb-78b76d9548-qvd25                             1/1     Running   0          3m40s
+ueransim-ue-7646659884-kmzdt                              1/1     Running   0          3m40s
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl logs -n free5gc deployment/ueransim-gnb | tail -20
+Defaulted container "gnb" out of: gnb, wait-amf (init)
+UERANSIM v3.2.7
+[2026-04-19 05:49:28.407] [sctp] [info] Trying to establish SCTP connection... (10.100.50.249:38412)
+[2026-04-19 05:49:28.416] [sctp] [info] SCTP connection established (10.100.50.249:38412)
+[2026-04-19 05:49:28.420] [sctp] [debug] SCTP association setup ascId[5]
+[2026-04-19 05:49:28.421] [ngap] [debug] Sending NG Setup Request
+[2026-04-19 05:49:28.600] [ngap] [debug] NG Setup Response received
+[2026-04-19 05:49:28.606] [ngap] [info] NG Setup procedure is successful
+[2026-04-19 05:49:30.139] [rrc] [debug] UE[1] new signal detected
+[2026-04-19 05:49:30.214] [rrc] [info] RRC Setup for UE[1]
+[2026-04-19 05:49:30.292] [ngap] [debug] Initial NAS message received from UE[1]
+[2026-04-19 05:49:35.005] [ngap] [debug] Initial Context Setup Request received
+[2026-04-19 05:49:53.905] [ngap] [info] PDU session resource(s) setup for UE[1] count[1]
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl exec -it -n free5gc deployment/ueransim-ue \
+    -- ping -I uesimtun0 8.8.8.8
+PING 8.8.8.8 (8.8.8.8) from 10.1.0.1 uesimtun0: 56(84) bytes of data.
+^C
+--- 8.8.8.8 ping statistics ---
+18 packets transmitted, 0 received, 100% packet loss, time 17463ms
+
+command terminated with exit code 1
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl logs -n free5gc deployment/ueransim-gnb | tail -20                        Defaulted container "gnb" out of: gnb, wait-amf (init)
+UERANSIM v3.2.7
+[2026-04-19 05:49:28.407] [sctp] [info] Trying to establish SCTP connection... (10.100.50.249:38412)
+[2026-04-19 05:49:28.416] [sctp] [info] SCTP connection established (10.100.50.249:38412)
+[2026-04-19 05:49:28.420] [sctp] [debug] SCTP association setup ascId[5]
+[2026-04-19 05:49:28.421] [ngap] [debug] Sending NG Setup Request
+[2026-04-19 05:49:28.600] [ngap] [debug] NG Setup Response received
+[2026-04-19 05:49:28.606] [ngap] [info] NG Setup procedure is successful
+[2026-04-19 05:49:30.139] [rrc] [debug] UE[1] new signal detected
+[2026-04-19 05:49:30.214] [rrc] [info] RRC Setup for UE[1]
+[2026-04-19 05:49:30.292] [ngap] [debug] Initial NAS message received from UE[1]
+[2026-04-19 05:49:35.005] [ngap] [debug] Initial Context Setup Request received
+[2026-04-19 05:49:53.905] [ngap] [info] PDU session resource(s) setup for UE[1] count[1]
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl exec -it -n free5gc deployment/free5gc-helm-free5gc-upf-iupf1 -- bash
+root@free5gc-helm-free5gc-upf-iupf1-865c478cc9-xm6k8:/free5gc# iptables -t nat -A POSTROUTING -s 10.1.0.0/17 -o n6 -j MASQUERADE
+root@free5gc-helm-free5gc-upf-iupf1-865c478cc9-xm6k8:/free5gc# exit
+exit
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl exec -it -n free5gc deployment/ueransim-ue \
+    -- ping -I uesimtun0 8.8.8.8
+PING 8.8.8.8 (8.8.8.8) from 10.1.0.1 uesimtun0: 56(84) bytes of data.
+^C
+--- 8.8.8.8 ping statistics ---
+15 packets transmitted, 0 received, 100% packet loss, time 14339ms
+
+command terminated with exit code 1
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl logs -n free5gc deployment/free5gc-helm-free5gc-upf-iupf1 | tail -20
+2026-04-19T05:53:19.249682837Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] handleSessionReportResponse
+2026-04-19T05:53:20.000547890Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] serveUSAReport
+2026-04-19T05:53:21.023960451Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] serveUSAReport
+2026-04-19T05:53:21.330902405Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] handleSessionReportResponse
+2026-04-19T05:53:21.331316608Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] handleSessionReportResponse
+2026-04-19T05:53:21.347848584Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] handleSessionReportResponse
+2026-04-19T05:53:22.062025312Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] serveUSAReport
+2026-04-19T05:53:22.102165058Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] handleSessionReportResponse
+2026-04-19T05:53:23.095118405Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] serveUSAReport
+2026-04-19T05:53:23.104864535Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] handleSessionReportResponse
+2026-04-19T05:53:23.644136403Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:53:23.648778021Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] serveUSAReport
+2026-04-19T05:53:23.650989787Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] handleSessionReportResponse
+2026-04-19T05:53:24.145762941Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] serveUSAReport
+2026-04-19T05:53:24.148602037Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] handleSessionReportResponse
+2026-04-19T05:53:25.127699736Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] serveUSAReport
+2026-04-19T05:53:25.130001589Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] handleSessionReportResponse
+2026-04-19T05:53:33.667472216Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:53:33.668475574Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] serveUSAReport
+2026-04-19T05:53:33.669962760Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] handleSessionReportResponse
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl logs -n free5gc deployment/ueransim-ue | tail -20
+[2026-04-19 05:49:30.289] [rrc] [info] RRC connection established
+[2026-04-19 05:49:30.289] [rrc] [info] UE switches to state [RRC-CONNECTED]
+[2026-04-19 05:49:30.289] [nas] [info] UE switches to state [CM-CONNECTED]
+[2026-04-19 05:49:33.540] [nas] [debug] Authentication Request received
+[2026-04-19 05:49:33.540] [nas] [debug] Received SQN [000000000023]
+[2026-04-19 05:49:33.540] [nas] [debug] SQN-MS [000000000000]
+[2026-04-19 05:49:33.653] [nas] [debug] Security Mode Command received
+[2026-04-19 05:49:33.653] [nas] [debug] Selected integrity[2] ciphering[0]
+[2026-04-19 05:49:35.054] [nas] [debug] Registration accept received
+[2026-04-19 05:49:35.072] [nas] [info] UE switches to state [MM-REGISTERED/NORMAL-SERVICE]
+[2026-04-19 05:49:35.072] [nas] [debug] Sending Registration Complete
+[2026-04-19 05:49:35.072] [nas] [info] Initial Registration is successful
+[2026-04-19 05:49:35.072] [nas] [debug] Sending PDU Session Establishment Request
+[2026-04-19 05:49:35.082] [nas] [debug] UAC access attempt is allowed for identity[0], category[MO_sig]
+[2026-04-19 05:49:35.309] [nas] [debug] Configuration Update Command received
+[2026-04-19 05:49:51.185] [nas] [warning] Retransmitting PDU Session Establishment Request due to T3580 expiry
+[2026-04-19 05:49:51.185] [nas] [debug] UAC access attempt is allowed for identity[0], category[MO_sig]
+[2026-04-19 05:49:53.948] [nas] [debug] PDU Session Establishment Accept received
+[2026-04-19 05:49:53.955] [nas] [info] PDU Session establishment is successful PSI[1]
+[2026-04-19 05:49:54.178] [app] [info] Connection setup for PDU session[1] is successful, TUN interface[uesimtun0, 10.1.0.1] is up.
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl exec -it -n free5gc deployment/ueransim-ue -- ping -I uesimtun0 8.8.8.8   PING 8.8.8.8 (8.8.8.8) from 10.1.0.1 uesimtun0: 56(84) bytes of data.
+^C
+--- 8.8.8.8 ping statistics ---
+19 packets transmitted, 0 received, 100% packet loss, time 18420ms
+
+command terminated with exit code 1
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl exec -it -n free5gc deployment/ueransim-ue -- ping -I uesimtun0 8.8.8.8
+PING 8.8.8.8 (8.8.8.8) from 10.1.0.1 uesimtun0: 56(84) bytes of data.
+^C
+--- 8.8.8.8 ping statistics ---
+3 packets transmitted, 0 received, 100% packet loss, time 2093ms
+
+command terminated with exit code 1
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl get pods -n free5gc | grep ueransim                                       ueransim-gnb-78b76d9548-qvd25                             1/1     Running   0          9m13s
+ueransim-ue-7646659884-kmzdt                              1/1     Running   0          9m13s
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl exec -it -n free5gc ueransim-ue-7646659884-kmzdt -- ping -I uesimtun0 8.8.8.8
+PING 8.8.8.8 (8.8.8.8) from 10.1.0.1 uesimtun0: 56(84) bytes of data.
+^C
+--- 8.8.8.8 ping statistics ---
+31 packets transmitted, 0 received, 100% packet loss, time 30867ms
+
+command terminated with exit code 1
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl describe po ueransim-ue-7646659884-kmzdt -n free5gc
+Name:             ueransim-ue-7646659884-kmzdt
+Namespace:        free5gc
+Priority:         0
+Service Account:  default
+Node:             sarang/192.168.31.96
+Start Time:       Sun, 19 Apr 2026 11:16:47 +0530
+Labels:           app=ueransim
+                  app.kubernetes.io/instance=ueransim
+                  app.kubernetes.io/name=ueransim
+                  component=ue
+                  pod-template-hash=7646659884
+Annotations:      k8s.v1.cni.cncf.io/network-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.100.220"
+                        ],
+                        "mac": "16:83:84:88:72:1e",
+                        "default": true,
+                        "dns": {}
+                    }]
+                  k8s.v1.cni.cncf.io/networks-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.100.220"
+                        ],
+                        "mac": "16:83:84:88:72:1e",
+                        "default": true,
+                        "dns": {}
+                    }]
+Status:           Running
+IP:               10.1.100.220
+IPs:
+  IP:           10.1.100.220
+Controlled By:  ReplicaSet/ueransim-ue-7646659884
+Containers:
+  ue:
+    Container ID:  containerd://cd03952a9d5c0d4d18f114bea929e582b46473d5c670d915cd84a105c3d553eb
+    Image:         free5gc/ueransim:v4.0.1
+    Image ID:      docker.io/free5gc/ueransim@sha256:4a6745b0c9f0c60173833f8bef89816324e84636e220917bdc682555a299e8ba
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /ueransim/config/wrapper.sh
+    State:          Running
+      Started:      Sun, 19 Apr 2026 11:19:27 +0530
+    Ready:          True
+    Restart Count:  0
+    Requests:
+      cpu:        100m
+      memory:     128Mi
+    Environment:  <none>
+    Mounts:
+      /ueransim/config from ue-volume (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-n8z4w (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True
+  Initialized                 True
+  Ready                       True
+  ContainersReady             True
+  PodScheduled                True
+Volumes:
+  ue-volume:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      ue-configmap
+    Optional:  false
+  kube-api-access-n8z4w:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:                      <none>
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl logs -n free5gc deployment/ueransim-ue | tail -20                         [2026-04-19 05:49:30.289] [rrc] [info] RRC connection established
+[2026-04-19 05:49:30.289] [rrc] [info] UE switches to state [RRC-CONNECTED]
+[2026-04-19 05:49:30.289] [nas] [info] UE switches to state [CM-CONNECTED]
+[2026-04-19 05:49:33.540] [nas] [debug] Authentication Request received
+[2026-04-19 05:49:33.540] [nas] [debug] Received SQN [000000000023]
+[2026-04-19 05:49:33.540] [nas] [debug] SQN-MS [000000000000]
+[2026-04-19 05:49:33.653] [nas] [debug] Security Mode Command received
+[2026-04-19 05:49:33.653] [nas] [debug] Selected integrity[2] ciphering[0]
+[2026-04-19 05:49:35.054] [nas] [debug] Registration accept received
+[2026-04-19 05:49:35.072] [nas] [info] UE switches to state [MM-REGISTERED/NORMAL-SERVICE]
+[2026-04-19 05:49:35.072] [nas] [debug] Sending Registration Complete
+[2026-04-19 05:49:35.072] [nas] [info] Initial Registration is successful
+[2026-04-19 05:49:35.072] [nas] [debug] Sending PDU Session Establishment Request
+[2026-04-19 05:49:35.082] [nas] [debug] UAC access attempt is allowed for identity[0], category[MO_sig]
+[2026-04-19 05:49:35.309] [nas] [debug] Configuration Update Command received
+[2026-04-19 05:49:51.185] [nas] [warning] Retransmitting PDU Session Establishment Request due to T3580 expiry
+[2026-04-19 05:49:51.185] [nas] [debug] UAC access attempt is allowed for identity[0], category[MO_sig]
+[2026-04-19 05:49:53.948] [nas] [debug] PDU Session Establishment Accept received
+[2026-04-19 05:49:53.955] [nas] [info] PDU Session establishment is successful PSI[1]
+[2026-04-19 05:49:54.178] [app] [info] Connection setup for PDU session[1] is successful, TUN interface[uesimtun0, 10.1.0.1] is up.
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl exec -it -n free5gc ueransim-ue-7646659884-kmzdt -- ping -I uesimtun0 www.google.com
+PING www.google.com (142.251.153.119) from 10.1.0.1 uesimtun0: 56(84) bytes of data.
+
+--- www.google.com ping statistics ---
+46 packets transmitted, 0 received, 100% packet loss, time 46163ms
+
+^Ccommand terminated with exit code 1
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl logs -n free5gc deployment/free5gc-helm-free5gc-upf-iupf1 | tail -20      2026-04-19T05:59:10.122670829Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] serveUSAReport
+2026-04-19T05:59:10.130519620Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] handleSessionReportResponse
+2026-04-19T05:59:11.120600387Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] serveUSAReport
+2026-04-19T05:59:11.124599621Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] handleSessionReportResponse
+2026-04-19T05:59:12.211916367Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] serveUSAReport
+2026-04-19T05:59:12.273000680Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] handleSessionReportResponse
+2026-04-19T05:59:13.192828478Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] serveUSAReport
+2026-04-19T05:59:13.212940487Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] handleSessionReportResponse
+2026-04-19T05:59:13.631463976Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:59:13.632038824Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] serveUSAReport
+2026-04-19T05:59:13.633913236Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] handleSessionReportResponse
+2026-04-19T05:59:14.175642429Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] serveUSAReport
+2026-04-19T05:59:14.193534842Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] handleSessionReportResponse
+2026-04-19T05:59:15.217909234Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] serveUSAReport
+2026-04-19T05:59:15.236699462Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] handleSessionReportResponse
+2026-04-19T05:59:16.252136530Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] serveUSAReport
+2026-04-19T05:59:16.278377293Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] handleSessionReportResponse
+2026-04-19T05:59:23.641950150Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:59:23.708698446Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] serveUSAReport
+2026-04-19T05:59:23.718006825Z [INFO][UPF][PFCP][LAddr:10.100.50.241:8805] handleSessionReportResponse
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS    RESTARTS   AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             1/1     Running   2          19h
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           1/1     Running   3          19h
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              1/1     Running   3          19h
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   1/1     Running   3          19h
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             1/1     Running   3          19h
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             1/1     Running   3          19h
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           1/1     Running   3          19h
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             1/1     Running   3          19h
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             1/1     Running   2          19h
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              1/1     Running   3          19h
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              1/1     Running   3          19h
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-xm6k8           1/1     Running   0          44m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-m8v25         1/1     Running   0          44m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-h9lhd           1/1     Running   0          44m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          1/1     Running   3          19h
+mongodb-0                                                 1/1     Running   3          11h
+ueransim-gnb-78b76d9548-qvd25                             1/1     Running   0          12m
+ueransim-ue-7646659884-kmzdt                              1/1     Running   0          12m
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl logs free5gc-helm-free5gc-upf-psaupf1-77645d8847-m8v25 -n free5gc
+2026-04-19T05:15:51.700674600Z [INFO][UPF][Main] UPF version:
+        free5GC version: v4.2.1
+        build time:      2026-03-04T07:40:26Z
+        commit hash:     ce0108ac
+        commit time:     2026-03-02T08:26:35Z
+        go version:      go1.25.5 linux/amd64
+2026-04-19T05:15:51.700896961Z [INFO][UPF][CFG] Read config from [/free5gc/config//upfcfg.yaml]
+2026-04-19T05:15:51.701833712Z [INFO][UPF][CFG] ==================================================
+2026-04-19T05:15:51.701854765Z [INFO][UPF][CFG] (*factory.Config)(0xc00054d6d0)({
+        Version: (string) (len=5) "1.0.3",
+        Description: (string) (len=31) "UPF initial local configuration",
+        Pfcp: (*factory.Pfcp)(0xc000521a10)({
+                Addr: (string) (len=13) "10.100.50.242",
+                NodeID: (string) (len=13) "10.100.50.242",
+                RetransTimeout: (time.Duration) 1s,
+                MaxRetrans: (uint8) 3
+        }),
+        Gtpu: (*factory.Gtpu)(0xc000521bc0)({
+                Forwarder: (string) (len=5) "gtp5g",
+                IfList: ([]factory.IfInfo) (len=1 cap=1) {
+                        (factory.IfInfo) {
+                                Addr: (string) (len=13) "10.100.50.226",
+                                Type: (string) (len=2) "N9",
+                                Name: (string) "",
+                                IfName: (string) "",
+                                MTU: (uint32) 0
+                        }
+                }
+        }),
+        DnnList: ([]factory.DnnList) (len=2 cap=2) {
+                (factory.DnnList) {
+                        Dnn: (string) (len=8) "internet",
+                        Cidr: (string) (len=11) "10.1.0.0/17",
+                        NatIfName: (string) ""
+                },
+                (factory.DnnList) {
+                        Dnn: (string) (len=8) "internet",
+                        Cidr: (string) (len=13) "10.1.128.0/17",
+                        NatIfName: (string) ""
+                }
+        },
+        Logger: (*factory.Logger)(0xc00009b600)({
+                Enable: (bool) true,
+                Level: (string) (len=4) "info",
+                ReportCaller: (bool) false
+        })
+})
+2026-04-19T05:15:51.701868237Z [INFO][UPF][CFG] ==================================================
+2026-04-19T05:15:51.701875320Z [INFO][UPF][Main] Log level is set to [info]
+2026-04-19T05:15:51.701881518Z [INFO][UPF][Main] Report Caller is set to [false]
+2026-04-19T05:15:51.702224884Z [INFO][UPF][Main] starting Gtpu Forwarder [gtp5g]
+2026-04-19T05:15:51.702243235Z [INFO][UPF][Main] GTP Address: "10.100.50.226:2152"
+2026-04-19T05:15:51.945719320Z [INFO][UPF][BUFF] buff netlink server started
+2026-04-19T05:15:51.945860571Z [INFO][UPF][Gtp5g] Forwarder started
+2026-04-19T05:15:51.945981021Z [INFO][UPF][Perio] perio server started
+2026-04-19T05:15:51.955383930Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] starting pfcp server
+2026-04-19T05:15:51.955414177Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] pfcp server started
+2026-04-19T05:15:51.955420105Z [INFO][UPF][Main] UPF started
+2026-04-19T05:15:56.216625494Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleAssociationSetupRequest
+2026-04-19T05:15:56.216682604Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805][CPNodeID:10.100.50.244] New node
+2026-04-19T05:49:53.610762303Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionEstablishmentRequest
+2026-04-19T05:49:53.611291845Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805][CPNodeID:10.100.50.244][CPSEID:0x2][UPSEID:0x1] New session
+2026-04-19T05:49:53.650594044Z [INFO][UPF][Perio] recv event[TYPE_PERIO_ADD][{eType:1 lSeid:1 urrid:3 period:10000000000}]
+2026-04-19T05:49:53.650617256Z [INFO][UPF][Perio] new ticker [10s]
+2026-04-19T05:49:53.664973672Z [INFO][UPF][Perio] recv event[TYPE_PERIO_ADD][{eType:1 lSeid:1 urrid:4 period:10000000000}]
+2026-04-19T05:50:03.655813407Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:50:03.656481260Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:50:03.657941745Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:50:13.664765339Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:50:13.665552777Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:50:13.669860930Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:50:23.653469237Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:50:23.656557657Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:50:23.658629064Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:50:33.659669268Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:50:33.661600862Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:50:33.664523300Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:50:43.659384346Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:50:43.682652287Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:50:43.733332759Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:50:53.658472081Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:50:53.665747571Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:50:53.683867393Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:51:03.662600217Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:51:03.671656691Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:51:03.675457944Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:51:13.664721718Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:51:13.693343665Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:51:13.705995466Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:51:23.662860858Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:51:23.664207790Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:51:23.666324900Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:51:33.666503979Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:51:33.677389319Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:51:33.679634187Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:51:43.660449071Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:51:43.661458758Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:51:43.676230043Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:51:53.671073489Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:51:53.690601471Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:51:53.693360629Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:51:59.112314913Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:51:59.117748419Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:51:59.118462778Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:51:59.119551842Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:51:59.151066760Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:52:00.161933412Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:52:01.153134944Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:52:01.267322226Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:52:01.269494197Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:52:01.269682520Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:52:02.172881555Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:52:02.173099004Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:52:02.173152985Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:52:02.185491995Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:52:03.231958388Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:52:03.414739525Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:52:03.414917054Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:52:03.651657286Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:52:03.652988594Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:52:05.248712673Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:52:05.249107448Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:52:05.428544467Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:52:05.429093652Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:52:05.455071348Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:52:05.461074533Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:52:05.500279057Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:52:05.500361194Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:52:05.500371345Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:52:05.501726041Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:52:13.664661703Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:52:13.666644209Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:52:13.667604060Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:52:23.651306724Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:52:23.651877001Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:52:23.653553794Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:52:33.651827890Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:52:33.653561766Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:52:33.655129719Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:52:43.660741577Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:52:43.661822936Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:52:43.674807960Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:52:53.658040689Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:52:53.658415810Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:52:53.659970038Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:03.661532783Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:53:03.663205454Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:03.674095073Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:10.787707077Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:10.789673731Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:11.818653865Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:11.821744023Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:12.834022888Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:12.836278288Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:13.663241602Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:53:13.664727499Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:13.702670899Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:13.867044917Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:13.872919399Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:13.889675239Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:13.898624867Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:13.898703813Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:13.898711802Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:13.912621981Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:13.912638513Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:14.878352143Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:14.879877285Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:15.904850091Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:15.937569382Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:16.936103555Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:16.949209566Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:16.953132458Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:16.953298331Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:17.954878412Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:18.976915707Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:19.224206375Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:19.224230088Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:19.224236765Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:19.224242640Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:19.246954183Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:20.000666908Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:20.061493311Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:20.083527920Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:20.083647911Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:20.083706604Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:21.055920573Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:21.317826679Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:21.317850688Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:21.317965982Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:21.332902266Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:21.346443234Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:21.348279180Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:21.359614943Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:22.061990839Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:22.092042049Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:23.093033569Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:23.107185972Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:23.656601675Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:53:23.684598601Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:23.733192855Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:24.093789105Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:24.094100676Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:24.094146356Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:24.136123263Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:24.142460752Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:24.142476277Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:24.142487371Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:24.147959882Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:25.127709275Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:25.129865923Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:27.240428335Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:27.241737579Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:29.256427366Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:29.257214954Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:33.667443544Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:53:33.670324113Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:33.674506202Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:43.658827408Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:53:43.666201746Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:43.693510471Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:53:53.661291268Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:53:53.662233569Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:53:53.664030787Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:03.660244290Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:54:03.689023425Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:03.727408906Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:13.673840036Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:54:13.675608040Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:13.677427476Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:17.807888191Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:17.842046243Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:18.814808489Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:18.817880831Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:19.855014391Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:19.856227275Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:20.861980224Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:20.862432388Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:20.862468741Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:20.902733579Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:20.907409466Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:20.907429517Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:20.907438936Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:20.912467555Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:21.895422096Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:21.897492685Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:22.926319882Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:22.942225746Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:23.652541581Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:54:23.684406122Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:23.710251590Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:23.935883712Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:23.940666398Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:23.998357297Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:23.999755616Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:23.999988659Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:24.001043847Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:24.001891450Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:24.003656734Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:24.003790198Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:24.004306618Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:24.961655065Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:24.963969918Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:26.025558454Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:26.045699100Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:27.008673970Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:27.011462148Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:28.031304038Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:28.031885609Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:28.031929424Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:28.063750542Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:28.069532630Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:28.069551507Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:28.100762417Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:28.185181610Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:29.054521141Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:29.057936299Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:30.105935203Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:30.119355972Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:31.102788999Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:31.124515596Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:31.166919863Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:31.168611139Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:31.168684484Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:31.168736221Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:31.183257389Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:31.183302490Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:32.145584250Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:33.173254098Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:33.219603164Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:33.219720417Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:33.219738786Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:33.651942167Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:54:33.653316522Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:34.176503146Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:35.205580740Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:35.228039053Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:35.239789859Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:35.244631662Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:36.244497932Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:36.337705172Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:36.342519194Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:36.343351829Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:36.358100533Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:36.358312373Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:36.358338787Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:36.358354362Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:36.358364956Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:38.282461905Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:38.283274664Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:38.285171634Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:38.285234194Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:43.667857103Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:54:43.691518455Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:43.729249215Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:54:53.666711709Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:54:53.685723930Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:54:53.687516752Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:55:03.660513922Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:55:03.661180895Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:55:03.663309230Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:55:13.686363170Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:55:13.686605913Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:55:13.688562578Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:55:23.661616152Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:55:23.663749968Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:55:23.665062963Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:55:33.661638588Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:55:33.669149916Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:55:33.719558897Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:55:43.655528483Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:55:43.657017420Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:55:43.659567608Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:55:51.257349124Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:55:51.258587899Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:55:52.343440572Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:55:52.356591092Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:55:53.378707154Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:55:53.398755331Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:55:53.651275499Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:55:53.652769156Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:55:53.655606828Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:55:54.365143214Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:55:54.365605806Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:55:54.365875404Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:55:54.419757096Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:55:54.426764587Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:55:54.426923378Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:03.655414498Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:56:03.656358574Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:03.659216718Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:13.694936543Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:56:13.731597577Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:13.738515024Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:23.660253103Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:56:23.661700130Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:23.664866371Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:25.646685707Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:25.709297527Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:26.624715296Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:26.660870992Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:27.647747654Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:27.650900602Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:28.727345399Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:28.741908497Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:28.741986579Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:28.742015050Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:28.742053619Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:28.765848915Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:28.768852169Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:28.768865581Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:28.768871927Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:28.768898501Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:29.704541194Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:29.707841116Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:30.722468801Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:30.724646302Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:31.744872520Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:31.746464145Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:32.766289286Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:32.766567322Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:32.766771663Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:32.767766648Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:32.767888639Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:32.767905727Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:32.770232989Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:32.772684348Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:33.651711476Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:56:33.653095285Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:33.655116401Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:33.791974302Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:33.803618382Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:34.815517720Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:34.817394743Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:35.837513216Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:35.837793293Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:35.837857092Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:35.838905577Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:35.838923660Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:35.839967353Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:35.841233484Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:35.843485895Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:36.904988370Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:36.941665450Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:37.919139002Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:37.936884500Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:38.913216212Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:38.913673696Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:38.913766689Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:38.929768753Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:38.959301950Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:38.959452177Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:38.961669792Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:38.961751375Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:39.939734930Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:39.942320916Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:40.985371043Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:41.012427971Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:41.981545679Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:41.982268166Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:41.982328732Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:41.982359600Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:41.983625079Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:41.983729383Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:41.983854223Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:41.991452517Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:43.008555594Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:43.010354225Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:43.652845737Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:56:43.679785325Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:43.688215808Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:44.031859698Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:44.033768004Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:45.066249566Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:45.091212879Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:45.091287871Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:45.091315389Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:45.105509620Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:45.105544039Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:45.107552316Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:45.107570996Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:46.101634595Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:46.112767149Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:47.103297304Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:47.105769516Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:48.144686935Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:48.145414741Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:48.145462697Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:48.145507587Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:48.148925815Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:48.148960035Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:48.151820371Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:48.201484373Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:49.150789357Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:49.155223220Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:50.247249718Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:50.300574631Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:51.270677342Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:51.270963111Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:51.271021686Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:51.272015712Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:51.273379469Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:51.274546585Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:51.274570825Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:51.274582469Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:52.288064835Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:52.293928830Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:53.316369137Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:53.317790603Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:53.651104896Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:56:53.658375483Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:53.659499730Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:54.350593660Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:54.369199006Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:54.369260901Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:54.369287509Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:54.393494885Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:54.393607742Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:54.394711772Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:54.395535496Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:55.451721746Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:55.474692316Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:56.447672869Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:56.450607759Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:57.418345976Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:57.431683486Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:57.432116311Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:56:57.433274130Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:57.433291051Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:56:57.433297111Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:57:03.651535091Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:57:03.652063245Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:57:03.653271336Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:57:13.672068927Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:57:13.706725327Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:57:13.745176366Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:57:23.652856047Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:57:23.653419023Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:57:23.657296200Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:57:33.651390060Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:57:33.652608882Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:57:33.655437979Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:57:43.679185427Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:57:43.697047267Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:57:43.734599093Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:57:53.712223503Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:57:53.713623595Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:57:53.722191139Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:03.659262134Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:58:03.659502925Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:03.661206295Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:13.660414612Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:58:13.661417695Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:13.662532401Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:23.660338724Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:58:23.661976943Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:23.665825165Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:30.122709902Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:30.173747034Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:31.110533021Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:31.114302088Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:32.151742908Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:32.175599310Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:33.179218785Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:33.191764655Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:33.216597894Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:33.218440233Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:33.218637449Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:33.218692830Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:33.219641541Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:33.219666669Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:33.313118868Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:33.318673019Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:33.659983511Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:58:33.706753751Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:33.710483570Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:34.176701392Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:34.178712335Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:35.202199031Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:35.203305504Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:36.244366006Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:36.246630334Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:37.245466207Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:37.246635531Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:37.246705484Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:37.248918940Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:37.249958545Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:37.250068373Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:37.250084797Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:37.252231076Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:38.291029535Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:38.292999703Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:39.330557037Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:39.354274652Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:40.317026776Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:40.318418434Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:40.318612501Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:40.324488988Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:40.363337628Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:40.381957414Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:40.383755931Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:40.383861758Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:41.387092817Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:41.473289954Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:42.367566230Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:42.407192574Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:43.397930800Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:43.400640122Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:43.400904154Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:43.402673291Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:43.448373932Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:43.448411230Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:43.448421664Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:43.448427280Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:43.651336664Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:58:43.652379028Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:43.654317928Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:44.450184255Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:44.453355615Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:45.506265738Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:45.517609241Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:46.464810945Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:46.465497240Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:46.465604539Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:46.466001223Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:46.481262866Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:46.488828955Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:46.490654110Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:46.515187835Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:47.533482457Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:47.607353815Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:48.516220238Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:48.518510256Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:49.535658786Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:49.536898643Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:49.537709918Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:49.538282379Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:49.542436169Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:49.542600262Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:49.542625860Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:49.543513253Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:50.564709406Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:50.571330604Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:51.609589932Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:51.612406618Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:52.626971269Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:52.627955236Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:52.628239163Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:52.628304674Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:52.639105809Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:52.639258619Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:52.639273361Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:52.639279137Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:53.653142710Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:58:53.667142918Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:53.667374541Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:53.703775621Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:53.720472109Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:54.654227969Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:54.656773448Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:55.677386800Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:55.677646958Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:55.677697850Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:55.707545137Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:55.712909359Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:55.732622321Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:55.768792765Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:55.768828460Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:56.702787457Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:56.704526426Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:57.782969424Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:57.808438816Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:58.780569665Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:58.781643452Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:58.781726864Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:58.781777223Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:58.785322554Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:58.785345446Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:58.785354579Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:58.785365439Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:58:59.775406761Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:58:59.776570525Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:00.802658570Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:00.803755904Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:01.822769628Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:01.824861178Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:01.885642243Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:01.886194903Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:01.886601223Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:01.888377565Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:01.889343394Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:01.889430010Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:01.889440589Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:01.890491109Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:02.848416242Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:02.849324364Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:03.661814437Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:59:03.665865740Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:03.668731832Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:03.871432786Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:03.873394214Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:04.926815473Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:04.929952571Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:05.982513665Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:05.982746585Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:05.984341357Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:05.984985155Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:05.985523731Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:05.985540659Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:05.987448888Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:06.025339244Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:07.018134050Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:07.019422268Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:08.031514127Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:08.034005786Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:09.053475900Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:09.053829230Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:09.054176240Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:09.055053930Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:09.056441838Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:09.056549482Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:09.056569777Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:09.056601603Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:10.123623865Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:10.133583423Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:11.120990066Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:11.123553597Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:12.171199361Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:12.178236144Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:12.193707746Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:12.217956167Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:12.223628077Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:12.227775837Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:12.227874434Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:12.238882234Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:13.202743989Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:13.237724359Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:13.653460219Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:59:13.655085605Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:13.659279461Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:14.175113365Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:14.196741573Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:15.225197657Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:15.236325158Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:15.285236510Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:15.285496683Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:15.285552851Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:15.286072757Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:15.286664357Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:15.287458997Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:15.287611610Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:15.287632642Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:16.268594502Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:16.283423961Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:19.380398912Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:19.627190258Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:23.655356102Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:59:23.670460841Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:23.714723937Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:33.655254080Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:59:33.656186790Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:33.657979525Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:43.659671856Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:59:43.673969906Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:43.716947848Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T05:59:53.662770228Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T05:59:53.665075420Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T05:59:53.683654249Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+2026-04-19T06:00:03.666952470Z [INFO][UPF][Perio] recv event[TYPE_PERIO_TIMEOUT][{eType:3 lSeid:0 urrid:0 period:10000000000}]
+2026-04-19T06:00:03.699538432Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] serveUSAReport
+2026-04-19T06:00:03.740049489Z [INFO][UPF][PFCP][LAddr:10.100.50.242:8805] handleSessionReportResponse
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS    RESTARTS   AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             1/1     Running   2          19h
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           1/1     Running   3          19h
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              1/1     Running   3          19h
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   1/1     Running   3          19h
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             1/1     Running   3          19h
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             1/1     Running   3          19h
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           1/1     Running   3          19h
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             1/1     Running   3          19h
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             1/1     Running   2          19h
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              1/1     Running   3          19h
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              1/1     Running   3          19h
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-xm6k8           1/1     Running   0          44m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-m8v25         1/1     Running   0          44m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-h9lhd           1/1     Running   0          44m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          1/1     Running   3          19h
+mongodb-0                                                 1/1     Running   3          11h
+ueransim-gnb-78b76d9548-qvd25                             1/1     Running   0          13m
+ueransim-ue-7646659884-kmzdt                              1/1     Running   0          13m
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl logs free5gc-helm-free5gc-upf-psaupf2-8df8c594-h9lhd -n free5gc
+2026-04-19T05:15:52.150007917Z [INFO][UPF][Main] UPF version:
+        free5GC version: v4.2.1
+        build time:      2026-03-04T07:40:26Z
+        commit hash:     ce0108ac
+        commit time:     2026-03-02T08:26:35Z
+        go version:      go1.25.5 linux/amd64
+2026-04-19T05:15:52.150786151Z [INFO][UPF][CFG] Read config from [/free5gc/config//upfcfg.yaml]
+2026-04-19T05:15:52.152546409Z [INFO][UPF][CFG] ==================================================
+2026-04-19T05:15:52.152978734Z [INFO][UPF][CFG] (*factory.Config)(0xc0005c9b30)({
+        Version: (string) (len=5) "1.0.3",
+        Description: (string) (len=31) "UPF initial local configuration",
+        Pfcp: (*factory.Pfcp)(0xc000608f30)({
+                Addr: (string) (len=13) "10.100.50.243",
+                NodeID: (string) (len=13) "10.100.50.243",
+                RetransTimeout: (time.Duration) 1s,
+                MaxRetrans: (uint8) 3
+        }),
+        Gtpu: (*factory.Gtpu)(0xc0006090e0)({
+                Forwarder: (string) (len=5) "gtp5g",
+                IfList: ([]factory.IfInfo) (len=1 cap=1) {
+                        (factory.IfInfo) {
+                                Addr: (string) (len=13) "10.100.50.227",
+                                Type: (string) (len=2) "N9",
+                                Name: (string) "",
+                                IfName: (string) "",
+                                MTU: (uint32) 0
+                        }
+                }
+        }),
+        DnnList: ([]factory.DnnList) (len=2 cap=2) {
+                (factory.DnnList) {
+                        Dnn: (string) (len=8) "internet",
+                        Cidr: (string) (len=11) "10.1.0.0/17",
+                        NatIfName: (string) ""
+                },
+                (factory.DnnList) {
+                        Dnn: (string) (len=8) "internet",
+                        Cidr: (string) (len=13) "10.1.128.0/17",
+                        NatIfName: (string) ""
+                }
+        },
+        Logger: (*factory.Logger)(0xc000426e60)({
+                Enable: (bool) true,
+                Level: (string) (len=4) "info",
+                ReportCaller: (bool) false
+        })
+})
+2026-04-19T05:15:52.153005145Z [INFO][UPF][CFG] ==================================================
+2026-04-19T05:15:52.153011237Z [INFO][UPF][Main] Log level is set to [info]
+2026-04-19T05:15:52.153015033Z [INFO][UPF][Main] Report Caller is set to [false]
+2026-04-19T05:15:52.154488743Z [INFO][UPF][Main] starting Gtpu Forwarder [gtp5g]
+2026-04-19T05:15:52.155325262Z [INFO][UPF][Main] GTP Address: "10.100.50.227:2152"
+2026-04-19T05:15:52.540243664Z [INFO][UPF][BUFF] buff netlink server started
+2026-04-19T05:15:52.540554615Z [INFO][UPF][Gtp5g] Forwarder started
+2026-04-19T05:15:52.540749181Z [INFO][UPF][Perio] perio server started
+2026-04-19T05:15:52.570621873Z [INFO][UPF][PFCP][LAddr:10.100.50.243:8805] starting pfcp server
+2026-04-19T05:15:52.571190664Z [INFO][UPF][PFCP][LAddr:10.100.50.243:8805] pfcp server started
+2026-04-19T05:15:52.571211964Z [INFO][UPF][Main] UPF started
+2026-04-19T05:15:54.183693715Z [INFO][UPF][PFCP][LAddr:10.100.50.243:8805] handleAssociationSetupRequest
+2026-04-19T05:15:54.201138709Z [INFO][UPF][PFCP][LAddr:10.100.50.243:8805][CPNodeID:10.100.50.244] New node
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS    RESTARTS   AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             1/1     Running   2          19h
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           1/1     Running   3          19h
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              1/1     Running   3          19h
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   1/1     Running   3          19h
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             1/1     Running   3          19h
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             1/1     Running   3          19h
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           1/1     Running   3          19h
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             1/1     Running   3          19h
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             1/1     Running   2          19h
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              1/1     Running   3          19h
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              1/1     Running   3          19h
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-xm6k8           1/1     Running   0          45m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-m8v25         1/1     Running   0          45m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-h9lhd           1/1     Running   0          45m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          1/1     Running   3          19h
+mongodb-0                                                 1/1     Running   3          11h
+ueransim-gnb-78b76d9548-qvd25                             1/1     Running   0          14m
+ueransim-ue-7646659884-kmzdt                              1/1     Running   0          14m
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl --namespace free5gc exec -it $POD_NAME -- traceroute -i uesimtun0 www.google.com
+
+error: pod, type/name or --filename must be specified
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ ^C
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl --namespace free5gc exec -it ueransim-ue-7646659884-kmzdt -- traceroute -i uesimtun0 www.google.com
+error: Internal error occurred: Internal error occurred: error executing command in container: failed to exec in container: failed to start exec "4a1e718a7bd2d49de6f413ba3117a11755ce8a9f0bed7ce65aa4fe0ff551be54": OCI runtime exec failed: exec failed: unable to start container process: exec: "traceroute": executable file not found in $PATH: unknown
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl --namespace free5gc exec -it ueransim-ue-7646659884-kmzdt -- tracepath www.google.com
+error: Internal error occurred: Internal error occurred: error executing command in container: failed to exec in container: failed to start exec "296ae8f20420fdc10baa29c2daf7cd40ad6c5f8af0cb1bd605c58085ecee2f90": OCI runtime exec failed: exec failed: unable to start container process: exec: "tracepath": executable file not found in $PATH: unknown
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl --namespace free5gc exec -it ueransim-ue-7646659884-kmzdt -- bash
+root@ueransim-ue-7646659884-kmzdt:/ueransim# apt-get update && apt-get install -y traceroute
+Get:1 http://security.debian.org/debian-security bullseye-security InRelease [27.2 kB]
+Get:2 http://deb.debian.org/debian bullseye InRelease [75.1 kB]
+Get:3 http://deb.debian.org/debian bullseye-updates InRelease [44.0 kB]
+Get:4 http://security.debian.org/debian-security bullseye-security/main amd64 Packages [584 kB]
+Fetched 730 kB in 5s (136 kB/s)
+Reading package lists... Done
+N: Repository 'http://security.debian.org/debian-security bullseye-security InRelease' changed its 'Suite' value from 'oldstable-security' to 'oldoldstable-security'
+N: Repository 'http://deb.debian.org/debian bullseye InRelease' changed its 'Suite' value from 'oldstable' to 'oldoldstable'
+N: Repository 'http://deb.debian.org/debian bullseye-updates InRelease' changed its 'Suite' value from 'oldstable-updates' to 'oldoldstable-updates'
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following NEW packages will be installed:
+  traceroute
+0 upgraded, 1 newly installed, 0 to remove and 26 not upgraded.
+Need to get 55.7 kB of archives.
+After this operation, 162 kB of additional disk space will be used.
+Get:1 http://deb.debian.org/debian bullseye/main amd64 traceroute amd64 1:2.1.0-2+deb11u1 [55.7 kB]
+Fetched 55.7 kB in 4s (14.9 kB/s)
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package traceroute.
+(Reading database ... 11806 files and directories currently installed.)
+Preparing to unpack .../traceroute_1%3a2.1.0-2+deb11u1_amd64.deb ...
+Unpacking traceroute (1:2.1.0-2+deb11u1) ...
+Setting up traceroute (1:2.1.0-2+deb11u1) ...
+update-alternatives: using /usr/bin/traceroute.db to provide /usr/bin/traceroute (traceroute) in auto mode
+update-alternatives: using /usr/bin/traceroute6.db to provide /usr/bin/traceroute6 (traceroute6) in auto mode
+update-alternatives: using /usr/bin/lft.db to provide /usr/bin/lft (lft) in auto mode
+update-alternatives: using /usr/bin/traceproto.db to provide /usr/bin/traceproto (traceproto) in auto mode
+update-alternatives: using /usr/sbin/tcptraceroute.db to provide /usr/sbin/tcptraceroute (tcptraceroute) in auto mode
+root@ueransim-ue-7646659884-kmzdt:/ueransim# traceroute -i uesimtun0 www.google.com
+traceroute to www.google.com (142.251.152.119), 30 hops max, 60 byte packets
+ 1  * * *
+ 2  * * *
+ 3  * * *
+ 4  * * *
+ 5  * * *
+ 6  * * *
+ 7  * * *
+ 8  * * *
+ 9  * * *
+10  * * *
+11  * * *
+12  * * *
+13  * * *
+14  * * *
+15  * * *
+16  * * *
+17  * * *
+18  * * *
+19  * * *
+20  * * *
+21  * * *
+22  * * *
+23  * * *
+24  * * *
+25  * * *
+26  * * *
+27  * * *
+28  * * *
+29  * * *
+30  * * *
+root@ueransim-ue-7646659884-kmzdt:/ueransim# ping -i uesimtun0 www.google.com
+ping: option argument contains garbage: uesimtun0
+ping: this will become fatal error in the future
+PING www.google.com (142.251.150.119) 56(84) bytes of data.
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=1 ttl=111 time=24.9 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=2 ttl=111 time=28.0 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=3 ttl=111 time=26.2 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=4 ttl=111 time=33.6 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=5 ttl=111 time=40.2 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=6 ttl=111 time=33.2 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=7 ttl=111 time=50.8 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=8 ttl=111 time=33.1 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=9 ttl=111 time=35.9 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=10 ttl=111 time=51.5 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=11 ttl=111 time=37.2 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=12 ttl=111 time=26.5 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=13 ttl=111 time=21.2 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=14 ttl=111 time=25.8 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=15 ttl=111 time=26.7 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=16 ttl=111 time=38.1 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=17 ttl=111 time=49.5 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=18 ttl=111 time=29.4 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=19 ttl=111 time=42.3 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=20 ttl=111 time=41.1 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=21 ttl=111 time=26.6 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=22 ttl=111 time=23.1 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=23 ttl=111 time=18.4 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=24 ttl=111 time=34.0 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=25 ttl=111 time=32.9 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=26 ttl=111 time=40.8 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=27 ttl=111 time=46.7 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=28 ttl=111 time=35.6 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=29 ttl=111 time=32.3 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=30 ttl=111 time=98.1 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=31 ttl=111 time=81.6 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=32 ttl=111 time=68.3 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=33 ttl=111 time=52.5 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=34 ttl=111 time=36.3 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=35 ttl=111 time=24.9 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=36 ttl=111 time=42.8 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=37 ttl=111 time=24.9 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=38 ttl=111 time=30.0 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=39 ttl=111 time=53.6 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=40 ttl=111 time=25.4 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=41 ttl=111 time=32.5 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=42 ttl=111 time=27.2 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=43 ttl=111 time=65.2 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=44 ttl=111 time=50.6 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=45 ttl=111 time=35.7 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=46 ttl=111 time=89.2 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=47 ttl=111 time=83.9 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=48 ttl=111 time=68.5 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=49 ttl=111 time=53.8 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=50 ttl=111 time=36.5 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=51 ttl=111 time=24.6 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=52 ttl=111 time=34.2 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=53 ttl=111 time=26.2 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=57 ttl=111 time=21.7 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=54 ttl=111 time=69.2 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=55 ttl=111 time=54.7 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=56 ttl=111 time=39.2 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=58 ttl=111 time=33.6 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=59 ttl=111 time=47.4 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=60 ttl=111 time=35.5 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=61 ttl=111 time=39.9 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=62 ttl=111 time=48.7 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=63 ttl=111 time=36.9 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=64 ttl=111 time=32.4 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=65 ttl=111 time=38.8 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=66 ttl=111 time=26.4 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=67 ttl=111 time=46.0 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=68 ttl=111 time=32.9 ms
+64 bytes from 142.251.150.119 (142.251.150.119): icmp_seq=69 ttl=111 time=36.3 ms
+^C64 bytes from 142.251.150.119: icmp_seq=71 ttl=111 time=42.2 ms
+64 bytes from 142.251.150.119: icmp_seq=72 ttl=111 time=40.2 ms
+
+--- www.google.com ping statistics ---
+73 packets transmitted, 72 received, 1.36986% packet loss, time 1617ms
+rtt min/avg/max/mdev = 18.380/40.722/98.148/16.383 ms, pipe 7, ipg/ewma 22.458/41.145 ms
+root@ueransim-ue-7646659884-kmzdt:/ueransim# exit
+exit
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl exec -it -n free5gc ueransim-ue-7646659884-kmzdt -- ping -I uesimtun0 www.google.com
+PING www.google.com (142.251.152.119) from 10.1.0.1 uesimtun0: 56(84) bytes of data.
+^C
+--- www.google.com ping statistics ---
+16 packets transmitted, 0 received, 100% packet loss, time 15548ms
+
+command terminated with exit code 1
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$ kubectl exec -it -n free5gc ueransim-ue-7646659884-kmzdt -- ping -i uesimtun0 www.google.com
+ping: option argument contains garbage: uesimtun0
+ping: this will become fatal error in the future
+PING www.google.com (142.251.154.119) 56(84) bytes of data.
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=1 ttl=111 time=48.7 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=2 ttl=111 time=36.6 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=3 ttl=111 time=40.7 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=4 ttl=111 time=33.6 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=5 ttl=111 time=36.0 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=6 ttl=111 time=28.1 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=8 ttl=111 time=29.4 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=7 ttl=111 time=41.6 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=9 ttl=111 time=34.1 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=10 ttl=111 time=31.0 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=11 ttl=111 time=39.1 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=12 ttl=111 time=30.3 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=13 ttl=111 time=39.3 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=14 ttl=111 time=27.1 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=15 ttl=111 time=65.6 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=16 ttl=111 time=63.3 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=17 ttl=111 time=60.5 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=18 ttl=111 time=61.5 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=19 ttl=111 time=48.1 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=20 ttl=111 time=53.2 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=21 ttl=111 time=37.9 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=22 ttl=111 time=36.4 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=23 ttl=111 time=43.0 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=24 ttl=111 time=40.8 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=25 ttl=111 time=52.6 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=26 ttl=111 time=31.0 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=27 ttl=111 time=27.5 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=28 ttl=111 time=22.9 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=29 ttl=111 time=22.7 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=30 ttl=111 time=25.0 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=31 ttl=111 time=35.8 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=32 ttl=111 time=46.2 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=33 ttl=111 time=34.5 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=34 ttl=111 time=31.8 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=35 ttl=111 time=89.6 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=36 ttl=111 time=95.9 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=37 ttl=111 time=75.8 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=38 ttl=111 time=79.3 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=39 ttl=111 time=64.1 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=40 ttl=111 time=42.8 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=41 ttl=111 time=32.6 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=42 ttl=111 time=36.2 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=43 ttl=111 time=50.1 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=44 ttl=111 time=32.9 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=45 ttl=111 time=34.4 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=46 ttl=111 time=44.7 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=47 ttl=111 time=55.9 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=48 ttl=111 time=39.1 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=49 ttl=111 time=45.0 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=50 ttl=111 time=48.1 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=51 ttl=111 time=44.9 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=52 ttl=111 time=41.5 ms
+64 bytes from 142.251.154.119 (142.251.154.119): icmp_seq=53 ttl=111 time=40.7 ms
+^C
+--- www.google.com ping statistics ---
+55 packets transmitted, 53 received, 3.63636% packet loss, time 1227ms
+rtt min/avg/max/mdev = 22.697/43.953/95.903/15.856 ms, pipe 7, ipg/ewma 22.716/45.054 ms
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/ueransim$

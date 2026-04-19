@@ -1,0 +1,1178 @@
+Welcome to Ubuntu 22.04.2 LTS (GNU/Linux 6.8.0-106-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+ * Introducing Expanded Security Maintenance for Applications.
+   Receive updates to over 25,000 software packages with your
+   Ubuntu Pro subscription. Free for personal use.
+
+     https://ubuntu.com/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+New release '24.04.4 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+Last login: Sat Apr 18 12:45:17 2026 from 192.168.183.201
+sarang@sarang:~$ sysctl net.ipv4.ip_forward
+net.ipv4.ip_forward = 1
+sarang@sarang:~$ sysctl net.bridge.bridge-nf-call-iptables
+net.bridge.bridge-nf-call-iptables = 1
+sarang@sarang:~$ s
+s: command not found
+sarang@sarang:~$ ls
+app2-ns-limitrange.yml     free5gc-storage        helm-v3.19.2-linux-amd64.tar.gz  mypythonscripts            pod_with_resource_limits.yml
+app2-ns-resourcequota.yml  get-helm-3             k8s-practice-lab                 my-redis-app-demo          Public
+compose-app1               get_helm.sh            kubedata                         mysql-adminer-demo         python-flask-app
+Desktop                    go                     linux-amd64                      n3-upf-ipvlan.yaml         snap
+docker-compose.yml         go-gtp5gnl             minikube-linux-amd64             n6-upf-ipvlan.yaml         storage-class.yml
+docker-sample-images       gtp5g                  multus-daemonset-thick.yml       nginx-html-demo            telecom-control-panel-api
+Documents                  gtp5g-link             multus.yaml                      nginx-pod-app2.yml         Templates
+Downloads                  gtp5g-tuncmd           Music                            Pictures                   test.py
+fastapi-learning           hello.py               my-k8s-manifest-files            pod_with_limit_range.yaml  Videos
+free5gc-helm               helm-install-wget.log  mylinuxpractice                  pod-with-pvc.yml
+sarang@sarang:~$ rm -rf free5gc-storage/
+sarang@sarang:~$ ls
+app2-ns-limitrange.yml     get-helm-3                       k8s-practice-lab            my-redis-app-demo             Public
+app2-ns-resourcequota.yml  get_helm.sh                      kubedata                    mysql-adminer-demo            python-flask-app
+compose-app1               go                               linux-amd64                 n3-upf-ipvlan.yaml            snap
+Desktop                    go-gtp5gnl                       minikube-linux-amd64        n6-upf-ipvlan.yaml            storage-class.yml
+docker-compose.yml         gtp5g                            multus-daemonset-thick.yml  nginx-html-demo               telecom-control-panel-api
+docker-sample-images       gtp5g-link                       multus.yaml                 nginx-pod-app2.yml            Templates
+Documents                  gtp5g-tuncmd                     Music                       Pictures                      test.py
+Downloads                  hello.py                         my-k8s-manifest-files       pod_with_limit_range.yaml     Videos
+fastapi-learning           helm-install-wget.log            mylinuxpractice             pod-with-pvc.yml
+free5gc-helm               helm-v3.19.2-linux-amd64.tar.gz  mypythonscripts             pod_with_resource_limits.yml
+sarang@sarang:~$ cd telecom-control-panel-api/
+sarang@sarang:~/telecom-control-panel-api$
+sarang@sarang:~/telecom-control-panel-api$ ls
+'amfpod details successfully fetched via fastapi.jpg'   free5gc        logs_10April_2026.txt   __pycache__   requirements.txt
+ Dockerfile                                             getamfpod.py   maingetpods.py          README.md
+sarang@sarang:~/telecom-control-panel-api$ cd free5gc/
+sarang@sarang:~/telecom-control-panel-api/free5gc$ mkdir -p free5gc-storage/mongo
+sarang@sarang:~/telecom-control-panel-api/free5gc$ mkdir -p free5gc-storage/cert
+sarang@sarang:~/telecom-control-panel-api/free5gc$ ls
+free5gc-storage  gtp5g
+sarang@sarang:~/telecom-control-panel-api/free5gc$ cd free5gc-storage/mongo/
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-storage/mongo$ ls
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-storage/mongo$ vi pv-mongo.yaml
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-storage/mongo$ vi pv-mongo.yaml
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-storage/mongo$ cd ../cert
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-storage/cert$ vi pv-cert.yaml
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-storage/cert$ cd ../
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-storage$ kubectl apply -f pv-mongo.yaml
+error: the path "pv-mongo.yaml" does not exist
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-storage$ cd mongo/
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-storage/mongo$ kubectl apply -f pv-mongo.yaml
+persistentvolume/free5gc-pv-mongo created
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-storage/mongo$ cd ../cert
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-storage/cert$ kubectl apply -f pv-cert.yaml
+persistentvolume/free5gc-pv-cert created
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-storage/cert$ kubectl get pv
+NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM                       STORAGECLASS        VO              LUMEATTRIBUTESCLASS   REASON   AGE
+free5gc-pv-cert                            2Mi        ROX            Retain           Available                               microk8s-hostpath   <u              nset>                          11s
+free5gc-pv-mongo                           8Gi        RWO            Retain           Available                               microk8s-hostpath   <u              nset>                          24s
+pvc-ea4795c4-9777-4244-8fb2-684f48d8fe08   3Gi        RWO            Delete           Bound       free5gc/datadir-mongodb-0   microk8s-hostpath   <u              nset>                          7d21h
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-storage/cert$ kubectl delete statefulset mongodb -n free5gc
+statefulset.apps "mongodb" deleted
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-storage/cert$ kubectl delete pvc datadir-mongodb-0 -n free5gc
+persistentvolumeclaim "datadir-mongodb-0" deleted
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-storage/cert$ kubectl delete pv pvc-ea4795c4-9777-4244-8fb2-684f48d8fe08
+Error from server (NotFound): persistentvolumes "pvc-ea4795c4-9777-4244-8fb2-684f48d8fe08" not found
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-storage/cert$ kubectl get pvc -n free5gc
+No resources found in free5gc namespace.
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-storage/cert$ kubectl get pv
+NAME               CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM   STORAGECLASS        VOLUMEATTRIBUTESCLASS   REASON   AGE
+free5gc-pv-cert    2Mi        ROX            Retain           Available           microk8s-hostpath   <unset>                          2m27s
+free5gc-pv-mongo   8Gi        RWO            Retain           Available           microk8s-hostpath   <unset>                          2m40s
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-storage/cert$ kubectl delete namespace free5gc
+namespace "free5gc" deleted
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-storage/cert$ cd ../../
+sarang@sarang:~/telecom-control-panel-api/free5gc$ git clone https://github.com/free5gc/free5gc-helm.git
+Cloning into 'free5gc-helm'...
+remote: Enumerating objects: 5055, done.
+remote: Counting objects: 100% (1624/1624), done.
+remote: Compressing objects: 100% (272/272), done.
+remote: Total 5055 (delta 1484), reused 1352 (delta 1352), pack-reused 3431 (from 1)
+Receiving objects: 100% (5055/5055), 7.96 MiB | 13.00 KiB/s, done.
+Resolving deltas: 100% (3519/3519), done.
+sarang@sarang:~/telecom-control-panel-api/free5gc$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:3d:79:51 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.39.54/24 brd 192.168.39.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 1968sec preferred_lft 1968sec
+    inet6 2401:4900:7fbd:9fbc:4461:178d:7d53:74e2/64 scope global temporary dynamic
+       valid_lft 3601sec preferred_lft 3601sec
+    inet6 2401:4900:7fbd:9fbc:cddd:ed4a:3185:6b07/64 scope global dynamic mngtmpaddr noprefixroute
+       valid_lft 3601sec preferred_lft 3601sec
+    inet6 fe80::f748:c67a:a2cb:7de7/64 scope link noprefixroute
+       valid_lft forever preferred_lft forever
+3: br-913faad3efac: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether c6:09:72:e0:4e:7b brd ff:ff:ff:ff:ff:ff
+    inet 172.20.0.1/16 brd 172.20.255.255 scope global br-913faad3efac
+       valid_lft forever preferred_lft forever
+4: br-a8622b885cb7: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether ae:23:ae:37:5b:e8 brd ff:ff:ff:ff:ff:ff
+    inet 172.19.0.1/16 brd 172.19.255.255 scope global br-a8622b885cb7
+       valid_lft forever preferred_lft forever
+5: br-1dc7c33c8ad0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether 02:72:25:b9:2c:68 brd ff:ff:ff:ff:ff:ff
+    inet 172.21.0.1/16 brd 172.21.255.255 scope global br-1dc7c33c8ad0
+       valid_lft forever preferred_lft forever
+6: br-344d378ea925: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether e6:bc:06:01:fd:cc brd ff:ff:ff:ff:ff:ff
+    inet 172.23.0.1/16 brd 172.23.255.255 scope global br-344d378ea925
+       valid_lft forever preferred_lft forever
+7: br-478662c97dc8: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether ae:b2:71:a1:be:fb brd ff:ff:ff:ff:ff:ff
+    inet 10.20.0.1/20 brd 10.20.15.255 scope global br-478662c97dc8
+       valid_lft forever preferred_lft forever
+8: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether 7a:17:4e:38:27:b6 brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+       valid_lft forever preferred_lft forever
+9: br-460d763b9f97: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether ba:62:b7:03:3f:7b brd ff:ff:ff:ff:ff:ff
+    inet 172.22.0.1/16 brd 172.22.255.255 scope global br-460d763b9f97
+       valid_lft forever preferred_lft forever
+10: br-4d66168412e5: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether ce:7d:39:d4:1f:2d brd ff:ff:ff:ff:ff:ff
+    inet 10.30.0.1/20 brd 10.30.15.255 scope global br-4d66168412e5
+       valid_lft forever preferred_lft forever
+11: br-fb42e8b83e33: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether e2:97:36:0c:27:19 brd ff:ff:ff:ff:ff:ff
+    inet 172.18.0.1/16 brd 172.18.255.255 scope global br-fb42e8b83e33
+       valid_lft forever preferred_lft forever
+12: flannel.1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN group default
+    link/ether be:ae:c2:69:06:d9 brd ff:ff:ff:ff:ff:ff
+    inet 10.1.8.0/32 scope global flannel.1
+       valid_lft forever preferred_lft forever
+    inet6 fe80::bcae:c2ff:fe69:6d9/64 scope link
+       valid_lft forever preferred_lft forever
+13: cni0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UP group default qlen 1000
+    link/ether fa:18:b7:26:86:70 brd ff:ff:ff:ff:ff:ff
+    inet 10.1.8.1/24 brd 10.1.8.255 scope global cni0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::18a7:5aff:fed7:1827/64 scope link
+       valid_lft forever preferred_lft forever
+14: vethd2c26065@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 2e:7b:02:7a:a9:f5 brd ff:ff:ff:ff:ff:ff link-netns cni-786e3de5-6213-807f-8a76-b62e4747aa46
+    inet6 fe80::30c6:30ff:fe32:936/64 scope link
+       valid_lft forever preferred_lft forever
+15: veth14b6dfd0@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether ae:3b:e1:d6:2e:d1 brd ff:ff:ff:ff:ff:ff link-netns cni-aa8e3d85-efb1-ec95-c614-6434233385a0
+    inet6 fe80::a416:15ff:fe44:3a44/64 scope link
+       valid_lft forever preferred_lft forever
+16: veth0c0c82b0@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether e2:f3:41:c6:92:38 brd ff:ff:ff:ff:ff:ff link-netns cni-ee962a5f-312f-aa26-48e3-8f1f2d5b85d4
+    inet6 fe80::cb7:54ff:fe9a:1227/64 scope link
+       valid_lft forever preferred_lft forever
+17: vethb8d3cf21@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 56:36:75:6e:46:20 brd ff:ff:ff:ff:ff:ff link-netns cni-e9cb9779-2a52-708d-ad53-65cd6bc33f60
+    inet6 fe80::5436:75ff:fe6e:4620/64 scope link
+       valid_lft forever preferred_lft forever
+18: veth0db4efcb@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 92:ac:fe:ab:97:c3 brd ff:ff:ff:ff:ff:ff link-netns cni-60487ea8-2e3c-b70d-a279-7c4c8e3108fe
+    inet6 fe80::90ac:feff:feab:97c3/64 scope link
+       valid_lft forever preferred_lft forever
+19: veth2c78c82f@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 4a:29:5e:0c:62:47 brd ff:ff:ff:ff:ff:ff link-netns cni-e52758a2-3af2-0ab8-079f-01dc99e35adf
+    inet6 fe80::4829:5eff:fe0c:6247/64 scope link
+       valid_lft forever preferred_lft forever
+20: veth6c566d50@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether fa:89:43:ff:ee:6e brd ff:ff:ff:ff:ff:ff link-netns cni-a1f51db2-5438-4a3c-7d36-6a934e756e7c
+    inet6 fe80::f889:43ff:feff:ee6e/64 scope link
+       valid_lft forever preferred_lft forever
+21: veth05de8081@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether d2:2c:66:ba:fe:e5 brd ff:ff:ff:ff:ff:ff link-netns cni-9355f30e-76da-31ab-c008-0623a530e3b3
+    inet6 fe80::d02c:66ff:feba:fee5/64 scope link
+       valid_lft forever preferred_lft forever
+22: vethb66bf5b8@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether ca:1c:98:77:1b:ff brd ff:ff:ff:ff:ff:ff link-netns cni-70d28a61-325a-c63b-ca62-95744dff24dc
+    inet6 fe80::c81c:98ff:fe77:1bff/64 scope link
+       valid_lft forever preferred_lft forever
+23: veth5dcf0f68@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 0a:72:5e:50:14:e3 brd ff:ff:ff:ff:ff:ff link-netns cni-11fdc478-64a1-107c-79a8-17d958a04e76
+    inet6 fe80::a881:4fff:fe61:f3ff/64 scope link
+       valid_lft forever preferred_lft forever
+24: vethbc54bc7d@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether fe:81:1d:17:29:93 brd ff:ff:ff:ff:ff:ff link-netns cni-6a7f7a88-2653-be8a-262c-e731209ce9d7
+    inet6 fe80::d805:81ff:fe93:473/64 scope link
+       valid_lft forever preferred_lft forever
+25: veth14829411@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether e6:2f:6b:c0:1b:3b brd ff:ff:ff:ff:ff:ff link-netns cni-a4a86eb8-6d90-22ae-f9a3-e4c78d95433b
+    inet6 fe80::e42f:6bff:fec0:1b3b/64 scope link
+       valid_lft forever preferred_lft forever
+26: veth45b34cf9@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether d6:d3:81:01:4a:34 brd ff:ff:ff:ff:ff:ff link-netns cni-aa120fe3-9278-5a7a-bf3a-b6b8d5e3add8
+    inet6 fe80::d4d3:81ff:fe01:4a34/64 scope link
+       valid_lft forever preferred_lft forever
+28: veth6f26ba60@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether b6:f1:b2:b7:2d:14 brd ff:ff:ff:ff:ff:ff link-netns cni-a69b44f5-b81b-a14d-4989-b016b9b5e049
+    inet6 fe80::b4f1:b2ff:feb7:2d14/64 scope link
+       valid_lft forever preferred_lft forever
+31: veth500102a1@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 2a:ae:e6:16:6b:3e brd ff:ff:ff:ff:ff:ff link-netns cni-d9ab03b1-a7d8-d5cc-6263-ababfbd804c9
+    inet6 fe80::28ae:e6ff:fe16:6b3e/64 scope link
+       valid_lft forever preferred_lft forever
+32: veth7be48b69@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 16:9b:63:85:99:bb brd ff:ff:ff:ff:ff:ff link-netns cni-f5331e79-ba2e-fb86-2208-02a7c0a2c5b5
+    inet6 fe80::6825:23ff:fee2:7d39/64 scope link
+       valid_lft forever preferred_lft forever
+33: veth6d2ff394@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 3a:9a:73:ee:42:98 brd ff:ff:ff:ff:ff:ff link-netns cni-274a986c-90d0-56e2-56cf-598baa87354a
+    inet6 fe80::389a:73ff:feee:4298/64 scope link
+       valid_lft forever preferred_lft forever
+35: vethe6ace1c9@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether f6:a4:4c:51:3d:94 brd ff:ff:ff:ff:ff:ff link-netns cni-4d66ecce-577a-4402-99db-2477e11af427
+    inet6 fe80::f4a4:4cff:fe51:3d94/64 scope link
+       valid_lft forever preferred_lft forever
+36: veth4c0fe129@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 7e:65:f0:1b:7b:5b brd ff:ff:ff:ff:ff:ff link-netns cni-68b63b8b-9357-1254-edb1-e2a52ef7a855
+    inet6 fe80::7c65:f0ff:fe1b:7b5b/64 scope link
+       valid_lft forever preferred_lft forever
+38: veth40804998@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 56:69:53:3d:5b:ff brd ff:ff:ff:ff:ff:ff link-netns cni-e22c2448-fee4-6e7a-c390-a774373f6e4e
+    inet6 fe80::5469:53ff:fe3d:5bff/64 scope link
+       valid_lft forever preferred_lft forever
+39: vethe29a5ede@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether ae:35:8f:65:8b:93 brd ff:ff:ff:ff:ff:ff link-netns cni-9ef31808-a081-e87d-36da-308d787f3f00
+    inet6 fe80::6cb6:89ff:feca:4c7b/64 scope link
+       valid_lft forever preferred_lft forever
+sarang@sarang:~/telecom-control-panel-api/free5gc$ ls
+free5gc-helm  free5gc-storage  gtp5g
+sarang@sarang:~/telecom-control-panel-api/free5gc$ cd free5gc-helm/
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm$ ls
+charts  CONTRIBUTING.md  docker  docs  LICENSE  motivations.md  pictures  README.md
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm$ cd charts/
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ ls
+free5gc  loxilb  packetrusher  ueransim
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ cd free5gc/
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc$ ls
+charts  Chart.yaml  prometheus.yaml  README.md  services-enabled-values.yaml  templates  ulcl-enabled-values.yaml  values.yaml
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc$ cat values.yaml
+#
+# Software Name : towards5gs-helm
+# SPDX-FileCopyrightText: Copyright (c) 2021 Orange
+# SPDX-License-Identifier: Apache-2.0
+#
+# This software is distributed under the Apache License 2.0,
+# the text of which is available at todo
+# or see the "LICENSE" file for more details.
+#
+# Author: Abderaouf KHICHANE, Ilhem FAJJARI, Ayoub BOUSSELMI
+# Software description: An open-source project providing Helm charts to deploy 5G components (Core + RAN) on top of Kubernetes
+#
+# Default values for free5gc-chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+global:
+  name: free5gc
+  userPlaneArchitecture: ulcl  # possible values are "single" and "ulcl"
+  nrf:
+    service:
+      name: nrf-nnrf
+      type: ClusterIP
+      port: "8000"
+      nodePort: "30800"
+  sbi:
+    scheme: http
+  amf:
+    n2if:  # NGAP
+      ipAddress: 10.100.50.249
+    service:
+      ngap:
+        enabled: false
+        name: amf-n2
+        port: 38412
+        nodeport: 31412
+        protocol: SCTP
+        type: NodePort
+  smf:
+    n4if:
+      ipAddress: 10.100.50.244
+  #Global network parametes
+  n2network:
+    enabled: true
+    name: n2network
+    type: ipvlan
+    masterIf: eth0
+    subnetIP: 10.100.50.248
+    cidr: 29
+    gatewayIP: 10.100.50.254
+    excludeIP: 10.100.50.254
+  n3network:
+    enabled: true
+    name: n3network
+    type: ipvlan
+    masterIf: eth0
+    subnetIP: 10.100.50.232
+    cidr: 29
+    gatewayIP: 10.100.50.238
+    excludeIP: 10.100.50.238
+  n4network:
+    enabled: true
+    name: n4network
+    type: ipvlan
+    masterIf: eth0
+    subnetIP: 10.100.50.240
+    cidr: 29
+    gatewayIP: 10.100.50.246
+    excludeIP: 10.100.50.246
+  n6network:
+    enabled: true
+    name: n6network
+    type: ipvlan
+    masterIf: eth1
+    subnetIP: 10.100.100.0
+    cidr: 24
+    gatewayIP: 10.100.100.1
+    excludeIP: 10.100.100.254
+  n9network:
+    enabled: true
+    name: n9network
+    type: ipvlan
+    masterIf: eth0
+    subnetIP: 10.100.50.224
+    cidr: 29
+    gatewayIP: 10.100.50.230
+    excludeIP: 10.100.50.230
+
+
+# These parameters can be used to enable/disable deployment of subcharts
+deployMongoDb: true
+deployAmf: true
+deployAusf: true
+deployChf: true
+deployN3iwf: false
+deployNef: true
+deployNrf: true
+deployNssf: true
+deployPcf: true
+deploySmf: true
+deployUdm: true
+deployUdr: true
+deployUpf: true
+deployWebui: true
+deployDbPython: true
+
+# Disable the deployment of mongodb as an NRF subchart
+free5gc-nrf:
+  db:
+    enabled: false
+
+# This section can be used to override the default values in the MongoDB chart
+mongodb:
+  fullnameOverride: "mongodb"
+  useStatefulSet: true
+  auth:
+    enabled: false
+  persistence:
+    size: 6Gi
+    mountPath: /bitnami/mongodb/data/db/
+  service:
+    name: mongodb
+    type: ClusterIP
+    port: 27017
+    nodePort: "30017"
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc$ vi values.yaml
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc$ cp values.yaml values-backup.yaml
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc$ ls
+charts  Chart.yaml  prometheus.yaml  README.md  services-enabled-values.yaml  templates  ulcl-enabled-values.yaml  values-backup.yaml  values.yaml
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc$ vi values.yaml
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc$ kubectl create ns free5gc
+namespace/free5gc created
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc$
+helm install -n free5gc free5gc-helm ./free5gc/ \
+    --set global.n2network.masterIf=enp0s3 \
+    --set global.n3network.masterIf=enp0s3 \
+    --set global.n4network.masterIf=enp0s3 \
+    --set global.n6network.masterIf=enp0s3 \
+    --set global.n9network.masterIf=enp0s3
+Error: INSTALLATION FAILED: path "./free5gc/" not found
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts/free5gc$ cd ../
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ helm install -n free5gc free5gc-helm ./free5gc/     --set global.n2network.ma              sterIf=enp0s3     --set global.n3network.masterIf=enp0s3     --set global.n4network.masterIf=enp0s3     --set global.n6network.masterIf=enp0s3     -              -set global.n9network.masterIf=enp0s3
+Error: INSTALLATION FAILED: Kubernetes cluster unreachable: Get "https://192.168.183.54:16443/version": dial tcp 192.168.183.54:16443: i/o timeout
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ ls
+free5gc  loxilb  packetrusher  ueransim
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ microk8s status
+microk8s is running
+high-availability: no
+  datastore endpoints:
+    127.0.0.1:12379
+addons:
+  enabled:
+    multus               # (community) Multus CNI enables attaching multiple network interfaces to pods
+    community            # (core) The community addons repository
+    dns                  # (core) CoreDNS
+    helm                 # (core) Helm - the package manager for Kubernetes
+    helm3                # (core) Helm 3 - the package manager for Kubernetes
+    hostpath-storage     # (core) Storage class; allocates storage from host directory
+    metrics-server       # (core) K8s Metrics Server for API access to service metrics
+    storage              # (core) Alias to hostpath-storage add-on, deprecated
+  disabled:
+    argocd               # (community) Argo CD is a declarative continuous deployment for Kubernetes.
+    cilium               # (community) SDN, fast with full network policy
+    cloudnative-pg       # (community) PostgreSQL operator CloudNativePG
+    dashboard-ingress    # (community) Ingress definition for Kubernetes dashboard
+    easyhaproxy          # (community) EasyHAProxy can configure HAProxy automatically based on ingress labels
+    falco                # (community) Cloud-native runtime threat detection tool for Linux and K8s
+    fluentd              # (community) Elasticsearch-Fluentd-Kibana logging and monitoring
+    gopaddle             # (community) Low-Code Kubernetes IDE with AI Co-pilot
+    inaccel              # (community) Simplifying FPGA management in Kubernetes
+    istio                # (community) Core Istio service mesh services
+    jaeger               # (community) Kubernetes Jaeger operator with its simple config
+    kata                 # (community) Kata Containers is a secure runtime with lightweight VMS
+    keda                 # (community) Kubernetes-based Event Driven Autoscaling
+    knative              # (community) Knative Serverless and Event Driven Applications
+    kubearmor            # (community) Cloud-native runtime security enforcement system for k8s
+    kwasm                # (community) WebAssembly support for WasmEdge (Docker Wasm) and Spin (Azure AKS WASI)
+    linkerd              # (community) Linkerd is a service mesh for Kubernetes and other frameworks
+    microcks             # (community) Open source Kubernetes Native tool for API Mocking and Testing
+    nfs                  # (community) NFS Server Provisioner
+    ngrok                # (community) ngrok Ingress Controller instantly adds connectivity, load balancing, authentication, and observability to yo              ur services
+    openebs              # (community) OpenEBS is the open-source storage solution for Kubernetes
+    openfaas             # (community) OpenFaaS serverless framework
+    osm-edge             # (community) osm-edge is a lightweight SMI compatible service mesh for the edge-computing.
+    parking              # (community) Static webserver to park a domain. Works with EasyHAProxy.
+    portainer            # (community) Portainer UI for your Kubernetes cluster
+    shifu                # (community) Kubernetes native IoT software development framework.
+    sosivio              # (community) Kubernetes Predictive Troubleshooting, Observability, and Resource Optimization
+    sriov-device-plugin  # (community) SR-IOV Network Device Plugin.
+    stunner              # (community) A Kubernetes media gateway for WebRTC
+    traefik              # (community) traefik Ingress controller
+    trivy                # (community) Kubernetes-native security scanner
+    cert-manager         # (core) Cloud native certificate management
+    cis-hardening        # (core) Apply CIS K8s hardening
+    dashboard            # (core) The Kubernetes dashboard
+    gpu                  # (core) Alias to nvidia add-on
+    ha-cluster           # (core) Configure high availability on the current node
+    host-access          # (core) Allow Pods connecting to Host services smoothly
+    ingress              # (core) Ingress controller for external access
+    kube-ovn             # (core) An advanced network fabric for Kubernetes
+    mayastor             # (core) OpenEBS MayaStor
+    metallb              # (core) Loadbalancer for your Kubernetes cluster
+    minio                # (core) MinIO object storage
+    nvidia               # (core) NVIDIA hardware (GPU and network) support
+    observability        # (core) A lightweight observability stack for logs, traces and metrics
+    prometheus           # (core) Prometheus operator for monitoring and logging
+    rbac                 # (core) Role-Based Access Control for authorisation
+    registry             # (core) Private image registry exposed on localhost:32000
+    rook-ceph            # (core) Distributed Ceph storage using Rook
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ kubectl get nodes
+NAME     STATUS   ROLES    AGE     VERSION
+sarang   Ready    <none>   7d22h   v1.33.9
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ microk8s config > ~/.kube/config
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ microk8s start
+[sudo] password for sarang:
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ microk8s helm3 install -n free5gc free5gc-helm ./free5gc/ \
+    --set global.n2network.masterIf=enp0s3 \
+    --set global.n3network.masterIf=enp0s3 \
+    --set global.n4network.masterIf=enp0s3 \
+    --set global.n6network.masterIf=enp0s3 \
+    --set global.n9network.masterIf=enp0s3
+NAME: free5gc-helm
+LAST DEPLOYED: Sat Apr 18 15:32:36 2026
+NAMESPACE: free5gc
+STATUS: deployed
+REVISION: 1
+NOTES:
+#
+# Software Name : towards5gs-helm
+# SPDX-FileCopyrightText: Copyright (c) 2021 Orange
+# SPDX-License-Identifier: Apache-2.0
+#
+# This software is distributed under the Apache License 2.0,
+# the text of which is available at https://github.com/Orange-OpenSource/towards5gs-helm/blob/main/LICENSE
+# or see the "LICENSE" file for more details.
+#
+# Author: Abderaouf KHICHANE, Ilhem FAJJARI
+# Software description: An open-source project providing Helm charts to deploy 5G components (Core + RAN) on top of Kubernetes
+#
+#
+# Visit the project at https://github.com/Orange-OpenSource/towards5gs-helm
+#
+
+1. Get the list of created Pods by running:
+  kubectl get pods --namespace free5gc -l "project="
+
+Release notes (What's changed in this version):
+- Fix TLS configuration for SBI communications
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ kubectl describe po mongodb-0 -n free5gc
+Name:             mongodb-0
+Namespace:        free5gc
+Priority:         0
+Service Account:  mongodb
+Node:             sarang/192.168.39.54
+Start Time:       Sat, 18 Apr 2026 15:32:42 +0530
+Labels:           app.kubernetes.io/component=mongodb
+                  app.kubernetes.io/instance=free5gc-helm
+                  app.kubernetes.io/managed-by=Helm
+                  app.kubernetes.io/name=mongodb
+                  app.kubernetes.io/version=7.0.9
+                  apps.kubernetes.io/pod-index=0
+                  controller-revision-hash=mongodb-778b765654
+                  helm.sh/chart=mongodb-15.6.0
+                  statefulset.kubernetes.io/pod-name=mongodb-0
+Annotations:      <none>
+Status:           Pending
+IP:
+IPs:              <none>
+Controlled By:    StatefulSet/mongodb
+Containers:
+  mongodb:
+    Container ID:
+    Image:           docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4
+    Image ID:
+    Port:            27017/TCP
+    Host Port:       0/TCP
+    SeccompProfile:  RuntimeDefault
+    State:           Waiting
+      Reason:        ContainerCreating
+    Ready:           False
+    Restart Count:   0
+    Limits:
+      cpu:                750m
+      ephemeral-storage:  1Gi
+      memory:             768Mi
+    Requests:
+      cpu:                500m
+      ephemeral-storage:  50Mi
+      memory:             512Mi
+    Liveness:             exec [/bitnami/scripts/ping-mongodb.sh] delay=30s timeout=10s period=20s #success=1 #failure=6
+    Readiness:            exec [/bitnami/scripts/readiness-probe.sh] delay=5s timeout=5s period=10s #success=1 #failure=6
+    Environment:
+      BITNAMI_DEBUG:                    false
+      ALLOW_EMPTY_PASSWORD:             yes
+      MONGODB_SYSTEM_LOG_VERBOSITY:     0
+      MONGODB_DISABLE_SYSTEM_LOG:       no
+      MONGODB_DISABLE_JAVASCRIPT:       no
+      MONGODB_ENABLE_JOURNAL:           yes
+      MONGODB_PORT_NUMBER:              27017
+      MONGODB_ENABLE_IPV6:              no
+      MONGODB_ENABLE_DIRECTORY_PER_DB:  no
+    Mounts:
+      /.mongodb from empty-dir (rw,path="mongosh-home")
+      /bitnami/mongodb/data/db/ from datadir (rw)
+      /bitnami/scripts from common-scripts (rw)
+      /opt/bitnami/mongodb/conf from empty-dir (rw,path="app-conf-dir")
+      /opt/bitnami/mongodb/logs from empty-dir (rw,path="app-logs-dir")
+      /opt/bitnami/mongodb/tmp from empty-dir (rw,path="app-tmp-dir")
+      /tmp from empty-dir (rw,path="tmp-dir")
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   False
+  Initialized                 True
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  datadir:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  datadir-mongodb-0
+    ReadOnly:   false
+  empty-dir:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  common-scripts:
+    Type:        ConfigMap (a volume populated by a ConfigMap)
+    Name:        mongodb-common-scripts
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason       Age                From               Message
+  ----     ------       ----               ----               -------
+  Normal   Scheduled    84s                default-scheduler  Successfully assigned free5gc/mongodb-0 to sarang
+  Warning  FailedMount  20s (x8 over 84s)  kubelet            MountVolume.NewMounter initialization failed for volume "free5gc-pv-mongo" : path "/ho              me/sarang/free5gc-storage/mongo" does not exist
+sarang@sarang:~/telecom-control-panel-api/free5gc/free5gc-helm/charts$ cd ../../../
+sarang@sarang:~/telecom-control-panel-api$ cd ../
+sarang@sarang:~$ ls
+app2-ns-limitrange.yml     fastapi-learning  gtp5g-tuncmd                     multus-daemonset-thick.yml  n3-upf-ipvlan.yaml            Public
+app2-ns-resourcequota.yml  free5gc-helm      hello.py                         multus.yaml                 n6-upf-ipvlan.yaml            python-flask-app
+compose-app1               get-helm-3        helm-install-wget.log            Music                       nginx-html-demo               snap
+Desktop                    get_helm.sh       helm-v3.19.2-linux-amd64.tar.gz  my-k8s-manifest-files       nginx-pod-app2.yml            storage-class.yml
+docker-compose.yml         go                k8s-practice-lab                 mylinuxpractice             Pictures                      telecom-control-panel-api
+docker-sample-images       go-gtp5gnl        kubedata                         mypythonscripts             pod_with_limit_range.yaml     Templates
+Documents                  gtp5g             linux-amd64                      my-redis-app-demo           pod-with-pvc.yml              test.py
+Downloads                  gtp5g-link        minikube-linux-amd64             mysql-adminer-demo          pod_with_resource_limits.yml  Videos
+sarang@sarang:~$ kubectl describe po free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5 -n free5gc
+Name:             free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5
+Namespace:        free5gc
+Priority:         0
+Service Account:  default
+Node:             sarang/192.168.39.54
+Start Time:       Sat, 18 Apr 2026 15:32:41 +0530
+Labels:           app.kubernetes.io/instance=free5gc-helm
+                  app.kubernetes.io/name=free5gc-upf
+                  nf=iupf1
+                  pod-template-hash=865c478cc9
+                  project=free5gc
+Annotations:      checksum/config: 04a47a4f09ab9abae9465da07c77096f1ef70441fe8dd710e5b97ebea9b17b4d
+                  k8s.v1.cni.cncf.io/network-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.34"
+                        ],
+                        "mac": "62:f3:a0:3c:02:ce",
+                        "default": true,
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n3network-free5gc-helm-free5gc-upf",
+                        "interface": "n3",
+                        "ips": [
+                            "10.100.50.233"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n9network-free5gc-helm-free5gc-upf",
+                        "interface": "n9",
+                        "ips": [
+                            "10.100.50.225"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n4network-free5gc-helm-free5gc-upf",
+                        "interface": "n4",
+                        "ips": [
+                            "10.100.50.241"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n6network-free5gc-helm-free5gc-upf",
+                        "interface": "n6",
+                        "ips": [
+                            "10.100.100.12"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    }]
+                  k8s.v1.cni.cncf.io/networks:
+                    [ { "name": "n3network-free5gc-helm-free5gc-upf", "interface": "n3", "ips": [ "10.100.50.233/29" ], "gateway": [ "10.100.50.238" ] }, { "n...
+                  k8s.v1.cni.cncf.io/networks-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.34"
+                        ],
+                        "mac": "62:f3:a0:3c:02:ce",
+                        "default": true,
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n3network-free5gc-helm-free5gc-upf",
+                        "interface": "n3",
+                        "ips": [
+                            "10.100.50.233"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n9network-free5gc-helm-free5gc-upf",
+                        "interface": "n9",
+                        "ips": [
+                            "10.100.50.225"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n4network-free5gc-helm-free5gc-upf",
+                        "interface": "n4",
+                        "ips": [
+                            "10.100.50.241"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n6network-free5gc-helm-free5gc-upf",
+                        "interface": "n6",
+                        "ips": [
+                            "10.100.100.12"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    }]
+Status:           Pending
+IP:
+IPs:              <none>
+Controlled By:    ReplicaSet/free5gc-helm-free5gc-upf-iupf1-865c478cc9
+Containers:
+  iupf1:
+    Container ID:
+    Image:         free5gc/upf:v4.2.1
+    Image ID:
+    Port:          8805/UDP
+    Host Port:     0/UDP
+    Command:
+      /free5gc/config//wrapper.sh
+    State:          Waiting
+      Reason:       ContainerCreating
+    Ready:          False
+    Restart Count:  0
+    Requests:
+      cpu:        500m
+      memory:     512Mi
+    Environment:  <none>
+    Mounts:
+      /free5gc/config/ from free5gc-helm-free5gc-upf-iupf1-volume (rw)
+      /free5gc/config/TLS from free5gc-helm-free5gc-upf-iupf1-empty-volume (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-gvmt6 (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   False
+  Initialized                 True
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  free5gc-helm-free5gc-upf-iupf1-volume:
+    Type:           Projected (a volume that contains injected data from multiple sources)
+    ConfigMapName:  free5gc-helm-free5gc-upf-iupf1-configmap
+    Optional:       false
+  free5gc-helm-free5gc-upf-iupf1-empty-volume:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  kube-api-access-gvmt6:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason          Age    From               Message
+  ----    ------          ----   ----               -------
+  Normal  Scheduled       3m29s  default-scheduler  Successfully assigned free5gc/free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5 to sarang
+  Normal  AddedInterface  3m26s  multus             Add eth0 [10.1.8.34/24] from microk8s-flannel-network
+  Normal  AddedInterface  3m25s  multus             Add n3 [10.100.50.233/29] from free5gc/n3network-free5gc-helm-free5gc-upf
+  Normal  AddedInterface  3m24s  multus             Add n9 [10.100.50.225/29] from free5gc/n9network-free5gc-helm-free5gc-upf
+  Normal  AddedInterface  3m23s  multus             Add n4 [10.100.50.241/29] from free5gc/n4network-free5gc-helm-free5gc-upf
+  Normal  AddedInterface  3m22s  multus             Add n6 [10.100.100.12/24] from free5gc/n6network-free5gc-helm-free5gc-upf
+  Normal  Pulling         3m21s  kubelet            Pulling image "free5gc/upf:v4.2.1"
+sarang@sarang:~$ mkdir -p /home/sarang/free5gc-storage/mongo
+sarang@sarang:~$ mkdir -p /home/sarang/free5gc-storage/cert
+sarang@sarang:~$ ls /home/sarang/free5gc-storage/
+cert  mongo
+sarang@sarang:~$ kubectl delete pod mongodb-0 -n free5gc
+pod "mongodb-0" deleted
+sarang@sarang:~$ kubectl describe po mongodb-0 -n free5gc
+Name:             mongodb-0
+Namespace:        free5gc
+Priority:         0
+Service Account:  mongodb
+Node:             sarang/192.168.39.54
+Start Time:       Sat, 18 Apr 2026 15:38:05 +0530
+Labels:           app.kubernetes.io/component=mongodb
+                  app.kubernetes.io/instance=free5gc-helm
+                  app.kubernetes.io/managed-by=Helm
+                  app.kubernetes.io/name=mongodb
+                  app.kubernetes.io/version=7.0.9
+                  apps.kubernetes.io/pod-index=0
+                  controller-revision-hash=mongodb-778b765654
+                  helm.sh/chart=mongodb-15.6.0
+                  statefulset.kubernetes.io/pod-name=mongodb-0
+Annotations:      k8s.v1.cni.cncf.io/network-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.38"
+                        ],
+                        "mac": "56:16:96:70:72:42",
+                        "default": true,
+                        "dns": {}
+                    }]
+                  k8s.v1.cni.cncf.io/networks-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.38"
+                        ],
+                        "mac": "56:16:96:70:72:42",
+                        "default": true,
+                        "dns": {}
+                    }]
+Status:           Pending
+IP:
+IPs:              <none>
+Controlled By:    StatefulSet/mongodb
+Containers:
+  mongodb:
+    Container ID:
+    Image:           docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4
+    Image ID:
+    Port:            27017/TCP
+    Host Port:       0/TCP
+    SeccompProfile:  RuntimeDefault
+    State:           Waiting
+      Reason:        ContainerCreating
+    Ready:           False
+    Restart Count:   0
+    Limits:
+      cpu:                750m
+      ephemeral-storage:  1Gi
+      memory:             768Mi
+    Requests:
+      cpu:                500m
+      ephemeral-storage:  50Mi
+      memory:             512Mi
+    Liveness:             exec [/bitnami/scripts/ping-mongodb.sh] delay=30s timeout=10s period=20s #success=1 #failure=6
+    Readiness:            exec [/bitnami/scripts/readiness-probe.sh] delay=5s timeout=5s period=10s #success=1 #failure=6
+    Environment:
+      BITNAMI_DEBUG:                    false
+      ALLOW_EMPTY_PASSWORD:             yes
+      MONGODB_SYSTEM_LOG_VERBOSITY:     0
+      MONGODB_DISABLE_SYSTEM_LOG:       no
+      MONGODB_DISABLE_JAVASCRIPT:       no
+      MONGODB_ENABLE_JOURNAL:           yes
+      MONGODB_PORT_NUMBER:              27017
+      MONGODB_ENABLE_IPV6:              no
+      MONGODB_ENABLE_DIRECTORY_PER_DB:  no
+    Mounts:
+      /.mongodb from empty-dir (rw,path="mongosh-home")
+      /bitnami/mongodb/data/db/ from datadir (rw)
+      /bitnami/scripts from common-scripts (rw)
+      /opt/bitnami/mongodb/conf from empty-dir (rw,path="app-conf-dir")
+      /opt/bitnami/mongodb/logs from empty-dir (rw,path="app-logs-dir")
+      /opt/bitnami/mongodb/tmp from empty-dir (rw,path="app-tmp-dir")
+      /tmp from empty-dir (rw,path="tmp-dir")
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   False
+  Initialized                 True
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  datadir:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  datadir-mongodb-0
+    ReadOnly:   false
+  empty-dir:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  common-scripts:
+    Type:        ConfigMap (a volume populated by a ConfigMap)
+    Name:        mongodb-common-scripts
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason          Age   From               Message
+  ----    ------          ----  ----               -------
+  Normal  Scheduled       77s   default-scheduler  Successfully assigned free5gc/mongodb-0 to sarang
+  Normal  AddedInterface  76s   multus             Add eth0 [10.1.8.38/24] from microk8s-flannel-network
+  Normal  Pulling         75s   kubelet            Pulling image "docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4"
+sarang@sarang:~$ kubectl describe po mongodb-0 -n free5gc
+Name:             mongodb-0
+Namespace:        free5gc
+Priority:         0
+Service Account:  mongodb
+Node:             sarang/192.168.39.54
+Start Time:       Sat, 18 Apr 2026 15:38:05 +0530
+Labels:           app.kubernetes.io/component=mongodb
+                  app.kubernetes.io/instance=free5gc-helm
+                  app.kubernetes.io/managed-by=Helm
+                  app.kubernetes.io/name=mongodb
+                  app.kubernetes.io/version=7.0.9
+                  apps.kubernetes.io/pod-index=0
+                  controller-revision-hash=mongodb-778b765654
+                  helm.sh/chart=mongodb-15.6.0
+                  statefulset.kubernetes.io/pod-name=mongodb-0
+Annotations:      k8s.v1.cni.cncf.io/network-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.38"
+                        ],
+                        "mac": "56:16:96:70:72:42",
+                        "default": true,
+                        "dns": {}
+                    }]
+                  k8s.v1.cni.cncf.io/networks-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.38"
+                        ],
+                        "mac": "56:16:96:70:72:42",
+                        "default": true,
+                        "dns": {}
+                    }]
+Status:           Pending
+IP:
+IPs:              <none>
+Controlled By:    StatefulSet/mongodb
+Containers:
+  mongodb:
+    Container ID:
+    Image:           docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4
+    Image ID:
+    Port:            27017/TCP
+    Host Port:       0/TCP
+    SeccompProfile:  RuntimeDefault
+    State:           Waiting
+      Reason:        ContainerCreating
+    Ready:           False
+    Restart Count:   0
+    Limits:
+      cpu:                750m
+      ephemeral-storage:  1Gi
+      memory:             768Mi
+    Requests:
+      cpu:                500m
+      ephemeral-storage:  50Mi
+      memory:             512Mi
+    Liveness:             exec [/bitnami/scripts/ping-mongodb.sh] delay=30s timeout=10s period=20s #success=1 #failure=6
+    Readiness:            exec [/bitnami/scripts/readiness-probe.sh] delay=5s timeout=5s period=10s #success=1 #failure=6
+    Environment:
+      BITNAMI_DEBUG:                    false
+      ALLOW_EMPTY_PASSWORD:             yes
+      MONGODB_SYSTEM_LOG_VERBOSITY:     0
+      MONGODB_DISABLE_SYSTEM_LOG:       no
+      MONGODB_DISABLE_JAVASCRIPT:       no
+      MONGODB_ENABLE_JOURNAL:           yes
+      MONGODB_PORT_NUMBER:              27017
+      MONGODB_ENABLE_IPV6:              no
+      MONGODB_ENABLE_DIRECTORY_PER_DB:  no
+    Mounts:
+      /.mongodb from empty-dir (rw,path="mongosh-home")
+      /bitnami/mongodb/data/db/ from datadir (rw)
+      /bitnami/scripts from common-scripts (rw)
+      /opt/bitnami/mongodb/conf from empty-dir (rw,path="app-conf-dir")
+      /opt/bitnami/mongodb/logs from empty-dir (rw,path="app-logs-dir")
+      /opt/bitnami/mongodb/tmp from empty-dir (rw,path="app-tmp-dir")
+      /tmp from empty-dir (rw,path="tmp-dir")
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   False
+  Initialized                 True
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  datadir:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  datadir-mongodb-0
+    ReadOnly:   false
+  empty-dir:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  common-scripts:
+    Type:        ConfigMap (a volume populated by a ConfigMap)
+    Name:        mongodb-common-scripts
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason          Age    From               Message
+  ----    ------          ----   ----               -------
+  Normal  Scheduled       2m34s  default-scheduler  Successfully assigned free5gc/mongodb-0 to sarang
+  Normal  AddedInterface  2m33s  multus             Add eth0 [10.1.8.38/24] from microk8s-flannel-network
+  Normal  Pulling         2m32s  kubelet            Pulling image "docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4"
+sarang@sarang:~$ kubectl describe po mongodb-0 -n free5gc
+Name:             mongodb-0
+Namespace:        free5gc
+Priority:         0
+Service Account:  mongodb
+Node:             sarang/192.168.39.54
+Start Time:       Sat, 18 Apr 2026 15:38:05 +0530
+Labels:           app.kubernetes.io/component=mongodb
+                  app.kubernetes.io/instance=free5gc-helm
+                  app.kubernetes.io/managed-by=Helm
+                  app.kubernetes.io/name=mongodb
+                  app.kubernetes.io/version=7.0.9
+                  apps.kubernetes.io/pod-index=0
+                  controller-revision-hash=mongodb-778b765654
+                  helm.sh/chart=mongodb-15.6.0
+                  statefulset.kubernetes.io/pod-name=mongodb-0
+Annotations:      k8s.v1.cni.cncf.io/network-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.38"
+                        ],
+                        "mac": "56:16:96:70:72:42",
+                        "default": true,
+                        "dns": {}
+                    }]
+                  k8s.v1.cni.cncf.io/networks-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.38"
+                        ],
+                        "mac": "56:16:96:70:72:42",
+                        "default": true,
+                        "dns": {}
+                    }]
+Status:           Pending
+IP:
+IPs:              <none>
+Controlled By:    StatefulSet/mongodb
+Containers:
+  mongodb:
+    Container ID:
+    Image:           docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4
+    Image ID:
+    Port:            27017/TCP
+    Host Port:       0/TCP
+    SeccompProfile:  RuntimeDefault
+    State:           Waiting
+      Reason:        ContainerCreating
+    Ready:           False
+    Restart Count:   0
+    Limits:
+      cpu:                750m
+      ephemeral-storage:  1Gi
+      memory:             768Mi
+    Requests:
+      cpu:                500m
+      ephemeral-storage:  50Mi
+      memory:             512Mi
+    Liveness:             exec [/bitnami/scripts/ping-mongodb.sh] delay=30s timeout=10s period=20s #success=1 #failure=6
+    Readiness:            exec [/bitnami/scripts/readiness-probe.sh] delay=5s timeout=5s period=10s #success=1 #failure=6
+    Environment:
+      BITNAMI_DEBUG:                    false
+      ALLOW_EMPTY_PASSWORD:             yes
+      MONGODB_SYSTEM_LOG_VERBOSITY:     0
+      MONGODB_DISABLE_SYSTEM_LOG:       no
+      MONGODB_DISABLE_JAVASCRIPT:       no
+      MONGODB_ENABLE_JOURNAL:           yes
+      MONGODB_PORT_NUMBER:              27017
+      MONGODB_ENABLE_IPV6:              no
+      MONGODB_ENABLE_DIRECTORY_PER_DB:  no
+    Mounts:
+      /.mongodb from empty-dir (rw,path="mongosh-home")
+      /bitnami/mongodb/data/db/ from datadir (rw)
+      /bitnami/scripts from common-scripts (rw)
+      /opt/bitnami/mongodb/conf from empty-dir (rw,path="app-conf-dir")
+      /opt/bitnami/mongodb/logs from empty-dir (rw,path="app-logs-dir")
+      /opt/bitnami/mongodb/tmp from empty-dir (rw,path="app-tmp-dir")
+      /tmp from empty-dir (rw,path="tmp-dir")
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   False
+  Initialized                 True
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  datadir:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  datadir-mongodb-0
+    ReadOnly:   false
+  empty-dir:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  common-scripts:
+    Type:        ConfigMap (a volume populated by a ConfigMap)
+    Name:        mongodb-common-scripts
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason          Age    From               Message
+  ----    ------          ----   ----               -------
+  Normal  Scheduled       2m38s  default-scheduler  Successfully assigned free5gc/mongodb-0 to sarang
+  Normal  AddedInterface  2m37s  multus             Add eth0 [10.1.8.38/24] from microk8s-flannel-network
+  Normal  Pulling         2m36s  kubelet            Pulling image "docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4"
+sarang@sarang:~$ kubectl describe pod free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5 -n free5gc | tail -20
+    SizeLimit:  <unset>
+  kube-api-access-gvmt6:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason   Age                From     Message
+  ----     ------   ----               ----     -------
+  Normal   Pulled   22s                kubelet  Successfully pulled image "free5gc/upf:v4.2.1" in 10m3.425s (10m3.425s including waiting). Image size: 74756253 bytes.
+  Normal   Pulling  11s (x2 over 10m)  kubelet  Pulling image "free5gc/upf:v4.2.1"
+  Normal   Created  6s (x2 over 21s)   kubelet  Created container: iupf1
+  Normal   Pulled   6s                 kubelet  Successfully pulled image "free5gc/upf:v4.2.1" in 5.464s (5.464s including waiting). Image size: 74756253 bytes.
+  Normal   Started  5s (x2 over 19s)   kubelet  Started container iupf1
+  Warning  BackOff  1s                 kubelet  Back-off restarting failed container iupf1 in pod free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5_free5gc(cabe9ed3-ce9c-4a6e-8a19-d691be25e1b5)
+sarang@sarang:~$ kubectl describe pod free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5 -n free5gc | tail -20
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason   Age                 From     Message
+  ----     ------   ----                ----     -------
+  Normal   Pulled   110s                kubelet  Successfully pulled image "free5gc/upf:v4.2.1" in 10m3.425s (10m3.425s including waiting). Image size: 74756253 bytes.
+  Normal   Pulled   94s                 kubelet  Successfully pulled image "free5gc/upf:v4.2.1" in 5.464s (5.464s including waiting). Image size: 74756253 bytes.
+  Normal   Pulled   72s                 kubelet  Successfully pulled image "free5gc/upf:v4.2.1" in 5.803s (5.804s including waiting). Image size: 74756253 bytes.
+  Normal   Pulling  42s (x4 over 11m)   kubelet  Pulling image "free5gc/upf:v4.2.1"
+  Normal   Created  36s (x4 over 109s)  kubelet  Created container: iupf1
+  Normal   Pulled   36s                 kubelet  Successfully pulled image "free5gc/upf:v4.2.1" in 5.955s (5.955s including waiting). Image size: 74756253 bytes.
+  Normal   Started  35s (x4 over 107s)  kubelet  Started container iupf1
+  Warning  BackOff  8s (x6 over 89s)    kubelet  Back-off restarting failed container iupf1 in pod free5gc-helm-free5gc-upf-iupf1-865c478cc9-hp2l5_free5gc(cabe9ed3-ce9c-4a6e-8a19-d691be25e1b5)
+sarang@sarang:~$ lsmod | grep gtp5g
+gtp5g                 151552  0
+udp_tunnel             32768  2 gtp5g,vxlan
+sarang@sarang:~$ cd telecom-control-panel-api/
+sarang@sarang:~/telecom-control-panel-api$ s
+s: command not found
+sarang@sarang:~/telecom-control-panel-api$ ^C
+sarang@sarang:~/telecom-control-panel-api$ ls
+'amfpod details successfully fetched via fastapi.jpg'   free5gc        logs_10April_2026.txt   __pycache__   requirements.txt
+ Dockerfile                                             getamfpod.py   maingetpods.py          README.md
+sarang@sarang:~/telecom-control-panel-api$ cd free5gc/
+sarang@sarang:~/telecom-control-panel-api/free5gc$ ls
+free5gc-helm  free5gc-storage  gtp5g
+sarang@sarang:~/telecom-control-panel-api/free5gc$

@@ -1,0 +1,1264 @@
+    ┌──────────────────────────────────────────────────────────────────────┐
+    │                 • MobaXterm Personal Edition v25.3 •                 │
+    │               (SSH client, X server and network tools)               │
+    │                                                                      │
+    │ ⮞ SSH session to sarang@192.168.56.101                               │
+    │   • Direct SSH      :  ✓                                             │
+    │   • SSH compression :  ✓                                             │
+    │   • SSH-browser     :  ✓                                             │
+    │   • X11-forwarding  :  ✓  (remote display is forwarded through SSH)  │
+    │                                                                      │
+    │ ⮞ For more info, ctrl+click on help or visit our website.            │
+    └──────────────────────────────────────────────────────────────────────┘
+
+Welcome to Ubuntu 22.04.2 LTS (GNU/Linux 6.8.0-106-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+ * Introducing Expanded Security Maintenance for Applications.
+   Receive updates to over 25,000 software packages with your
+   Ubuntu Pro subscription. Free for personal use.
+
+     https://ubuntu.com/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+New release '24.04.4 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+Last login: Sat Apr 18 17:26:29 2026 from 192.168.56.1
+sarang@sarang:~$ microk8s status --wait-ready
+
+^CTraceback (most recent call last):
+  File "/snap/microk8s/8697/scripts/wrappers/status.py", line 212, in <module>
+    is_ready = wait_for_ready(timeout)
+  File "/snap/microk8s/8697/scripts/wrappers/common/utils.py", line 193, in wait_for_ready
+    if is_cluster_ready(with_ready_node=with_ready_node):
+  File "/snap/microk8s/8697/scripts/wrappers/common/utils.py", line 84, in is_cluster_ready
+    return "service/kubernetes" in kubectl_get("all") and (
+  File "/snap/microk8s/8697/scripts/wrappers/common/utils.py", line 248, in kubectl_get
+    return run(KUBECTL, "get", cmd, "--all-namespaces", die=False)
+  File "/snap/microk8s/8697/scripts/wrappers/common/utils.py", line 64, in run
+    result = subprocess.run(
+  File "/snap/microk8s/8697/usr/lib/python3.8/subprocess.py", line 495, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/snap/microk8s/8697/usr/lib/python3.8/subprocess.py", line 1028, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/snap/microk8s/8697/usr/lib/python3.8/subprocess.py", line 1868, in _communicate
+    ready = selector.select(timeout)
+  File "/snap/microk8s/8697/usr/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+KeyboardInterrupt
+
+sarang@sarang:~$ microk8s status --wait-ready
+microk8s is running
+high-availability: no
+  datastore endpoints:
+    127.0.0.1:12379
+addons:
+  enabled:
+    multus               # (community) Multus CNI enables attaching multiple network interfaces to pods
+    community            # (core) The community addons repository
+    dns                  # (core) CoreDNS
+    helm                 # (core) Helm - the package manager for Kubernetes
+    helm3                # (core) Helm 3 - the package manager for Kubernetes
+    hostpath-storage     # (core) Storage class; allocates storage from host directory
+    metrics-server       # (core) K8s Metrics Server for API access to service metrics
+    storage              # (core) Alias to hostpath-storage add-on, deprecated
+  disabled:
+    argocd               # (community) Argo CD is a declarative continuous deployment for Kubernetes.
+    cilium               # (community) SDN, fast with full network policy
+    cloudnative-pg       # (community) PostgreSQL operator CloudNativePG
+    dashboard-ingress    # (community) Ingress definition for Kubernetes dashboard
+    easyhaproxy          # (community) EasyHAProxy can configure HAProxy automatically based on ingress labels
+    falco                # (community) Cloud-native runtime threat detection tool for Linux and K8s
+    fluentd              # (community) Elasticsearch-Fluentd-Kibana logging and monitoring
+    gopaddle             # (community) Low-Code Kubernetes IDE with AI Co-pilot
+    inaccel              # (community) Simplifying FPGA management in Kubernetes
+    istio                # (community) Core Istio service mesh services
+    jaeger               # (community) Kubernetes Jaeger operator with its simple config
+    kata                 # (community) Kata Containers is a secure runtime with lightweight VMS
+    keda                 # (community) Kubernetes-based Event Driven Autoscaling
+    knative              # (community) Knative Serverless and Event Driven Applications
+    kubearmor            # (community) Cloud-native runtime security enforcement system for k8s
+    kwasm                # (community) WebAssembly support for WasmEdge (Docker Wasm) and Spin (Azure AKS WASI)
+    linkerd              # (community) Linkerd is a service mesh for Kubernetes and other frameworks
+    microcks             # (community) Open source Kubernetes Native tool for API Mocking and Testing
+    nfs                  # (community) NFS Server Provisioner
+    ngrok                # (community) ngrok Ingress Controller instantly adds connectivity, load balancing, authentication, and observability to your services
+    openebs              # (community) OpenEBS is the open-source storage solution for Kubernetes
+    openfaas             # (community) OpenFaaS serverless framework
+    osm-edge             # (community) osm-edge is a lightweight SMI compatible service mesh for the edge-computing.
+    parking              # (community) Static webserver to park a domain. Works with EasyHAProxy.
+    portainer            # (community) Portainer UI for your Kubernetes cluster
+    shifu                # (community) Kubernetes native IoT software development framework.
+    sosivio              # (community) Kubernetes Predictive Troubleshooting, Observability, and Resource Optimization
+    sriov-device-plugin  # (community) SR-IOV Network Device Plugin.
+    stunner              # (community) A Kubernetes media gateway for WebRTC
+    traefik              # (community) traefik Ingress controller
+    trivy                # (community) Kubernetes-native security scanner
+    cert-manager         # (core) Cloud native certificate management
+    cis-hardening        # (core) Apply CIS K8s hardening
+    dashboard            # (core) The Kubernetes dashboard
+    gpu                  # (core) Alias to nvidia add-on
+    ha-cluster           # (core) Configure high availability on the current node
+    host-access          # (core) Allow Pods connecting to Host services smoothly
+    ingress              # (core) Ingress controller for external access
+    kube-ovn             # (core) An advanced network fabric for Kubernetes
+    mayastor             # (core) OpenEBS MayaStor
+    metallb              # (core) Loadbalancer for your Kubernetes cluster
+    minio                # (core) MinIO object storage
+    nvidia               # (core) NVIDIA hardware (GPU and network) support
+    observability        # (core) A lightweight observability stack for logs, traces and metrics
+    prometheus           # (core) Prometheus operator for monitoring and logging
+    rbac                 # (core) Role-Based Access Control for authorisation
+    registry             # (core) Private image registry exposed on localhost:32000
+    rook-ceph            # (core) Distributed Ceph storage using Rook
+sarang@sarang:~$ microk8s status --wait-ready
+
+Traceback (most recent call last):
+  File "/snap/microk8s/8697/scripts/wrappers/status.py", line 212, in <module>
+^C    is_ready = wait_for_ready(timeout)
+  File "/snap/microk8s/8697/scripts/wrappers/common/utils.py", line 198, in wait_for_ready
+    time.sleep(2)
+KeyboardInterrupt
+
+sarang@sarang:~$ microk8s status --wait-ready
+microk8s is running
+high-availability: no
+  datastore endpoints:
+    127.0.0.1:12379
+addons:
+  enabled:
+    multus               # (community) Multus CNI enables attaching multiple network interfaces to pods
+    community            # (core) The community addons repository
+    dns                  # (core) CoreDNS
+    helm                 # (core) Helm - the package manager for Kubernetes
+    helm3                # (core) Helm 3 - the package manager for Kubernetes
+    hostpath-storage     # (core) Storage class; allocates storage from host directory
+    metrics-server       # (core) K8s Metrics Server for API access to service metrics
+    storage              # (core) Alias to hostpath-storage add-on, deprecated
+  disabled:
+    argocd               # (community) Argo CD is a declarative continuous deployment for Kubernetes.
+    cilium               # (community) SDN, fast with full network policy
+    cloudnative-pg       # (community) PostgreSQL operator CloudNativePG
+    dashboard-ingress    # (community) Ingress definition for Kubernetes dashboard
+    easyhaproxy          # (community) EasyHAProxy can configure HAProxy automatically based on ingress labels
+    falco                # (community) Cloud-native runtime threat detection tool for Linux and K8s
+    fluentd              # (community) Elasticsearch-Fluentd-Kibana logging and monitoring
+    gopaddle             # (community) Low-Code Kubernetes IDE with AI Co-pilot
+    inaccel              # (community) Simplifying FPGA management in Kubernetes
+    istio                # (community) Core Istio service mesh services
+    jaeger               # (community) Kubernetes Jaeger operator with its simple config
+    kata                 # (community) Kata Containers is a secure runtime with lightweight VMS
+    keda                 # (community) Kubernetes-based Event Driven Autoscaling
+    knative              # (community) Knative Serverless and Event Driven Applications
+    kubearmor            # (community) Cloud-native runtime security enforcement system for k8s
+    kwasm                # (community) WebAssembly support for WasmEdge (Docker Wasm) and Spin (Azure AKS WASI)
+    linkerd              # (community) Linkerd is a service mesh for Kubernetes and other frameworks
+    microcks             # (community) Open source Kubernetes Native tool for API Mocking and Testing
+    nfs                  # (community) NFS Server Provisioner
+    ngrok                # (community) ngrok Ingress Controller instantly adds connectivity, load balancing, authentication, and observability to your services
+    openebs              # (community) OpenEBS is the open-source storage solution for Kubernetes
+    openfaas             # (community) OpenFaaS serverless framework
+    osm-edge             # (community) osm-edge is a lightweight SMI compatible service mesh for the edge-computing.
+    parking              # (community) Static webserver to park a domain. Works with EasyHAProxy.
+    portainer            # (community) Portainer UI for your Kubernetes cluster
+    shifu                # (community) Kubernetes native IoT software development framework.
+    sosivio              # (community) Kubernetes Predictive Troubleshooting, Observability, and Resource Optimization
+    sriov-device-plugin  # (community) SR-IOV Network Device Plugin.
+    stunner              # (community) A Kubernetes media gateway for WebRTC
+    traefik              # (community) traefik Ingress controller
+    trivy                # (community) Kubernetes-native security scanner
+    cert-manager         # (core) Cloud native certificate management
+    cis-hardening        # (core) Apply CIS K8s hardening
+    dashboard            # (core) The Kubernetes dashboard
+    gpu                  # (core) Alias to nvidia add-on
+    ha-cluster           # (core) Configure high availability on the current node
+    host-access          # (core) Allow Pods connecting to Host services smoothly
+    ingress              # (core) Ingress controller for external access
+    kube-ovn             # (core) An advanced network fabric for Kubernetes
+    mayastor             # (core) OpenEBS MayaStor
+    metallb              # (core) Loadbalancer for your Kubernetes cluster
+    minio                # (core) MinIO object storage
+    nvidia               # (core) NVIDIA hardware (GPU and network) support
+    observability        # (core) A lightweight observability stack for logs, traces and metrics
+    prometheus           # (core) Prometheus operator for monitoring and logging
+    rbac                 # (core) Role-Based Access Control for authorisation
+    registry             # (core) Private image registry exposed on localhost:32000
+    rook-ceph            # (core) Distributed Ceph storage using Rook
+sarang@sarang:~$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:3d:79:51 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.39.54/24 brd 192.168.39.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 2982sec preferred_lft 2982sec
+    inet6 2401:4900:7fbd:9fbc:1fb7:63f9:6694:190e/64 scope global temporary dynamic
+       valid_lft 3306sec preferred_lft 3306sec
+    inet6 2401:4900:7fbd:9fbc:cddd:ed4a:3185:6b07/64 scope global dynamic mngtmpaddr noprefixroute
+       valid_lft 3306sec preferred_lft 3306sec
+    inet6 fe80::f748:c67a:a2cb:7de7/64 scope link noprefixroute
+       valid_lft forever preferred_lft forever
+3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:2d:87:d2 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.56.101/24 brd 192.168.56.255 scope global noprefixroute enp0s8
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:fe2d:87d2/64 scope link
+       valid_lft forever preferred_lft forever
+4: br-1dc7c33c8ad0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether 92:14:7a:7e:0c:7b brd ff:ff:ff:ff:ff:ff
+    inet 172.21.0.1/16 brd 172.21.255.255 scope global br-1dc7c33c8ad0
+       valid_lft forever preferred_lft forever
+5: br-344d378ea925: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether ea:a3:04:58:37:44 brd ff:ff:ff:ff:ff:ff
+    inet 172.23.0.1/16 brd 172.23.255.255 scope global br-344d378ea925
+       valid_lft forever preferred_lft forever
+6: br-478662c97dc8: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether 5e:1f:55:96:00:4e brd ff:ff:ff:ff:ff:ff
+    inet 10.20.0.1/20 brd 10.20.15.255 scope global br-478662c97dc8
+       valid_lft forever preferred_lft forever
+7: br-a8622b885cb7: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether 62:89:60:60:c3:dc brd ff:ff:ff:ff:ff:ff
+    inet 172.19.0.1/16 brd 172.19.255.255 scope global br-a8622b885cb7
+       valid_lft forever preferred_lft forever
+8: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether ee:7f:d7:8f:fb:52 brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+       valid_lft forever preferred_lft forever
+9: br-460d763b9f97: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether 8e:f8:2d:50:6b:d0 brd ff:ff:ff:ff:ff:ff
+    inet 172.22.0.1/16 brd 172.22.255.255 scope global br-460d763b9f97
+       valid_lft forever preferred_lft forever
+10: br-4d66168412e5: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether 82:82:77:dd:28:92 brd ff:ff:ff:ff:ff:ff
+    inet 10.30.0.1/20 brd 10.30.15.255 scope global br-4d66168412e5
+       valid_lft forever preferred_lft forever
+11: br-913faad3efac: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether 8a:e1:dd:da:f8:6e brd ff:ff:ff:ff:ff:ff
+    inet 172.20.0.1/16 brd 172.20.255.255 scope global br-913faad3efac
+       valid_lft forever preferred_lft forever
+12: br-fb42e8b83e33: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether 06:28:38:c2:88:32 brd ff:ff:ff:ff:ff:ff
+    inet 172.18.0.1/16 brd 172.18.255.255 scope global br-fb42e8b83e33
+       valid_lft forever preferred_lft forever
+13: flannel.1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN group default
+    link/ether 66:42:5b:a3:3d:2e brd ff:ff:ff:ff:ff:ff
+    inet 10.1.8.0/32 scope global flannel.1
+       valid_lft forever preferred_lft forever
+    inet6 fe80::6442:5bff:fea3:3d2e/64 scope link noprefixroute
+       valid_lft forever preferred_lft forever
+14: cni0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UP group default qlen 1000
+    link/ether fa:18:b7:26:86:70 brd ff:ff:ff:ff:ff:ff
+    inet 10.1.8.1/24 brd 10.1.8.255 scope global cni0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::3866:dff:fe12:e257/64 scope link noprefixroute
+       valid_lft forever preferred_lft forever
+15: veth94abff97@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 32:63:65:a3:7a:63 brd ff:ff:ff:ff:ff:ff link-netns cni-fa144e6a-c5cd-3042-a802-10fea671164b
+    inet6 fe80::3063:65ff:fea3:7a63/64 scope link
+       valid_lft forever preferred_lft forever
+16: vethe523bd6f@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether a6:e1:bb:c3:fb:08 brd ff:ff:ff:ff:ff:ff link-netns cni-11092fb0-6e35-99b7-988d-f16515d54fac
+    inet6 fe80::a4e1:bbff:fec3:fb08/64 scope link
+       valid_lft forever preferred_lft forever
+17: vethb26adc66@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 0a:84:f2:88:e4:98 brd ff:ff:ff:ff:ff:ff link-netns cni-1e8e252c-b962-d9ee-b1a1-7ba9373f86a8
+    inet6 fe80::546d:7ff:fe47:3e99/64 scope link
+       valid_lft forever preferred_lft forever
+18: veth1aba01a3@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 42:66:04:96:42:ff brd ff:ff:ff:ff:ff:ff link-netns cni-110bda02-f067-dde9-e2a2-0b496641f717
+    inet6 fe80::d8f6:90ff:fe91:4fba/64 scope link
+       valid_lft forever preferred_lft forever
+19: vethb4234524@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether f2:70:23:07:0d:08 brd ff:ff:ff:ff:ff:ff link-netns cni-516c8e75-23e8-1a1e-f3e2-d5784e125971
+    inet6 fe80::c4ee:45ff:fef4:a254/64 scope link
+       valid_lft forever preferred_lft forever
+20: veth19ce88f4@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 42:76:db:0d:01:48 brd ff:ff:ff:ff:ff:ff link-netns cni-dc965b76-5b15-33cd-c367-ea01c0f26bd7
+    inet6 fe80::64fe:24ff:fea9:572e/64 scope link
+       valid_lft forever preferred_lft forever
+21: vethe629753d@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 6e:c4:66:9f:29:e1 brd ff:ff:ff:ff:ff:ff link-netns cni-0c7c9269-6bf0-0f25-b558-d4c946187a46
+    inet6 fe80::6cc4:66ff:fe9f:29e1/64 scope link
+       valid_lft forever preferred_lft forever
+22: veth8b4962dd@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 26:75:fc:fb:e6:97 brd ff:ff:ff:ff:ff:ff link-netns cni-ac961b5f-59cc-c719-a24c-376e35407124
+    inet6 fe80::2475:fcff:fefb:e697/64 scope link
+       valid_lft forever preferred_lft forever
+23: vetha59c08d4@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 82:e5:4e:47:48:94 brd ff:ff:ff:ff:ff:ff link-netns cni-162e23ca-face-cf62-a1f7-73b6a832bb7c
+    inet6 fe80::a8d2:f7ff:fe50:a07d/64 scope link
+       valid_lft forever preferred_lft forever
+24: veth98eb6160@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 3e:42:6f:21:dc:57 brd ff:ff:ff:ff:ff:ff link-netns cni-52b61eff-426e-b17e-e33e-9afab5aaf382
+    inet6 fe80::3c42:6fff:fe21:dc57/64 scope link
+       valid_lft forever preferred_lft forever
+25: veth254dec2a@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether d2:9e:b8:19:bc:bc brd ff:ff:ff:ff:ff:ff link-netns cni-d90270a4-3a2c-d646-4441-87220181a00c
+    inet6 fe80::d09e:b8ff:fe19:bcbc/64 scope link
+       valid_lft forever preferred_lft forever
+26: vethe3c76548@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether f6:f0:86:21:3f:b4 brd ff:ff:ff:ff:ff:ff link-netns cni-905387e5-948b-ca8d-5ca1-68efe524d780
+    inet6 fe80::f4f0:86ff:fe21:3fb4/64 scope link
+       valid_lft forever preferred_lft forever
+27: veth6067b1e7@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether d2:fe:6e:fc:19:c2 brd ff:ff:ff:ff:ff:ff link-netns cni-fc33a570-fed6-e395-90c8-2f597e432cd0
+    inet6 fe80::d0fe:6eff:fefc:19c2/64 scope link
+       valid_lft forever preferred_lft forever
+28: veth0aa989ec@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether ba:fb:96:67:60:bb brd ff:ff:ff:ff:ff:ff link-netns cni-6b689c00-1f8c-1875-0106-c931adb2eac3
+    inet6 fe80::cc89:5bff:fe5d:296/64 scope link
+       valid_lft forever preferred_lft forever
+29: vethceb54c79@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 4a:e2:24:8a:00:37 brd ff:ff:ff:ff:ff:ff link-netns cni-ffa5b7a3-a8c4-e5f6-5341-71dee12380bc
+    inet6 fe80::48e2:24ff:fe8a:37/64 scope link
+       valid_lft forever preferred_lft forever
+30: vethe6eabd06@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether b2:2c:0a:d9:0d:f8 brd ff:ff:ff:ff:ff:ff link-netns cni-90d400b9-3f35-8810-bbe1-776277da863e
+    inet6 fe80::b02c:aff:fed9:df8/64 scope link
+       valid_lft forever preferred_lft forever
+31: veth652dc6b1@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 26:a2:66:0c:c7:75 brd ff:ff:ff:ff:ff:ff link-netns cni-04c7fe0c-71e6-5e78-e4b6-2f427e18c613
+    inet6 fe80::38ee:b6ff:fefc:50ca/64 scope link
+       valid_lft forever preferred_lft forever
+32: veth2a1dc745@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 8a:2f:23:80:9b:65 brd ff:ff:ff:ff:ff:ff link-netns cni-3c622c9c-c30b-e390-b3bc-f4ecbff00dd1
+    inet6 fe80::882f:23ff:fe80:9b65/64 scope link
+       valid_lft forever preferred_lft forever
+33: veth2e6f87ad@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether c6:4b:3c:34:ac:a5 brd ff:ff:ff:ff:ff:ff link-netns cni-0595509d-275b-e6f8-be9b-f4d80be0733e
+    inet6 fe80::c44b:3cff:fe34:aca5/64 scope link
+       valid_lft forever preferred_lft forever
+34: vethcafa6903@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 36:b4:d3:da:af:41 brd ff:ff:ff:ff:ff:ff link-netns cni-8f10623f-5e5b-12a3-bef8-4cc2dbbae571
+    inet6 fe80::34b4:d3ff:feda:af41/64 scope link
+       valid_lft forever preferred_lft forever
+35: veth6f8ea137@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 0e:be:79:18:5b:f2 brd ff:ff:ff:ff:ff:ff link-netns cni-c572abc4-ac48-a958-2c9a-ce8e3db496b9
+    inet6 fe80::50b4:a3ff:fe7d:2a87/64 scope link
+       valid_lft forever preferred_lft forever
+36: vethdf570dd0@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 9a:87:b2:56:a5:7d brd ff:ff:ff:ff:ff:ff link-netns cni-86c8ff56-67ab-0f18-1f41-71047d0974eb
+    inet6 fe80::9887:b2ff:fe56:a57d/64 scope link
+       valid_lft forever preferred_lft forever
+37: vethe1e57126@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 46:db:db:fe:49:7f brd ff:ff:ff:ff:ff:ff link-netns cni-86080c28-a149-be57-00b9-aa261b988f5f
+    inet6 fe80::44db:dbff:fefe:497f/64 scope link
+       valid_lft forever preferred_lft forever
+38: veth313dc25c@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether be:bb:07:b7:bc:0f brd ff:ff:ff:ff:ff:ff link-netns cni-e9cf2e95-dac7-ee7a-31cc-f72fc8408bf3
+    inet6 fe80::bcbb:7ff:feb7:bc0f/64 scope link
+       valid_lft forever preferred_lft forever
+39: veth68a5d9fb@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether d2:dd:81:a0:2b:0c brd ff:ff:ff:ff:ff:ff link-netns cni-941dbfcf-a438-df3c-5804-e98df8cf1a1e
+    inet6 fe80::d0dd:81ff:fea0:2b0c/64 scope link
+       valid_lft forever preferred_lft forever
+41: vethc769123e@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 2e:e1:e2:2f:f6:d1 brd ff:ff:ff:ff:ff:ff link-netns cni-254a7ee6-ae46-0089-70b9-f9329779807a
+    inet6 fe80::2ce1:e2ff:fe2f:f6d1/64 scope link
+       valid_lft forever preferred_lft forever
+42: veth9ba672de@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 12:85:d1:52:d4:53 brd ff:ff:ff:ff:ff:ff link-netns cni-d4694843-fd3e-e181-67dc-6404b8657ed9
+    inet6 fe80::1085:d1ff:fe52:d453/64 scope link
+       valid_lft forever preferred_lft forever
+43: veth40e77895@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether b2:c4:e7:b4:ed:7c brd ff:ff:ff:ff:ff:ff link-netns cni-cf0dbf95-ab9b-3ea7-4c6a-c0707fa37f98
+    inet6 fe80::b436:ccff:fe0c:eb3d/64 scope link
+       valid_lft forever preferred_lft forever
+44: vethcf920784@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether f6:36:e9:06:b5:21 brd ff:ff:ff:ff:ff:ff link-netns cni-612dbfd8-56e8-aa30-97a1-59b5278eee3f
+    inet6 fe80::78ab:aeff:fe85:5b3e/64 scope link
+       valid_lft forever preferred_lft forever
+45: veth688090ef@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 8e:7c:72:21:a3:dd brd ff:ff:ff:ff:ff:ff link-netns cni-1c17269d-1a70-9f93-8229-c1aed066612a
+    inet6 fe80::8c7c:72ff:fe21:a3dd/64 scope link
+       valid_lft forever preferred_lft forever
+46: vethcc8dc0b6@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 62:c1:62:3a:48:8c brd ff:ff:ff:ff:ff:ff link-netns cni-7d998ead-de11-66c3-64c2-2413604776b6
+    inet6 fe80::60c1:62ff:fe3a:488c/64 scope link
+       valid_lft forever preferred_lft forever
+47: veth993a066b@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 9e:56:82:86:01:55 brd ff:ff:ff:ff:ff:ff link-netns cni-57d8a56d-31b4-79c7-178b-e715eb290619
+    inet6 fe80::40b6:f7ff:fe23:72a0/64 scope link
+       valid_lft forever preferred_lft forever
+48: veth2d3f9262@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether a2:ba:60:67:22:95 brd ff:ff:ff:ff:ff:ff link-netns cni-73b9031f-c306-9bf4-e24a-9e90fa02cfbd
+    inet6 fe80::349d:99ff:fe34:cc92/64 scope link
+       valid_lft forever preferred_lft forever
+49: veth658e2e0b@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 4a:df:77:47:26:5a brd ff:ff:ff:ff:ff:ff link-netns cni-64736de7-2967-ccd3-0e5b-7d66e6cc57bb
+    inet6 fe80::c0db:10ff:fea0:6890/64 scope link
+       valid_lft forever preferred_lft forever
+50: veth8f82dc7b@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 72:39:9b:52:ef:1b brd ff:ff:ff:ff:ff:ff link-netns cni-edba383e-8245-9c17-9bcf-6101e6b7c44f
+    inet6 fe80::7039:9bff:fe52:ef1b/64 scope link
+       valid_lft forever preferred_lft forever
+51: veth67b3f6a1@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 0a:dc:f8:06:29:03 brd ff:ff:ff:ff:ff:ff link-netns cni-3c05114c-e625-cf9f-4e99-76fab43d8b85
+    inet6 fe80::8dc:f8ff:fe06:2903/64 scope link
+       valid_lft forever preferred_lft forever
+52: veth98ce8700@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 6e:ba:7b:bc:0a:6e brd ff:ff:ff:ff:ff:ff link-netns cni-09be0a75-5f06-4e78-3538-cd182a9c7481
+    inet6 fe80::6cba:7bff:febc:a6e/64 scope link
+       valid_lft forever preferred_lft forever
+54: vethd97d7fa9@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether fa:c3:bf:82:9b:eb brd ff:ff:ff:ff:ff:ff link-netns cni-14e06323-898f-38d7-ea44-33b32f1870c1
+    inet6 fe80::5030:40ff:fe58:370b/64 scope link
+       valid_lft forever preferred_lft forever
+56: vetheaaf42d0@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 7e:ee:e9:10:4b:22 brd ff:ff:ff:ff:ff:ff link-netns cni-ecba67e4-7846-4d12-2293-26e20086538a
+    inet6 fe80::7cee:e9ff:fe10:4b22/64 scope link
+       valid_lft forever preferred_lft forever
+57: veth51fc0101@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 42:85:ae:b0:ff:e2 brd ff:ff:ff:ff:ff:ff link-netns cni-5a9b7736-3079-0902-9c7e-5e0a78287834
+    inet6 fe80::942e:fff:feee:c22d/64 scope link
+       valid_lft forever preferred_lft forever
+58: veth669e308b@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 92:f2:3c:90:cc:2e brd ff:ff:ff:ff:ff:ff link-netns cni-8c4471dc-1d08-db01-9850-c8b44632fa7b
+    inet6 fe80::38a9:1dff:fe7b:9568/64 scope link
+       valid_lft forever preferred_lft forever
+60: vethc5597194@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether ee:98:09:c7:63:24 brd ff:ff:ff:ff:ff:ff link-netns cni-3ae727d6-a8da-5fb4-55ab-32d25cb0958c
+    inet6 fe80::4cd2:4dff:fe27:5de3/64 scope link
+       valid_lft forever preferred_lft forever
+61: vethe2880215@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether fa:34:35:34:23:7f brd ff:ff:ff:ff:ff:ff link-netns cni-82565ccf-6c71-f6d5-888e-37bc76191ec9
+    inet6 fe80::37:57ff:fe48:7cdc/64 scope link
+       valid_lft forever preferred_lft forever
+79: veth0177cd5c@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether ce:cf:7b:87:9f:2b brd ff:ff:ff:ff:ff:ff link-netns cni-bbce1c0e-d978-d24b-3857-0bfa91f9d0ba
+    inet6 fe80::cccf:7bff:fe87:9f2b/64 scope link
+       valid_lft forever preferred_lft forever
+80: veth7a29a605@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 3e:5c:d2:35:d2:c9 brd ff:ff:ff:ff:ff:ff link-netns cni-1c58eef6-1d64-24e5-4506-f51702229eca
+    inet6 fe80::3c5c:d2ff:fe35:d2c9/64 scope link
+       valid_lft forever preferred_lft forever
+81: veth5aa7b554@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 2e:a6:cc:df:26:b1 brd ff:ff:ff:ff:ff:ff link-netns cni-28ae8a11-6be4-e77c-f519-61109bc814e9
+    inet6 fe80::2ca6:ccff:fedf:26b1/64 scope link
+       valid_lft forever preferred_lft forever
+85: veth1b31f7ea@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether c2:10:22:40:e8:b9 brd ff:ff:ff:ff:ff:ff link-netns cni-154fca81-5827-8788-195d-c9cfe48e0947
+    inet6 fe80::20fa:90ff:fe4c:51e0/64 scope link
+       valid_lft forever preferred_lft forever
+103: veth2dff9d20@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 2a:26:c7:d6:f8:e5 brd ff:ff:ff:ff:ff:ff link-netns cni-2214b4cf-e666-405e-e05c-29d1591b08dc
+    inet6 fe80::d0b5:30ff:fe44:97e4/64 scope link
+       valid_lft forever preferred_lft forever
+104: veth8de9125e@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether c6:99:8c:67:d1:25 brd ff:ff:ff:ff:ff:ff link-netns cni-72824b70-3579-63c6-f55f-3dc0dfaa6abf
+    inet6 fe80::c499:8cff:fe67:d125/64 scope link
+       valid_lft forever preferred_lft forever
+105: vethfc2acdd3@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether f6:72:ec:f0:44:ec brd ff:ff:ff:ff:ff:ff link-netns cni-2a110462-9baf-43ee-414d-22d6ab255cf5
+    inet6 fe80::f472:ecff:fef0:44ec/64 scope link
+       valid_lft forever preferred_lft forever
+106: veth70371782@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether d2:af:5d:bc:9e:1b brd ff:ff:ff:ff:ff:ff link-netns cni-28f59343-b51c-4abf-38f1-5344833ffb82
+    inet6 fe80::d0af:5dff:febc:9e1b/64 scope link
+       valid_lft forever preferred_lft forever
+107: vethd7d92809@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether f6:15:50:21:31:1a brd ff:ff:ff:ff:ff:ff link-netns cni-c397ec54-7e53-a71e-bfbf-50e424848b31
+    inet6 fe80::f415:50ff:fe21:311a/64 scope link
+       valid_lft forever preferred_lft forever
+108: vethb7037b43@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 0a:6b:49:1d:94:dc brd ff:ff:ff:ff:ff:ff link-netns cni-6ec42c37-7f53-9bce-3ec4-b24c8b956084
+    inet6 fe80::86b:49ff:fe1d:94dc/64 scope link
+       valid_lft forever preferred_lft forever
+109: vethdcc256b7@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 8e:1a:89:a2:6a:29 brd ff:ff:ff:ff:ff:ff link-netns cni-978e0c87-22d0-79d9-2775-8436dcaa8590
+    inet6 fe80::8c1a:89ff:fea2:6a29/64 scope link
+       valid_lft forever preferred_lft forever
+110: veth111f4e53@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 1e:8d:48:de:ab:3c brd ff:ff:ff:ff:ff:ff link-netns cni-3fa4e9b4-adb1-0611-ff8b-0b3a5e67f75c
+    inet6 fe80::1c8d:48ff:fede:ab3c/64 scope link
+       valid_lft forever preferred_lft forever
+111: veth5a1d6fa8@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 52:26:95:e5:9e:1b brd ff:ff:ff:ff:ff:ff link-netns cni-1cc9f475-2ce8-a5ae-bd3d-65d359c8e3e1
+    inet6 fe80::5026:95ff:fee5:9e1b/64 scope link
+       valid_lft forever preferred_lft forever
+112: veth96f2a787@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether fe:8a:85:96:15:1e brd ff:ff:ff:ff:ff:ff link-netns cni-68abf6b6-0680-5847-bdc9-0edf1d05142b
+    inet6 fe80::fc8a:85ff:fe96:151e/64 scope link
+       valid_lft forever preferred_lft forever
+114: veth502ec075@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 8a:5c:67:23:e0:43 brd ff:ff:ff:ff:ff:ff link-netns cni-5d05d7c6-55fc-4e0f-5cf1-063de89484dd
+    inet6 fe80::885c:67ff:fe23:e043/64 scope link
+       valid_lft forever preferred_lft forever
+115: vethe2b5efb7@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether ba:1d:45:32:46:06 brd ff:ff:ff:ff:ff:ff link-netns cni-afc4557f-4b5c-3da8-c832-20b4cef07682
+    inet6 fe80::b81d:45ff:fe32:4606/64 scope link
+       valid_lft forever preferred_lft forever
+116: veth15f1988e@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether ea:52:ba:6b:7a:f5 brd ff:ff:ff:ff:ff:ff link-netns cni-6c9de7f4-af34-9677-af3d-d5bd72043549
+    inet6 fe80::e852:baff:fe6b:7af5/64 scope link
+       valid_lft forever preferred_lft forever
+118: veth1822f261@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 8a:e8:ef:99:1e:a8 brd ff:ff:ff:ff:ff:ff link-netns cni-4f3b93a6-87b2-477e-a8ea-bb6db90785bf
+    inet6 fe80::88e8:efff:fe99:1ea8/64 scope link
+       valid_lft forever preferred_lft forever
+120: vethb007c761@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 1e:33:c4:26:26:ce brd ff:ff:ff:ff:ff:ff link-netns cni-694c8569-4824-faaa-dc92-434fd46671e8
+    inet6 fe80::1c33:c4ff:fe26:26ce/64 scope link
+       valid_lft forever preferred_lft forever
+121: veth0c82cffd@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether c6:29:4a:27:fd:a4 brd ff:ff:ff:ff:ff:ff link-netns cni-47734936-a522-b295-880b-34798aa8d2d0
+    inet6 fe80::c429:4aff:fe27:fda4/64 scope link
+       valid_lft forever preferred_lft forever
+124: veth2d93c230@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 92:42:52:6c:90:24 brd ff:ff:ff:ff:ff:ff link-netns cni-7fd1bd93-0219-3aa4-31ea-21f1b1aa8b7d
+    inet6 fe80::9042:52ff:fe6c:9024/64 scope link
+       valid_lft forever preferred_lft forever
+125: vethe8a975d6@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 82:f8:57:7e:3e:f8 brd ff:ff:ff:ff:ff:ff link-netns cni-bd7d0943-de70-dc16-e39c-cb6ea7e33a33
+    inet6 fe80::105d:9aff:fef5:1752/64 scope link
+       valid_lft forever preferred_lft forever
+126: veth62f1d30d@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether ce:1d:ea:7d:03:9c brd ff:ff:ff:ff:ff:ff link-netns cni-9d020744-4cf9-297c-e1ee-b4300cea21a6
+    inet6 fe80::cc1d:eaff:fe7d:39c/64 scope link
+       valid_lft forever preferred_lft forever
+146: vethcd8864c4@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 92:95:af:7a:61:91 brd ff:ff:ff:ff:ff:ff link-netns cni-b45cb005-c9f7-3b0e-dec5-cc6bc35defb2
+    inet6 fe80::9095:afff:fe7a:6191/64 scope link
+       valid_lft forever preferred_lft forever
+147: vethd429a4e9@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether fe:10:5e:64:d0:44 brd ff:ff:ff:ff:ff:ff link-netns cni-6c832fc6-ab1e-9942-e998-668fa47ff3ae
+    inet6 fe80::eca2:f2ff:fece:b88a/64 scope link
+       valid_lft forever preferred_lft forever
+148: veth1fa4083e@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 36:82:fd:b0:1b:56 brd ff:ff:ff:ff:ff:ff link-netns cni-0baaef7c-5959-0b8b-c6ae-5ecd0578bc17
+    inet6 fe80::3482:fdff:feb0:1b56/64 scope link
+       valid_lft forever preferred_lft forever
+149: veth78edac17@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether e6:49:f4:98:7e:c0 brd ff:ff:ff:ff:ff:ff link-netns cni-bd384c67-acab-141c-3370-c6821d47ae40
+    inet6 fe80::e449:f4ff:fe98:7ec0/64 scope link
+       valid_lft forever preferred_lft forever
+150: veth677dbdfb@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 1a:1a:9b:85:7a:00 brd ff:ff:ff:ff:ff:ff link-netns cni-31e21fda-33d0-9c36-447b-275837ada565
+    inet6 fe80::2479:5eff:fe48:ec98/64 scope link
+       valid_lft forever preferred_lft forever
+151: veth8b7b698f@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 42:3b:92:85:e2:99 brd ff:ff:ff:ff:ff:ff link-netns cni-e6a200be-0122-24de-9413-a59f74d40877
+    inet6 fe80::9c45:c7ff:fec3:1670/64 scope link
+       valid_lft forever preferred_lft forever
+152: veth0c0d653c@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 42:9d:9c:b2:30:ab brd ff:ff:ff:ff:ff:ff link-netns cni-d2c161ea-31a7-24e2-cc36-41e42eb2ddaf
+    inet6 fe80::409d:9cff:feb2:30ab/64 scope link
+       valid_lft forever preferred_lft forever
+153: vethd49f73fa@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 82:50:b0:15:fe:73 brd ff:ff:ff:ff:ff:ff link-netns cni-50a822b7-e3de-8bd3-ecd5-a0f6ef59f9b5
+    inet6 fe80::8050:b0ff:fe15:fe73/64 scope link
+       valid_lft forever preferred_lft forever
+154: veth472db92f@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether f2:dd:70:2f:8c:e9 brd ff:ff:ff:ff:ff:ff link-netns cni-2b983187-25f8-3c70-ec82-364874c88875
+    inet6 fe80::30b6:73ff:fe0e:e529/64 scope link
+       valid_lft forever preferred_lft forever
+155: veth42de89c6@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 8e:34:62:4d:40:28 brd ff:ff:ff:ff:ff:ff link-netns cni-6ab77156-61fa-d194-09a7-5e4976c17b85
+    inet6 fe80::8848:eeff:fe98:a7c/64 scope link
+       valid_lft forever preferred_lft forever
+157: vethb6e2d7bc@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 96:69:56:58:03:61 brd ff:ff:ff:ff:ff:ff link-netns cni-127f8d5e-b0cf-52f3-8036-efe1484e5c3c
+    inet6 fe80::9469:56ff:fe58:361/64 scope link
+       valid_lft forever preferred_lft forever
+158: vethd6bcefda@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether a6:a9:ae:3b:62:81 brd ff:ff:ff:ff:ff:ff link-netns cni-285d8653-51a0-5340-cc6c-e191f54d3392
+    inet6 fe80::cc0:93ff:fe37:213f/64 scope link
+       valid_lft forever preferred_lft forever
+159: vethd156b1a6@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether e6:15:0b:4c:d7:cf brd ff:ff:ff:ff:ff:ff link-netns cni-bd61f72c-9bfb-1ec6-2493-202a50ec71f2
+    inet6 fe80::e415:bff:fe4c:d7cf/64 scope link
+       valid_lft forever preferred_lft forever
+160: vethb4710ea4@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether ca:a4:61:1e:b2:44 brd ff:ff:ff:ff:ff:ff link-netns cni-39e92e04-b145-5645-a01d-ceeee3945bb0
+    inet6 fe80::c8a4:61ff:fe1e:b244/64 scope link
+       valid_lft forever preferred_lft forever
+161: veth208d9d59@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether f6:49:cb:f5:24:84 brd ff:ff:ff:ff:ff:ff link-netns cni-fd486216-697a-528e-f483-90a35f55e5b0
+    inet6 fe80::78f7:f0ff:fe9e:1549/64 scope link
+       valid_lft forever preferred_lft forever
+162: vethedac0f80@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 1e:93:bb:14:45:f7 brd ff:ff:ff:ff:ff:ff link-netns cni-7ff8acbf-1f90-fc00-12d9-2bf5cb07032e
+    inet6 fe80::1c93:bbff:fe14:45f7/64 scope link
+       valid_lft forever preferred_lft forever
+163: vethbe21b6ca@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 4e:08:1d:35:e2:3b brd ff:ff:ff:ff:ff:ff link-netns cni-bc99a41d-567b-25e6-536c-30160bcb7943
+    inet6 fe80::4c08:1dff:fe35:e23b/64 scope link
+       valid_lft forever preferred_lft forever
+164: veth290655b9@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether ca:bf:cd:49:07:db brd ff:ff:ff:ff:ff:ff link-netns cni-2503a8a3-c348-9c24-bcae-aae997bad7cb
+    inet6 fe80::c8bf:cdff:fe49:7db/64 scope link
+       valid_lft forever preferred_lft forever
+165: veth084f71bf@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 06:9e:0c:ff:d5:3d brd ff:ff:ff:ff:ff:ff link-netns cni-03fc2385-8612-62e5-8175-f562835c62a1
+    inet6 fe80::8018:7ff:fea0:77c6/64 scope link
+       valid_lft forever preferred_lft forever
+166: veth3704aa2c@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether fe:c2:52:3a:79:e1 brd ff:ff:ff:ff:ff:ff link-netns cni-4ee2f6ca-edae-3b85-d836-47f4c99a1bc6
+    inet6 fe80::fcc2:52ff:fe3a:79e1/64 scope link
+       valid_lft forever preferred_lft forever
+167: vethb9f7fbf8@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether ce:1f:97:ab:a4:40 brd ff:ff:ff:ff:ff:ff link-netns cni-84c1512d-7d02-c5ba-3ab2-778d1cbdc0bf
+    inet6 fe80::7c1e:2fff:feb5:2cac/64 scope link
+       valid_lft forever preferred_lft forever
+168: veth425bd01e@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether e6:5b:21:8d:27:42 brd ff:ff:ff:ff:ff:ff link-netns cni-d546ae28-e8e0-1514-713b-0eec2cf65bdb
+    inet6 fe80::e45b:21ff:fe8d:2742/64 scope link
+       valid_lft forever preferred_lft forever
+169: veth1ac07b5e@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 4a:33:49:f7:e4:88 brd ff:ff:ff:ff:ff:ff link-netns cni-94077647-728f-6587-fee3-3b4f0f11d51f
+    inet6 fe80::6cdc:9dff:fe83:590c/64 scope link
+       valid_lft forever preferred_lft forever
+sarang@sarang:~$ microk8s status --wait-ready
+microk8s is running
+high-availability: no
+  datastore endpoints:
+    127.0.0.1:12379
+addons:
+  enabled:
+    multus               # (community) Multus CNI enables attaching multiple network interfaces to pods
+    community            # (core) The community addons repository
+    dns                  # (core) CoreDNS
+    helm                 # (core) Helm - the package manager for Kubernetes
+    helm3                # (core) Helm 3 - the package manager for Kubernetes
+    hostpath-storage     # (core) Storage class; allocates storage from host directory
+    metrics-server       # (core) K8s Metrics Server for API access to service metrics
+    storage              # (core) Alias to hostpath-storage add-on, deprecated
+  disabled:
+    argocd               # (community) Argo CD is a declarative continuous deployment for Kubernetes.
+    cilium               # (community) SDN, fast with full network policy
+    cloudnative-pg       # (community) PostgreSQL operator CloudNativePG
+    dashboard-ingress    # (community) Ingress definition for Kubernetes dashboard
+    easyhaproxy          # (community) EasyHAProxy can configure HAProxy automatically based on ingress labels
+    falco                # (community) Cloud-native runtime threat detection tool for Linux and K8s
+    fluentd              # (community) Elasticsearch-Fluentd-Kibana logging and monitoring
+    gopaddle             # (community) Low-Code Kubernetes IDE with AI Co-pilot
+    inaccel              # (community) Simplifying FPGA management in Kubernetes
+    istio                # (community) Core Istio service mesh services
+    jaeger               # (community) Kubernetes Jaeger operator with its simple config
+    kata                 # (community) Kata Containers is a secure runtime with lightweight VMS
+    keda                 # (community) Kubernetes-based Event Driven Autoscaling
+    knative              # (community) Knative Serverless and Event Driven Applications
+    kubearmor            # (community) Cloud-native runtime security enforcement system for k8s
+    kwasm                # (community) WebAssembly support for WasmEdge (Docker Wasm) and Spin (Azure AKS WASI)
+    linkerd              # (community) Linkerd is a service mesh for Kubernetes and other frameworks
+    microcks             # (community) Open source Kubernetes Native tool for API Mocking and Testing
+    nfs                  # (community) NFS Server Provisioner
+    ngrok                # (community) ngrok Ingress Controller instantly adds connectivity, load balancing, authentication, and observability to your services
+    openebs              # (community) OpenEBS is the open-source storage solution for Kubernetes
+    openfaas             # (community) OpenFaaS serverless framework
+    osm-edge             # (community) osm-edge is a lightweight SMI compatible service mesh for the edge-computing.
+    parking              # (community) Static webserver to park a domain. Works with EasyHAProxy.
+    portainer            # (community) Portainer UI for your Kubernetes cluster
+    shifu                # (community) Kubernetes native IoT software development framework.
+    sosivio              # (community) Kubernetes Predictive Troubleshooting, Observability, and Resource Optimization
+    sriov-device-plugin  # (community) SR-IOV Network Device Plugin.
+    stunner              # (community) A Kubernetes media gateway for WebRTC
+    traefik              # (community) traefik Ingress controller
+    trivy                # (community) Kubernetes-native security scanner
+    cert-manager         # (core) Cloud native certificate management
+    cis-hardening        # (core) Apply CIS K8s hardening
+    dashboard            # (core) The Kubernetes dashboard
+    gpu                  # (core) Alias to nvidia add-on
+    ha-cluster           # (core) Configure high availability on the current node
+    host-access          # (core) Allow Pods connecting to Host services smoothly
+    ingress              # (core) Ingress controller for external access
+    kube-ovn             # (core) An advanced network fabric for Kubernetes
+    mayastor             # (core) OpenEBS MayaStor
+    metallb              # (core) Loadbalancer for your Kubernetes cluster
+    minio                # (core) MinIO object storage
+    nvidia               # (core) NVIDIA hardware (GPU and network) support
+    observability        # (core) A lightweight observability stack for logs, traces and metrics
+    prometheus           # (core) Prometheus operator for monitoring and logging
+    rbac                 # (core) Role-Based Access Control for authorisation
+    registry             # (core) Private image registry exposed on localhost:32000
+    rook-ceph            # (core) Distributed Ceph storage using Rook
+sarang@sarang:~$ microk8s status --wait-ready
+microk8s is running
+high-availability: no
+  datastore endpoints:
+    127.0.0.1:12379
+addons:
+  enabled:
+    multus               # (community) Multus CNI enables attaching multiple network interfaces to pods
+    community            # (core) The community addons repository
+    dns                  # (core) CoreDNS
+    helm                 # (core) Helm - the package manager for Kubernetes
+    helm3                # (core) Helm 3 - the package manager for Kubernetes
+    hostpath-storage     # (core) Storage class; allocates storage from host directory
+    metrics-server       # (core) K8s Metrics Server for API access to service metrics
+    storage              # (core) Alias to hostpath-storage add-on, deprecated
+  disabled:
+    argocd               # (community) Argo CD is a declarative continuous deployment for Kubernetes.
+    cilium               # (community) SDN, fast with full network policy
+    cloudnative-pg       # (community) PostgreSQL operator CloudNativePG
+    dashboard-ingress    # (community) Ingress definition for Kubernetes dashboard
+    easyhaproxy          # (community) EasyHAProxy can configure HAProxy automatically based on ingress labels
+    falco                # (community) Cloud-native runtime threat detection tool for Linux and K8s
+    fluentd              # (community) Elasticsearch-Fluentd-Kibana logging and monitoring
+    gopaddle             # (community) Low-Code Kubernetes IDE with AI Co-pilot
+    inaccel              # (community) Simplifying FPGA management in Kubernetes
+    istio                # (community) Core Istio service mesh services
+    jaeger               # (community) Kubernetes Jaeger operator with its simple config
+    kata                 # (community) Kata Containers is a secure runtime with lightweight VMS
+    keda                 # (community) Kubernetes-based Event Driven Autoscaling
+    knative              # (community) Knative Serverless and Event Driven Applications
+    kubearmor            # (community) Cloud-native runtime security enforcement system for k8s
+    kwasm                # (community) WebAssembly support for WasmEdge (Docker Wasm) and Spin (Azure AKS WASI)
+    linkerd              # (community) Linkerd is a service mesh for Kubernetes and other frameworks
+    microcks             # (community) Open source Kubernetes Native tool for API Mocking and Testing
+    nfs                  # (community) NFS Server Provisioner
+    ngrok                # (community) ngrok Ingress Controller instantly adds connectivity, load balancing, authentication, and observability to your services
+    openebs              # (community) OpenEBS is the open-source storage solution for Kubernetes
+    openfaas             # (community) OpenFaaS serverless framework
+    osm-edge             # (community) osm-edge is a lightweight SMI compatible service mesh for the edge-computing.
+    parking              # (community) Static webserver to park a domain. Works with EasyHAProxy.
+    portainer            # (community) Portainer UI for your Kubernetes cluster
+    shifu                # (community) Kubernetes native IoT software development framework.
+    sosivio              # (community) Kubernetes Predictive Troubleshooting, Observability, and Resource Optimization
+    sriov-device-plugin  # (community) SR-IOV Network Device Plugin.
+    stunner              # (community) A Kubernetes media gateway for WebRTC
+    traefik              # (community) traefik Ingress controller
+    trivy                # (community) Kubernetes-native security scanner
+    cert-manager         # (core) Cloud native certificate management
+    cis-hardening        # (core) Apply CIS K8s hardening
+    dashboard            # (core) The Kubernetes dashboard
+    gpu                  # (core) Alias to nvidia add-on
+    ha-cluster           # (core) Configure high availability on the current node
+    host-access          # (core) Allow Pods connecting to Host services smoothly
+    ingress              # (core) Ingress controller for external access
+    kube-ovn             # (core) An advanced network fabric for Kubernetes
+    mayastor             # (core) OpenEBS MayaStor
+    metallb              # (core) Loadbalancer for your Kubernetes cluster
+    minio                # (core) MinIO object storage
+    nvidia               # (core) NVIDIA hardware (GPU and network) support
+    observability        # (core) A lightweight observability stack for logs, traces and metrics
+    prometheus           # (core) Prometheus operator for monitoring and logging
+    rbac                 # (core) Role-Based Access Control for authorisation
+    registry             # (core) Private image registry exposed on localhost:32000
+    rook-ceph            # (core) Distributed Ceph storage using Rook
+sarang@sarang:~$ sudo ls /var/snap/microk8s/current/certs/
+[sudo] password for sarang:
+apiserver-kubelet-client.crt  ca.srl          controller.key     front-proxy-ca.crt      front-proxy-client.csr  proxy.crt      server.crt
+apiserver-kubelet-client.key  client.crt      csr.conf           front-proxy-ca.key      front-proxy-client.key  proxy.key      server.csr
+ca.crt                        client.key      csr.conf.rendered  front-proxy-ca.srl      kubelet.crt             scheduler.crt  server.key
+ca.key                        controller.crt  csr.conf.template  front-proxy-client.crt  kubelet.key             scheduler.key  serviceaccount.key
+sarang@sarang:~$ microk8s status --wait-ready
+microk8s is running
+high-availability: no
+  datastore endpoints:
+    127.0.0.1:12379
+addons:
+  enabled:
+    multus               # (community) Multus CNI enables attaching multiple network interfaces to pods
+    community            # (core) The community addons repository
+    dns                  # (core) CoreDNS
+    helm                 # (core) Helm - the package manager for Kubernetes
+    helm3                # (core) Helm 3 - the package manager for Kubernetes
+    hostpath-storage     # (core) Storage class; allocates storage from host directory
+    metrics-server       # (core) K8s Metrics Server for API access to service metrics
+    storage              # (core) Alias to hostpath-storage add-on, deprecated
+  disabled:
+    argocd               # (community) Argo CD is a declarative continuous deployment for Kubernetes.
+    cilium               # (community) SDN, fast with full network policy
+    cloudnative-pg       # (community) PostgreSQL operator CloudNativePG
+    dashboard-ingress    # (community) Ingress definition for Kubernetes dashboard
+    easyhaproxy          # (community) EasyHAProxy can configure HAProxy automatically based on ingress labels
+    falco                # (community) Cloud-native runtime threat detection tool for Linux and K8s
+    fluentd              # (community) Elasticsearch-Fluentd-Kibana logging and monitoring
+    gopaddle             # (community) Low-Code Kubernetes IDE with AI Co-pilot
+    inaccel              # (community) Simplifying FPGA management in Kubernetes
+    istio                # (community) Core Istio service mesh services
+    jaeger               # (community) Kubernetes Jaeger operator with its simple config
+    kata                 # (community) Kata Containers is a secure runtime with lightweight VMS
+    keda                 # (community) Kubernetes-based Event Driven Autoscaling
+    knative              # (community) Knative Serverless and Event Driven Applications
+    kubearmor            # (community) Cloud-native runtime security enforcement system for k8s
+    kwasm                # (community) WebAssembly support for WasmEdge (Docker Wasm) and Spin (Azure AKS WASI)
+    linkerd              # (community) Linkerd is a service mesh for Kubernetes and other frameworks
+    microcks             # (community) Open source Kubernetes Native tool for API Mocking and Testing
+    nfs                  # (community) NFS Server Provisioner
+    ngrok                # (community) ngrok Ingress Controller instantly adds connectivity, load balancing, authentication, and observability to your services
+    openebs              # (community) OpenEBS is the open-source storage solution for Kubernetes
+    openfaas             # (community) OpenFaaS serverless framework
+    osm-edge             # (community) osm-edge is a lightweight SMI compatible service mesh for the edge-computing.
+    parking              # (community) Static webserver to park a domain. Works with EasyHAProxy.
+    portainer            # (community) Portainer UI for your Kubernetes cluster
+    shifu                # (community) Kubernetes native IoT software development framework.
+    sosivio              # (community) Kubernetes Predictive Troubleshooting, Observability, and Resource Optimization
+    sriov-device-plugin  # (community) SR-IOV Network Device Plugin.
+    stunner              # (community) A Kubernetes media gateway for WebRTC
+    traefik              # (community) traefik Ingress controller
+    trivy                # (community) Kubernetes-native security scanner
+    cert-manager         # (core) Cloud native certificate management
+    cis-hardening        # (core) Apply CIS K8s hardening
+    dashboard            # (core) The Kubernetes dashboard
+    gpu                  # (core) Alias to nvidia add-on
+    ha-cluster           # (core) Configure high availability on the current node
+    host-access          # (core) Allow Pods connecting to Host services smoothly
+    ingress              # (core) Ingress controller for external access
+    kube-ovn             # (core) An advanced network fabric for Kubernetes
+    mayastor             # (core) OpenEBS MayaStor
+    metallb              # (core) Loadbalancer for your Kubernetes cluster
+    minio                # (core) MinIO object storage
+    nvidia               # (core) NVIDIA hardware (GPU and network) support
+    observability        # (core) A lightweight observability stack for logs, traces and metrics
+    prometheus           # (core) Prometheus operator for monitoring and logging
+    rbac                 # (core) Role-Based Access Control for authorisation
+    registry             # (core) Private image registry exposed on localhost:32000
+    rook-ceph            # (core) Distributed Ceph storage using Rook
+sarang@sarang:~$ microk8s status --wait-ready
+microk8s is running
+high-availability: no
+  datastore endpoints:
+    127.0.0.1:12379
+addons:
+  enabled:
+    multus               # (community) Multus CNI enables attaching multiple network interfaces to pods
+    community            # (core) The community addons repository
+    dns                  # (core) CoreDNS
+    helm                 # (core) Helm - the package manager for Kubernetes
+    helm3                # (core) Helm 3 - the package manager for Kubernetes
+    hostpath-storage     # (core) Storage class; allocates storage from host directory
+    metrics-server       # (core) K8s Metrics Server for API access to service metrics
+    storage              # (core) Alias to hostpath-storage add-on, deprecated
+  disabled:
+    argocd               # (community) Argo CD is a declarative continuous deployment for Kubernetes.
+    cilium               # (community) SDN, fast with full network policy
+    cloudnative-pg       # (community) PostgreSQL operator CloudNativePG
+    dashboard-ingress    # (community) Ingress definition for Kubernetes dashboard
+    easyhaproxy          # (community) EasyHAProxy can configure HAProxy automatically based on ingress labels
+    falco                # (community) Cloud-native runtime threat detection tool for Linux and K8s
+    fluentd              # (community) Elasticsearch-Fluentd-Kibana logging and monitoring
+    gopaddle             # (community) Low-Code Kubernetes IDE with AI Co-pilot
+    inaccel              # (community) Simplifying FPGA management in Kubernetes
+    istio                # (community) Core Istio service mesh services
+    jaeger               # (community) Kubernetes Jaeger operator with its simple config
+    kata                 # (community) Kata Containers is a secure runtime with lightweight VMS
+    keda                 # (community) Kubernetes-based Event Driven Autoscaling
+    knative              # (community) Knative Serverless and Event Driven Applications
+    kubearmor            # (community) Cloud-native runtime security enforcement system for k8s
+    kwasm                # (community) WebAssembly support for WasmEdge (Docker Wasm) and Spin (Azure AKS WASI)
+    linkerd              # (community) Linkerd is a service mesh for Kubernetes and other frameworks
+    microcks             # (community) Open source Kubernetes Native tool for API Mocking and Testing
+    nfs                  # (community) NFS Server Provisioner
+    ngrok                # (community) ngrok Ingress Controller instantly adds connectivity, load balancing, authentication, and observability to your services
+    openebs              # (community) OpenEBS is the open-source storage solution for Kubernetes
+    openfaas             # (community) OpenFaaS serverless framework
+    osm-edge             # (community) osm-edge is a lightweight SMI compatible service mesh for the edge-computing.
+    parking              # (community) Static webserver to park a domain. Works with EasyHAProxy.
+    portainer            # (community) Portainer UI for your Kubernetes cluster
+    shifu                # (community) Kubernetes native IoT software development framework.
+    sosivio              # (community) Kubernetes Predictive Troubleshooting, Observability, and Resource Optimization
+    sriov-device-plugin  # (community) SR-IOV Network Device Plugin.
+    stunner              # (community) A Kubernetes media gateway for WebRTC
+    traefik              # (community) traefik Ingress controller
+    trivy                # (community) Kubernetes-native security scanner
+    cert-manager         # (core) Cloud native certificate management
+    cis-hardening        # (core) Apply CIS K8s hardening
+    dashboard            # (core) The Kubernetes dashboard
+    gpu                  # (core) Alias to nvidia add-on
+    ha-cluster           # (core) Configure high availability on the current node
+    host-access          # (core) Allow Pods connecting to Host services smoothly
+    ingress              # (core) Ingress controller for external access
+    kube-ovn             # (core) An advanced network fabric for Kubernetes
+    mayastor             # (core) OpenEBS MayaStor
+    metallb              # (core) Loadbalancer for your Kubernetes cluster
+    minio                # (core) MinIO object storage
+    nvidia               # (core) NVIDIA hardware (GPU and network) support
+    observability        # (core) A lightweight observability stack for logs, traces and metrics
+    prometheus           # (core) Prometheus operator for monitoring and logging
+    rbac                 # (core) Role-Based Access Control for authorisation
+    registry             # (core) Private image registry exposed on localhost:32000
+    rook-ceph            # (core) Distributed Ceph storage using Rook
+sarang@sarang:~$ microk8s status --wait-ready
+microk8s is not running, try microk8s start
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS              RESTARTS       AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1            5              152m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1            10             152m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1            10             152m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1            10             152m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1            10             152m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1            10             152m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1            10             152m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1            10             152m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1            5              152m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1            10             152m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1            10             152m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm           0/1     ContainerCreating   21 (51m ago)   100m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w         0/1     ContainerCreating   21 (51m ago)   99m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz           0/1     ContainerCreating   21 (51m ago)   100m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1            10             152m
+mongodb-0                                                 0/1     ContainerCreating   0              96m
+sarang@sarang:~$ microk8s status --wait-ready
+microk8s is running
+high-availability: no
+  datastore endpoints:
+    127.0.0.1:12379
+addons:
+  enabled:
+    multus               # (community) Multus CNI enables attaching multiple network interfaces to pods
+    community            # (core) The community addons repository
+    dns                  # (core) CoreDNS
+    helm                 # (core) Helm - the package manager for Kubernetes
+    helm3                # (core) Helm 3 - the package manager for Kubernetes
+    hostpath-storage     # (core) Storage class; allocates storage from host directory
+    metrics-server       # (core) K8s Metrics Server for API access to service metrics
+    storage              # (core) Alias to hostpath-storage add-on, deprecated
+  disabled:
+    argocd               # (community) Argo CD is a declarative continuous deployment for Kubernetes.
+    cilium               # (community) SDN, fast with full network policy
+    cloudnative-pg       # (community) PostgreSQL operator CloudNativePG
+    dashboard-ingress    # (community) Ingress definition for Kubernetes dashboard
+    easyhaproxy          # (community) EasyHAProxy can configure HAProxy automatically based on ingress labels
+    falco                # (community) Cloud-native runtime threat detection tool for Linux and K8s
+    fluentd              # (community) Elasticsearch-Fluentd-Kibana logging and monitoring
+    gopaddle             # (community) Low-Code Kubernetes IDE with AI Co-pilot
+    inaccel              # (community) Simplifying FPGA management in Kubernetes
+    istio                # (community) Core Istio service mesh services
+    jaeger               # (community) Kubernetes Jaeger operator with its simple config
+    kata                 # (community) Kata Containers is a secure runtime with lightweight VMS
+    keda                 # (community) Kubernetes-based Event Driven Autoscaling
+    knative              # (community) Knative Serverless and Event Driven Applications
+    kubearmor            # (community) Cloud-native runtime security enforcement system for k8s
+    kwasm                # (community) WebAssembly support for WasmEdge (Docker Wasm) and Spin (Azure AKS WASI)
+    linkerd              # (community) Linkerd is a service mesh for Kubernetes and other frameworks
+    microcks             # (community) Open source Kubernetes Native tool for API Mocking and Testing
+    nfs                  # (community) NFS Server Provisioner
+    ngrok                # (community) ngrok Ingress Controller instantly adds connectivity, load balancing, authentication, and observability to your services
+    openebs              # (community) OpenEBS is the open-source storage solution for Kubernetes
+    openfaas             # (community) OpenFaaS serverless framework
+    osm-edge             # (community) osm-edge is a lightweight SMI compatible service mesh for the edge-computing.
+    parking              # (community) Static webserver to park a domain. Works with EasyHAProxy.
+    portainer            # (community) Portainer UI for your Kubernetes cluster
+    shifu                # (community) Kubernetes native IoT software development framework.
+    sosivio              # (community) Kubernetes Predictive Troubleshooting, Observability, and Resource Optimization
+    sriov-device-plugin  # (community) SR-IOV Network Device Plugin.
+    stunner              # (community) A Kubernetes media gateway for WebRTC
+    traefik              # (community) traefik Ingress controller
+    trivy                # (community) Kubernetes-native security scanner
+    cert-manager         # (core) Cloud native certificate management
+    cis-hardening        # (core) Apply CIS K8s hardening
+    dashboard            # (core) The Kubernetes dashboard
+    gpu                  # (core) Alias to nvidia add-on
+    ha-cluster           # (core) Configure high availability on the current node
+    host-access          # (core) Allow Pods connecting to Host services smoothly
+    ingress              # (core) Ingress controller for external access
+    kube-ovn             # (core) An advanced network fabric for Kubernetes
+    mayastor             # (core) OpenEBS MayaStor
+    metallb              # (core) Loadbalancer for your Kubernetes cluster
+    minio                # (core) MinIO object storage
+    nvidia               # (core) NVIDIA hardware (GPU and network) support
+    observability        # (core) A lightweight observability stack for logs, traces and metrics
+    prometheus           # (core) Prometheus operator for monitoring and logging
+    rbac                 # (core) Role-Based Access Control for authorisation
+    registry             # (core) Private image registry exposed on localhost:32000
+    rook-ceph            # (core) Distributed Ceph storage using Rook
+sarang@sarang:~$ kubectl describe pod mongodb-0 -n free5gc | tail -15
+    SizeLimit:  <unset>
+  common-scripts:
+    Type:        ConfigMap (a volume populated by a ConfigMap)
+    Name:        mongodb-common-scripts
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason          Age   From               Message
+  ----    ------          ----  ----               -------
+  Normal  Scheduled       59s   default-scheduler  Successfully assigned free5gc/mongodb-0 to sarang
+  Normal  AddedInterface  58s   multus             Add eth0 [10.1.8.244/24] from microk8s-flannel-network
+  Normal  Pulling         56s   kubelet            Pulling image "docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4"
+sarang@sarang:~$ kubectl describe pod mongodb-0 -n free5gc | tail -15
+    SizeLimit:  <unset>
+  common-scripts:
+    Type:        ConfigMap (a volume populated by a ConfigMap)
+    Name:        mongodb-common-scripts
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason          Age   From               Message
+  ----    ------          ----  ----               -------
+  Normal  Scheduled       2m8s  default-scheduler  Successfully assigned free5gc/mongodb-0 to sarang
+  Normal  AddedInterface  2m7s  multus             Add eth0 [10.1.8.244/24] from microk8s-flannel-network
+  Normal  Pulling         2m5s  kubelet            Pulling image "docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4"
+sarang@sarang:~$ kubectl describe pod mongodb-0 -n free5gc
+Name:             mongodb-0
+Namespace:        free5gc
+Priority:         0
+Service Account:  mongodb
+Node:             sarang/192.168.39.54
+Start Time:       Sat, 18 Apr 2026 18:16:14 +0530
+Labels:           app.kubernetes.io/component=mongodb
+                  app.kubernetes.io/instance=free5gc-helm
+                  app.kubernetes.io/managed-by=Helm
+                  app.kubernetes.io/name=mongodb
+                  app.kubernetes.io/version=7.0.9
+                  apps.kubernetes.io/pod-index=0
+                  controller-revision-hash=mongodb-778b765654
+                  helm.sh/chart=mongodb-15.6.0
+                  statefulset.kubernetes.io/pod-name=mongodb-0
+Annotations:      k8s.v1.cni.cncf.io/network-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.244"
+                        ],
+                        "mac": "42:42:28:2b:68:19",
+                        "default": true,
+                        "dns": {}
+                    }]
+                  k8s.v1.cni.cncf.io/networks-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.244"
+                        ],
+                        "mac": "42:42:28:2b:68:19",
+                        "default": true,
+                        "dns": {}
+                    }]
+Status:           Pending
+IP:
+IPs:              <none>
+Controlled By:    StatefulSet/mongodb
+Containers:
+  mongodb:
+    Container ID:
+    Image:           docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4
+    Image ID:
+    Port:            27017/TCP
+    Host Port:       0/TCP
+    SeccompProfile:  RuntimeDefault
+    State:           Waiting
+      Reason:        ContainerCreating
+    Ready:           False
+    Restart Count:   0
+    Limits:
+      cpu:                750m
+      ephemeral-storage:  1Gi
+      memory:             768Mi
+    Requests:
+      cpu:                500m
+      ephemeral-storage:  50Mi
+      memory:             512Mi
+    Liveness:             exec [/bitnami/scripts/ping-mongodb.sh] delay=30s timeout=10s period=20s #success=1 #failure=6
+    Readiness:            exec [/bitnami/scripts/readiness-probe.sh] delay=5s timeout=5s period=10s #success=1 #failure=6
+    Environment:
+      BITNAMI_DEBUG:                    false
+      ALLOW_EMPTY_PASSWORD:             yes
+      MONGODB_SYSTEM_LOG_VERBOSITY:     0
+      MONGODB_DISABLE_SYSTEM_LOG:       no
+      MONGODB_DISABLE_JAVASCRIPT:       no
+      MONGODB_ENABLE_JOURNAL:           yes
+      MONGODB_PORT_NUMBER:              27017
+      MONGODB_ENABLE_IPV6:              no
+      MONGODB_ENABLE_DIRECTORY_PER_DB:  no
+    Mounts:
+      /.mongodb from empty-dir (rw,path="mongosh-home")
+      /bitnami/mongodb/data/db/ from datadir (rw)
+      /bitnami/scripts from common-scripts (rw)
+      /opt/bitnami/mongodb/conf from empty-dir (rw,path="app-conf-dir")
+      /opt/bitnami/mongodb/logs from empty-dir (rw,path="app-logs-dir")
+      /opt/bitnami/mongodb/tmp from empty-dir (rw,path="app-tmp-dir")
+      /tmp from empty-dir (rw,path="tmp-dir")
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   False
+  Initialized                 True
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  datadir:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  datadir-mongodb-0
+    ReadOnly:   false
+  empty-dir:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  common-scripts:
+    Type:        ConfigMap (a volume populated by a ConfigMap)
+    Name:        mongodb-common-scripts
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason          Age    From               Message
+  ----    ------          ----   ----               -------
+  Normal  Scheduled       2m56s  default-scheduler  Successfully assigned free5gc/mongodb-0 to sarang
+  Normal  AddedInterface  2m55s  multus             Add eth0 [10.1.8.244/24] from microk8s-flannel-network
+  Normal  Pulling         2m53s  kubelet            Pulling image "docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4"
+sarang@sarang:~$ kubectl describe pod mongodb-0 -n free5gc
+Name:             mongodb-0
+Namespace:        free5gc
+Priority:         0
+Service Account:  mongodb
+Node:             sarang/192.168.39.54
+Start Time:       Sat, 18 Apr 2026 18:16:14 +0530
+Labels:           app.kubernetes.io/component=mongodb
+                  app.kubernetes.io/instance=free5gc-helm
+                  app.kubernetes.io/managed-by=Helm
+                  app.kubernetes.io/name=mongodb
+                  app.kubernetes.io/version=7.0.9
+                  apps.kubernetes.io/pod-index=0
+                  controller-revision-hash=mongodb-778b765654
+                  helm.sh/chart=mongodb-15.6.0
+                  statefulset.kubernetes.io/pod-name=mongodb-0
+Annotations:      k8s.v1.cni.cncf.io/network-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.244"
+                        ],
+                        "mac": "42:42:28:2b:68:19",
+                        "default": true,
+                        "dns": {}
+                    }]
+                  k8s.v1.cni.cncf.io/networks-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.244"
+                        ],
+                        "mac": "42:42:28:2b:68:19",
+                        "default": true,
+                        "dns": {}
+                    }]
+Status:           Pending
+IP:
+IPs:              <none>
+Controlled By:    StatefulSet/mongodb
+Containers:
+  mongodb:
+    Container ID:
+    Image:           docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4
+    Image ID:
+    Port:            27017/TCP
+    Host Port:       0/TCP
+    SeccompProfile:  RuntimeDefault
+    State:           Waiting
+      Reason:        ContainerCreating
+    Ready:           False
+    Restart Count:   0
+    Limits:
+      cpu:                750m
+      ephemeral-storage:  1Gi
+      memory:             768Mi
+    Requests:
+      cpu:                500m
+      ephemeral-storage:  50Mi
+      memory:             512Mi
+    Liveness:             exec [/bitnami/scripts/ping-mongodb.sh] delay=30s timeout=10s period=20s #success=1 #failure=6
+    Readiness:            exec [/bitnami/scripts/readiness-probe.sh] delay=5s timeout=5s period=10s #success=1 #failure=6
+    Environment:
+      BITNAMI_DEBUG:                    false
+      ALLOW_EMPTY_PASSWORD:             yes
+      MONGODB_SYSTEM_LOG_VERBOSITY:     0
+      MONGODB_DISABLE_SYSTEM_LOG:       no
+      MONGODB_DISABLE_JAVASCRIPT:       no
+      MONGODB_ENABLE_JOURNAL:           yes
+      MONGODB_PORT_NUMBER:              27017
+      MONGODB_ENABLE_IPV6:              no
+      MONGODB_ENABLE_DIRECTORY_PER_DB:  no
+    Mounts:
+      /.mongodb from empty-dir (rw,path="mongosh-home")
+      /bitnami/mongodb/data/db/ from datadir (rw)
+      /bitnami/scripts from common-scripts (rw)
+      /opt/bitnami/mongodb/conf from empty-dir (rw,path="app-conf-dir")
+      /opt/bitnami/mongodb/logs from empty-dir (rw,path="app-logs-dir")
+      /opt/bitnami/mongodb/tmp from empty-dir (rw,path="app-tmp-dir")
+      /tmp from empty-dir (rw,path="tmp-dir")
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   False
+  Initialized                 True
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  datadir:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  datadir-mongodb-0
+    ReadOnly:   false
+  empty-dir:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  common-scripts:
+    Type:        ConfigMap (a volume populated by a ConfigMap)
+    Name:        mongodb-common-scripts
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason          Age    From               Message
+  ----    ------          ----   ----               -------
+  Normal  Scheduled       3m     default-scheduler  Successfully assigned free5gc/mongodb-0 to sarang
+  Normal  AddedInterface  2m59s  multus             Add eth0 [10.1.8.244/24] from microk8s-flannel-network
+  Normal  Pulling         2m57s  kubelet            Pulling image "docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4"
+sarang@sarang:~$ curl -o /dev/null -s -w "%{speed_download}\n" https://registry-1.docker.io
+5
+sarang@sarang:~$ sudo microk8s ctr images pull docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4
+[sudo] password for sarang:
+docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4:                               resolved       |++++++++++++++++++++++++++++++++++++++|
+manifest-sha256:62fb92d0111f8dc0565b7daf8a57279fd09520020b79fd3bc550deb3ae5aee70: exists         |++++++++++++++++++++++++++++++++++++++|
+layer-sha256:90bace5dbf96ac0ccdbf098061f85daa21da987cf8c3a0f8dc40c933aa461c31:    done           |++++++++++++++++++++++++++++++++++++++|
+config-sha256:a774f3ca99b62c7b28660af5198ccd25d6eaf1fc752e1029217b6c58c18256c1:   exists         |++++++++++++++++++++++++++++++++++++++|
+elapsed: 455.8s                                                                   total:  134.2  (301.4 KiB/s)
+ctr: failed to copy: httpReadSeeker: failed open: failed to do request: Get "https://registry-1.docker.io/v2/bitnamilegacy/mongodb/blobs/sha256:90bace5dbf96ac0ccdbf098061f85daa21da987cf8c3a0f8dc40c933aa461c31": dial tcp: lookup registry-1.docker.io on 127.0.0.53:53: server misbehaving
+sarang@sarang:~$ sudo microk8s ctr images pull docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4
+docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4: resolving      |--------------------------------------|
+elapsed: 6.0 s                                      total:   0.0 B (0.0 B/s)
+docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4: resolving      |--------------------------------------|
+elapsed: 6.2 s                                      total:   0.0 B (0.0 B/s)
+ctr: failed to resolve reference "docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4": failed to do request: Head "https://registry-1.docker.io/v2/bitnamilegacy/mongodb/manifests/7.0.9-debian-12-r4": dial tcp: lookup registry-1.docker.io on 127.0.0.53:53: server misbehaving
+sarang@sarang:~$
+sarang@sarang:~$
+sarang@sarang:~$
+sarang@sarang:~$ sudo microk8s ctr images pull docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4
+docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4:                               resolved       |++++++++++++++++++++++++++++++++++++++|
+manifest-sha256:62fb92d0111f8dc0565b7daf8a57279fd09520020b79fd3bc550deb3ae5aee70: exists         |++++++++++++++++++++++++++++++++++++++|
+layer-sha256:90bace5dbf96ac0ccdbf098061f85daa21da987cf8c3a0f8dc40c933aa461c31:    downloading    |+++++++++++++++-----------------------| 98.9 MiB/238.2 MiB
+config-sha256:a774f3ca99b62c7b28660af5198ccd25d6eaf1fc752e1029217b6c58c18256c1:   exists         |++++++++++++++++++++++++++++++++++++++|
+elapsed: 1334.6s                                                                  total:  98.9 M (75.9 KiB/s)
+ctr: failed to copy: httpReadSeeker: failed open: failed to do request: Get "https://registry-1.docker.io/v2/bitnamilegacy/mongodb/blobs/sha256:90bace5dbf96ac0ccdbf098061f85daa21da987cf8c3a0f8dc40c933aa461c31": dial tcp: lookup registry-1.docker.io on 127.0.0.53:53: server misbehaving
+sarang@sarang:~$ sudo microk8s ctr images pull docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4
+[sudo] password for sarang:
+docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4:                               resolved       |++++++++++++++++++++++++++++++++++++++|
+manifest-sha256:62fb92d0111f8dc0565b7daf8a57279fd09520020b79fd3bc550deb3ae5aee70: exists         |++++++++++++++++++++++++++++++++++++++|
+layer-sha256:90bace5dbf96ac0ccdbf098061f85daa21da987cf8c3a0f8dc40c933aa461c31:    downloading    |++++----------------------------------| 29.3 MiB/238.2 MiB
+config-sha256:a774f3ca99b62c7b28660af5198ccd25d6eaf1fc752e1029217b6c58c18256c1:   exists         |++++++++++++++++++++++++++++++++++++++|
+elapsed: 340.8s                                                                   total:  29.3 M (88.0 KiB/s)
+ERRO[0341] active check failed                           error="context canceled"
+ctr: failed to copy: httpReadSeeker: failed open: failed to do request: Get "https://registry-1.docker.io/v2/bitnamilegacy/mongodb/blobs/sha256:90bace5dbf96ac0ccdbf098061f85daa21da987cf8c3a0f8dc40c933aa461c31": dial tcp: lookup registry-1.docker.io on 127.0.0.53:53: server misbehaving
+sarang@sarang:~$

@@ -1,0 +1,1695 @@
+sarang@192.168.56.101's password:
+    ┌──────────────────────────────────────────────────────────────────────┐
+    │                 • MobaXterm Personal Edition v25.3 •                 │
+    │               (SSH client, X server and network tools)               │
+    │                                                                      │
+    │ ⮞ SSH session to sarang@192.168.56.101                               │
+    │   • Direct SSH      :  ✓                                             │
+    │   • SSH compression :  ✓                                             │
+    │   • SSH-browser     :  ✓                                             │
+    │   • X11-forwarding  :  ✓  (remote display is forwarded through SSH)  │
+    │                                                                      │
+    │ ⮞ For more info, ctrl+click on help or visit our website.            │
+    └──────────────────────────────────────────────────────────────────────┘
+
+Welcome to Ubuntu 22.04.2 LTS (GNU/Linux 6.8.0-106-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+ * Introducing Expanded Security Maintenance for Applications.
+   Receive updates to over 25,000 software packages with your
+   Ubuntu Pro subscription. Free for personal use.
+
+     https://ubuntu.com/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+New release '24.04.4 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+Last login: Sat Apr 18 17:20:46 2026 from 192.168.39.201
+sarang@sarang:~$ microk8s stop
+[sudo] password for sarang:
+Stopped.
+Stopped.
+sarang@sarang:~$ sudo rm -f /var/snap/microk8s/current/certs/csr.conf.rendered
+sarang@sarang:~$ microk8s start
+sarang@sarang:~$ microk8s config > ~/.kube/config
+sarang@sarang:~$ kubectl get nodes
+NAME     STATUS   ROLES    AGE   VERSION
+sarang   Ready    <none>   8d    v1.33.9
+sarang@sarang:~$ kubectl logs -n free5gc free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm
+Error from server: Get "https://192.168.39.54:10250/containerLogs/free5gc/free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm/iupf1": tls: failed to verify certificate: x509: certificate is valid for 192.168.2.54, 10.30.0.1, 172.17.0.1, 172.21.0.1, 172.23.0.1, 172.22.0.1, 172.18.0.1, 10.20.0.1, 172.20.0.1, 172.19.0.1, 2401:4900:ac81:7a71:8aec:ff8f:7926:89f0, 2401:4900:ac81:7a71:fc45:81b3:4e8f:e6e2, not 192.168.39.54
+sarang@sarang:~$ sudo cat /var/snap/microk8s/current/certs/csr.conf
+[ req ]
+default_bits = 2048
+prompt = no
+default_md = sha256
+req_extensions = req_ext
+distinguished_name = dn
+
+[ dn ]
+C = GB
+ST = Canonical
+L = Canonical
+O = Canonical
+OU = Canonical
+CN = 127.0.0.1
+
+[ req_ext ]
+subjectAltName = @alt_names
+
+[ alt_names ]
+DNS.1 = kubernetes
+DNS.2 = kubernetes.default
+DNS.3 = kubernetes.default.svc
+DNS.4 = kubernetes.default.svc.cluster
+DNS.5 = kubernetes.default.svc.cluster.local
+IP.1 = 127.0.0.1
+IP.2 = 10.152.183.1
+IP.3 = 192.168.39.54
+IP.4 = 192.168.56.101
+IP.5 = 172.21.0.1
+IP.6 = 172.23.0.1
+IP.7 = 10.20.0.1
+IP.8 = 172.19.0.1
+IP.9 = 172.17.0.1
+IP.10 = 172.22.0.1
+IP.11 = 10.30.0.1
+IP.12 = 172.20.0.1
+IP.13 = 172.18.0.1
+IP.14 = 2401:4900:7fbd:9fbc:1fb7:63f9:6694:190e
+IP.15 = 2401:4900:7fbd:9fbc:cddd:ed4a:3185:6b07
+
+[ v3_ext ]
+authorityKeyIdentifier=keyid,issuer:always
+basicConstraints=CA:FALSE
+keyUsage=keyEncipherment,dataEncipherment,digitalSignature
+extendedKeyUsage=serverAuth,clientAuth
+subjectAltName=@alt_names
+sarang@sarang:~$ microk8s stop
+
+sudo rm -f /var/snap/microk8s/current/certs/server.crt
+sudo rm -f /var/snap/microk8s/current/certs/server.key
+sudo rm -f /var/snap/microk8s/current/certs/csr.conf.rendered
+sudo rm -f /var/snap/microk8s/current/certs/server.csr
+Stopped.
+Stopped.
+sarang@sarang:~$ sudo rm -f /var/snap/microk8s/current/certs/server.crt
+sarang@sarang:~$ sudo rm -f /var/snap/microk8s/current/certs/server.key
+sarang@sarang:~$ sudo rm -f /var/snap/microk8s/current/certs/csr.conf.rendered
+sarang@sarang:~$ sudo rm -f /var/snap/microk8s/current/certs/server.csr
+sarang@sarang:~$ microk8s start
+sarang@sarang:~$ sudo microk8s refresh-certs -e server.crt
+Taking a backup of the current certificates under /var/snap/microk8s/8697/certs-backup/
+Creating new certificates
+Signature ok
+subject=C = GB, ST = Canonical, L = Canonical, O = Canonical, OU = Canonical, CN = 127.0.0.1
+Getting CA Private Key
+Restarting service kubelite.
+Restarting service cluster-agent.
+sarang@sarang:~$ openssl x509 -in /var/snap/microk8s/current/certs/server.crt \
+  -text -noout | grep -A25 "Subject Alternative"
+            X509v3 Subject Alternative Name:
+                DNS:kubernetes, DNS:kubernetes.default, DNS:kubernetes.default.svc, DNS:kubernetes.default.svc.cluster, DNS:kubernetes.default.svc.cluster.local, IP Address:127.0.0.1, IP Address:10.152.183.1, IP Address:192.168.39.54, IP Address:192.168.56.101, IP Address:172.21.0.1, IP Address:172.23.0.1, IP Address:10.20.0.1, IP Address:172.19.0.1, IP Address:172.17.0.1, IP Address:172.22.0.1, IP Address:10.30.0.1, IP Address:172.20.0.1, IP Address:172.18.0.1, IP Address:2401:4900:7FBD:9FBC:1FB7:63F9:6694:190E, IP Address:2401:4900:7FBD:9FBC:CDDD:ED4A:3185:6B07
+    Signature Algorithm: sha256WithRSAEncryption
+    Signature Value:
+        12:ec:50:c1:d9:84:f1:8f:93:2c:ce:2e:65:16:6f:7a:1e:86:
+        6a:30:e9:b9:88:20:0f:e9:06:21:f4:ba:32:0b:2e:3c:86:ab:
+        c4:87:5f:78:60:fe:98:bc:91:b4:df:f6:1d:e1:d2:95:d9:0a:
+        8f:d0:7e:46:2a:c7:f7:fb:94:d0:2d:32:bd:9e:53:31:d4:ba:
+        1a:1e:4a:6a:d1:5c:f8:5c:64:6e:63:d8:92:5a:0b:39:55:24:
+        10:a0:52:b5:2f:b2:63:7a:b6:fe:d5:9a:64:73:f1:b6:c0:14:
+        fa:46:cd:da:86:dc:9f:31:89:49:0f:b8:f2:a1:a9:01:74:d9:
+        79:0a:f5:b1:fe:16:eb:af:96:18:e0:95:93:a8:b6:d8:3c:99:
+        30:4e:5f:e1:25:59:b9:dc:2f:f9:be:a5:ea:5c:9c:20:26:37:
+        1f:53:ea:b2:6d:39:8c:24:41:ff:2b:46:28:04:90:a1:26:e6:
+        07:e1:aa:ab:7b:e5:5c:e1:ac:86:e4:12:89:a6:a2:ae:89:54:
+        e7:73:f5:87:85:86:fe:39:75:d9:b3:08:53:74:ac:89:91:1f:
+        5d:c9:52:c0:29:96:38:b2:9a:7f:8a:e9:5f:45:5b:e2:d1:a0:
+        9d:34:1a:10:26:69:c3:86:1a:fc:5e:f0:b4:f4:3f:25:48:17:
+        c7:6a:31:12
+sarang@sarang:~$ microk8s config > ~/.kube/config
+sarang@sarang:~$ kubectl get nodes
+NAME     STATUS   ROLES    AGE   VERSION
+sarang   Ready    <none>   8d    v1.33.9
+sarang@sarang:~$ kubectl logs -n free5gc free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm
+Error from server: Get "https://192.168.39.54:10250/containerLogs/free5gc/free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm/iupf1": tls: failed to verify certificate: x509: certificate is valid for 192.168.2.54, 10.30.0.1, 172.17.0.1, 172.21.0.1, 172.23.0.1, 172.22.0.1, 172.18.0.1, 10.20.0.1, 172.20.0.1, 172.19.0.1, 2401:4900:ac81:7a71:8aec:ff8f:7926:89f0, 2401:4900:ac81:7a71:fc45:81b3:4e8f:e6e2, not 192.168.39.54
+sarang@sarang:~$ sudo vi /var/snap/microk8s/current/certs/csr.conf.template
+sarang@sarang:~$ sudo vi /var/snap/microk8s/current/certs/csr.conf.template
+sarang@sarang:~$ microk8s stop
+Stopped.
+error: snap "microk8s" has "service-control" change in progress
+sarang@sarang:~$ sudo microk8s refresh-certs --all
+Usage: refresh_certs.py [OPTIONS] [CA_DIR]
+
+Error: no such option: --all
+sarang@sarang:~$ watch snap changes microk8s
+sarang@sarang:~$ microk8s start
+sarang@sarang:~$ sudo microk8s refresh-certs -e server.crt
+Taking a backup of the current certificates under /var/snap/microk8s/8697/certs-backup/
+Creating new certificates
+Signature ok
+subject=C = GB, ST = Canonical, L = Canonical, O = Canonical, OU = Canonical, CN = 127.0.0.1
+Getting CA Private Key
+Restarting service kubelite.
+Restarting service cluster-agent.
+sarang@sarang:~$ sudo microk8s refresh-certs -e front-proxy-client.crt
+Taking a backup of the current certificates under /var/snap/microk8s/8697/certs-backup/
+Creating new certificates
+Signature ok
+subject=CN = front-proxy-client
+Getting CA Private Key
+Restarting service kubelite.
+sarang@sarang:~$ microk8s stop
+Stopped.
+Stopped.
+sarang@sarang:~$ sudo rm -f /var/snap/microk8s/current/certs/kubelet.crt
+sarang@sarang:~$ sudo rm -f /var/snap/microk8s/current/certs/kubelet.key
+sarang@sarang:~$ ^C
+sarang@sarang:~$
+sudo rm -f /var/snap/microk8s/current/certs/csr.conf.rendered
+sarang@sarang:~$ microk8s start
+sarang@sarang:~$ sudo microk8s refresh-certs -e kubelet.crt
+Usage: refresh_certs.py [OPTIONS] [CA_DIR]
+
+Error: Invalid value for "-e" / "--cert": invalid choice: kubelet.crt. (choose from ca.crt, server.crt, front-proxy-client.crt)
+sarang@sarang:~$ microk8s stop
+Stopped.
+Stopped.
+sarang@sarang:~$ sudo openssl genrsa -out /var/snap/microk8s/current/certs/kubelet.key 2048
+sarang@sarang:~$ sudo openssl req -new \
+  -key /var/snap/microk8s/current/certs/kubelet.key \
+  -out /var/snap/microk8s/current/certs/kubelet.csr \
+  -config /var/snap/microk8s/current/certs/csr.conf
+sarang@sarang:~$ sudo openssl x509 -req \
+  -in /var/snap/microk8s/current/certs/kubelet.csr \
+  -CA /var/snap/microk8s/current/certs/ca.crt \
+  -CAkey /var/snap/microk8s/current/certs/ca.key \
+  -CAcreateserial \
+  -out /var/snap/microk8s/current/certs/kubelet.crt \
+  -days 3650 \
+  -extensions v3_ext \
+  -extfile /var/snap/microk8s/current/certs/csr.conf
+Certificate request self-signature ok
+subject=C = GB, ST = Canonical, L = Canonical, O = Canonical, OU = Canonical, CN = 127.0.0.1
+sarang@sarang:~$ openssl x509 -in /var/snap/microk8s/current/certs/kubelet.crt \
+  -text -noout | grep -A10 "Subject Alternative"
+            X509v3 Subject Alternative Name:
+                DNS:kubernetes, DNS:kubernetes.default, DNS:kubernetes.default.svc, DNS:kubernetes.default.svc.cluster, DNS:kubernetes.default.svc.cluster.local, IP Address:127.0.0.1, IP Address:10.152.183.1, IP Address:192.168.39.54, IP Address:192.168.56.101, IP Address:192.168.39.54, IP Address:192.168.56.101, IP Address:172.21.0.1, IP Address:172.23.0.1, IP Address:10.20.0.1, IP Address:172.19.0.1, IP Address:172.17.0.1, IP Address:172.22.0.1, IP Address:10.30.0.1, IP Address:172.20.0.1, IP Address:172.18.0.1, IP Address:2401:4900:7FBD:9FBC:1FB7:63F9:6694:190E, IP Address:2401:4900:7FBD:9FBC:CDDD:ED4A:3185:6B07
+            X509v3 Subject Key Identifier:
+                75:07:1C:AB:71:BC:9F:81:A7:A5:D6:94:DC:2A:4E:3E:72:2B:A1:77
+    Signature Algorithm: sha256WithRSAEncryption
+    Signature Value:
+        08:02:76:e6:15:f4:62:ff:c0:49:a9:e4:b3:69:5a:05:f0:aa:
+        0d:a9:be:ee:04:6f:bf:ef:1e:24:e8:62:52:a1:ff:d3:a1:7c:
+        16:7a:b0:c0:fd:38:4e:ad:b7:d4:c0:1e:eb:6f:19:f3:52:b8:
+        ff:c1:c0:2d:38:d3:69:bc:72:84:04:b1:fa:bb:7b:af:03:c3:
+        29:b2:a0:9f:65:e1:c4:0b:e8:be:6e:b4:55:26:4e:de:d2:85:
+sarang@sarang:~$ microk8s start
+sarang@sarang:~$ microk8s config > ~/.kube/config
+sarang@sarang:~$ openssl s_client -connect 192.168.39.54:10250 </dev/null 2>/dev/null | \
+  openssl x509 -text -noout | grep -A5 "Subject Alternative Name"
+            X509v3 Subject Alternative Name:
+                DNS:kubernetes, DNS:kubernetes.default, DNS:kubernetes.default.svc, DNS:kubernetes.default.svc.cluster, DNS:kubernetes.default.svc.cluster.local, IP Address:127.0.0.1, IP Address:10.152.183.1, IP Address:192.168.39.54, IP Address:192.168.56.101, IP Address:192.168.39.54, IP Address:192.168.56.101, IP Address:172.21.0.1, IP Address:172.23.0.1, IP Address:10.20.0.1, IP Address:172.19.0.1, IP Address:172.17.0.1, IP Address:172.22.0.1, IP Address:10.30.0.1, IP Address:172.20.0.1, IP Address:172.18.0.1, IP Address:2401:4900:7FBD:9FBC:1FB7:63F9:6694:190E, IP Address:2401:4900:7FBD:9FBC:CDDD:ED4A:3185:6B07
+            X509v3 Subject Key Identifier:
+                75:07:1C:AB:71:BC:9F:81:A7:A5:D6:94:DC:2A:4E:3E:72:2B:A1:77
+    Signature Algorithm: sha256WithRSAEncryption
+    Signature Value:
+sarang@sarang:~$ kubectl get pods -n free5gc | grep upf
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm           0/1     ContainerCreating   21 (42m ago)   91m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w         0/1     ContainerCreating   21 (42m ago)   90m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz           0/1     ContainerCreating   21 (42m ago)   90m
+sarang@sarang:~$
+sarang@sarang:~$ kubectl logs -n free5gc -l app.kubernetes.io/name=free5gc-upf --all-containers
+unable to retrieve container logs for containerd://6bd1e9740daa95460acd61536bd2ccbaf54dc12c458dc1fc51b1b61635e8f378unable to retrieve container logs for containerd://45e5ca5966e0a39953cc53231e716bba54b309f90ae73af4276127e3257ff4e4unable to retrieve container logs for containerd://f03da047549eef7f59d1ca0c9d35db18d0dcab16af375b02383ffa28a5405668sarang@sarang:~$ kubfree5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpmupf1-865c478cc9-fkvpm
+unable to retrieve container logs for containerd://6bd1e9740daa95460acd61536bd2ccbaf54dc12c458dc1fc51b1b61635e8f378sarang@sarang:~$ ^C
+sarang@sarang:~$ kubectl logs -n free5gc free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w
+unable to retrieve container logs for containerd://45e5ca5966e0a39953cc53231e716bba54b309f90ae73af4276127e3257ff4e4sarang@sarang:~$
+sarang@sarang:~$ kubectl logs -n free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz
+error: expected 'logs [-f] [-p] (POD | TYPE/NAME) [-c CONTAINER]'.
+POD or TYPE/NAME is a required argument for the logs command
+See 'kubectl logs -h' for help and examples
+sarang@sarang:~$ kubectl logs -n free5gc free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm --previous
+unable to retrieve container logs for containerd://6bd1e9740daa95460acd61536bd2ccbaf54dc12c458dc1fc51b1b61635e8f378sarang@sarang:~$ ^C
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS              RESTARTS       AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1            5              145m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1            10             145m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1            10             145m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1            10             145m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1            10             145m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1            10             145m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1            10             145m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1            10             145m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1            5              145m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1            10             145m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1            10             145m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm           0/1     ContainerCreating   21 (45m ago)   94m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w         0/1     ContainerCreating   21 (45m ago)   92m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz           0/1     ContainerCreating   21 (45m ago)   93m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1            10             145m
+mongodb-0                                                 0/1     ContainerCreating   0              90m
+sarang@sarang:~$ kubectl describe pod -n free5gc free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm | tail -20
+  Warning  FailedCreatePodSandBox  11m    kubelet  Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "f38ab3e410f17ca8f9b6a99564ecbcf058a9243634d72d85f657d9fcff462769": plugin type="multus" name="multus-cni-network" failed (add): [free5gc/free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm/ebe64479-7d7b-4fb9-b1fb-dcbbad0c3a0a:n3network-free5gc-helm-free5gc-upf]: error adding container to network "n3network-free5gc-helm-free5gc-upf": failed to add IP addr {Version:4 Interface:0xc000016570 Address:{IP:10.100.50.233 Mask:fffffff8} Gateway:<nil>} to "n3": address already in use
+  Normal   AddedInterface          10m    multus   Add eth0 [10.1.8.200/24] from microk8s-flannel-network
+  Normal   AddedInterface          7m40s  multus   Add eth0 [10.1.8.232/24] from microk8s-flannel-network
+  Warning  FailedCreatePodSandBox  7m15s  kubelet  Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "2cec4457d6f3b75db4b6b78dbeeaa069d6805501d182b352123e8016fe24d936": plugin type="multus" name="multus-cni-network" failed (add): [free5gc/free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm/ebe64479-7d7b-4fb9-b1fb-dcbbad0c3a0a:n3network-free5gc-helm-free5gc-upf]: error adding container to network "n3network-free5gc-helm-free5gc-upf": failed to add IP addr {Version:4 Interface:0xc0000b50e0 Address:{IP:10.100.50.233 Mask:fffffff8} Gateway:<nil>} to "n3": address already in use
+  Normal   AddedInterface          6m53s  multus   Add eth0 [10.1.8.248/24] from microk8s-flannel-network
+  Warning  FailedCreatePodSandBox  6m45s  kubelet  Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "aba009c3855ce2259ec0dc220fd95e4c15c686e86a0605c128a6e00316fe7298": plugin type="multus" name="multus-cni-network" failed (add): [free5gc/free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm/ebe64479-7d7b-4fb9-b1fb-dcbbad0c3a0a:n3network-free5gc-helm-free5gc-upf]: error adding container to network "n3network-free5gc-helm-free5gc-upf": failed to add IP addr {Version:4 Interface:0xc000198478 Address:{IP:10.100.50.233 Mask:fffffff8} Gateway:<nil>} to "n3": address already in use
+  Normal   AddedInterface          3m47s  multus   Add eth0 [10.1.8.177/24] from microk8s-flannel-network
+  Warning  FailedCreatePodSandBox  3m21s  kubelet  Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "c93c207e9e9aecbc18f5ecf42345984a399bd38412e568581971a35416ff56a6": plugin type="multus" name="multus-cni-network" failed (add): [free5gc/free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm/ebe64479-7d7b-4fb9-b1fb-dcbbad0c3a0a:n3network-free5gc-helm-free5gc-upf]: error adding container to network "n3network-free5gc-helm-free5gc-upf": failed to add IP addr {Version:4 Interface:0xc000098478 Address:{IP:10.100.50.233 Mask:fffffff8} Gateway:<nil>} to "n3": address already in use
+  Normal   AddedInterface          2m54s  multus   Add eth0 [10.1.8.188/24] from microk8s-flannel-network
+  Warning  FailedCreatePodSandBox  2m45s  kubelet  Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "f5b5b4d2fa6fc7d97688363f6b99c6807e8ed2f86c14e76cb15f440dd1bafb7d": plugin type="multus" name="multus-cni-network" failed (add): [free5gc/free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm/ebe64479-7d7b-4fb9-b1fb-dcbbad0c3a0a:n3network-free5gc-helm-free5gc-upf]: error adding container to network "n3network-free5gc-helm-free5gc-upf": failed to add IP addr {Version:4 Interface:0xc0001b4478 Address:{IP:10.100.50.233 Mask:fffffff8} Gateway:<nil>} to "n3": address already in use
+  Normal   AddedInterface          2m24s  multus   Add eth0 [10.1.8.198/24] from microk8s-flannel-network
+  Warning  FailedCreatePodSandBox  2m12s  kubelet  Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "f3fa7b50232119889baa67d92dd0d05c01c029275a88b884d0257f4a11004e21": plugin type="multus" name="multus-cni-network" failed (add): [free5gc/free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm/ebe64479-7d7b-4fb9-b1fb-dcbbad0c3a0a:n3network-free5gc-helm-free5gc-upf]: error adding container to network "n3network-free5gc-helm-free5gc-upf": failed to add IP addr {Version:4 Interface:0xc000188548 Address:{IP:10.100.50.233 Mask:fffffff8} Gateway:<nil>} to "n3": address already in use
+  Normal   AddedInterface          112s   multus   Add eth0 [10.1.8.232/24] from microk8s-flannel-network
+  Warning  FailedCreatePodSandBox  99s    kubelet  Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "069055c8458d9564742261128e2505a5d556dcebba1d046da5f8520871f753fd": plugin type="multus" name="multus-cni-network" failed (add): [free5gc/free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm/ebe64479-7d7b-4fb9-b1fb-dcbbad0c3a0a:n3network-free5gc-helm-free5gc-upf]: error adding container to network "n3network-free5gc-helm-free5gc-upf": failed to add IP addr {Version:4 Interface:0xc00012a478 Address:{IP:10.100.50.233 Mask:fffffff8} Gateway:<nil>} to "n3": address already in use
+  Normal   AddedInterface          77s    multus   Add eth0 [10.1.8.248/24] from microk8s-flannel-network
+  Warning  FailedCreatePodSandBox  68s    kubelet  Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "b0b044f58ff6dd449b7ad656aedcc30fc21145304d046c89e475acbdb1ff6a7e": plugin type="multus" name="multus-cni-network" failed (add): [free5gc/free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm/ebe64479-7d7b-4fb9-b1fb-dcbbad0c3a0a:n3network-free5gc-helm-free5gc-upf]: error adding container to network "n3network-free5gc-helm-free5gc-upf": failed to add IP addr {Version:4 Interface:0xc0001ae5f0 Address:{IP:10.100.50.233 Mask:fffffff8} Gateway:<nil>} to "n3": address already in use
+  Normal   AddedInterface          51s    multus   Add eth0 [10.1.8.185/24] from microk8s-flannel-network
+  Warning  FailedCreatePodSandBox  40s    kubelet  Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "ac2d7711853a666bfd7d00778226a9e00ab58d9be33f38848e66023030dc7182": plugin type="multus" name="multus-cni-network" failed (add): [free5gc/free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm/ebe64479-7d7b-4fb9-b1fb-dcbbad0c3a0a:n3network-free5gc-helm-free5gc-upf]: error adding container to network "n3network-free5gc-helm-free5gc-upf": failed to add IP addr {Version:4 Interface:0xc00012e5f0 Address:{IP:10.100.50.233 Mask:fffffff8} Gateway:<nil>} to "n3": address already in use
+  Normal   AddedInterface          20s    multus   Add eth0 [10.1.8.195/24] from microk8s-flannel-network
+  Warning  FailedCreatePodSandBox  1s     kubelet  Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "1c7ef1e599ded5dadf539ad502a97d65383d0550e17e189feb60f282f7aa4565": plugin type="multus" name="multus-cni-network" failed (add): [free5gc/free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm/ebe64479-7d7b-4fb9-b1fb-dcbbad0c3a0a:n3network-free5gc-helm-free5gc-upf]: error adding container to network "n3network-free5gc-helm-free5gc-upf": failed to add IP addr {Version:4 Interface:0xc0000b4fa0 Address:{IP:10.100.50.233 Mask:fffffff8} Gateway:<nil>} to "n3": address already in use
+sarang@sarang:~$ ip link show | grep -E "n3|n4|n6|n9"
+sarang@sarang:~$ ip addr show | grep 10.100.50.233
+sarang@sarang:~$ sudo find /var/snap/microk8s/common/run/netns -type f | xargs sudo rm -f 2>/dev/null
+sudo find /var/snap/microk8s/common/var/lib/cni -type f | xargs sudo rm -f 2>/dev/null
+find: ‘/var/snap/microk8s/common/run/netns’: No such file or directory
+sarang@sarang:~$ sudo find /var/snap/microk8s -name "*.lock" 2>/dev/null
+/var/snap/microk8s/common/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1300/fs/etc/.pwd.lock
+/var/snap/microk8s/common/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/957/fs/var/lib/rpm/.dbenv.lock
+/var/snap/microk8s/common/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/957/fs/var/lib/rpm/.rpm.lock
+/var/snap/microk8s/common/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/957/fs/etc/.pwd.lock
+/var/snap/microk8s/common/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1309/fs/etc/.pwd.lock
+/var/snap/microk8s/common/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/7296/fs/etc/.pwd.lock
+/var/snap/microk8s/common/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/11914/fs/etc/.pwd.lock
+/var/snap/microk8s/common/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/6462/fs/etc/.pwd.lock
+/var/snap/microk8s/common/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1357/fs/etc/.pwd.lock
+/var/snap/microk8s/common/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1367/fs/var/lib/rpm/.dbenv.lock
+/var/snap/microk8s/common/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1367/fs/var/lib/rpm/.rpm.lock
+/var/snap/microk8s/common/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/1367/fs/etc/.pwd.lock
+/var/snap/microk8s/common/run/containerd/io.containerd.runtime.v2.task/k8s.io/cc600503f1c481404345bde5cccb012a7776e5cdc7700828eaabc5e831f573d8/rootfs/etc/.pwd.lock
+/var/snap/microk8s/common/run/containerd/io.containerd.runtime.v2.task/k8s.io/a7fb55112bd8e2969429b412ea909ada5ac4b0b4ee05e285be46dea095e86131/rootfs/etc/.pwd.lock
+/var/snap/microk8s/common/run/containerd/io.containerd.runtime.v2.task/k8s.io/dc436de6ce8516ed637f2f2164bdf374eda6b447fc214f8659311eaf772da17d/rootfs/etc/.pwd.lock
+/var/snap/microk8s/8697/var/lock/lite.lock
+/var/snap/microk8s/8697/var/lock/installed.lock
+sarang@sarang:~$ sudo find /var/snap/microk8s -path "*/cni/networks*" 2>/dev/null
+/var/snap/microk8s/8697/var/lib/cni/networks
+sarang@sarang:~$ sudo ls /var/snap/microk8s/common/var/lib/cni/
+flannel
+sarang@sarang:~$ sudo find /run -name "*10.100*" 2>/dev/null
+sarang@sarang:~$ sudo find /var/lib -name "*10.100*" 2>/dev/null
+^C
+sarang@sarang:~$ sudo ls /var/snap/microk8s/8697/var/lib/cni/networks/
+sarang@sarang:~$ sudo ls /var/run/netns/ 2>/dev/null
+cni-04c7fe0c-71e6-5e78-e4b6-2f427e18c613  cni-4d8659a0-090d-dd09-4e1e-14a1e09dfb60  cni-94077647-728f-6587-fee3-3b4f0f11d51f
+cni-0595509d-275b-e6f8-be9b-f4d80be0733e  cni-4ee2f6ca-edae-3b85-d836-47f4c99a1bc6  cni-941dbfcf-a438-df3c-5804-e98df8cf1a1e
+cni-0646d742-97e1-751c-1721-38191110a6d1  cni-4f3b93a6-87b2-477e-a8ea-bb6db90785bf  cni-95a06e1e-2664-5a5d-6638-b591ce6bcd98
+cni-09be0a75-5f06-4e78-3538-cd182a9c7481  cni-50a822b7-e3de-8bd3-ecd5-a0f6ef59f9b5  cni-978e0c87-22d0-79d9-2775-8436dcaa8590
+cni-0baaef7c-5959-0b8b-c6ae-5ecd0578bc17  cni-5138157b-a87a-74be-621b-0336f586d346  cni-9d020744-4cf9-297c-e1ee-b4300cea21a6
+cni-0bdca41b-0083-f9db-4930-b9c05a61a6dc  cni-516c8e75-23e8-1a1e-f3e2-d5784e125971  cni-9d9cfee0-fd6e-ec80-1e4f-51666814d2e5
+cni-0c7c9269-6bf0-0f25-b558-d4c946187a46  cni-51812f40-5570-1f44-d16a-6eaa7cfc89e7  cni-9eb10228-909d-0d3a-dff2-77eac9450867
+cni-0fb91148-1c11-4fc8-ce34-6d2939ba3510  cni-51ecf370-7be8-78ee-d6c6-fceaf9b3b269  cni-a3d4a3c5-5605-f0aa-21a9-92746d7d536a
+cni-11092fb0-6e35-99b7-988d-f16515d54fac  cni-52b61eff-426e-b17e-e33e-9afab5aaf382  cni-a4452315-0013-2f10-a173-60ee3f3eebff
+cni-110bda02-f067-dde9-e2a2-0b496641f717  cni-544f09ab-52f5-80e8-6311-61e1196ffdd0  cni-a47555e2-69eb-7529-7b0b-496f817b7cac
+cni-127f8d5e-b0cf-52f3-8036-efe1484e5c3c  cni-54f93086-4eee-d39f-91dc-84d1960cb913  cni-ac961b5f-59cc-c719-a24c-376e35407124
+cni-14e06323-898f-38d7-ea44-33b32f1870c1  cni-55bbf94f-8502-6c66-b620-c158604ab4da  cni-afc4557f-4b5c-3da8-c832-20b4cef07682
+cni-154fca81-5827-8788-195d-c9cfe48e0947  cni-57d8a56d-31b4-79c7-178b-e715eb290619  cni-b2616b15-e61a-d583-75cb-f9b8d43aee3f
+cni-162e23ca-face-cf62-a1f7-73b6a832bb7c  cni-59d1be60-4938-6b01-ae37-087d2b55a7b4  cni-b45cb005-c9f7-3b0e-dec5-cc6bc35defb2
+cni-17c6af67-7c88-c6f0-96e1-befa8fe9d170  cni-5a2c0e2b-699e-0136-50a0-10e21270abc1  cni-bbce1c0e-d978-d24b-3857-0bfa91f9d0ba
+cni-1a9ddac5-106b-ce08-ad2e-f7118f4087cc  cni-5a5066d2-0dd5-6de8-c502-3dbae2943df5  cni-bd384c67-acab-141c-3370-c6821d47ae40
+cni-1c17269d-1a70-9f93-8229-c1aed066612a  cni-5a84bebb-64cb-dd9b-b7a4-d588d1175f4d  cni-bd61f72c-9bfb-1ec6-2493-202a50ec71f2
+cni-1c3df54f-8044-af63-dccc-df01e1c3da75  cni-5a9b7736-3079-0902-9c7e-5e0a78287834  cni-bd7d0943-de70-dc16-e39c-cb6ea7e33a33
+cni-1c4a583f-32a6-48de-0254-00f64124f6cb  cni-5d05d7c6-55fc-4e0f-5cf1-063de89484dd  cni-c397ec54-7e53-a71e-bfbf-50e424848b31
+cni-1c58eef6-1d64-24e5-4506-f51702229eca  cni-612dbfd8-56e8-aa30-97a1-59b5278eee3f  cni-c572abc4-ac48-a958-2c9a-ce8e3db496b9
+cni-1cc9f475-2ce8-a5ae-bd3d-65d359c8e3e1  cni-64736de7-2967-ccd3-0e5b-7d66e6cc57bb  cni-c5b43892-45f8-bad7-97a3-52756f78632d
+cni-1e8e252c-b962-d9ee-b1a1-7ba9373f86a8  cni-68abf6b6-0680-5847-bdc9-0edf1d05142b  cni-c8719cbc-c60f-b2b5-8be2-db7638f53653
+cni-2214b4cf-e666-405e-e05c-29d1591b08dc  cni-694c8569-4824-faaa-dc92-434fd46671e8  cni-c95f3857-4bd2-b284-f515-14eede2bf33f
+cni-245ebf3e-7733-dba6-2b68-56985166a35f  cni-69ac9bb8-5674-3ac1-2636-6353b2fda036  cni-cca2611a-4e5e-2cfe-f52b-dc40a3423fd9
+cni-2503a8a3-c348-9c24-bcae-aae997bad7cb  cni-69ce985a-179f-1207-6f2b-d082759717e5  cni-ccd5fe2a-bb1f-3fc5-c0b7-6dc158a03490
+cni-2515f4e9-6ed5-07cd-7e5a-06cb826c463b  cni-6ab77156-61fa-d194-09a7-5e4976c17b85  cni-cf0dbf95-ab9b-3ea7-4c6a-c0707fa37f98
+cni-254a7ee6-ae46-0089-70b9-f9329779807a  cni-6b689c00-1f8c-1875-0106-c931adb2eac3  cni-d1d55e1f-bf4b-7762-4ce3-31c08ee87c43
+cni-277ffa05-1abd-8954-9d24-de4823478b2e  cni-6bad3cbc-ebed-de04-81c1-f85cbeae372d  cni-d2c161ea-31a7-24e2-cc36-41e42eb2ddaf
+cni-285d8653-51a0-5340-cc6c-e191f54d3392  cni-6c832fc6-ab1e-9942-e998-668fa47ff3ae  cni-d4694843-fd3e-e181-67dc-6404b8657ed9
+cni-28ae8a11-6be4-e77c-f519-61109bc814e9  cni-6c9de7f4-af34-9677-af3d-d5bd72043549  cni-d546ae28-e8e0-1514-713b-0eec2cf65bdb
+cni-28f59343-b51c-4abf-38f1-5344833ffb82  cni-6ec42c37-7f53-9bce-3ec4-b24c8b956084  cni-d90270a4-3a2c-d646-4441-87220181a00c
+cni-2a110462-9baf-43ee-414d-22d6ab255cf5  cni-70cb95ca-6d52-a4ad-0739-af3e9993822c  cni-d9d5d058-71a0-e0a1-552c-c600334ee453
+cni-2b983187-25f8-3c70-ec82-364874c88875  cni-72824b70-3579-63c6-f55f-3dc0dfaa6abf  cni-dc965b76-5b15-33cd-c367-ea01c0f26bd7
+cni-31e21fda-33d0-9c36-447b-275837ada565  cni-73b9031f-c306-9bf4-e24a-9e90fa02cfbd  cni-dea7fe69-71de-910e-90fe-051f44276c20
+cni-3382235e-db9a-6d96-9b6c-a5a72ae718aa  cni-76b4c0b6-546d-ec7b-e45e-5115a52d5dcf  cni-e6a200be-0122-24de-9413-a59f74d40877
+cni-35cf2e84-8c5f-9db5-ea0e-ad66376cbb08  cni-7ae54ce6-131d-c97e-94d8-4927ddac0e3f  cni-e6e364fe-eee3-b9de-9923-5f39f616112c
+cni-369ed9aa-2c5a-661a-bbd0-445bd5afbc88  cni-7d998ead-de11-66c3-64c2-2413604776b6  cni-e9cf2e95-dac7-ee7a-31cc-f72fc8408bf3
+cni-3806320f-f66f-47c2-2eff-7da8cde1480e  cni-7fd1bd93-0219-3aa4-31ea-21f1b1aa8b7d  cni-ecba67e4-7846-4d12-2293-26e20086538a
+cni-3ae727d6-a8da-5fb4-55ab-32d25cb0958c  cni-7ff8acbf-1f90-fc00-12d9-2bf5cb07032e  cni-eccd1942-31ec-a997-f5bb-97835d4d3c60
+cni-3c05114c-e625-cf9f-4e99-76fab43d8b85  cni-80dca942-9328-1bc1-5d42-e7ea3614fdee  cni-edba383e-8245-9c17-9bcf-6101e6b7c44f
+cni-3c622c9c-c30b-e390-b3bc-f4ecbff00dd1  cni-82565ccf-6c71-f6d5-888e-37bc76191ec9  cni-f0e10253-b474-187e-f0ca-5e91e126c209
+cni-3ec58b16-aa7e-a5da-0a9f-480f731b943b  cni-84c1512d-7d02-c5ba-3ab2-778d1cbdc0bf  cni-f9c6000c-a227-79ec-25ad-be58b1a3c849
+cni-3fa4e9b4-adb1-0611-ff8b-0b3a5e67f75c  cni-86080c28-a149-be57-00b9-aa261b988f5f  cni-fa144e6a-c5cd-3042-a802-10fea671164b
+cni-42ae9a85-27bb-3c53-dc8e-6f8a2fed6bbf  cni-86c8ff56-67ab-0f18-1f41-71047d0974eb  cni-fc33a570-fed6-e395-90c8-2f597e432cd0
+cni-43225f88-210f-9e49-1078-be24e3cfff55  cni-8c4471dc-1d08-db01-9850-c8b44632fa7b  cni-fca6633c-9feb-1bc6-acd0-dc557a2be810
+cni-47734936-a522-b295-880b-34798aa8d2d0  cni-8f10623f-5e5b-12a3-bef8-4cc2dbbae571  cni-ffa5b7a3-a8c4-e5f6-5341-71dee12380bc
+cni-48b530dc-d8c5-60c9-76ac-d75bd405a848  cni-905387e5-948b-ca8d-5ca1-68efe524d780
+cni-4b22789b-79f8-c3a4-4016-d64372806659  cni-90d400b9-3f35-8810-bbe1-776277da863e
+sarang@sarang:~$ sudo ip netns list
+cni-8362d251-84bd-b029-31b7-8e8cf1f17452
+cni-67bc150f-97e8-adc4-7232-426ce70c89ff (id: 138)
+cni-9f86637d-7e6c-30c3-e325-bbf3ed4d4135 (id: 136)
+cni-eccd1942-31ec-a997-f5bb-97835d4d3c60 (id: 142)
+cni-1a9ddac5-106b-ce08-ad2e-f7118f4087cc (id: 143)
+cni-76b4c0b6-546d-ec7b-e45e-5115a52d5dcf (id: 140)
+cni-0646d742-97e1-751c-1721-38191110a6d1 (id: 141)
+cni-c8719cbc-c60f-b2b5-8be2-db7638f53653 (id: 144)
+cni-a3d4a3c5-5605-f0aa-21a9-92746d7d536a (id: 135)
+cni-5a2c0e2b-699e-0136-50a0-10e21270abc1 (id: 137)
+cni-51ecf370-7be8-78ee-d6c6-fceaf9b3b269 (id: 134)
+cni-dea7fe69-71de-910e-90fe-051f44276c20 (id: 132)
+cni-0fb91148-1c11-4fc8-ce34-6d2939ba3510 (id: 131)
+cni-4b22789b-79f8-c3a4-4016-d64372806659 (id: 133)
+cni-c95f3857-4bd2-b284-f515-14eede2bf33f (id: 130)
+cni-42ae9a85-27bb-3c53-dc8e-6f8a2fed6bbf (id: 129)
+cni-f9c6000c-a227-79ec-25ad-be58b1a3c849 (id: 128)
+cni-9d9cfee0-fd6e-ec80-1e4f-51666814d2e5 (id: 127)
+cni-95a06e1e-2664-5a5d-6638-b591ce6bcd98 (id: 119)
+cni-54f93086-4eee-d39f-91dc-84d1960cb913 (id: 117)
+cni-9eb10228-909d-0d3a-dff2-77eac9450867 (id: 112)
+cni-e6e364fe-eee3-b9de-9923-5f39f616112c (id: 122)
+cni-55bbf94f-8502-6c66-b620-c158604ab4da (id: 126)
+cni-a4452315-0013-2f10-a173-60ee3f3eebff (id: 124)
+cni-4d8659a0-090d-dd09-4e1e-14a1e09dfb60 (id: 123)
+cni-544f09ab-52f5-80e8-6311-61e1196ffdd0 (id: 120)
+cni-2515f4e9-6ed5-07cd-7e5a-06cb826c463b (id: 121)
+cni-35cf2e84-8c5f-9db5-ea0e-ad66376cbb08 (id: 125)
+cni-1c3df54f-8044-af63-dccc-df01e1c3da75 (id: 118)
+cni-5a84bebb-64cb-dd9b-b7a4-d588d1175f4d (id: 116)
+cni-69ac9bb8-5674-3ac1-2636-6353b2fda036 (id: 115)
+cni-80dca942-9328-1bc1-5d42-e7ea3614fdee (id: 114)
+cni-43225f88-210f-9e49-1078-be24e3cfff55 (id: 111)
+cni-fca6633c-9feb-1bc6-acd0-dc557a2be810 (id: 110)
+cni-cca2611a-4e5e-2cfe-f52b-dc40a3423fd9 (id: 113)
+cni-59d1be60-4938-6b01-ae37-087d2b55a7b4 (id: 109)
+cni-3ec58b16-aa7e-a5da-0a9f-480f731b943b (id: 108)
+cni-6bad3cbc-ebed-de04-81c1-f85cbeae372d (id: 104)
+cni-70cb95ca-6d52-a4ad-0739-af3e9993822c (id: 100)
+cni-17c6af67-7c88-c6f0-96e1-befa8fe9d170 (id: 103)
+cni-69ce985a-179f-1207-6f2b-d082759717e5 (id: 97)
+cni-0bdca41b-0083-f9db-4930-b9c05a61a6dc (id: 107)
+cni-ccd5fe2a-bb1f-3fc5-c0b7-6dc158a03490 (id: 105)
+cni-48b530dc-d8c5-60c9-76ac-d75bd405a848 (id: 106)
+cni-5138157b-a87a-74be-621b-0336f586d346 (id: 101)
+cni-7ae54ce6-131d-c97e-94d8-4927ddac0e3f (id: 98)
+cni-3382235e-db9a-6d96-9b6c-a5a72ae718aa (id: 99)
+cni-5a5066d2-0dd5-6de8-c502-3dbae2943df5 (id: 102)
+cni-f0e10253-b474-187e-f0ca-5e91e126c209 (id: 96)
+cni-51812f40-5570-1f44-d16a-6eaa7cfc89e7 (id: 92)
+cni-a47555e2-69eb-7529-7b0b-496f817b7cac (id: 94)
+cni-c5b43892-45f8-bad7-97a3-52756f78632d (id: 95)
+cni-d9d5d058-71a0-e0a1-552c-c600334ee453 (id: 90)
+cni-277ffa05-1abd-8954-9d24-de4823478b2e (id: 91)
+cni-369ed9aa-2c5a-661a-bbd0-445bd5afbc88 (id: 93)
+cni-245ebf3e-7733-dba6-2b68-56985166a35f (id: 85)
+cni-b2616b15-e61a-d583-75cb-f9b8d43aee3f (id: 83)
+cni-3806320f-f66f-47c2-2eff-7da8cde1480e (id: 81)
+cni-d1d55e1f-bf4b-7762-4ce3-31c08ee87c43 (id: 80)
+cni-1c4a583f-32a6-48de-0254-00f64124f6cb (id: 76)
+cni-2503a8a3-c348-9c24-bcae-aae997bad7cb (id: 84)
+cni-4ee2f6ca-edae-3b85-d836-47f4c99a1bc6 (id: 86)
+cni-84c1512d-7d02-c5ba-3ab2-778d1cbdc0bf (id: 87)
+cni-94077647-728f-6587-fee3-3b4f0f11d51f (id: 89)
+cni-d546ae28-e8e0-1514-713b-0eec2cf65bdb (id: 88)
+cni-7ff8acbf-1f90-fc00-12d9-2bf5cb07032e (id: 82)
+cni-bd61f72c-9bfb-1ec6-2493-202a50ec71f2 (id: 79)
+cni-285d8653-51a0-5340-cc6c-e191f54d3392 (id: 78)
+cni-127f8d5e-b0cf-52f3-8036-efe1484e5c3c (id: 77)
+cni-6ab77156-61fa-d194-09a7-5e4976c17b85 (id: 75)
+cni-2b983187-25f8-3c70-ec82-364874c88875 (id: 74)
+cni-50a822b7-e3de-8bd3-ecd5-a0f6ef59f9b5 (id: 73)
+cni-d2c161ea-31a7-24e2-cc36-41e42eb2ddaf (id: 72)
+cni-e6a200be-0122-24de-9413-a59f74d40877 (id: 71)
+cni-bd384c67-acab-141c-3370-c6821d47ae40 (id: 66)
+cni-0baaef7c-5959-0b8b-c6ae-5ecd0578bc17 (id: 63)
+cni-31e21fda-33d0-9c36-447b-275837ada565 (id: 67)
+cni-6c832fc6-ab1e-9942-e998-668fa47ff3ae (id: 61)
+cni-b45cb005-c9f7-3b0e-dec5-cc6bc35defb2 (id: 57)
+cni-7fd1bd93-0219-3aa4-31ea-21f1b1aa8b7d (id: 68)
+cni-bd7d0943-de70-dc16-e39c-cb6ea7e33a33 (id: 69)
+cni-9d020744-4cf9-297c-e1ee-b4300cea21a6 (id: 70)
+cni-47734936-a522-b295-880b-34798aa8d2d0 (id: 65)
+cni-694c8569-4824-faaa-dc92-434fd46671e8 (id: 64)
+cni-4f3b93a6-87b2-477e-a8ea-bb6db90785bf (id: 62)
+cni-afc4557f-4b5c-3da8-c832-20b4cef07682 (id: 59)
+cni-6c9de7f4-af34-9677-af3d-d5bd72043549 (id: 60)
+cni-5d05d7c6-55fc-4e0f-5cf1-063de89484dd (id: 58)
+cni-68abf6b6-0680-5847-bdc9-0edf1d05142b (id: 56)
+cni-1cc9f475-2ce8-a5ae-bd3d-65d359c8e3e1 (id: 55)
+cni-3fa4e9b4-adb1-0611-ff8b-0b3a5e67f75c (id: 54)
+cni-978e0c87-22d0-79d9-2775-8436dcaa8590 (id: 53)
+cni-6ec42c37-7f53-9bce-3ec4-b24c8b956084 (id: 52)
+cni-28f59343-b51c-4abf-38f1-5344833ffb82 (id: 50)
+cni-c397ec54-7e53-a71e-bfbf-50e424848b31 (id: 51)
+cni-2a110462-9baf-43ee-414d-22d6ab255cf5 (id: 48)
+cni-72824b70-3579-63c6-f55f-3dc0dfaa6abf (id: 47)
+cni-2214b4cf-e666-405e-e05c-29d1591b08dc (id: 44)
+cni-154fca81-5827-8788-195d-c9cfe48e0947 (id: 49)
+cni-1c58eef6-1d64-24e5-4506-f51702229eca (id: 38)
+cni-28ae8a11-6be4-e77c-f519-61109bc814e9 (id: 40)
+cni-bbce1c0e-d978-d24b-3857-0bfa91f9d0ba (id: 25)
+cni-82565ccf-6c71-f6d5-888e-37bc76191ec9 (id: 46)
+cni-09be0a75-5f06-4e78-3538-cd182a9c7481 (id: 37)
+cni-8c4471dc-1d08-db01-9850-c8b44632fa7b (id: 43)
+cni-3ae727d6-a8da-5fb4-55ab-32d25cb0958c (id: 45)
+cni-5a9b7736-3079-0902-9c7e-5e0a78287834 (id: 42)
+cni-ecba67e4-7846-4d12-2293-26e20086538a (id: 41)
+cni-64736de7-2967-ccd3-0e5b-7d66e6cc57bb (id: 34)
+cni-14e06323-898f-38d7-ea44-33b32f1870c1 (id: 39)
+cni-edba383e-8245-9c17-9bcf-6101e6b7c44f (id: 35)
+cni-3c05114c-e625-cf9f-4e99-76fab43d8b85 (id: 36)
+cni-1c17269d-1a70-9f93-8229-c1aed066612a (id: 30)
+cni-73b9031f-c306-9bf4-e24a-9e90fa02cfbd (id: 33)
+cni-7d998ead-de11-66c3-64c2-2413604776b6 (id: 31)
+cni-57d8a56d-31b4-79c7-178b-e715eb290619 (id: 32)
+cni-cf0dbf95-ab9b-3ea7-4c6a-c0707fa37f98 (id: 28)
+cni-612dbfd8-56e8-aa30-97a1-59b5278eee3f (id: 29)
+cni-d4694843-fd3e-e181-67dc-6404b8657ed9 (id: 27)
+cni-254a7ee6-ae46-0089-70b9-f9329779807a (id: 26)
+cni-941dbfcf-a438-df3c-5804-e98df8cf1a1e (id: 24)
+cni-86c8ff56-67ab-0f18-1f41-71047d0974eb (id: 21)
+cni-0595509d-275b-e6f8-be9b-f4d80be0733e (id: 18)
+cni-86080c28-a149-be57-00b9-aa261b988f5f (id: 22)
+cni-c572abc4-ac48-a958-2c9a-ce8e3db496b9 (id: 20)
+cni-8f10623f-5e5b-12a3-bef8-4cc2dbbae571 (id: 19)
+cni-e9cf2e95-dac7-ee7a-31cc-f72fc8408bf3 (id: 23)
+cni-3c622c9c-c30b-e390-b3bc-f4ecbff00dd1 (id: 17)
+cni-04c7fe0c-71e6-5e78-e4b6-2f427e18c613 (id: 16)
+cni-fc33a570-fed6-e395-90c8-2f597e432cd0 (id: 12)
+cni-ffa5b7a3-a8c4-e5f6-5341-71dee12380bc (id: 14)
+cni-90d400b9-3f35-8810-bbe1-776277da863e (id: 15)
+cni-905387e5-948b-ca8d-5ca1-68efe524d780 (id: 11)
+cni-d90270a4-3a2c-d646-4441-87220181a00c (id: 10)
+cni-6b689c00-1f8c-1875-0106-c931adb2eac3 (id: 13)
+cni-52b61eff-426e-b17e-e33e-9afab5aaf382 (id: 9)
+cni-162e23ca-face-cf62-a1f7-73b6a832bb7c (id: 8)
+cni-ac961b5f-59cc-c719-a24c-376e35407124 (id: 7)
+cni-dc965b76-5b15-33cd-c367-ea01c0f26bd7 (id: 5)
+cni-0c7c9269-6bf0-0f25-b558-d4c946187a46 (id: 6)
+cni-fa144e6a-c5cd-3042-a802-10fea671164b (id: 0)
+cni-110bda02-f067-dde9-e2a2-0b496641f717 (id: 3)
+cni-516c8e75-23e8-1a1e-f3e2-d5784e125971 (id: 4)
+cni-1e8e252c-b962-d9ee-b1a1-7ba9373f86a8 (id: 2)
+cni-11092fb0-6e35-99b7-988d-f16515d54fac (id: 1)
+sarang@sarang:~$ sudo ip -all netns delete
+sarang@sarang:~$ sudo ip netns list | wc -l
+Error: Peer netns reference is invalid.
+Error: Peer netns reference is invalid.
+5
+sarang@sarang:~$ sudo ip netns list
+cni-52b2d8cb-853a-baa2-248a-71cb7d07d262 (id: 2)
+cni-56104fc3-13e0-93e2-4834-1c9c5f7a25cd (id: 4)
+cni-abcadcfe-a92a-67a8-a00d-8484c5b00c7c (id: 3)
+cni-6b5da1ce-4da4-d123-849c-e00a2b259115 (id: 0)
+cni-b7732b86-a960-4d63-61fc-704fa3131db9 (id: 1)
+sarang@sarang:~$ for ns in $(sudo ip netns list | awk '{print $1}'); do
+    echo "=== $ns ==="
+    sudo ip netns exec $ns ip addr show | grep -E "inet |10.100"
+done
+=== cni-52b2d8cb-853a-baa2-248a-71cb7d07d262 ===
+    inet 127.0.0.1/8 scope host lo
+    inet 10.1.8.232/24 brd 10.1.8.255 scope global eth0
+    inet 10.100.50.244/29 brd 10.100.50.247 scope global n4
+=== cni-56104fc3-13e0-93e2-4834-1c9c5f7a25cd ===
+    inet 127.0.0.1/8 scope host lo
+    inet 10.1.8.243/24 brd 10.1.8.255 scope global eth0
+    inet 10.100.50.233/29 brd 10.100.50.239 scope global n3
+    inet 10.100.50.225/29 brd 10.100.50.231 scope global n9
+    inet 10.100.50.241/29 brd 10.100.50.247 scope global n4
+    inet 10.100.100.12/24 brd 10.100.100.255 scope global n6
+=== cni-abcadcfe-a92a-67a8-a00d-8484c5b00c7c ===
+    inet 127.0.0.1/8 scope host lo
+    inet 10.1.8.242/24 brd 10.1.8.255 scope global eth0
+    inet 10.100.50.226/29 brd 10.100.50.231 scope global n9
+    inet 10.100.100.13/24 brd 10.100.100.255 scope global n6
+    inet 10.100.50.242/29 brd 10.100.50.247 scope global n4
+=== cni-6b5da1ce-4da4-d123-849c-e00a2b259115 ===
+    inet 127.0.0.1/8 scope host lo
+    inet 10.1.8.210/24 brd 10.1.8.255 scope global eth0
+    inet 10.100.50.227/29 brd 10.100.50.231 scope global n9
+    inet 10.100.100.14/24 brd 10.100.100.255 scope global n6
+    inet 10.100.50.243/29 brd 10.100.50.247 scope global n4
+=== cni-b7732b86-a960-4d63-61fc-704fa3131db9 ===
+    inet 127.0.0.1/8 scope host lo
+    inet 10.1.8.224/24 brd 10.1.8.255 scope global eth0
+    inet 10.100.50.249/29 brd 10.100.50.255 scope global n2
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS              RESTARTS       AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1            5              159m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1            10             159m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1            10             159m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1            10             159m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1            10             159m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1            10             159m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1            10             159m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1            10             159m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1            5              159m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1            10             159m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1            10             159m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm           0/1     Completed           24 (41s ago)   108m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w         0/1     Completed           24 (43s ago)   106m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz           0/1     CrashLoopBackOff    24 (27s ago)   107m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1            10             159m
+mongodb-0                                                 0/1     ContainerCreating   0              104m
+sarang@sarang:~$ kubectl describe pod mongodb-0 -n free5gc | tail -20
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  datadir:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  datadir-mongodb-0
+    ReadOnly:   false
+  empty-dir:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  common-scripts:
+    Type:        ConfigMap (a volume populated by a ConfigMap)
+    Name:        mongodb-common-scripts
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:          <none>
+sarang@sarang:~$ sudo microk8s ctr tasks list | grep mongodb
+sarang@sarang:~$ sudo microk8s ctr containers list | grep mongodb
+sarang@sarang:~$ sudo microk8s ctr images list | grep mongodb
+docker.io/bitnami/mongodb:4.4.4-debian-10-r0                                                                             text/html                                                 sha256:eb7d22f30327f23d760f67d21ba2475598411f3e6544bef57f0d39de01d66236 338.9 KiB -                                                                                                                    io.cri-containerd.image=managed
+sarang@sarang:~$ sudo journalctl -u snap.microk8s.daemon-containerd --since "5 minutes ago" | tail -30
+Apr 18 18:13:44 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:13:44.113323458+05:30" level=info msg="RemoveContainer for \"43259f4b36118ec9bc063f500a349d4305d5f424db4b595cf4e99714b9def349\" returns successfully"
+Apr 18 18:13:44 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:13:44.274906587+05:30" level=info msg="RemoveContainer for \"5e29aa743dd298f3f4dafe4a4a3f3853aed9b78d9206141c7150673d17fcda58\""
+Apr 18 18:13:44 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:13:44.465235920+05:30" level=info msg="RemoveContainer for \"5e29aa743dd298f3f4dafe4a4a3f3853aed9b78d9206141c7150673d17fcda58\" returns successfully"
+Apr 18 18:13:46 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:13:46.091458833+05:30" level=info msg="StartContainer for \"6989208ccfa8aea082b4f0cf9fe814ccf3f329bbce1ec4cd57a9b8ced0c196a3\" returns successfully"
+Apr 18 18:13:46 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:13:46.353686283+05:30" level=info msg="StartContainer for \"ab75fcbd5bf6eb494ea635c071fc2644c4f434f03d8e4f757da30bba7a4d25cd\" returns successfully"
+Apr 18 18:13:47 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:13:47.275757933+05:30" level=info msg="received exit event container_id:\"6989208ccfa8aea082b4f0cf9fe814ccf3f329bbce1ec4cd57a9b8ced0c196a3\" id:\"6989208ccfa8aea082b4f0cf9fe814ccf3f329bbce1ec4cd57a9b8ced0c196a3\" pid:250250 exited_at:{seconds:1776516227 nanos:214463155}"
+Apr 18 18:13:47 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:13:47.756862643+05:30" level=info msg="received exit event container_id:\"ab75fcbd5bf6eb494ea635c071fc2644c4f434f03d8e4f757da30bba7a4d25cd\" id:\"ab75fcbd5bf6eb494ea635c071fc2644c4f434f03d8e4f757da30bba7a4d25cd\" pid:250230 exited_at:{seconds:1776516227 nanos:751785759}"
+Apr 18 18:13:50 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:13:50.498803849+05:30" level=info msg="shim disconnected" id=6989208ccfa8aea082b4f0cf9fe814ccf3f329bbce1ec4cd57a9b8ced0c196a3 namespace=k8s.io
+Apr 18 18:13:50 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:13:50.498848967+05:30" level=warning msg="cleaning up after shim disconnected" id=6989208ccfa8aea082b4f0cf9fe814ccf3f329bbce1ec4cd57a9b8ced0c196a3 namespace=k8s.io
+Apr 18 18:13:50 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:13:50.498867571+05:30" level=info msg="cleaning up dead shim" namespace=k8s.io
+Apr 18 18:13:50 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:13:50.521468568+05:30" level=info msg="shim disconnected" id=ab75fcbd5bf6eb494ea635c071fc2644c4f434f03d8e4f757da30bba7a4d25cd namespace=k8s.io
+Apr 18 18:13:50 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:13:50.522016152+05:30" level=warning msg="cleaning up after shim disconnected" id=ab75fcbd5bf6eb494ea635c071fc2644c4f434f03d8e4f757da30bba7a4d25cd namespace=k8s.io
+Apr 18 18:13:50 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:13:50.522052078+05:30" level=info msg="cleaning up dead shim" namespace=k8s.io
+Apr 18 18:14:54 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:14:54.167080009+05:30" level=info msg="PullImage \"free5gc/upf:v4.2.1\""
+Apr 18 18:14:59 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:14:59.854471720+05:30" level=info msg="ImageUpdate event name:\"docker.io/free5gc/upf:v4.2.1\" labels:{key:\"io.cri-containerd.image\" value:\"managed\"}"
+Apr 18 18:14:59 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:14:59.954436568+05:30" level=info msg="stop pulling image docker.io/free5gc/upf:v4.2.1: active requests=0, bytes read=5401"
+Apr 18 18:15:00 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:15:00.047566469+05:30" level=info msg="Pulled image \"free5gc/upf:v4.2.1\" with image id \"sha256:d14c34734eb2fc2423f75d730e6acc8a171f2a92af6c11c68ab6fff9feab9dcd\", repo tag \"docker.io/free5gc/upf:v4.2.1\", repo digest \"docker.io/free5gc/upf@sha256:197801d6781e0171d3842215db6e41a6ab83fbc92ba32ddb618b2d225a11fe5e\", size \"74756253\" in 5.87893144s"
+Apr 18 18:15:00 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:15:00.052552103+05:30" level=info msg="PullImage \"free5gc/upf:v4.2.1\" returns image reference \"sha256:d14c34734eb2fc2423f75d730e6acc8a171f2a92af6c11c68ab6fff9feab9dcd\""
+Apr 18 18:15:00 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:15:00.330656414+05:30" level=info msg="CreateContainer within sandbox \"32e4ab2436fe19e81a33bc483494df71d3c9046b64c792fb42af45126bf30773\" for container &ContainerMetadata{Name:psaupf2,Attempt:27,}"
+Apr 18 18:15:00 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:15:00.806101363+05:30" level=info msg="CreateContainer within sandbox \"32e4ab2436fe19e81a33bc483494df71d3c9046b64c792fb42af45126bf30773\" for &ContainerMetadata{Name:psaupf2,Attempt:27,} returns container id \"6a7754248e4b6110096df2f0f5d3f05183ee518494dfd2c464f5c9481f025ca2\""
+Apr 18 18:15:00 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:15:00.811466061+05:30" level=info msg="StartContainer for \"6a7754248e4b6110096df2f0f5d3f05183ee518494dfd2c464f5c9481f025ca2\""
+Apr 18 18:15:02 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:15:02.936055384+05:30" level=info msg="StartContainer for \"6a7754248e4b6110096df2f0f5d3f05183ee518494dfd2c464f5c9481f025ca2\" returns successfully"
+Apr 18 18:15:05 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:15:05.054871562+05:30" level=info msg="received exit event container_id:\"6a7754248e4b6110096df2f0f5d3f05183ee518494dfd2c464f5c9481f025ca2\" id:\"6a7754248e4b6110096df2f0f5d3f05183ee518494dfd2c464f5c9481f025ca2\" pid:254003 exited_at:{seconds:1776516304 nanos:831157553}"
+Apr 18 18:15:09 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:15:09.285979281+05:30" level=info msg="shim disconnected" id=6a7754248e4b6110096df2f0f5d3f05183ee518494dfd2c464f5c9481f025ca2 namespace=k8s.io
+Apr 18 18:15:09 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:15:09.286134399+05:30" level=warning msg="cleaning up after shim disconnected" id=6a7754248e4b6110096df2f0f5d3f05183ee518494dfd2c464f5c9481f025ca2 namespace=k8s.io
+Apr 18 18:15:09 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:15:09.286155913+05:30" level=info msg="cleaning up dead shim" namespace=k8s.io
+Apr 18 18:15:12 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:15:12.484608593+05:30" level=info msg="RemoveContainer for \"28cc9ce54679ca12e8c00845113cb666068f349cab4757482056faa053703c55\""
+Apr 18 18:15:12 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:15:12.806143373+05:30" level=info msg="RemoveContainer for \"28cc9ce54679ca12e8c00845113cb666068f349cab4757482056faa053703c55\" returns successfully"
+Apr 18 18:15:13 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:15:13.191284543+05:30" level=info msg="PullImage \"free5gc/upf:v4.2.1\""
+Apr 18 18:15:17 sarang microk8s.daemon-containerd[181984]: time="2026-04-18T18:15:17.273514325+05:30" level=info msg="PullImage \"free5gc/upf:v4.2.1\""
+sarang@sarang:~$ kubectl delete pod mongodb-0 -n free5gc --force --grace-period=0
+Warning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.
+pod "mongodb-0" force deleted
+sarang@sarang:~$ kubectl get pod mongodb-0 -n free5gc -w
+NAME        READY   STATUS              RESTARTS   AGE
+mongodb-0   0/1     ContainerCreating   0          12s
+^Csarang@sarang:~kubectl get pod mongodb-0 -n free5gc -w-w
+^[[D^[[D^C
+sarang@sarang:~$ kubectl get pod mongodb-0 -n free5gc -w
+NAME        READY   STATUS              RESTARTS   AGE
+mongodb-0   0/1     ContainerCreating   0          2m2s
+^Csarang@sarang:~$ kubectl get pod mongodb-0 -n free5gc -w
+NAME        READY   STATUS              RESTARTS   AGE
+mongodb-0   0/1     ContainerCreating   0          7m4s
+^Csarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS              RESTARTS         AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1            5                170m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1            10               170m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1            10               170m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1            10               170m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1            10               170m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1            10               170m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1            10               170m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1            10               170m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1            5                170m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1            10               170m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1            10               170m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm           0/1     CrashLoopBackOff    28 (5m8s ago)    119m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w         0/1     CrashLoopBackOff    28 (5m13s ago)   118m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz           0/1     CrashLoopBackOff    28 (5m23s ago)   118m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1            10               170m
+mongodb-0                                                 0/1     ContainerCreating   0                7m20s
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS             RESTARTS         AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1           5                3h2m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1           10               3h2m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1           10               3h2m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1           10               3h2m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1           10               3h2m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1           10               3h2m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1           10               3h2m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1           10               3h2m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1           5                3h2m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1           10               3h2m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1           10               3h2m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm           0/1     CrashLoopBackOff   30 (3m44s ago)   130m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w         0/1     CrashLoopBackOff   30 (2m7s ago)    129m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz           0/1     CrashLoopBackOff   30 (2m23s ago)   130m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1           10               3h2m
+mongodb-0                                                 0/1     ImagePullBackOff   0                18m
+sarang@sarang:~$ kubectl describe po mongodb-0 -n free5gc
+Name:             mongodb-0
+Namespace:        free5gc
+Priority:         0
+Service Account:  mongodb
+Node:             sarang/2401:4900:7fbd:9fbc:1fb7:63f9:6694:190e
+Start Time:       Sat, 18 Apr 2026 18:16:14 +0530
+Labels:           app.kubernetes.io/component=mongodb
+                  app.kubernetes.io/instance=free5gc-helm
+                  app.kubernetes.io/managed-by=Helm
+                  app.kubernetes.io/name=mongodb
+                  app.kubernetes.io/version=7.0.9
+                  apps.kubernetes.io/pod-index=0
+                  controller-revision-hash=mongodb-778b765654
+                  helm.sh/chart=mongodb-15.6.0
+                  statefulset.kubernetes.io/pod-name=mongodb-0
+Annotations:      k8s.v1.cni.cncf.io/network-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.244"
+                        ],
+                        "mac": "42:42:28:2b:68:19",
+                        "default": true,
+                        "dns": {}
+                    }]
+                  k8s.v1.cni.cncf.io/networks-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.8.244"
+                        ],
+                        "mac": "42:42:28:2b:68:19",
+                        "default": true,
+                        "dns": {}
+                    }]
+Status:           Pending
+IP:               10.1.8.244
+IPs:
+  IP:           10.1.8.244
+Controlled By:  StatefulSet/mongodb
+Containers:
+  mongodb:
+    Container ID:
+    Image:           docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4
+    Image ID:
+    Port:            27017/TCP
+    Host Port:       0/TCP
+    SeccompProfile:  RuntimeDefault
+    State:           Waiting
+      Reason:        ImagePullBackOff
+    Ready:           False
+    Restart Count:   0
+    Limits:
+      cpu:                750m
+      ephemeral-storage:  1Gi
+      memory:             768Mi
+    Requests:
+      cpu:                500m
+      ephemeral-storage:  50Mi
+      memory:             512Mi
+    Liveness:             exec [/bitnami/scripts/ping-mongodb.sh] delay=30s timeout=10s period=20s #success=1 #failure=6
+    Readiness:            exec [/bitnami/scripts/readiness-probe.sh] delay=5s timeout=5s period=10s #success=1 #failure=6
+    Environment:
+      BITNAMI_DEBUG:                    false
+      ALLOW_EMPTY_PASSWORD:             yes
+      MONGODB_SYSTEM_LOG_VERBOSITY:     0
+      MONGODB_DISABLE_SYSTEM_LOG:       no
+      MONGODB_DISABLE_JAVASCRIPT:       no
+      MONGODB_ENABLE_JOURNAL:           yes
+      MONGODB_PORT_NUMBER:              27017
+      MONGODB_ENABLE_IPV6:              no
+      MONGODB_ENABLE_DIRECTORY_PER_DB:  no
+    Mounts:
+      /.mongodb from empty-dir (rw,path="mongosh-home")
+      /bitnami/mongodb/data/db/ from datadir (rw)
+      /bitnami/scripts from common-scripts (rw)
+      /opt/bitnami/mongodb/conf from empty-dir (rw,path="app-conf-dir")
+      /opt/bitnami/mongodb/logs from empty-dir (rw,path="app-logs-dir")
+      /opt/bitnami/mongodb/tmp from empty-dir (rw,path="app-tmp-dir")
+      /tmp from empty-dir (rw,path="tmp-dir")
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True
+  Initialized                 True
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  datadir:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  datadir-mongodb-0
+    ReadOnly:   false
+  empty-dir:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  common-scripts:
+    Type:        ConfigMap (a volume populated by a ConfigMap)
+    Name:        mongodb-common-scripts
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason   Age                  From     Message
+  ----    ------   ----                 ----     -------
+  Normal  Pulling  4m54s (x5 over 19m)  kubelet  Pulling image "docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4"
+sarang@sarang:~$ kubectl get pods -n free5gc
+NAME                                                      READY   STATUS              RESTARTS       AGE
+free5gc-helm-free5gc-amf-amf-5c795dc8c5-qzblb             0/1     Init:0/1            6              3h49m
+free5gc-helm-free5gc-ausf-ausf-7b7778bc66-lhskv           0/1     Init:0/1            11             3h49m
+free5gc-helm-free5gc-chf-chf-78ff76c65-z8r4h              0/1     Init:0/1            11             3h49m
+free5gc-helm-free5gc-dbpython-dbpython-6fcc8ff5f6-ggts2   0/1     Init:0/1            11             3h49m
+free5gc-helm-free5gc-nef-nef-6dbb97cdd5-2zrxl             0/1     Init:0/1            11             3h49m
+free5gc-helm-free5gc-nrf-nrf-68557c77f8-zrzr4             0/1     Init:0/1            11             3h49m
+free5gc-helm-free5gc-nssf-nssf-7968f66c9d-l4pmx           0/1     Init:0/1            11             3h49m
+free5gc-helm-free5gc-pcf-pcf-674c5f4646-knmdj             0/1     Init:0/1            11             3h49m
+free5gc-helm-free5gc-smf-smf-6bf56fbbf4-7s4x4             0/1     Init:0/1            6              3h49m
+free5gc-helm-free5gc-udm-udm-f44f4b84b-wwgnv              0/1     Init:0/1            11             3h49m
+free5gc-helm-free5gc-udr-udr-88ffc7d7b-q6c69              0/1     Init:0/1            11             3h49m
+free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm           0/1     ContainerCreating   33 (35m ago)   177m
+free5gc-helm-free5gc-upf-psaupf1-77645d8847-f2q4w         0/1     ContainerCreating   33 (33m ago)   176m
+free5gc-helm-free5gc-upf-psaupf2-8df8c594-zk9rz           0/1     ContainerCreating   33 (33m ago)   177m
+free5gc-helm-free5gc-webui-webui-74bf65ddd-wpwx8          0/1     Init:0/1            11             3h49m
+mongodb-0                                                 0/1     ImagePullBackOff    0              65m
+sarang@sarang:~$ kubectl get pods -n free5gc
+The connection to the server 127.0.0.1:16443 was refused - did you specify the right host or port?
+sarang@sarang:~$ ip a
+512: veth634f291d@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 06:70:b5:ec:10:ae brd ff:ff:ff:ff:ff:ff link-netns cni-9e66ee68-c2f6-1098-bec2-aa9034ad1952
+    inet6 fe80::470:b5ff:feec:10ae/64 scope link
+       valid_lft forever preferred_lft forever
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:3d:79:51 brd ff:ff:ff:ff:ff:ff
+    inet6 2409:40c2:124d:8112:4d7a:ebdf:5154:e7dc/64 scope global temporary dynamic
+       valid_lft 17654sec preferred_lft 17654sec
+    inet6 2409:40c2:124d:8112:3930:1807:5a7:9422/64 scope global dynamic mngtmpaddr noprefixroute
+       valid_lft 17654sec preferred_lft 17654sec
+    inet6 fe80::f748:c67a:a2cb:7de7/64 scope link noprefixroute
+       valid_lft forever preferred_lft forever
+3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:2d:87:d2 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.56.101/24 brd 192.168.56.255 scope global noprefixroute enp0s8
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:fe2d:87d2/64 scope link
+       valid_lft forever preferred_lft forever
+4: br-1dc7c33c8ad0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether 92:14:7a:7e:0c:7b brd ff:ff:ff:ff:ff:ff
+    inet 172.21.0.1/16 brd 172.21.255.255 scope global br-1dc7c33c8ad0
+       valid_lft forever preferred_lft forever
+5: br-344d378ea925: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether ea:a3:04:58:37:44 brd ff:ff:ff:ff:ff:ff
+    inet 172.23.0.1/16 brd 172.23.255.255 scope global br-344d378ea925
+       valid_lft forever preferred_lft forever
+6: br-478662c97dc8: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether 5e:1f:55:96:00:4e brd ff:ff:ff:ff:ff:ff
+    inet 10.20.0.1/20 brd 10.20.15.255 scope global br-478662c97dc8
+       valid_lft forever preferred_lft forever
+7: br-a8622b885cb7: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether 62:89:60:60:c3:dc brd ff:ff:ff:ff:ff:ff
+    inet 172.19.0.1/16 brd 172.19.255.255 scope global br-a8622b885cb7
+       valid_lft forever preferred_lft forever
+8: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether ee:7f:d7:8f:fb:52 brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+       valid_lft forever preferred_lft forever
+521: veth81e0bed0@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether b6:cd:4b:45:da:df brd ff:ff:ff:ff:ff:ff link-netns cni-d59aa8c2-7211-b2c0-9943-dfcbbf4dc1be
+    inet6 fe80::b4cd:4bff:fe45:dadf/64 scope link
+       valid_lft forever preferred_lft forever
+9: br-460d763b9f97: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether 8e:f8:2d:50:6b:d0 brd ff:ff:ff:ff:ff:ff
+    inet 172.22.0.1/16 brd 172.22.255.255 scope global br-460d763b9f97
+       valid_lft forever preferred_lft forever
+522: veth9647950e@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 96:b6:c1:db:1a:5f brd ff:ff:ff:ff:ff:ff link-netns cni-2168c978-d1a6-f514-dafa-3ff4c081ce24
+    inet6 fe80::94b6:c1ff:fedb:1a5f/64 scope link
+       valid_lft forever preferred_lft forever
+10: br-4d66168412e5: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether 82:82:77:dd:28:92 brd ff:ff:ff:ff:ff:ff
+    inet 10.30.0.1/20 brd 10.30.15.255 scope global br-4d66168412e5
+       valid_lft forever preferred_lft forever
+523: veth5c7ee908@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 3e:12:3b:15:04:95 brd ff:ff:ff:ff:ff:ff link-netns cni-ae3eab85-01d4-efb0-5fed-117eb81e29b8
+    inet6 fe80::3c12:3bff:fe15:495/64 scope link
+       valid_lft forever preferred_lft forever
+11: br-913faad3efac: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether 8a:e1:dd:da:f8:6e brd ff:ff:ff:ff:ff:ff
+    inet 172.20.0.1/16 brd 172.20.255.255 scope global br-913faad3efac
+       valid_lft forever preferred_lft forever
+12: br-fb42e8b83e33: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+    link/ether 06:28:38:c2:88:32 brd ff:ff:ff:ff:ff:ff
+    inet 172.18.0.1/16 brd 172.18.255.255 scope global br-fb42e8b83e33
+       valid_lft forever preferred_lft forever
+13: flannel.1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN group default
+    link/ether 66:42:5b:a3:3d:2e brd ff:ff:ff:ff:ff:ff
+    inet 10.1.8.0/32 scope global flannel.1
+       valid_lft forever preferred_lft forever
+    inet6 fe80::6442:5bff:fea3:3d2e/64 scope link noprefixroute
+       valid_lft forever preferred_lft forever
+14: cni0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UP group default qlen 1000
+    link/ether fa:18:b7:26:86:70 brd ff:ff:ff:ff:ff:ff
+    inet 10.1.8.1/24 brd 10.1.8.255 scope global cni0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::3866:dff:fe12:e257/64 scope link noprefixroute
+       valid_lft forever preferred_lft forever
+488: vethcbbdb918@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether e2:fc:1f:5d:2b:f7 brd ff:ff:ff:ff:ff:ff link-netns cni-6b5da1ce-4da4-d123-849c-e00a2b259115
+    inet6 fe80::e0fc:1fff:fe5d:2bf7/64 scope link
+       valid_lft forever preferred_lft forever
+489: veth24eb03b2@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 36:d2:7f:63:b1:45 brd ff:ff:ff:ff:ff:ff link-netns cni-b7732b86-a960-4d63-61fc-704fa3131db9
+    inet6 fe80::34d2:7fff:fe63:b145/64 scope link
+       valid_lft forever preferred_lft forever
+490: vethfcef0ba6@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 6a:45:90:b2:6e:bd brd ff:ff:ff:ff:ff:ff link-netns cni-52b2d8cb-853a-baa2-248a-71cb7d07d262
+    inet6 fe80::6845:90ff:feb2:6ebd/64 scope link
+       valid_lft forever preferred_lft forever
+491: veth79552290@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 0e:06:4c:22:79:01 brd ff:ff:ff:ff:ff:ff link-netns cni-abcadcfe-a92a-67a8-a00d-8484c5b00c7c
+    inet6 fe80::7878:8aff:fed6:f5cc/64 scope link
+       valid_lft forever preferred_lft forever
+492: veth5ca4fd1a@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether da:f3:f2:f0:a1:9e brd ff:ff:ff:ff:ff:ff link-netns cni-56104fc3-13e0-93e2-4834-1c9c5f7a25cd
+    inet6 fe80::d8f3:f2ff:fef0:a19e/64 scope link
+       valid_lft forever preferred_lft forever
+493: veth729eb8ed@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether da:5b:d7:8e:d8:2d brd ff:ff:ff:ff:ff:ff link-netns cni-2f2ccb91-3503-ee94-8ff3-62f9c9507ca3
+    inet6 fe80::7043:fdff:fe2d:c3f3/64 scope link
+       valid_lft forever preferred_lft forever
+494: vethbabdb5e0@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether ca:1f:ad:85:34:2c brd ff:ff:ff:ff:ff:ff link-netns cni-6e5b96b8-48d6-1bbd-c1c8-5d7fc13e9857
+    inet6 fe80::c43c:41ff:fe31:e2f8/64 scope link
+       valid_lft forever preferred_lft forever
+495: vethfd31e7b1@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 9e:1d:54:de:fa:9d brd ff:ff:ff:ff:ff:ff link-netns cni-8c7e4d1f-f07f-343a-9642-ac10c7f99374
+    inet6 fe80::9c1d:54ff:fede:fa9d/64 scope link
+       valid_lft forever preferred_lft forever
+496: veth9fc3cc7e@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether be:b9:22:16:1a:5e brd ff:ff:ff:ff:ff:ff link-netns cni-41ccdaed-8917-9446-00b3-c4e0600f2b2f
+    inet6 fe80::bcb9:22ff:fe16:1a5e/64 scope link
+       valid_lft forever preferred_lft forever
+497: veth53638f3f@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether c2:f9:dc:0a:8f:c2 brd ff:ff:ff:ff:ff:ff link-netns cni-2a444c78-59b7-0c71-45ba-b10b43e371dc
+    inet6 fe80::68ca:e1ff:fefd:98b3/64 scope link
+       valid_lft forever preferred_lft forever
+498: vethd44bbd95@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 42:82:29:9b:7c:40 brd ff:ff:ff:ff:ff:ff link-netns cni-1087d30c-26f6-6f65-ea0e-a887a67c8dbe
+    inet6 fe80::4082:29ff:fe9b:7c40/64 scope link
+       valid_lft forever preferred_lft forever
+499: veth814afae0@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 5e:30:df:a4:b2:88 brd ff:ff:ff:ff:ff:ff link-netns cni-49db79f6-71a6-fff2-8ae0-a627841538aa
+    inet6 fe80::5c30:dfff:fea4:b288/64 scope link
+       valid_lft forever preferred_lft forever
+500: vethe262b6b1@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 2e:24:46:cb:6b:8b brd ff:ff:ff:ff:ff:ff link-netns cni-d0077759-f649-f7f4-f210-9ec5d57ba1dd
+    inet6 fe80::2c24:46ff:fecb:6b8b/64 scope link
+       valid_lft forever preferred_lft forever
+501: veth6e1192a6@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 52:f6:a8:a3:da:8d brd ff:ff:ff:ff:ff:ff link-netns cni-48c643f2-3f28-531f-4fc4-90dfbc8352a9
+    inet6 fe80::50f6:a8ff:fea3:da8d/64 scope link
+       valid_lft forever preferred_lft forever
+502: vethafaddd4f@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether ca:d6:29:75:85:c0 brd ff:ff:ff:ff:ff:ff link-netns cni-9e47d20d-a1ef-88dc-f9a6-9aa8508c3f70
+    inet6 fe80::a864:baff:fe7a:f6ec/64 scope link
+       valid_lft forever preferred_lft forever
+503: vethe5f7eba5@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether be:c9:68:1e:e2:07 brd ff:ff:ff:ff:ff:ff link-netns cni-7fc06cac-c759-c65a-c814-897cc4a6b119
+    inet6 fe80::bcc9:68ff:fe1e:e207/64 scope link
+       valid_lft forever preferred_lft forever
+504: veth258a5b49@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 06:ab:34:91:f4:8e brd ff:ff:ff:ff:ff:ff link-netns cni-e0fac5ec-4089-55de-40b5-da6342ab4024
+    inet6 fe80::4ab:34ff:fe91:f48e/64 scope link
+       valid_lft forever preferred_lft forever
+506: veth8c0c44a5@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 56:2d:e8:49:ec:50 brd ff:ff:ff:ff:ff:ff link-netns cni-c163fb41-64e4-595c-63cd-5db91af329b2
+    inet6 fe80::542d:e8ff:fe49:ec50/64 scope link
+       valid_lft forever preferred_lft forever
+507: vetha617538a@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 9e:60:22:56:bb:ea brd ff:ff:ff:ff:ff:ff link-netns cni-0c5d45c7-e179-6415-f50b-42e928d70727
+    inet6 fe80::9c60:22ff:fe56:bbea/64 scope link
+       valid_lft forever preferred_lft forever
+509: vethf691437c@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 9a:cd:3a:00:63:4c brd ff:ff:ff:ff:ff:ff link-netns cni-d01d5249-927b-51f4-eada-350dfa6a0b7c
+    inet6 fe80::7841:68ff:fec5:55b6/64 scope link
+       valid_lft forever preferred_lft forever
+510: vethe9231a0c@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+    link/ether 2e:c9:47:38:ab:d2 brd ff:ff:ff:ff:ff:ff link-netns cni-a67bc909-29eb-e21e-473a-3ff71d42425b
+    inet6 fe80::2cc9:47ff:fe38:abd2/64 scope link
+       valid_lft forever preferred_lft forever
+sarang@sarang:~$
+Remote side unexpectedly closed network connection
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Session stopped
+    - Press <Return> to exit tab
+    - Press R to restart session
+    - Press S to save terminal output to file
+    ┌──────────────────────────────────────────────────────────────────────┐
+    │                 • MobaXterm Personal Edition v25.3 •                 │
+    │               (SSH client, X server and network tools)               │
+    │                                                                      │
+    │ ⮞ SSH session to sarang@192.168.56.101                               │
+    │   • Direct SSH      :  ✓                                             │
+    │   • SSH compression :  ✓                                             │
+    │   • SSH-browser     :  ✓                                             │
+    │   • X11-forwarding  :  ✓  (remote display is forwarded through SSH)  │
+    │                                                                      │
+    │ ⮞ For more info, ctrl+click on help or visit our website.            │
+    └──────────────────────────────────────────────────────────────────────┘
+
+Welcome to Ubuntu 22.04.2 LTS (GNU/Linux 6.8.0-106-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+ * Introducing Expanded Security Maintenance for Applications.
+   Receive updates to over 25,000 software packages with your
+   Ubuntu Pro subscription. Free for personal use.
+
+     https://ubuntu.com/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+New release '24.04.4 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+Last login: Sat Apr 18 17:27:27 2026 from 192.168.56.1
+sarang@sarang:~$ sudo vi /etc/netplan/01-network-manager-all.yaml
+[sudo] password for sarang:
+sarang@sarang:~$ sudo rm /etc/netplan/01-hostonly-static.yaml
+sarang@sarang:~$ sudo chmod 600 /etc/netplan/01-network-manager-all.yaml
+sarang@sarang:~$ sudo netplan apply
+sarang@sarang:~$ ping 8.8.8.8 -c 3
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=111 time=77.9 ms
+^C
+--- 8.8.8.8 ping statistics ---
+2 packets transmitted, 1 received, 50% packet loss, time 1006ms
+rtt min/avg/max/mdev = 77.948/77.948/77.948/0.000 ms
+sarang@sarang:~$ ip a show enp0s8
+3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:2d:87:d2 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.56.101/24 brd 192.168.56.255 scope global noprefixroute enp0s8
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:fe2d:87d2/64 scope link
+       valid_lft forever preferred_lft forever
+sarang@sarang:~$ sudo microk8s ctr images pull docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4
+docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4:                               resolved       |++++++++++++++++++++++++++++++++++++++|
+manifest-sha256:62fb92d0111f8dc0565b7daf8a57279fd09520020b79fd3bc550deb3ae5aee70: done           |++++++++++++++++++++++++++++++++++++++|
+config-sha256:a774f3ca99b62c7b28660af5198ccd25d6eaf1fc752e1029217b6c58c18256c1:   done           |++++++++++++++++++++++++++++++++++++++|
+layer-sha256:90bace5dbf96ac0ccdbf098061f85daa21da987cf8c3a0f8dc40c933aa461c31:    done           |++++++++++++++++++++++++++++++++++++++|
+elapsed: 1183.3s                                                                  total:  238.2  (206.1 KiB/s)
+unpacking linux/amd64 sha256:62fb92d0111f8dc0565b7daf8a57279fd09520020b79fd3bc550deb3ae5aee70...
+done: 1m29.130576766s
+sarang@sarang:~$ microk8s config > ~/.kube/config
+sarang@sarang:~$ kubectl delete pod mongodb-0 -n free5gc --force --grace-period=0
+Warning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.
+pod "mongodb-0" force deleted
+sarang@sarang:~$ kubectl describe po mongodb-0 -n free5gc
+Name:             mongodb-0
+Namespace:        free5gc
+Priority:         0
+Service Account:  mongodb
+Node:             sarang/192.168.31.96
+Start Time:       Sat, 18 Apr 2026 23:31:32 +0530
+Labels:           app.kubernetes.io/component=mongodb
+                  app.kubernetes.io/instance=free5gc-helm
+                  app.kubernetes.io/managed-by=Helm
+                  app.kubernetes.io/name=mongodb
+                  app.kubernetes.io/version=7.0.9
+                  apps.kubernetes.io/pod-index=0
+                  controller-revision-hash=mongodb-778b765654
+                  helm.sh/chart=mongodb-15.6.0
+                  statefulset.kubernetes.io/pod-name=mongodb-0
+Annotations:      <none>
+Status:           Pending
+IP:
+IPs:              <none>
+Controlled By:    StatefulSet/mongodb
+Containers:
+  mongodb:
+    Container ID:
+    Image:           docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4
+    Image ID:
+    Port:            27017/TCP
+    Host Port:       0/TCP
+    SeccompProfile:  RuntimeDefault
+    State:           Waiting
+      Reason:        ContainerCreating
+    Ready:           False
+    Restart Count:   0
+    Limits:
+      cpu:                750m
+      ephemeral-storage:  1Gi
+      memory:             768Mi
+    Requests:
+      cpu:                500m
+      ephemeral-storage:  50Mi
+      memory:             512Mi
+    Liveness:             exec [/bitnami/scripts/ping-mongodb.sh] delay=30s timeout=10s period=20s #success=1 #failure=6
+    Readiness:            exec [/bitnami/scripts/readiness-probe.sh] delay=5s timeout=5s period=10s #success=1 #failure=6
+    Environment:
+      BITNAMI_DEBUG:                    false
+      ALLOW_EMPTY_PASSWORD:             yes
+      MONGODB_SYSTEM_LOG_VERBOSITY:     0
+      MONGODB_DISABLE_SYSTEM_LOG:       no
+      MONGODB_DISABLE_JAVASCRIPT:       no
+      MONGODB_ENABLE_JOURNAL:           yes
+      MONGODB_PORT_NUMBER:              27017
+      MONGODB_ENABLE_IPV6:              no
+      MONGODB_ENABLE_DIRECTORY_PER_DB:  no
+    Mounts:
+      /.mongodb from empty-dir (rw,path="mongosh-home")
+      /bitnami/mongodb/data/db/ from datadir (rw)
+      /bitnami/scripts from common-scripts (rw)
+      /opt/bitnami/mongodb/conf from empty-dir (rw,path="app-conf-dir")
+      /opt/bitnami/mongodb/logs from empty-dir (rw,path="app-logs-dir")
+      /opt/bitnami/mongodb/tmp from empty-dir (rw,path="app-tmp-dir")
+      /tmp from empty-dir (rw,path="tmp-dir")
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   False
+  Initialized                 True
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  datadir:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  datadir-mongodb-0
+    ReadOnly:   false
+  empty-dir:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  common-scripts:
+    Type:        ConfigMap (a volume populated by a ConfigMap)
+    Name:        mongodb-common-scripts
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason                  Age               From               Message
+  ----     ------                  ----              ----               -------
+  Normal   Scheduled               47s               default-scheduler  Successfully assigned free5gc/mongodb-0 to sarang
+  Warning  FailedCreatePodSandBox  8s (x4 over 47s)  kubelet            Failed to create pod sandbox: open /run/systemd/resolve/resolv.conf: no such file or directory
+sarang@sarang:~$ kubectl describe po mongodb-0 -n free5gc
+Name:             mongodb-0
+Namespace:        free5gc
+Priority:         0
+Service Account:  mongodb
+Node:             sarang/192.168.31.96
+Start Time:       Sat, 18 Apr 2026 23:31:32 +0530
+Labels:           app.kubernetes.io/component=mongodb
+                  app.kubernetes.io/instance=free5gc-helm
+                  app.kubernetes.io/managed-by=Helm
+                  app.kubernetes.io/name=mongodb
+                  app.kubernetes.io/version=7.0.9
+                  apps.kubernetes.io/pod-index=0
+                  controller-revision-hash=mongodb-778b765654
+                  helm.sh/chart=mongodb-15.6.0
+                  statefulset.kubernetes.io/pod-name=mongodb-0
+Annotations:      <none>
+Status:           Pending
+IP:
+IPs:              <none>
+Controlled By:    StatefulSet/mongodb
+Containers:
+  mongodb:
+    Container ID:
+    Image:           docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4
+    Image ID:
+    Port:            27017/TCP
+    Host Port:       0/TCP
+    SeccompProfile:  RuntimeDefault
+    State:           Waiting
+      Reason:        ContainerCreating
+    Ready:           False
+    Restart Count:   0
+    Limits:
+      cpu:                750m
+      ephemeral-storage:  1Gi
+      memory:             768Mi
+    Requests:
+      cpu:                500m
+      ephemeral-storage:  50Mi
+      memory:             512Mi
+    Liveness:             exec [/bitnami/scripts/ping-mongodb.sh] delay=30s timeout=10s period=20s #success=1 #failure=6
+    Readiness:            exec [/bitnami/scripts/readiness-probe.sh] delay=5s timeout=5s period=10s #success=1 #failure=6
+    Environment:
+      BITNAMI_DEBUG:                    false
+      ALLOW_EMPTY_PASSWORD:             yes
+      MONGODB_SYSTEM_LOG_VERBOSITY:     0
+      MONGODB_DISABLE_SYSTEM_LOG:       no
+      MONGODB_DISABLE_JAVASCRIPT:       no
+      MONGODB_ENABLE_JOURNAL:           yes
+      MONGODB_PORT_NUMBER:              27017
+      MONGODB_ENABLE_IPV6:              no
+      MONGODB_ENABLE_DIRECTORY_PER_DB:  no
+    Mounts:
+      /.mongodb from empty-dir (rw,path="mongosh-home")
+      /bitnami/mongodb/data/db/ from datadir (rw)
+      /bitnami/scripts from common-scripts (rw)
+      /opt/bitnami/mongodb/conf from empty-dir (rw,path="app-conf-dir")
+      /opt/bitnami/mongodb/logs from empty-dir (rw,path="app-logs-dir")
+      /opt/bitnami/mongodb/tmp from empty-dir (rw,path="app-tmp-dir")
+      /tmp from empty-dir (rw,path="tmp-dir")
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   False
+  Initialized                 True
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  datadir:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  datadir-mongodb-0
+    ReadOnly:   false
+  empty-dir:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  common-scripts:
+    Type:        ConfigMap (a volume populated by a ConfigMap)
+    Name:        mongodb-common-scripts
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason                  Age                From               Message
+  ----     ------                  ----               ----               -------
+  Normal   Scheduled               78s                default-scheduler  Successfully assigned free5gc/mongodb-0 to sarang
+  Warning  FailedCreatePodSandBox  12s (x6 over 78s)  kubelet            Failed to create pod sandbox: open /run/systemd/resolve/resolv.conf: no such file or directory
+sarang@sarang:~$ kubectl describe po mongodb-0 -n free5gc
+Name:             mongodb-0
+Namespace:        free5gc
+Priority:         0
+Service Account:  mongodb
+Node:             sarang/192.168.31.96
+Start Time:       Sat, 18 Apr 2026 23:31:32 +0530
+Labels:           app.kubernetes.io/component=mongodb
+                  app.kubernetes.io/instance=free5gc-helm
+                  app.kubernetes.io/managed-by=Helm
+                  app.kubernetes.io/name=mongodb
+                  app.kubernetes.io/version=7.0.9
+                  apps.kubernetes.io/pod-index=0
+                  controller-revision-hash=mongodb-778b765654
+                  helm.sh/chart=mongodb-15.6.0
+                  statefulset.kubernetes.io/pod-name=mongodb-0
+Annotations:      <none>
+Status:           Pending
+IP:
+IPs:              <none>
+Controlled By:    StatefulSet/mongodb
+Containers:
+  mongodb:
+    Container ID:
+    Image:           docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4
+    Image ID:
+    Port:            27017/TCP
+    Host Port:       0/TCP
+    SeccompProfile:  RuntimeDefault
+    State:           Waiting
+      Reason:        ContainerCreating
+    Ready:           False
+    Restart Count:   0
+    Limits:
+      cpu:                750m
+      ephemeral-storage:  1Gi
+      memory:             768Mi
+    Requests:
+      cpu:                500m
+      ephemeral-storage:  50Mi
+      memory:             512Mi
+    Liveness:             exec [/bitnami/scripts/ping-mongodb.sh] delay=30s timeout=10s period=20s #success=1 #failure=6
+    Readiness:            exec [/bitnami/scripts/readiness-probe.sh] delay=5s timeout=5s period=10s #success=1 #failure=6
+    Environment:
+      BITNAMI_DEBUG:                    false
+      ALLOW_EMPTY_PASSWORD:             yes
+      MONGODB_SYSTEM_LOG_VERBOSITY:     0
+      MONGODB_DISABLE_SYSTEM_LOG:       no
+      MONGODB_DISABLE_JAVASCRIPT:       no
+      MONGODB_ENABLE_JOURNAL:           yes
+      MONGODB_PORT_NUMBER:              27017
+      MONGODB_ENABLE_IPV6:              no
+      MONGODB_ENABLE_DIRECTORY_PER_DB:  no
+    Mounts:
+      /.mongodb from empty-dir (rw,path="mongosh-home")
+      /bitnami/mongodb/data/db/ from datadir (rw)
+      /bitnami/scripts from common-scripts (rw)
+      /opt/bitnami/mongodb/conf from empty-dir (rw,path="app-conf-dir")
+      /opt/bitnami/mongodb/logs from empty-dir (rw,path="app-logs-dir")
+      /opt/bitnami/mongodb/tmp from empty-dir (rw,path="app-tmp-dir")
+      /tmp from empty-dir (rw,path="tmp-dir")
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   False
+  Initialized                 True
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  datadir:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  datadir-mongodb-0
+    ReadOnly:   false
+  empty-dir:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  common-scripts:
+    Type:        ConfigMap (a volume populated by a ConfigMap)
+    Name:        mongodb-common-scripts
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason                  Age               From               Message
+  ----     ------                  ----              ----               -------
+  Normal   Scheduled               2m                default-scheduler  Successfully assigned free5gc/mongodb-0 to sarang
+  Warning  FailedCreatePodSandBox  11s (x9 over 2m)  kubelet            Failed to create pod sandbox: open /run/systemd/resolve/resolv.conf: no such file or directory
+sarang@sarang:~$ sudo mkdir -p /run/systemd/resolve
+[sudo] password for sarang:
+sarang@sarang:~$ sudo bash -c 'cat > /run/systemd/resolve/resolv.conf << EOF
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+EOF'
+sarang@sarang:~$ sudo systemctl enable systemd-resolved
+Created symlink /etc/systemd/system/dbus-org.freedesktop.resolve1.service → /lib/systemd/system/systemd-resolved.service.
+Created symlink /etc/systemd/system/multi-user.target.wants/systemd-resolved.service → /lib/systemd/system/systemd-resolved.service.
+sarang@sarang:~$ sudo systemctl start systemd-resolved
+sarang@sarang:~$ ls -la /run/systemd/resolve/resolv.conf
+-rw-r--r-- 1 systemd-resolve systemd-resolve 827 Apr 18 23:34 /run/systemd/resolve/resolv.conf
+sarang@sarang:~$ cat /run/systemd/resolve/resolv.conf
+# This is /run/systemd/resolve/resolv.conf managed by man:systemd-resolved(8).
+# Do not edit.
+#
+# This file might be symlinked as /etc/resolv.conf. If you're looking at
+# /etc/resolv.conf and seeing this text, you have followed the symlink.
+#
+# This is a dynamic resolv.conf file for connecting local clients directly to
+# all known uplink DNS servers. This file lists all configured search domains.
+#
+# Third party programs should typically not access this file directly, but only
+# through the symlink at /etc/resolv.conf. To manage man:resolv.conf(5) in a
+# different way, replace this symlink by a static file or a different symlink.
+#
+# See man:systemd-resolved.service(8) for details about the supported modes of
+# operation for /etc/resolv.conf.
+
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+nameserver 192.168.31.1
+search lan
+sarang@sarang:~$ kubectl delete pod mongodb-0 -n free5gc --force --grace-period=0
+Warning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.
+pod "mongodb-0" force deleted
+sarang@sarang:~$ kubectl describe po mongodb-0 -n free5gc
+Name:             mongodb-0
+Namespace:        free5gc
+Priority:         0
+Service Account:  mongodb
+Node:             sarang/192.168.31.96
+Start Time:       Sat, 18 Apr 2026 23:35:22 +0530
+Labels:           app.kubernetes.io/component=mongodb
+                  app.kubernetes.io/instance=free5gc-helm
+                  app.kubernetes.io/managed-by=Helm
+                  app.kubernetes.io/name=mongodb
+                  app.kubernetes.io/version=7.0.9
+                  apps.kubernetes.io/pod-index=0
+                  controller-revision-hash=mongodb-778b765654
+                  helm.sh/chart=mongodb-15.6.0
+                  statefulset.kubernetes.io/pod-name=mongodb-0
+Annotations:      k8s.v1.cni.cncf.io/network-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.100.59"
+                        ],
+                        "mac": "0a:7c:c3:83:66:5f",
+                        "default": true,
+                        "dns": {}
+                    }]
+                  k8s.v1.cni.cncf.io/networks-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.100.59"
+                        ],
+                        "mac": "0a:7c:c3:83:66:5f",
+                        "default": true,
+                        "dns": {}
+                    }]
+Status:           Running
+IP:               10.1.100.59
+IPs:
+  IP:           10.1.100.59
+Controlled By:  StatefulSet/mongodb
+Containers:
+  mongodb:
+    Container ID:    containerd://4920e2f0b99ac4c46876609480d8f08df8960049de7c8c8079e7a0e79f75b3bc
+    Image:           docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4
+    Image ID:        sha256:a774f3ca99b62c7b28660af5198ccd25d6eaf1fc752e1029217b6c58c18256c1
+    Port:            27017/TCP
+    Host Port:       0/TCP
+    SeccompProfile:  RuntimeDefault
+    State:           Running
+      Started:       Sat, 18 Apr 2026 23:36:01 +0530
+    Ready:           False
+    Restart Count:   0
+    Limits:
+      cpu:                750m
+      ephemeral-storage:  1Gi
+      memory:             768Mi
+    Requests:
+      cpu:                500m
+      ephemeral-storage:  50Mi
+      memory:             512Mi
+    Liveness:             exec [/bitnami/scripts/ping-mongodb.sh] delay=30s timeout=10s period=20s #success=1 #failure=6
+    Readiness:            exec [/bitnami/scripts/readiness-probe.sh] delay=5s timeout=5s period=10s #success=1 #failure=6
+    Environment:
+      BITNAMI_DEBUG:                    false
+      ALLOW_EMPTY_PASSWORD:             yes
+      MONGODB_SYSTEM_LOG_VERBOSITY:     0
+      MONGODB_DISABLE_SYSTEM_LOG:       no
+      MONGODB_DISABLE_JAVASCRIPT:       no
+      MONGODB_ENABLE_JOURNAL:           yes
+      MONGODB_PORT_NUMBER:              27017
+      MONGODB_ENABLE_IPV6:              no
+      MONGODB_ENABLE_DIRECTORY_PER_DB:  no
+    Mounts:
+      /.mongodb from empty-dir (rw,path="mongosh-home")
+      /bitnami/mongodb/data/db/ from datadir (rw)
+      /bitnami/scripts from common-scripts (rw)
+      /opt/bitnami/mongodb/conf from empty-dir (rw,path="app-conf-dir")
+      /opt/bitnami/mongodb/logs from empty-dir (rw,path="app-logs-dir")
+      /opt/bitnami/mongodb/tmp from empty-dir (rw,path="app-tmp-dir")
+      /tmp from empty-dir (rw,path="tmp-dir")
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True
+  Initialized                 True
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  datadir:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  datadir-mongodb-0
+    ReadOnly:   false
+  empty-dir:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  common-scripts:
+    Type:        ConfigMap (a volume populated by a ConfigMap)
+    Name:        mongodb-common-scripts
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason          Age   From               Message
+  ----    ------          ----  ----               -------
+  Normal  Scheduled       49s   default-scheduler  Successfully assigned free5gc/mongodb-0 to sarang
+  Normal  AddedInterface  29s   multus             Add eth0 [10.1.100.59/24] from microk8s-flannel-network
+  Normal  Pulled          21s   kubelet            Container image "docker.io/bitnamilegacy/mongodb:7.0.9-debian-12-r4" already present on machine
+  Normal  Created         16s   kubelet            Created container: mongodb
+  Normal  Started         8s    kubelet            Started container mongodb
+sarang@sarang:~$ kubectl describe po free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm -n free5gc
+Name:             free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm
+Namespace:        free5gc
+Priority:         0
+Service Account:  default
+Node:             sarang/192.168.31.96
+Start Time:       Sat, 18 Apr 2026 16:24:12 +0530
+Labels:           app.kubernetes.io/instance=free5gc-helm
+                  app.kubernetes.io/name=free5gc-upf
+                  nf=iupf1
+                  pod-template-hash=865c478cc9
+                  project=free5gc
+Annotations:      checksum/config: 04a47a4f09ab9abae9465da07c77096f1ef70441fe8dd710e5b97ebea9b17b4d
+                  k8s.v1.cni.cncf.io/network-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.100.39"
+                        ],
+                        "mac": "e6:00:30:bb:7f:9e",
+                        "default": true,
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n3network-free5gc-helm-free5gc-upf",
+                        "interface": "n3",
+                        "ips": [
+                            "10.100.50.233"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n9network-free5gc-helm-free5gc-upf",
+                        "interface": "n9",
+                        "ips": [
+                            "10.100.50.225"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n4network-free5gc-helm-free5gc-upf",
+                        "interface": "n4",
+                        "ips": [
+                            "10.100.50.241"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n6network-free5gc-helm-free5gc-upf",
+                        "interface": "n6",
+                        "ips": [
+                            "10.100.100.12"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    }]
+                  k8s.v1.cni.cncf.io/networks:
+                    [ { "name": "n3network-free5gc-helm-free5gc-upf", "interface": "n3", "ips": [ "10.100.50.233/29" ], "gateway": [ "10.100.50.238" ] }, { "n...
+                  k8s.v1.cni.cncf.io/networks-status:
+                    [{
+                        "name": "microk8s-flannel-network",
+                        "interface": "eth0",
+                        "ips": [
+                            "10.1.100.39"
+                        ],
+                        "mac": "e6:00:30:bb:7f:9e",
+                        "default": true,
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n3network-free5gc-helm-free5gc-upf",
+                        "interface": "n3",
+                        "ips": [
+                            "10.100.50.233"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n9network-free5gc-helm-free5gc-upf",
+                        "interface": "n9",
+                        "ips": [
+                            "10.100.50.225"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n4network-free5gc-helm-free5gc-upf",
+                        "interface": "n4",
+                        "ips": [
+                            "10.100.50.241"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    },{
+                        "name": "free5gc/n6network-free5gc-helm-free5gc-upf",
+                        "interface": "n6",
+                        "ips": [
+                            "10.100.100.12"
+                        ],
+                        "mac": "08:00:27:3d:79:51",
+                        "dns": {}
+                    }]
+Status:           Running
+IP:               10.1.100.39
+IPs:
+  IP:           10.1.100.39
+Controlled By:  ReplicaSet/free5gc-helm-free5gc-upf-iupf1-865c478cc9
+Containers:
+  iupf1:
+    Container ID:  containerd://ec2931e9c24b1d8be871351676cc91d2564a997f1eeff1a9d911e87b89351795
+    Image:         free5gc/upf:v4.2.1
+    Image ID:      docker.io/free5gc/upf@sha256:197801d6781e0171d3842215db6e41a6ab83fbc92ba32ddb618b2d225a11fe5e
+    Port:          8805/UDP
+    Host Port:     0/UDP
+    Command:
+      /free5gc/config//wrapper.sh
+    State:          Running
+      Started:      Sat, 18 Apr 2026 23:43:39 +0530
+    Last State:     Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Sat, 18 Apr 2026 23:40:26 +0530
+      Finished:     Sat, 18 Apr 2026 23:40:28 +0530
+    Ready:          True
+    Restart Count:  40
+    Requests:
+      cpu:        500m
+      memory:     512Mi
+    Environment:  <none>
+    Mounts:
+      /free5gc/config/ from free5gc-helm-free5gc-upf-iupf1-volume (rw)
+      /free5gc/config/TLS from free5gc-helm-free5gc-upf-iupf1-empty-volume (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-j29pj (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True
+  Initialized                 True
+  Ready                       True
+  ContainersReady             True
+  PodScheduled                True
+Volumes:
+  free5gc-helm-free5gc-upf-iupf1-volume:
+    Type:           Projected (a volume that contains injected data from multiple sources)
+    ConfigMapName:  free5gc-helm-free5gc-upf-iupf1-configmap
+    Optional:       false
+  free5gc-helm-free5gc-upf-iupf1-empty-volume:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  kube-api-access-j29pj:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason   Age                    From     Message
+  ----     ------   ----                   ----     -------
+  Normal   Pulled   5m                     kubelet  Successfully pulled image "free5gc/upf:v4.2.1" in 6.145s (6.145s including waiting). Image size: 74756253 bytes.
+  Warning  BackOff  4m52s (x7 over 7m16s)  kubelet  Back-off restarting failed container iupf1 in pod free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm_free5gc(ebe64479-7d7b-4fb9-b1fb-dcbbad0c3a0a)
+  Normal   Pulled   3m32s                  kubelet  Successfully pulled image "free5gc/upf:v4.2.1" in 3.833s (3.842s including waiting). Image size: 74756253 bytes.
+  Normal   Created  3m30s (x6 over 7m42s)  kubelet  Created container: iupf1
+  Normal   Started  3m18s (x6 over 7m38s)  kubelet  Started container iupf1
+  Normal   Pulling  27s (x7 over 8m24s)    kubelet  Pulling image "free5gc/upf:v4.2.1"
+  Normal   Pulled   14s                    kubelet  Successfully pulled image "free5gc/upf:v4.2.1" in 12.357s (12.357s including waiting). Image size: 74756253 bytes.
+sarang@sarang:~$ lsmod | grep gtp5g
+gtp5g                 151552  0
+udp_tunnel             32768  3 gtp5g,vxlan,sctp
+sarang@sarang:~$ kubectl get node -o wide
+NAME     STATUS   ROLES    AGE   VERSION   INTERNAL-IP     EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
+sarang   Ready    <none>   8d    v1.33.9   192.168.31.96   <none>        Ubuntu 22.04.2 LTS   6.8.0-106-generic   containerd://1.7.27
+sarang@sarang:~$ kubectl logs -n free5gc free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm --previous
+Error from server: Get "https://192.168.31.96:10250/containerLogs/free5gc/free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm/iupf1?previous=true": tls: failed to verify certificate: x509: certificate is valid for 127.0.0.1, 10.152.183.1, 192.168.39.54, 192.168.56.101, 192.168.39.54, 192.168.56.101, 172.21.0.1, 172.23.0.1, 10.20.0.1, 172.19.0.1, 172.17.0.1, 172.22.0.1, 10.30.0.1, 172.20.0.1, 172.18.0.1, 2401:4900:7fbd:9fbc:1fb7:63f9:6694:190e, 2401:4900:7fbd:9fbc:cddd:ed4a:3185:6b07, not 192.168.31.96
+sarang@sarang:~$ sudo vi  /var/snap/microk8s/current/certs/csr.conf.template
+[sudo] password for sarang:
+sarang@sarang:~$ microk8s stop
+Stopped.
+error: snap "microk8s" has "service-control" change in progress
+sarang@sarang:~$ sudo rm -f /var/snap/microk8s/current/certs/kubelet.crt
+sarang@sarang:~$ sudo rm -f /var/snap/microk8s/current/certs/kubelet.key
+sarang@sarang:~$ sudo rm -f /var/snap/microk8s/current/certs/csr.conf.rendered
+sarang@sarang:~$
+sarang@sarang:~$ sudo openssl genrsa -out /var/snap/microk8s/current/certs/kubelet.key 2048
+sarang@sarang:~$
+sarang@sarang:~$
+sarang@sarang:~$ sudo openssl req -new \
+  -key /var/snap/microk8s/current/certs/kubelet.key \
+  -out /var/snap/microk8s/current/certs/kubelet.csr \
+  -config /var/snap/microk8s/current/certs/csr.conf
+sarang@sarang:~$
+sarang@sarang:~$
+sarang@sarang:~$ sudo openssl x509 -req \
+  -in /var/snap/microk8s/current/certs/kubelet.csr \
+  -CA /var/snap/microk8s/current/certs/ca.crt \
+  -CAkey /var/snap/microk8s/current/certs/ca.key \
+  -CAcreateserial \
+  -out /var/snap/microk8s/current/certs/kubelet.crt \
+  -days 3650 \
+  -extensions v3_ext \
+  -extfile /var/snap/microk8s/current/certs/csr.conf
+Certificate request self-signature ok
+subject=C = GB, ST = Canonical, L = Canonical, O = Canonical, OU = Canonical, CN = 127.0.0.1
+sarang@sarang:~$
+sarang@sarang:~$
+sarang@sarang:~$ sudo microk8s refresh-certs -e server.crt
+Taking a backup of the current certificates under /var/snap/microk8s/8697/certs-backup/
+Creating new certificates
+Signature ok
+subject=C = GB, ST = Canonical, L = Canonical, O = Canonical, OU = Canonical, CN = 127.0.0.1
+Getting CA Private Key
+Restarting service kubelite.
+Restarting service cluster-agent.
+sarang@sarang:~$
+sarang@sarang:~$ microk8s start
+sarang@sarang:~$ microk8s config > ~/.kube/config
+sarang@sarang:~$ kubectl logs -n free5gc free5gc-helm-free5gc-upf-iupf1-865c478cc9-fkvpm --previous
+unable to retrieve container logs for containerd://d124b6b09ad3381adaec2193cd9949b28749b7a63570a9ff79008549366561aesarang@sarang:~$ free5gc-helm-free5gc-upf-iupf1-865c478cc9-j5vlm
