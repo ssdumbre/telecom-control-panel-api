@@ -1,20 +1,32 @@
 # Telecom Control Panel API
 
-FastAPI-based API to interact with Kubernetes clusters using kubectl.
+A FastAPI-based REST API for monitoring free5GC : 5G Core Network Functions running on Kubernetes.
 
-## Features
-- Get Pods (/pods)
-- Kubernetes integration via subprocess
-- Swagger UI support
+## What This Does
+- Exposes REST endpoints to monitor live 5G NF pods
+- Retrieves real-time pod status from Kubernetes cluster
+- Validates free5GC deployment health via API
+
+## Prerequisites
+- free5GC deployed on Kubernetes (MicroK8s)
+- Python 3.8+
+- kubectl configured
+
+## Installation
+pip install -r requirements.txt
+
+## Run
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+
+## Endpoints
+GET /amf    → AMF pod status
+GET /pods   → All free5GC pods
+
+## Example Response
+{
+  "pod": "free5gc-helm-free5gc-amf-amf-5c795dc8c5",
+  "status": "Running"
+}
 
 ## Tech Stack
-- FastAPI
-- Kubernetes
-- Python
-
-## Setup
-pip install fastapi uvicorn
-uvicorn main:app --reload
-
-## API Docs
-http://127.0.0.1:8000/docs
+FastAPI, Python, kubectl, Kubernetes, free5GC
