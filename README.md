@@ -65,3 +65,9 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 
 This project can be used in telecom environments or lab setups to provide API-based monitoring of 5G Core network functions.
 It can serve as a lightweight building block for OSS systems where automated visibility of CNFs is required.
+
+## Future Enhancements
+
+- Add log retrieval endpoints  
+- Add alerting for failed pods  
+- Integrate with monitoring tools like Prometheus  
