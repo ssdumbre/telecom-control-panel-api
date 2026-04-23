@@ -5,7 +5,7 @@ A FastAPI-based REST API for monitoring free5GC 5G Core Network Functions runnin
 ## Overview
 
 This project provides simple REST endpoints to retrieve the status of free5GC network function pods from a Kubernetes cluster.
-It helps avoid manual kubectl commands for basic monitoring and troubleshooting.
+It reduces dependency on manual kubectl commands for basic monitoring and troubleshooting.
 
 UERANSIM is used in the setup to simulate UE/gNB traffic towards the 5G Core.
 
@@ -28,26 +28,29 @@ FastAPI → kubectl → Kubernetes → free5GC Pods
 
 ## Installation
 
+```bash
 pip install -r requirements.txt
+```
 
 ## Run
 
+```bash
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
+```
 
 ## Endpoints
 
-* GET /amf
-  Returns status of AMF pod
-
-* GET /pods
-  Returns list of all free5GC pods
+* GET /amf → Returns status of AMF pod
+* GET /pods → Returns list of all free5GC pods
 
 ## Example Response
 
+```json
 {
-"pod": "free5gc-helm-free5gc-amf-amf-5c795dc8c5",
-"status": "Running"
+  "pod": "free5gc-helm-free5gc-amf-amf-5c795dc8c5",
+  "status": "Running"
 }
+```
 
 ## Tech Stack
 
@@ -62,3 +65,8 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 
 This project can be used in telecom environments or lab setups to provide API-based monitoring of 5G Core network functions.
 It can serve as a lightweight building block for OSS systems where automated visibility of CNFs is required.
+
+## Future Enhancements
+
+* Add log retrieval endpoints
+* Add alerting for failed pods
