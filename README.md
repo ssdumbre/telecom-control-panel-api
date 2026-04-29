@@ -1,73 +1,166 @@
-# Telecom Control Panel API
+🚀 Telecom Control Panel API
 
-A FastAPI-based REST API for monitoring free5GC 5G Core Network Functions running on Kubernetes.
+A FastAPI-based monitoring and incident detection platform for Kubernetes-based 5G Core Network Functions (CNFs) such as AMF, SMF, and UPF.
 
-## Overview
+This project provides API-driven visibility, incident classification, and operator-assisted troubleshooting for cloud-native telecom environments.
 
-This project provides simple REST endpoints to retrieve the status of free5GC network function pods from a Kubernetes cluster.
-It reduces dependency on manual kubectl commands for basic monitoring and troubleshooting.
+🧠 Overview
 
-UERANSIM is used in the setup to simulate UE/gNB traffic towards the 5G Core.
+5G Core networks run as containerized network functions on Kubernetes.
+Troubleshooting using manual kubectl commands is inefficient and time-consuming.
 
-## What This Does
+This project introduces an API layer on top of Kubernetes and observability tools to:
 
-* Retrieves real-time pod status of 5G Core network functions (e.g., AMF)
-* Lists all free5GC pods in the Kubernetes namespace
-* Helps verify whether network functions are running or failing
+Detect abnormal CNF behavior
+Classify incidents in a structured way
+Provide actionable troubleshooting guidance
+Assist operators in faster decision-making
 
-## Architecture Flow
+🏗 Architecture
 
-FastAPI → kubectl → Kubernetes → free5GC Pods
+FastAPI → kubectl → Kubernetes (kubeadm) → Calico CNI → free5GC CNFs
+                                      ↓
+                        Prometheus → Grafana → Loki
 
-## Prerequisites
+⚙️ Environment
+Kubernetes (kubeadm-based cluster)
+Calico CNI (networking)
+free5GC Core (CNFs)
+UERANSIM (UE/gNB simulation)
+Prometheus (metrics collection)
+Grafana (visualization dashboards)
+Loki (log aggregation)
+Python + FastAPI
 
-* free5GC deployed on Kubernetes (MicroK8s)
-* UERANSIM for UE/gNB simulation
-* Python 3.8+
-* kubectl configured with cluster access
+🎯 CURRENT FEATURES (IMPLEMENTED)
 
-## Installation
+🔹 1. Pod Monitoring API
+GET /pods
+Lists Kubernetes pods
+Provides quick cluster-level visibility
 
-```bash
-pip install -r requirements.txt
-```
+🔹 2. AMF Status API
+GET /amf
+Retrieves AMF pod name and status
+Helps validate control-plane availability
 
-## Run
+🔹 3. Incident Detection & Classification API
+GET /incidents
+Detects non-healthy CNFs
+Classifies incidents using:
+Severity → CRITICAL / HIGH / WARNING
+Category → ACTIVE_FAILURE / DEPENDENCY / RECOVERED
+Risk → HIGH / MEDIUM / LOW
+Provides actionable troubleshooting recommendations
 
-```bash
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
-```
+🔹 4. Observability Integration
 
-## Endpoints
+The system is integrated with:
 
-* GET /amf → Returns status of AMF pod
-* GET /pods → Returns list of all free5GC pods
+Prometheus → metrics collection
+Grafana → visualization dashboards
+Loki → centralized logs
 
-## Example Response
+👉 These tools provide raw data, while this API provides:
 
-```json
+Detection + Classification + Recommendation
+📊 Example Response (/incidents)
 {
-  "pod": "free5gc-helm-free5gc-amf-amf-5c795dc8c5",
-  "status": "Running"
+  "incidents": [
+    {
+      "nf": "UPF",
+      "status": "CrashLoopBackOff",
+      "restarts": 12,
+      "severity": "CRITICAL",
+      "category": "ACTIVE_FAILURE",
+      "risk": "HIGH",
+      "message": "Pod crashing repeatedly",
+      "recommendation": "Check GTP module, N3/N9 interfaces"
+    },
+    {
+      "nf": "SMF",
+      "status": "Running",
+      "restarts": 2,
+      "severity": "WARNING",
+      "category": "RECOVERED",
+      "risk": "MEDIUM",
+      "message": "Pod restarted but currently stable",
+      "recommendation": "Check logs for root cause"
+    }
+  ]
 }
-```
+🚀 Industry Value & Differentiation
 
-## Tech Stack
+Modern telecom environments already use Prometheus, Grafana, and Loki.
+However, these tools provide metrics and logs, not operational decisions.
 
-* FastAPI
-* Python
-* Kubernetes
-* kubectl
-* free5GC
-* UERANSIM
+This project adds an intelligence layer:
 
-## Use Case
+🔹 1. From Data → Actionable Insight
+Metrics + Logs → Manual analysis ❌
 
-This project can be used in telecom environments or lab setups to provide API-based monitoring of 5G Core network functions.
-It can serve as a lightweight building block for OSS systems where automated visibility of CNFs is required.
+This system:
 
-## Future Enhancements
+Detects → Classifies → Suggests next steps ✅
+🔹 2. Faster Troubleshooting (Reduced MTTR)
 
-- Add log retrieval endpoints  
-- Add alerting for failed pods  
-- Integrate with monitoring tools like Prometheus  
+Instead of:
+
+kubectl → logs → metrics → analysis
+
+You get:
+
+Single API → structured incident + recommendation
+🔹 3. Standardized Incident Handling
+
+Provides consistent structure:
+
+Severity
+Category
+Risk
+
+👉 Avoids inconsistent debugging approaches across engineers
+
+🔹 4. Telecom-Aware Context
+
+Unlike generic tools, this system understands:
+
+AMF (control plane issues → NRF/SBI checks)
+UPF (data plane issues → GTP/N3/N9 checks)
+🔹 5. Foundation for OSS / AIOps
+
+Acts as a base layer for:
+
+OSS platforms
+Alarm correlation systems
+Future AI-driven analytics
+
+⚙️ Installation
+pip install -r requirements.txt
+
+▶️ Run
+uvicorn incident:app --reload --host 0.0.0.0 --port 8000
+
+🧠 PROJECT ROADMAP (IN PROGRESS)
+
+🔜 Monitoring Enhancements
+GET /pods/{namespace}
+GET /pods/{name}/status
+GET /pods/{name}/logs
+
+🔜 Control (Operator-Assisted Only)
+POST /pods/{name}/restart (manual trigger, not automatic)
+
+🔜 5G-Specific APIs
+GET /sessions
+GET /ue/status
+GET /gnb/status
+
+🔜 Advanced (Realistic)
+Log-based Root Cause Analysis (RCA)
+Cross-NF incident correlation
+Recommendation engine (decision support, not auto-action)
+
+💬 Author Note
+
+The environment was migrated from MicroK8s to a kubeadm-based Kubernetes cluster with Calico CNI to achieve better networking stability and simulate real-world telecom deployments.
